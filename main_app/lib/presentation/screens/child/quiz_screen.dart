@@ -94,7 +94,15 @@ class _QuizScreenState extends State<QuizScreen> {
               spacing: 8,
               runSpacing: 8,
               children: [
-                _Tag(question.subject, AppColors.primary),
+                // Câu hỏi mở / xã hội có subject trùng nhãn loại câu hỏi
+                // → hiện chủ đề thay vì lặp lại cùng một chữ.
+                _Tag(
+                  question.subject.trim().toLowerCase() ==
+                          l10n.questionType(question.type).toLowerCase()
+                      ? question.topic
+                      : question.subject,
+                  AppColors.primary,
+                ),
                 _Tag(l10n.questionType(question.type), AppColors.kid),
               ],
             ),
