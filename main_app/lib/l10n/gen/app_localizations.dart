@@ -167,7 +167,7 @@ abstract class AppLocalizations {
   /// No description provided for @validationGradeRequired.
   ///
   /// In en, this message translates to:
-  /// **'Please choose your grade (1 – 12).'**
+  /// **'Please choose your grade or level of study.'**
   String get validationGradeRequired;
 
   /// No description provided for @authFailed.
@@ -1037,7 +1037,7 @@ abstract class AppLocalizations {
   /// No description provided for @registerGradeLabel.
   ///
   /// In en, this message translates to:
-  /// **'What grade are you in?'**
+  /// **'What grade or level are you studying?'**
   String get registerGradeLabel;
 
   /// No description provided for @registerGradeChip.
@@ -1063,6 +1063,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'High'**
   String get registerLevelUpperSecondary;
+
+  /// No description provided for @registerHigherEducation.
+  ///
+  /// In en, this message translates to:
+  /// **'Higher education'**
+  String get registerHigherEducation;
+
+  /// No description provided for @gradeUniversity.
+  ///
+  /// In en, this message translates to:
+  /// **'University'**
+  String get gradeUniversity;
+
+  /// No description provided for @gradeUniversityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'College, university'**
+  String get gradeUniversityHint;
+
+  /// No description provided for @gradePostgraduate.
+  ///
+  /// In en, this message translates to:
+  /// **'Postgraduate'**
+  String get gradePostgraduate;
+
+  /// No description provided for @gradePostgraduateHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Master\'s, PhD'**
+  String get gradePostgraduateHint;
 
   /// No description provided for @registerNeedsScreenLock.
   ///
@@ -1091,8 +1121,8 @@ abstract class AppLocalizations {
   /// No description provided for @runningGrade.
   ///
   /// In en, this message translates to:
-  /// **'Grade {grade}'**
-  String runningGrade(int grade);
+  /// **'{grade}'**
+  String runningGrade(String grade);
 
   /// No description provided for @runningTimeLeft.
   ///
@@ -1235,14 +1265,14 @@ abstract class AppLocalizations {
   /// No description provided for @dashboardChildInfo.
   ///
   /// In en, this message translates to:
-  /// **'Grade {grade} · {age, plural, =1{1 year old} other{{age} years old}}'**
-  String dashboardChildInfo(int grade, int age);
+  /// **'{grade} · {age, plural, =1{1 year old} other{{age} years old}}'**
+  String dashboardChildInfo(String grade, int age);
 
   /// No description provided for @reportChildInfo.
   ///
   /// In en, this message translates to:
-  /// **'Grade {grade} · Born {dob}'**
-  String reportChildInfo(int grade, String dob);
+  /// **'{grade} · Born {dob}'**
+  String reportChildInfo(String grade, String dob);
 
   /// No description provided for @reportTimeUsed.
   ///

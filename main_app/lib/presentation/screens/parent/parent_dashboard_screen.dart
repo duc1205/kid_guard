@@ -151,7 +151,7 @@ class _ChildCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${l10n.dashboardChildInfo(c.grade, c.ageAt(DateTime.now()))}'
+                      '${l10n.dashboardChildInfo(l10n.gradeLabel(c.grade), c.ageAt(DateTime.now()))}'
                       '${last == null ? '' : ' · ${formatDateTime(last)}'}',
                       style: const TextStyle(color: Colors.black54),
                     ),

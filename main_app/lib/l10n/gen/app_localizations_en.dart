@@ -68,7 +68,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get validationDobInvalid => 'Invalid date of birth.';
 
   @override
-  String get validationGradeRequired => 'Please choose your grade (1 – 12).';
+  String get validationGradeRequired =>
+      'Please choose your grade or level of study.';
 
   @override
   String get authFailed => 'Wrong password or authentication was cancelled.';
@@ -597,7 +598,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registerDobPick => 'Choose your birthday';
 
   @override
-  String get registerGradeLabel => 'What grade are you in?';
+  String get registerGradeLabel => 'What grade or level are you studying?';
 
   @override
   String registerGradeChip(int grade) {
@@ -612,6 +613,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get registerLevelUpperSecondary => 'High';
+
+  @override
+  String get registerHigherEducation => 'Higher education';
+
+  @override
+  String get gradeUniversity => 'University';
+
+  @override
+  String get gradeUniversityHint => 'College, university';
+
+  @override
+  String get gradePostgraduate => 'Postgraduate';
+
+  @override
+  String get gradePostgraduateHint => 'Master\'s, PhD';
 
   @override
   String get registerNeedsScreenLock =>
@@ -631,8 +647,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String runningGrade(int grade) {
-    return 'Grade $grade';
+  String runningGrade(String grade) {
+    return '$grade';
   }
 
   @override
@@ -709,19 +725,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dashboardChildren => 'Children';
 
   @override
-  String dashboardChildInfo(int grade, int age) {
+  String dashboardChildInfo(String grade, int age) {
     String _temp0 = intl.Intl.pluralLogic(
       age,
       locale: localeName,
       other: '$age years old',
       one: '1 year old',
     );
-    return 'Grade $grade · $_temp0';
+    return '$grade · $_temp0';
   }
 
   @override
-  String reportChildInfo(int grade, String dob) {
-    return 'Grade $grade · Born $dob';
+  String reportChildInfo(String grade, String dob) {
+    return '$grade · Born $dob';
   }
 
   @override

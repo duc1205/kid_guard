@@ -70,7 +70,10 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
               sliver: SliverList.list(
                 children: [
                   Text(
-                    l10n.reportChildInfo(c.grade, formatDate(c.dateOfBirth)),
+                    l10n.reportChildInfo(
+                      l10n.gradeLabel(c.grade),
+                      formatDate(c.dateOfBirth),
+                    ),
                     style: const TextStyle(color: Colors.black54),
                   ),
                   const SizedBox(height: 14),

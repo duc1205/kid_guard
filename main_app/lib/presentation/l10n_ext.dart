@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 
+import '../core/constants/app_constants.dart';
 import '../domain/entities/question.dart';
 import '../domain/usecases/register_child.dart';
 import '../l10n/gen/app_localizations.dart';
@@ -32,6 +33,13 @@ extension L10nFormat on AppLocalizations {
     if (h == 0) return durationMinutes(m);
     return m == 0 ? durationHours(h) : durationHoursMinutes(h, m);
   }
+
+  /// "Lớp 5" / "Đại học" / "Sau đại học".
+  String gradeLabel(int grade) => switch (grade) {
+    AppConstants.universityGrade => gradeUniversity,
+    AppConstants.postgraduateGrade => gradePostgraduate,
+    _ => registerGradeChip(grade),
+  };
 
   String questionType(QuestionType t) => switch (t) {
     QuestionType.academic => questionTypeAcademic,

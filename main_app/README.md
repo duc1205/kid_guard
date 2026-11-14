@@ -4,7 +4,7 @@
 
 ## Luồng hoạt động
 
-1. Người lớn đưa máy cho trẻ → trẻ nhập **họ tên, ngày sinh, lớp (1–12)**.
+1. Người lớn đưa máy cho trẻ → trẻ nhập **họ tên, ngày sinh, lớp (1–12) hoặc bậc Đại học / Sau đại học**.
 2. Trẻ được dùng mọi ứng dụng trong **15 phút**.
 3. Hết giờ → app tự hiện lên, trẻ phải trả lời **1 câu hỏi A/B/C/D** chọn ngẫu nhiên trong phạm vi lớp
    (các môn học + câu hỏi mở + kiến thức xã hội).
@@ -23,7 +23,7 @@ lib/
   data/            datasources (SharedPreferences, assets câu hỏi, MethodChannel, local_auth),
                    mappers JSON, repository implementations
   presentation/    controllers (ChangeNotifier) + screens + widgets
-assets/questions/  ngân hàng câu hỏi grade_1.json … grade_12.json
+assets/questions/  ngân hàng câu hỏi grade_1.json … grade_12.json, grade_13.json (Đại học), grade_14.json (Sau đại học)
 android/.../kotlin SessionGuardService (đồng hồ chạy nền + giữ app luôn ở trên khi khoá),
                    BootReceiver, KidGuardAdminReceiver (tuỳ chọn Device Owner)
 ```

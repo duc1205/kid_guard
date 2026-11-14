@@ -2,12 +2,17 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:main_app/core/constants/app_constants.dart';
 import 'package:main_app/data/models/json_mappers.dart';
 import 'package:main_app/domain/entities/question.dart';
 
-/// Kiểm tra ngân hàng câu hỏi đóng gói: đủ 12 lớp, đúng định dạng, có đủ 3 loại câu.
+/// Kiểm tra ngân hàng câu hỏi đóng gói: đủ lớp 1–12, Đại học, Sau đại học, đúng định dạng, có đủ 3 loại câu.
 void main() {
-  for (var grade = 1; grade <= 12; grade++) {
+  for (
+    var grade = AppConstants.minGrade;
+    grade <= AppConstants.maxGrade;
+    grade++
+  ) {
     test('ngân hàng câu hỏi lớp $grade hợp lệ', () {
       final file = File('assets/questions/grade_$grade.json');
       expect(file.existsSync(), isTrue);

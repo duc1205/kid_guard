@@ -55,7 +55,9 @@ class RunningScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          l10n.runningGrade(session.child.grade),
+                          l10n.runningGrade(
+                            l10n.gradeLabel(session.child.grade),
+                          ),
                           style: const TextStyle(color: Colors.black54),
                         ),
                       ],

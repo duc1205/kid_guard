@@ -11,7 +11,7 @@ class ChildProfile {
   final String name;
   final DateTime dateOfBirth;
 
-  /// Lớp 1..12 theo chương trình giáo dục phổ thông Việt Nam.
+  /// Lớp 1..12 theo chương trình phổ thông Việt Nam; 13 = Đại học, 14 = Sau đại học.
   final int grade;
   final DateTime createdAt;
 

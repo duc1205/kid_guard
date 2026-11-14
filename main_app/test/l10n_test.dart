@@ -25,6 +25,16 @@ void main() {
     });
   });
 
+  test('tên lớp / bậc học', () async {
+    final vi = await AppLocalizations.delegate.load(const Locale('vi'));
+    expect(vi.gradeLabel(5), 'Lớp 5');
+    expect(vi.gradeLabel(13), 'Đại học');
+    expect(vi.gradeLabel(14), 'Sau đại học');
+    final en = await AppLocalizations.delegate.load(const Locale('en'));
+    expect(en.gradeLabel(12), 'Grade 12');
+    expect(en.gradeLabel(14), 'Postgraduate');
+  });
+
   test('app_en.arb và app_vi.arb có cùng bộ key và placeholder', () {
     Map<String, dynamic> load(String f) =>
         jsonDecode(File('lib/l10n/$f').readAsStringSync())

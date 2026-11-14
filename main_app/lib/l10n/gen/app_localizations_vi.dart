@@ -50,7 +50,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get validationDobInvalid => 'Ngày sinh không hợp lệ.';
 
   @override
-  String get validationGradeRequired => 'Con hãy chọn lớp đang học (1 – 12).';
+  String get validationGradeRequired => 'Hãy chọn lớp hoặc bậc đang học.';
 
   @override
   String get authFailed => 'Mật khẩu không đúng hoặc đã huỷ xác thực.';
@@ -575,7 +575,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get registerDobPick => 'Chọn ngày sinh';
 
   @override
-  String get registerGradeLabel => 'Con đang học lớp mấy?';
+  String get registerGradeLabel => 'Bạn đang học lớp mấy / bậc nào?';
 
   @override
   String registerGradeChip(int grade) {
@@ -590,6 +590,21 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get registerLevelUpperSecondary => 'THPT';
+
+  @override
+  String get registerHigherEducation => 'Bậc cao hơn';
+
+  @override
+  String get gradeUniversity => 'Đại học';
+
+  @override
+  String get gradeUniversityHint => 'Cao đẳng, đại học';
+
+  @override
+  String get gradePostgraduate => 'Sau đại học';
+
+  @override
+  String get gradePostgraduateHint => 'Thạc sĩ, tiến sĩ';
 
   @override
   String get registerNeedsScreenLock =>
@@ -609,8 +624,8 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String runningGrade(int grade) {
-    return 'Lớp $grade';
+  String runningGrade(String grade) {
+    return '$grade';
   }
 
   @override
@@ -687,13 +702,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get dashboardChildren => 'Các bé';
 
   @override
-  String dashboardChildInfo(int grade, int age) {
-    return 'Lớp $grade · $age tuổi';
+  String dashboardChildInfo(String grade, int age) {
+    return '$grade · $age tuổi';
   }
 
   @override
-  String reportChildInfo(int grade, String dob) {
-    return 'Lớp $grade · Sinh ngày $dob';
+  String reportChildInfo(String grade, String dob) {
+    return '$grade · Sinh ngày $dob';
   }
 
   @override

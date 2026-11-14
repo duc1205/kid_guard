@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:main_app/core/constants/app_constants.dart';
 import 'package:main_app/data/datasources/app_database.dart';
 import 'package:main_app/data/repositories/sqlite_repositories.dart';
 import 'package:main_app/domain/entities/active_session.dart';
@@ -57,36 +58,53 @@ void main() {
 
   tearDown(() => db.close());
 
-  test('đăng ký bắt buộc đủ tên, ngày sinh, lớp 1–12', () async {
-    expect(
-      () => register(name: ' ', dateOfBirth: DateTime(2018), grade: 3),
-      throwsA(isA<ValidationException>()),
-    );
-    expect(
-      () => register(name: 'An', dateOfBirth: null, grade: 3),
-      throwsA(isA<ValidationException>()),
-    );
-    expect(
-      () => register(name: 'An', dateOfBirth: DateTime(2018), grade: 13),
-      throwsA(isA<ValidationException>()),
-    );
-    final c = await register(
-      name: '  Minh   An ',
-      dateOfBirth: DateTime(2018, 5, 2),
-      grade: 3,
-    );
-    expect(c.name, 'Minh An');
-    await start(c);
-    // Cùng tên + ngày sinh → dùng lại hồ sơ, cập nhật lớp, KHÔNG mất lịch sử cũ.
-    final again = await register(
-      name: 'minh an',
-      dateOfBirth: DateTime(2018, 5, 2),
-      grade: 4,
-    );
-    expect(again.id, c.id);
-    final all = await children.getChildren();
-    expect(all.single.grade, 4);
-    expect(await logs.getLogsForChild(c.id, limit: 10), hasLength(1));
+  test(
+    'đăng ký bắt buộc đủ tên, ngày sinh, lớp 1–12 / Đại học / Sau đại học',
+    () async {
+      expect(
+        () => register(name: ' ', dateOfBirth: DateTime(2018), grade: 3),
+        throwsA(isA<ValidationException>()),
+      );
+      expect(
+        () => register(name: 'An', dateOfBirth: null, grade: 3),
+        throwsA(isA<ValidationException>()),
+      );
+      expect(
+        () => register(name: 'An', dateOfBirth: DateTime(2018), grade: 15),
+        throwsA(isA<ValidationException>()),
+      );
+      final c = await register(
+        name: '  Minh   An ',
+        dateOfBirth: DateTime(2018, 5, 2),
+        grade: 3,
+      );
+      expect(c.name, 'Minh An');
+      await start(c);
+      // Cùng tên + ngày sinh → dùng lại hồ sơ, cập nhật lớp, KHÔNG mất lịch sử cũ.
+      final again = await register(
+        name: 'minh an',
+        dateOfBirth: DateTime(2018, 5, 2),
+        grade: 4,
+      );
+      expect(again.id, c.id);
+      final all = await children.getChildren();
+      expect(all.single.grade, 4);
+      expect(await logs.getLogsForChild(c.id, limit: 10), hasLength(1));
+    },
+  );
+
+  test('chấp nhận bậc Đại học và Sau đại học', () async {
+    for (final g in [
+      AppConstants.universityGrade,
+      AppConstants.postgraduateGrade,
+    ]) {
+      final c = await register(
+        name: 'Người học $g',
+        dateOfBirth: DateTime(1998, 3, 4),
+        grade: g,
+      );
+      expect(c.grade, g);
+    }
   });
 
   test(

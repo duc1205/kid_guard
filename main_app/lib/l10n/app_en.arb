@@ -42,7 +42,7 @@
   "validationNameRequired": "Please enter your full name.",
   "validationDobRequired": "Please choose your date of birth.",
   "validationDobInvalid": "Invalid date of birth.",
-  "validationGradeRequired": "Please choose your grade (1 – 12).",
+  "validationGradeRequired": "Please choose your grade or level of study.",
   "authFailed": "Wrong password or authentication was cancelled.",
   "authNotAvailable": "This phone has no screen lock. Go to Settings and set a PIN/password first.",
   "authReasonRevoke": "Enter the phone password to take the phone back and turn off kid mode",
@@ -201,7 +201,7 @@
   "registerNameHint": "Example: Alex Smith",
   "registerDobLabel": "Date of birth",
   "registerDobPick": "Choose your birthday",
-  "registerGradeLabel": "What grade are you in?",
+  "registerGradeLabel": "What grade or level are you studying?",
   "registerGradeChip": "Grade {grade}",
   "@registerGradeChip": {
     "placeholders": {
@@ -213,6 +213,11 @@
   "registerLevelPrimary": "Primary",
   "registerLevelLowerSecondary": "Middle",
   "registerLevelUpperSecondary": "High",
+  "registerHigherEducation": "Higher education",
+  "gradeUniversity": "University",
+  "gradeUniversityHint": "College, university",
+  "gradePostgraduate": "Postgraduate",
+  "gradePostgraduateHint": "Master's, PhD",
   "registerNeedsScreenLock": "This phone has no screen lock. A parent needs to set a password first so they can take the phone back.",
   "registerErrorGeneric": "Something went wrong: {error}",
   "@registerErrorGeneric": {
@@ -231,11 +236,11 @@
       }
     }
   },
-  "runningGrade": "Grade {grade}",
+  "runningGrade": "{grade}",
   "@runningGrade": {
     "placeholders": {
       "grade": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -269,22 +274,22 @@
   "dashboardCorrect": "Correct",
   "dashboardWrong": "Wrong",
   "dashboardChildren": "Children",
-  "dashboardChildInfo": "Grade {grade} · {age, plural, =1{1 year old} other{{age} years old}}",
+  "dashboardChildInfo": "{grade} · {age, plural, =1{1 year old} other{{age} years old}}",
   "@dashboardChildInfo": {
     "placeholders": {
       "grade": {
-        "type": "int"
+        "type": "String"
       },
       "age": {
         "type": "int"
       }
     }
   },
-  "reportChildInfo": "Grade {grade} · Born {dob}",
+  "reportChildInfo": "{grade} · Born {dob}",
   "@reportChildInfo": {
     "placeholders": {
       "grade": {
-        "type": "int"
+        "type": "String"
       },
       "dob": {
         "type": "String"

@@ -36,7 +36,7 @@ class _ChildRegisterScreenState extends State<ChildRegisterScreen> {
     final picked = await showDatePicker(
       context: context,
       initialDate: _dob ?? DateTime(now.year - 8, 1, 1),
-      firstDate: DateTime(now.year - 25),
+      firstDate: DateTime(now.year - 80),
       lastDate: now,
       initialDatePickerMode: DatePickerMode.year,
       helpText: context.l10n.registerDobPick,
@@ -137,7 +137,7 @@ class _ChildRegisterScreenState extends State<ChildRegisterScreen> {
               children: [
                 for (
                   var g = AppConstants.minGrade;
-                  g <= AppConstants.maxGrade;
+                  g <= AppConstants.maxSchoolGrade;
                   g++
                 )
                   _GradeChip(
@@ -145,6 +145,28 @@ class _ChildRegisterScreenState extends State<ChildRegisterScreen> {
                     selected: _grade == g,
                     onTap: () => setState(() => _grade = g),
                   ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            _Label(l10n.registerHigherEducation),
+            Row(
+              children: [
+                for (final (i, g) in const [
+                  AppConstants.universityGrade,
+                  AppConstants.postgraduateGrade,
+                ].indexed) ...[
+                  if (i > 0) const SizedBox(width: 10),
+                  Expanded(
+                    child: SizedBox(
+                      height: 64,
+                      child: _GradeChip(
+                        grade: g,
+                        selected: _grade == g,
+                        onTap: () => setState(() => _grade = g),
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
             if (_error != null) ...[
@@ -206,11 +228,13 @@ class _GradeChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final level = grade <= 5
-        ? l10n.registerLevelPrimary
-        : grade <= 9
-        ? l10n.registerLevelLowerSecondary
-        : l10n.registerLevelUpperSecondary;
+    final level = switch (grade) {
+      <= 5 => l10n.registerLevelPrimary,
+      <= 9 => l10n.registerLevelLowerSecondary,
+      <= AppConstants.maxSchoolGrade => l10n.registerLevelUpperSecondary,
+      AppConstants.universityGrade => l10n.gradeUniversityHint,
+      _ => l10n.gradePostgraduateHint,
+    };
     return Material(
       color: selected ? AppColors.kid : Colors.white,
       borderRadius: BorderRadius.circular(14),
@@ -221,7 +245,7 @@ class _GradeChip extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              l10n.registerGradeChip(grade),
+              l10n.gradeLabel(grade),
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 color: selected ? Colors.white : null,
