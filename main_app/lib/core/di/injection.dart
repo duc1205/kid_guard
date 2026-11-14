@@ -24,7 +24,6 @@ import '../../presentation/controllers/guard_controller.dart';
 import '../../presentation/controllers/parent_controller.dart';
 import '../../presentation/controllers/question_bank_controller.dart';
 import '../../presentation/controllers/settings_controller.dart';
-import '../constants/app_constants.dart';
 
 /// Composition root: nơi duy nhất nối các tầng data → domain → presentation.
 class AppDependencies {
@@ -83,11 +82,13 @@ class AppDependencies {
     );
 
     final syncQuestions = SyncQuestionBankUseCase(questionBank);
-    // Kiểm tra bộ câu hỏi mới ở nền; lỗi mạng thì vẫn dùng bản đang có.
-    syncQuestions(minInterval: AppConstants.questionSyncInterval).then(
-      (r) => r == null ? null : debugPrint('Question sync: ${r.status}'),
-      onError: (Object e) => debugPrint('Question sync failed: $e'),
+    final questionBankController = QuestionBankController(
+      bank: questionBank,
+      sync: syncQuestions,
+      changeSource: ChangeQuestionSourceUseCase(questionBank),
     );
+    // Kiểm tra bộ câu hỏi mới ở nền, không chặn lúc mở app.
+    questionBankController.syncInBackground();
 
     final pickQuestion = PickQuestionUseCase(questions, logs);
     final authenticate = AuthenticateParentUseCase(parentAuth, device);
@@ -99,11 +100,7 @@ class AppDependencies {
       getWeakTopics: GetWeakTopicsUseCase(logs),
       setupChecklist: PrefsSetupChecklistRepository(store),
       settingsController: settingsController,
-      questionBankController: QuestionBankController(
-        bank: questionBank,
-        sync: syncQuestions,
-        changeSource: ChangeQuestionSourceUseCase(questionBank),
-      ),
+      questionBankController: questionBankController,
       guardController: GuardController(
         activeSessions: active,
         children: children,

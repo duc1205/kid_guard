@@ -29,8 +29,9 @@ class AppConstants {
   static const String defaultQuestionSourceUrl =
       'https://raw.githubusercontent.com/duc1205/kid_guard_question/main/manifest.json';
 
-  /// Tự kiểm tra bản câu hỏi mới khi mở app, tối đa 1 lần mỗi khoảng này.
-  static const Duration questionSyncInterval = Duration(hours: 6);
+  /// Tự kiểm tra bản câu hỏi mới khi mở app / quay lại app, tối đa 1 lần mỗi
+  /// khoảng này (chỉ tải manifest ~2 KB; file câu hỏi chỉ tải khi đổi).
+  static const Duration questionSyncInterval = Duration(minutes: 15);
 
   /// Giới hạn kích thước mỗi file tải về để tránh nguồn lạ làm đầy bộ nhớ.
   static const int maxQuestionFileBytes = 2 * 1024 * 1024;

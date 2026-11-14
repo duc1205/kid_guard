@@ -18,9 +18,11 @@ import '../models/question_file_parser.dart';
 /// Câu hỏi lấy theo thứ tự: bản đã tải từ internet (lưu trong SQLite) → bộ đóng
 /// gói sẵn trong app. Nhờ vậy luôn có câu hỏi kể cả khi mất mạng hoặc trẻ tắt wifi.
 ///
-/// Cập nhật: tải manifest.json → nếu `version` cao hơn bản đang dùng thì chỉ tải
-/// các file có mã sha256 khác bản đang có, kiểm tra mã + định dạng, rồi ghi tất cả
-/// trong 1 transaction. Bất kỳ lỗi nào → giữ nguyên bản cũ.
+/// Cập nhật: tải manifest.json → nếu `version` cao hơn bản đang dùng, hoặc cùng
+/// `version` nhưng có file mang mã sha256 khác (sửa câu hỏi mà quên tăng version),
+/// thì chỉ tải các file khác bản đang có, kiểm tra mã + định dạng, rồi ghi tất cả
+/// trong 1 transaction. Manifest cũ hơn bản đang dùng → bỏ qua (không hạ cấp).
+/// Bất kỳ lỗi nào → giữ nguyên bản cũ.
 class QuestionBankRepositoryImpl
     implements QuestionRepository, QuestionBankRepository {
   QuestionBankRepositoryImpl({
@@ -117,15 +119,18 @@ class QuestionBankRepositoryImpl
     }
 
     final current = await _currentVersion(meta);
-    if (manifest.version <= current) {
-      await _writeMeta(meta.copyWith(syncedAt: _clock()));
-      return QuestionSyncResult.upToDate(current);
-    }
-
     final have = {
       if (meta.source == null) ...await _bundledHashes(),
       ...await _cache.hashes(),
     };
+    final filesChanged = manifest.grades.entries.any(
+      (e) => have[e.key] != e.value.sha256,
+    );
+    if (manifest.version < current ||
+        (manifest.version == current && !filesChanged)) {
+      await _writeMeta(meta.copyWith(syncedAt: _clock()));
+      return QuestionSyncResult.upToDate(current);
+    }
     final pending = <int, CachedQuestionFile>{};
     for (final MapEntry(key: grade, value: entry) in manifest.grades.entries) {
       if (have[grade] == entry.sha256) continue;

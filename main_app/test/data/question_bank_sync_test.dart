@@ -129,6 +129,40 @@ void main() {
     expect(requested, hasLength(1));
   });
 
+  test('cùng phiên bản nhưng file đổi (quên tăng version) → vẫn tải', () async {
+    final body = questionsJson('same3');
+    publish(
+      manifest(bundledVersion, {
+        '3': {'file': 'grade_3.json', 'sha256': sha(body)},
+      }),
+      {'grade_3.json': body},
+    );
+    final r = await repo.sync();
+    expect(r.status, QuestionSyncStatus.updated);
+    expect((await repo.getQuestionsForGrade(3)).first.id, 'same3_0');
+  });
+
+  test('manifest cũ hơn bản đang dùng → không hạ cấp', () async {
+    final v2 = questionsJson('v2');
+    publish(
+      manifest(bundledVersion + 1, {
+        '3': {'file': 'grade_3.json', 'sha256': sha(v2)},
+      }),
+      {'grade_3.json': v2},
+    );
+    expect((await repo.sync()).status, QuestionSyncStatus.updated);
+
+    final old = questionsJson('old3');
+    publish(
+      manifest(bundledVersion, {
+        '3': {'file': 'grade_3.json', 'sha256': sha(old)},
+      }),
+      {'grade_3.json': old},
+    );
+    expect((await repo.sync()).status, QuestionSyncStatus.upToDate);
+    expect((await repo.getQuestionsForGrade(3)).first.id, 'v2_0');
+  });
+
   test('sai mã kiểm tra → từ chối, giữ bản cũ', () async {
     publish(
       manifest(bundledVersion + 1, {

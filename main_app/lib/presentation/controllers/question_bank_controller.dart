@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import '../../core/constants/app_constants.dart';
 import '../../domain/entities/question_bank.dart';
 import '../../domain/repositories/repositories.dart';
 import '../../domain/usecases/question_bank_usecases.dart';
@@ -28,6 +29,17 @@ class QuestionBankController extends ChangeNotifier {
   }
 
   Future<QuestionSyncResult> syncNow() => _run(() async => (await _sync())!);
+
+  /// Tự kiểm tra ở nền khi mở / quay lại app (bỏ qua nếu vừa kiểm tra).
+  /// Lỗi mạng thì vẫn dùng bản câu hỏi đang có.
+  Future<void> syncInBackground() async {
+    try {
+      final r = await _sync(minInterval: AppConstants.questionSyncInterval);
+      if (r != null) debugPrint('Question sync: ${r.status}');
+    } catch (e) {
+      debugPrint('Question sync failed: $e');
+    }
+  }
 
   /// Ném [QuestionSourceException] nếu địa chỉ không hợp lệ.
   Future<QuestionSyncResult> changeSource(String? manifestUrl) =>

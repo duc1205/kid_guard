@@ -61,7 +61,9 @@ class _RootState extends State<_Root> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      DependenciesScope.of(context).guardController.onResumed();
+      final deps = DependenciesScope.of(context);
+      deps.guardController.onResumed();
+      deps.questionBankController.syncInBackground();
     }
   }
 
