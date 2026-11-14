@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KidGuard</string>
+    <string name="notif_channel_name">Screen time</string>
+    <string name="notif_time_up_title">Time\'s up!</string>
+    <string name="notif_time_up_text">Answer a question to keep using the phone.</string>
+    <string name="notif_running_title">KidGuard is tracking screen time</string>
+    <string name="notif_running_text">Time remaining</string>
+</resources>

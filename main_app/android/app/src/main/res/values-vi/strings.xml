@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KidGuard</string>
+    <string name="notif_channel_name">Thời gian dùng máy</string>
+    <string name="notif_time_up_title">Hết giờ rồi!</string>
+    <string name="notif_time_up_text">Trả lời câu hỏi để được dùng tiếp.</string>
+    <string name="notif_running_title">KidGuard đang theo dõi thời gian</string>
+    <string name="notif_running_text">Thời gian còn lại</string>
+</resources>
