@@ -6,8 +6,13 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>vi</string>
+	</array>
 	<key>CFBundleDisplayName</key>
-	<string>Scan Price</string>
+	<string>KidGuard</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,15 +31,8 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Ứng dụng cần camera để quét và định giá đồ vật.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Ứng dụng có thể cần truy cập ảnh để phân tích đồ vật.</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>https</string>
-		<string>http</string>
-	</array>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Use Face ID or the phone passcode so a parent can take the phone back and view the child's activity. / Dùng Face ID hoặc mật khẩu máy để người lớn thu hồi máy và xem nhật ký của bé.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

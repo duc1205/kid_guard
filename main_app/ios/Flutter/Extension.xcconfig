@@ -1,0 +1,2 @@
+// Cấu hình cho các extension iOS: chỉ lấy biến Flutter (FLUTTER_BUILD_NAME…), không kèm Pods.
+#include "Generated.xcconfig"
