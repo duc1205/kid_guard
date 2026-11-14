@@ -31,30 +31,29 @@ class SqliteChildRepository implements ChildRepository {
     ];
   }
 
+  /// Cập nhật trước, chưa có thì mới thêm. Không dựa vào giá trị trả về của
+  /// `INSERT OR IGNORE`: khi trùng khoá, Android trả -1 còn SQLite FFI trả 0.
+  /// Không dùng REPLACE: REPLACE = DELETE + INSERT sẽ kích hoạt CASCADE xoá lịch sử.
   @override
-  Future<void> saveChild(ChildProfile child) => _database.db
-      .insert(
-        'children',
-        {
-          'id': child.id,
-          'name': child.name,
-          'dob': _ms(child.dateOfBirth),
-          'grade': child.grade,
-          'created_at': _ms(child.createdAt),
-        },
-        // Không dùng REPLACE: REPLACE = DELETE + INSERT sẽ kích hoạt CASCADE xoá lịch sử.
-        conflictAlgorithm: ConflictAlgorithm.ignore,
-      )
-      .then((inserted) async {
-        if (inserted == 0) {
-          await _database.db.update(
-            'children',
-            {'name': child.name, 'grade': child.grade},
-            where: 'id = ?',
-            whereArgs: [child.id],
-          );
-        }
+  Future<void> saveChild(ChildProfile child) => _database.db.transaction((
+    txn,
+  ) async {
+    final updated = await txn.update(
+      'children',
+      {'name': child.name, 'dob': _ms(child.dateOfBirth), 'grade': child.grade},
+      where: 'id = ?',
+      whereArgs: [child.id],
+    );
+    if (updated == 0) {
+      await txn.insert('children', {
+        'id': child.id,
+        'name': child.name,
+        'dob': _ms(child.dateOfBirth),
+        'grade': child.grade,
+        'created_at': _ms(child.createdAt),
       });
+    }
+  });
 }
 
 class SqliteUsageLogRepository implements UsageLogRepository {
