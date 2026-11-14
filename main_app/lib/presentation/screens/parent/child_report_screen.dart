@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/formatters.dart';
+import '../../../domain/entities/child_profile.dart';
 import '../../../domain/entities/usage_log.dart';
 import '../../../domain/entities/usage_stats.dart';
 import '../../../domain/usecases/parent_usecases.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
 import '../../widgets/stat_tile.dart';
+import 'edit_child_screen.dart';
 
 /// Log chi tiết của một bé: từng phiên, thời gian dùng, từng câu hỏi đúng/sai.
 /// Lịch sử được tải theo trang (cuộn tới cuối thì tải thêm) để mở nhanh dù dữ liệu nhiều.
@@ -26,6 +28,16 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
   List<WeakTopic> _weak = const [];
   bool _loading = false;
   bool _hasMore = true;
+
+  /// Thông tin bé hiện tại (cập nhật sau khi người lớn sửa).
+  late ChildProfile _child = widget.report.child;
+
+  Future<void> _edit() async {
+    final updated = await Navigator.of(context).push<ChildProfile>(
+      MaterialPageRoute(builder: (_) => EditChildScreen(child: _child)),
+    );
+    if (updated != null && mounted) setState(() => _child = updated);
+  }
 
   @override
   void initState() {
@@ -53,11 +65,20 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final c = widget.report.child;
+    final c = _child;
     final stats = widget.report.stats;
     final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: Text(c.name)),
+      appBar: AppBar(
+        title: Text(c.name),
+        actions: [
+          IconButton(
+            tooltip: l10n.childEditTooltip,
+            icon: const Icon(Icons.edit_rounded),
+            onPressed: _edit,
+          ),
+        ],
+      ),
       body: NotificationListener<ScrollNotification>(
         onNotification: (n) {
           if (n.metrics.extentAfter < 400) _loadMore();

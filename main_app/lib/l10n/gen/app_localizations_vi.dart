@@ -346,8 +346,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homeHeroTitle => '🧒  Cho bé mượn máy';
 
   @override
-  String get homeHeroBody =>
-      'Bé được dùng 15 phút. Hết giờ, bé trả lời 1 câu hỏi theo lớp đang học: đúng được thêm 5 phút, sai thì máy khoá cho tới khi bố mẹ mở.';
+  String homeHeroBody(String duration) {
+    return 'Bé được dùng $duration. Hết giờ, bé trả lời 1 câu hỏi theo lớp đang học: đúng được thêm 5 phút, sai thì máy khoá cho tới khi bố mẹ mở.';
+  }
 
   @override
   String get homeStartKidMode => 'Bắt đầu chế độ trẻ em';
@@ -559,8 +560,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get registerGreeting => 'Chào con! 👋';
 
   @override
-  String get registerIntro =>
-      'Con điền đủ thông tin để được dùng máy 15 phút nhé.';
+  String registerIntro(String duration) {
+    return 'Con điền đủ thông tin để được dùng máy $duration nhé.';
+  }
 
   @override
   String get registerNameLabel => 'Họ và tên';
@@ -918,4 +920,77 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get qsInsecureUrl => 'Chỉ chấp nhận địa chỉ bắt đầu bằng https://';
+
+  @override
+  String get registerPickTitle => 'Ai đang dùng máy nhỉ?';
+
+  @override
+  String registerPickIntro(String duration) {
+    return 'Con chạm vào tên mình để được dùng máy $duration nhé.';
+  }
+
+  @override
+  String get registerAddNew => 'Con chưa có tên trong danh sách';
+
+  @override
+  String get registerBackToList => 'Chọn tên đã lưu';
+
+  @override
+  String get registerSavedHint =>
+      'Thông tin chưa đúng hoặc đã lên lớp? Nhờ bố mẹ sửa trong khu vực phụ huynh nhé.';
+
+  @override
+  String get settingsTitle => 'Cài đặt';
+
+  @override
+  String get settingsInitialAllowance => 'Thời gian dùng ban đầu';
+
+  @override
+  String settingsInitialAllowanceDefault(String duration) {
+    return '$duration (mặc định)';
+  }
+
+  @override
+  String get settingsInitialAllowanceHint =>
+      'Mỗi lần bắt đầu, bé được dùng máy bấy nhiêu thời gian trước câu hỏi đầu tiên. Áp dụng từ phiên tiếp theo.';
+
+  @override
+  String get settingsMinutesLabel => 'Số phút';
+
+  @override
+  String settingsMinutesMin(int min) {
+    return 'Tối thiểu $min phút.';
+  }
+
+  @override
+  String get settingsMinutesInvalid => 'Nhập số phút (số nguyên).';
+
+  @override
+  String settingsResetDefault(String duration) {
+    return 'Dùng mặc định ($duration)';
+  }
+
+  @override
+  String get settingsSave => 'Lưu';
+
+  @override
+  String get settingsCancel => 'Huỷ';
+
+  @override
+  String get childEditTooltip => 'Sửa thông tin';
+
+  @override
+  String get childEditTitle => 'Sửa thông tin của bé';
+
+  @override
+  String get childEditGradeLabel => 'Lớp / bậc học';
+
+  @override
+  String get childEditNote =>
+      'Nhớ cập nhật lớp mỗi đầu năm học để câu hỏi đúng trình độ. Lịch sử cũ vẫn được giữ.';
+
+  @override
+  String childEditSaved(String name) {
+    return 'Đã lưu thông tin của $name.';
+  }
 }

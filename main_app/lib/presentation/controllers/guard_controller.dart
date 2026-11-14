@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../core/utils/clock.dart';
 import '../../domain/entities/active_session.dart';
+import '../../domain/entities/child_profile.dart';
 import '../../domain/repositories/repositories.dart';
 import '../../domain/usecases/parent_usecases.dart';
 import '../../domain/usecases/register_child.dart';
@@ -13,6 +14,7 @@ import '../../domain/usecases/session_usecases.dart';
 class GuardController extends ChangeNotifier {
   GuardController({
     required ActiveSessionRepository activeSessions,
+    required ChildRepository children,
     required DeviceControlRepository device,
     required ParentAuthRepository parentAuth,
     required RegisterChildUseCase registerChild,
@@ -24,6 +26,7 @@ class GuardController extends ChangeNotifier {
     required AuthenticateParentUseCase authenticateParent,
     Clock clock = systemClock,
   }) : _activeSessions = activeSessions,
+       _children = children,
        _device = device,
        _parentAuth = parentAuth,
        _registerChild = registerChild,
@@ -36,6 +39,7 @@ class GuardController extends ChangeNotifier {
        _clock = clock;
 
   final ActiveSessionRepository _activeSessions;
+  final ChildRepository _children;
   final DeviceControlRepository _device;
   final ParentAuthRepository _parentAuth;
   final RegisterChildUseCase _registerChild;
@@ -133,6 +137,15 @@ class GuardController extends ChangeNotifier {
       dateOfBirth: dateOfBirth,
       grade: grade,
     );
+    session = await _startSession(child);
+    _changed();
+  }
+
+  /// Các bé đã từng đăng ký trên máy — để lần sau chỉ cần chọn tên.
+  Future<List<ChildProfile>> savedChildren() => _children.getChildren();
+
+  /// Bắt đầu phiên cho bé đã lưu (không cần nhập lại thông tin).
+  Future<void> startForSavedChild(ChildProfile child) async {
     session = await _startSession(child);
     _changed();
   }

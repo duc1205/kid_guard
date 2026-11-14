@@ -6,23 +6,26 @@ import '../entities/usage_log.dart';
 import '../repositories/repositories.dart';
 import 'pick_question.dart';
 
-/// Bắt đầu phiên: trẻ được dùng máy 15 phút.
+/// Bắt đầu phiên: trẻ được dùng máy theo thời gian người lớn đã đặt (mặc định 15 phút).
 class StartSessionUseCase {
   StartSessionUseCase(
     this._active,
     this._logs,
     this._device,
+    this._settings,
     this._newId, {
     Clock clock = systemClock,
   }) : _clock = clock;
 
   final ActiveSessionRepository _active;
+  final SettingsRepository _settings;
   final UsageLogRepository _logs;
   final DeviceControlRepository _device;
   final String Function() _newId;
   final Clock _clock;
 
   Future<ActiveSession> call(ChildProfile child) async {
+    final allowance = await _settings.getInitialAllowance();
     final now = _clock();
     final log = UsageLog(
       id: _newId(),
@@ -35,7 +38,7 @@ class StartSessionUseCase {
       logId: log.id,
       child: child,
       status: GuardStatus.running,
-      endsAt: now.add(AppConstants.initialAllowance),
+      endsAt: now.add(allowance),
       segmentStartedAt: now,
     );
     await _logs.createLog(log);

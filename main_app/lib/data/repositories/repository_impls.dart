@@ -1,3 +1,4 @@
+import '../../core/constants/app_constants.dart';
 import '../../domain/entities/active_session.dart';
 import '../../domain/repositories/repositories.dart';
 import '../datasources/local_store.dart';
@@ -23,6 +24,28 @@ class PrefsActiveSessionRepository implements ActiveSessionRepository {
 
   @override
   Future<void> clear() => _store.remove(LocalStore.activeSessionKey);
+}
+
+class PrefsSettingsRepository implements SettingsRepository {
+  PrefsSettingsRepository(this._store);
+  final LocalStore _store;
+
+  static const _initialAllowanceKey = 'kg.settings.initial_allowance_minutes';
+
+  @override
+  Future<Duration> getInitialAllowance() async {
+    final minutes = await _store.readInt(_initialAllowanceKey);
+    final d = minutes == null ? null : Duration(minutes: minutes);
+    // Giá trị hỏng / dưới mức tối thiểu → dùng mặc định.
+    return d == null || d < AppConstants.minInitialAllowance
+        ? AppConstants.defaultInitialAllowance
+        : d;
+  }
+
+  @override
+  Future<void> setInitialAllowance(Duration? value) => value == null
+      ? _store.remove(_initialAllowanceKey)
+      : _store.writeInt(_initialAllowanceKey, value.inMinutes);
 }
 
 class PrefsSetupChecklistRepository implements SetupChecklistRepository {

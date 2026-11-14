@@ -338,12 +338,21 @@ class _HeroCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          Text(
-            context.l10n.homeHeroBody,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-              height: 1.4,
+          ListenableBuilder(
+            listenable: DependenciesScope.of(context).settingsController,
+            builder: (context, _) => Text(
+              context.l10n.homeHeroBody(
+                context.l10n.duration(
+                  DependenciesScope.of(
+                    context,
+                  ).settingsController.initialAllowance,
+                ),
+              ),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                height: 1.4,
+              ),
             ),
           ),
           const SizedBox(height: 20),

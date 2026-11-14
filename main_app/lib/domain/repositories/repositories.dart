@@ -10,6 +10,15 @@ abstract interface class ChildRepository {
   Future<void> saveChild(ChildProfile child);
 }
 
+/// Cài đặt do người lớn chọn.
+abstract interface class SettingsRepository {
+  /// Thời gian dùng máy ban đầu của mỗi phiên; chưa đặt → mặc định 15 phút.
+  Future<Duration> getInitialAllowance();
+
+  /// `null` = quay về mặc định.
+  Future<void> setInitialAllowance(Duration? value);
+}
+
 abstract interface class QuestionRepository {
   Future<List<Question>> getQuestionsForGrade(int grade);
 }

@@ -131,7 +131,7 @@
   "homeManage": "Manage",
   "homeIosNotice": "When time is up, Screen Time blocks the selected apps. Your child opens KidGuard to answer the question. For even stronger locking, also turn on Guided Access (Settings › Accessibility › Guided Access).",
   "homeHeroTitle": "🧒  Lend the phone to your child",
-  "homeHeroBody": "Your child gets 15 minutes. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.",
+  "homeHeroBody": "Your child gets {duration}. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.",
   "homeStartKidMode": "Start kid mode",
   "homeGrant": "Grant",
   "hardLockTitle": "Hard lock",
@@ -196,7 +196,7 @@
   "hardLockDevOtherUsers": "Remove guest users, work profiles and cloned apps if any.",
   "registerTitle": "About you",
   "registerGreeting": "Hi there! 👋",
-  "registerIntro": "Fill in your details to use the phone for 15 minutes.",
+  "registerIntro": "Fill in your details to use the phone for {duration}.",
   "registerNameLabel": "Full name",
   "registerNameHint": "Example: Alex Smith",
   "registerDobLabel": "Date of birth",
@@ -443,5 +443,74 @@
   "qsErrorQuestions": "A question file is not in the right format. The app keeps using the questions already on this device.",
   "qsErrorChecksum": "A question file doesn't match the checksum in the manifest. The app keeps using the questions already on this device.",
   "qsInvalidUrl": "This address is not valid.",
-  "qsInsecureUrl": "Only addresses starting with https:// are allowed."
+  "qsInsecureUrl": "Only addresses starting with https:// are allowed.",
+  "@homeHeroBody": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "@registerIntro": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "registerPickTitle": "Who's using the phone?",
+  "registerPickIntro": "Tap your name to use the phone for {duration}.",
+  "@registerPickIntro": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "registerAddNew": "I'm not on the list",
+  "registerBackToList": "Pick a saved name",
+  "registerSavedHint": "Wrong details or a new school year? Ask a parent to update them in the parent area.",
+  "settingsTitle": "Settings",
+  "settingsInitialAllowance": "Starting screen time",
+  "settingsInitialAllowanceDefault": "{duration} (default)",
+  "@settingsInitialAllowanceDefault": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsInitialAllowanceHint": "How long your child can use the phone each time before the first question. Applies from the next session.",
+  "settingsMinutesLabel": "Minutes",
+  "settingsMinutesMin": "At least {min} minutes.",
+  "@settingsMinutesMin": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsMinutesInvalid": "Enter a whole number of minutes.",
+  "settingsResetDefault": "Use default ({duration})",
+  "@settingsResetDefault": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsSave": "Save",
+  "settingsCancel": "Cancel",
+  "childEditTooltip": "Edit details",
+  "childEditTitle": "Edit child details",
+  "childEditGradeLabel": "Grade / level",
+  "childEditNote": "Update the grade at the start of each school year so questions match your child's level. Past history is kept.",
+  "childEditSaved": "Saved {name}'s details.",
+  "@childEditSaved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
 }

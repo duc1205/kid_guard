@@ -6,6 +6,8 @@ import '../../../domain/usecases/parent_usecases.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
 import '../../widgets/stat_tile.dart';
+import '../../../core/constants/app_constants.dart';
+import '../../../domain/usecases/settings_usecases.dart';
 import 'child_report_screen.dart';
 import 'question_source_screen.dart';
 
@@ -50,14 +52,19 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
           }
           final reports = controller.reports;
           if (reports.isEmpty) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(32),
-                child: Text(
-                  l10n.dashboardEmpty,
-                  style: const TextStyle(fontSize: 16, color: Colors.black54),
+            return ListView(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
+              children: [
+                const _InitialAllowanceCard(),
+                Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Text(
+                    l10n.dashboardEmpty,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 16, color: Colors.black54),
+                  ),
                 ),
-              ),
+              ],
             );
           }
           final totalTime = reports.fold(
@@ -71,6 +78,8 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
             child: ListView(
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
               children: [
+                const _InitialAllowanceCard(),
+                const SizedBox(height: 16),
                 Row(
                   children: [
                     Expanded(
@@ -182,6 +191,150 @@ class _ChildCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Thời gian dùng máy ban đầu của mỗi phiên (mặc định 15 phút, tối thiểu 5 phút).
+class _InitialAllowanceCard extends StatelessWidget {
+  const _InitialAllowanceCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final settings = DependenciesScope.of(context).settingsController;
+    final l10n = context.l10n;
+    return ListenableBuilder(
+      listenable: settings,
+      builder: (context, _) {
+        final value = l10n.duration(settings.initialAllowance);
+        return Card(
+          child: ListTile(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
+            leading: const Icon(Icons.timer_rounded, color: AppColors.primary),
+            title: Text(
+              l10n.settingsInitialAllowance,
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+            subtitle: Text(
+              settings.isDefault
+                  ? l10n.settingsInitialAllowanceDefault(value)
+                  : value,
+              style: const TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 16,
+                color: AppColors.primary,
+              ),
+            ),
+            trailing: const Icon(Icons.edit_rounded),
+            onTap: () => showDialog<void>(
+              context: context,
+              builder: (_) => const _InitialAllowanceDialog(),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _InitialAllowanceDialog extends StatefulWidget {
+  const _InitialAllowanceDialog();
+
+  @override
+  State<_InitialAllowanceDialog> createState() =>
+      _InitialAllowanceDialogState();
+}
+
+class _InitialAllowanceDialogState extends State<_InitialAllowanceDialog> {
+  late final _minutes = TextEditingController(
+    text:
+        '${DependenciesScope.of(context).settingsController.initialAllowance.inMinutes}',
+  );
+  String? _error;
+
+  @override
+  void dispose() {
+    _minutes.dispose();
+    super.dispose();
+  }
+
+  Future<void> _apply(Duration? value) async {
+    final settings = DependenciesScope.of(context).settingsController;
+    try {
+      await settings.setInitialAllowance(value);
+      if (mounted) Navigator.of(context).pop();
+    } on InitialAllowanceTooShortException {
+      setState(
+        () => _error = context.l10n.settingsMinutesMin(
+          AppConstants.minInitialAllowance.inMinutes,
+        ),
+      );
+    }
+  }
+
+  void _save() {
+    final l10n = context.l10n;
+    final minutes = int.tryParse(_minutes.text.trim());
+    if (minutes == null) {
+      setState(() => _error = l10n.settingsMinutesInvalid);
+      return;
+    }
+    if (minutes < AppConstants.minInitialAllowance.inMinutes) {
+      setState(
+        () => _error = l10n.settingsMinutesMin(
+          AppConstants.minInitialAllowance.inMinutes,
+        ),
+      );
+      return;
+    }
+    _apply(Duration(minutes: minutes));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return AlertDialog(
+      title: Text(l10n.settingsInitialAllowance),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.settingsInitialAllowanceHint),
+          const SizedBox(height: 16),
+          TextField(
+            controller: _minutes,
+            autofocus: true,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: l10n.settingsMinutesLabel,
+              helperText: l10n.settingsMinutesMin(
+                AppConstants.minInitialAllowance.inMinutes,
+              ),
+              errorText: _error,
+            ),
+            onSubmitted: (_) => _save(),
+          ),
+          const SizedBox(height: 8),
+          TextButton(
+            onPressed: () => _apply(null),
+            child: Text(
+              l10n.settingsResetDefault(
+                l10n.duration(AppConstants.defaultInitialAllowance),
+              ),
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(l10n.settingsCancel),
+        ),
+        FilledButton(onPressed: _save, child: Text(l10n.settingsSave)),
+      ],
     );
   }
 }

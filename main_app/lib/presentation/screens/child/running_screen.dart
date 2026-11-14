@@ -16,10 +16,10 @@ class RunningScreen extends StatelessWidget {
     final controller = DependenciesScope.of(context).guardController;
     final session = controller.session!;
     final l10n = context.l10n;
-    // Độ dài lượt hiện tại: 15 phút (lượt đầu) hoặc 5 phút (thưởng).
+    // Độ dài lượt hiện tại: thời gian ban đầu (lượt đầu) hoặc 5 phút (thưởng).
     final start = session.segmentStartedAt;
     final total = start == null
-        ? AppConstants.initialAllowance
+        ? AppConstants.defaultInitialAllowance
         : session.endsAt.difference(start);
 
     return Scaffold(

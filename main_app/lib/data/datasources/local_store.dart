@@ -39,5 +39,9 @@ class LocalStore {
 
   Future<void> writeBool(String key, bool value) => _prefs.setBool(key, value);
 
+  Future<int?> readInt(String key) => _prefs.getInt(key);
+
+  Future<void> writeInt(String key, int value) => _prefs.setInt(key, value);
+
   Future<void> remove(String key) => _prefs.remove(key);
 }

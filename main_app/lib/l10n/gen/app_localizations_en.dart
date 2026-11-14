@@ -369,8 +369,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeHeroTitle => '🧒  Lend the phone to your child';
 
   @override
-  String get homeHeroBody =>
-      'Your child gets 15 minutes. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.';
+  String homeHeroBody(String duration) {
+    return 'Your child gets $duration. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.';
+  }
 
   @override
   String get homeStartKidMode => 'Start kid mode';
@@ -582,8 +583,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registerGreeting => 'Hi there! 👋';
 
   @override
-  String get registerIntro =>
-      'Fill in your details to use the phone for 15 minutes.';
+  String registerIntro(String duration) {
+    return 'Fill in your details to use the phone for $duration.';
+  }
 
   @override
   String get registerNameLabel => 'Full name';
@@ -972,4 +974,77 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get qsInsecureUrl =>
       'Only addresses starting with https:// are allowed.';
+
+  @override
+  String get registerPickTitle => 'Who\'s using the phone?';
+
+  @override
+  String registerPickIntro(String duration) {
+    return 'Tap your name to use the phone for $duration.';
+  }
+
+  @override
+  String get registerAddNew => 'I\'m not on the list';
+
+  @override
+  String get registerBackToList => 'Pick a saved name';
+
+  @override
+  String get registerSavedHint =>
+      'Wrong details or a new school year? Ask a parent to update them in the parent area.';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get settingsInitialAllowance => 'Starting screen time';
+
+  @override
+  String settingsInitialAllowanceDefault(String duration) {
+    return '$duration (default)';
+  }
+
+  @override
+  String get settingsInitialAllowanceHint =>
+      'How long your child can use the phone each time before the first question. Applies from the next session.';
+
+  @override
+  String get settingsMinutesLabel => 'Minutes';
+
+  @override
+  String settingsMinutesMin(int min) {
+    return 'At least $min minutes.';
+  }
+
+  @override
+  String get settingsMinutesInvalid => 'Enter a whole number of minutes.';
+
+  @override
+  String settingsResetDefault(String duration) {
+    return 'Use default ($duration)';
+  }
+
+  @override
+  String get settingsSave => 'Save';
+
+  @override
+  String get settingsCancel => 'Cancel';
+
+  @override
+  String get childEditTooltip => 'Edit details';
+
+  @override
+  String get childEditTitle => 'Edit child details';
+
+  @override
+  String get childEditGradeLabel => 'Grade / level';
+
+  @override
+  String get childEditNote =>
+      'Update the grade at the start of each school year so questions match your child\'s level. Past history is kept.';
+
+  @override
+  String childEditSaved(String name) {
+    return 'Saved $name\'s details.';
+  }
 }

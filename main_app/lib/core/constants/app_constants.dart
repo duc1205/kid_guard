@@ -2,8 +2,11 @@
 class AppConstants {
   AppConstants._();
 
-  /// Thời gian được dùng ngay sau khi trẻ đăng ký thông tin.
-  static const Duration initialAllowance = Duration(minutes: 15);
+  /// Thời gian được dùng ngay khi bắt đầu phiên, nếu người lớn chưa đặt.
+  static const Duration defaultInitialAllowance = Duration(minutes: 15);
+
+  /// Người lớn đặt thời gian ban đầu tối thiểu bằng này (không giới hạn tối đa).
+  static const Duration minInitialAllowance = Duration(minutes: 5);
 
   /// Thời gian thưởng cho mỗi câu trả lời đúng.
   static const Duration bonusPerCorrectAnswer = Duration(minutes: 5);

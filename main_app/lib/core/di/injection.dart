@@ -19,9 +19,11 @@ import '../../domain/usecases/pick_question.dart';
 import '../../domain/usecases/question_bank_usecases.dart';
 import '../../domain/usecases/register_child.dart';
 import '../../domain/usecases/session_usecases.dart';
+import '../../domain/usecases/settings_usecases.dart';
 import '../../presentation/controllers/guard_controller.dart';
 import '../../presentation/controllers/parent_controller.dart';
 import '../../presentation/controllers/question_bank_controller.dart';
+import '../../presentation/controllers/settings_controller.dart';
 import '../constants/app_constants.dart';
 
 /// Composition root: nơi duy nhất nối các tầng data → domain → presentation.
@@ -35,6 +37,7 @@ class AppDependencies {
     required this.getWeakTopics,
     required this.setupChecklist,
     required this.questionBankController,
+    required this.settingsController,
   });
 
   final GuardController guardController;
@@ -45,6 +48,7 @@ class AppDependencies {
   final GetWeakTopicsUseCase getWeakTopics;
   final SetupChecklistRepository setupChecklist;
   final QuestionBankController questionBankController;
+  final SettingsController settingsController;
 
   static Future<AppDependencies> create() async {
     const uuid = Uuid();
@@ -64,6 +68,12 @@ class AppDependencies {
     final QuestionRepository questions = questionBank;
     final DeviceControlRepository device = DeviceControlChannel();
     final ParentAuthRepository parentAuth = LocalAuthDataSource();
+    final SettingsRepository settings = PrefsSettingsRepository(store);
+    final settingsController = SettingsController(
+      settings: settings,
+      setInitialAllowance: SetInitialAllowanceUseCase(settings),
+    );
+    await settingsController.load();
 
     await LegacyPrefsMigration(store, children, logs).run();
     // Dọn nhật ký cũ ở nền, không chặn lúc mở app.
@@ -88,6 +98,7 @@ class AppDependencies {
       getChildHistory: GetChildHistoryUseCase(logs),
       getWeakTopics: GetWeakTopicsUseCase(logs),
       setupChecklist: PrefsSetupChecklistRepository(store),
+      settingsController: settingsController,
       questionBankController: QuestionBankController(
         bank: questionBank,
         sync: syncQuestions,
@@ -95,10 +106,17 @@ class AppDependencies {
       ),
       guardController: GuardController(
         activeSessions: active,
+        children: children,
         device: device,
         parentAuth: parentAuth,
         registerChild: RegisterChildUseCase(children, newId),
-        startSession: StartSessionUseCase(active, logs, device, newId),
+        startSession: StartSessionUseCase(
+          active,
+          logs,
+          device,
+          settings,
+          newId,
+        ),
         handleTimeUp: HandleTimeUpUseCase(active, logs, device, pickQuestion),
         submitAnswer: SubmitAnswerUseCase(active, logs, device),
         acknowledgeWrong: AcknowledgeWrongAnswerUseCase(active, logs, device),
@@ -108,6 +126,7 @@ class AppDependencies {
       parentController: ParentController(
         getReports: GetChildReportsUseCase(children, logs),
         authenticateParent: authenticate,
+        updateChild: UpdateChildUseCase(children),
       ),
     );
   }

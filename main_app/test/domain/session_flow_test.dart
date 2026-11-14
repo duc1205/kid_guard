@@ -3,12 +3,14 @@ import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:main_app/core/constants/app_constants.dart';
 import 'package:main_app/data/datasources/app_database.dart';
+import 'package:main_app/data/repositories/repository_impls.dart';
 import 'package:main_app/data/repositories/sqlite_repositories.dart';
 import 'package:main_app/domain/entities/active_session.dart';
 import 'package:main_app/domain/usecases/parent_usecases.dart';
 import 'package:main_app/domain/usecases/pick_question.dart';
 import 'package:main_app/domain/usecases/register_child.dart';
 import 'package:main_app/domain/usecases/session_usecases.dart';
+import 'package:main_app/domain/usecases/settings_usecases.dart';
 
 import '../fakes.dart';
 
@@ -27,6 +29,8 @@ void main() {
   late AcknowledgeWrongAnswerUseCase ack;
   late RevokeSessionUseCase revoke;
   late GetChildReportsUseCase reports;
+  late PrefsSettingsRepository settings;
+  late UpdateChildUseCase update;
   var idSeq = 0;
 
   setUp(() async {
@@ -43,7 +47,16 @@ void main() {
       random: Random(1),
     );
     register = RegisterChildUseCase(children, newId, clock: clock.call);
-    start = StartSessionUseCase(active, logs, device, newId, clock: clock.call);
+    settings = PrefsSettingsRepository(MemoryLocalStore());
+    update = UpdateChildUseCase(children, clock: clock.call);
+    start = StartSessionUseCase(
+      active,
+      logs,
+      device,
+      settings,
+      newId,
+      clock: clock.call,
+    );
     timeUp = HandleTimeUpUseCase(active, logs, device, pick, clock: clock.call);
     submit = SubmitAnswerUseCase(active, logs, device, clock: clock.call);
     ack = AcknowledgeWrongAnswerUseCase(
@@ -92,6 +105,58 @@ void main() {
       expect(await logs.getLogsForChild(c.id, limit: 10), hasLength(1));
     },
   );
+
+  test(
+    'thời gian ban đầu: mặc định 15 phút, tối thiểu 5, không giới hạn tối đa',
+    () async {
+      final setAllowance = SetInitialAllowanceUseCase(settings);
+      expect(await settings.getInitialAllowance(), const Duration(minutes: 15));
+      expect(
+        () => setAllowance(const Duration(minutes: 4)),
+        throwsA(isA<InitialAllowanceTooShortException>()),
+      );
+      await setAllowance(const Duration(minutes: 5));
+      expect(await settings.getInitialAllowance(), const Duration(minutes: 5));
+      await setAllowance(const Duration(hours: 3));
+
+      final child = await register(
+        name: 'An',
+        dateOfBirth: DateTime(2018, 1, 1),
+        grade: 3,
+      );
+      final s = await start(child);
+      expect(s.endsAt, clock.value.add(const Duration(hours: 3)));
+      expect(device.timerEndsAt, s.endsAt);
+
+      await setAllowance(null);
+      expect(await settings.getInitialAllowance(), const Duration(minutes: 15));
+    },
+  );
+
+  test('người lớn sửa thông tin bé: giữ id và lịch sử, lên lớp', () async {
+    final c = await register(
+      name: 'Minh An',
+      dateOfBirth: DateTime(2018, 5, 2),
+      grade: 3,
+    );
+    await start(c);
+    expect(
+      () => update(c, name: 'A', dateOfBirth: c.dateOfBirth, grade: 4),
+      throwsA(isA<ValidationException>()),
+    );
+    final updated = await update(
+      c,
+      name: ' Nguyễn  Minh An ',
+      dateOfBirth: DateTime(2018, 6, 3, 15),
+      grade: 4,
+    );
+    expect(updated.id, c.id);
+    final saved = (await children.getChildren()).single;
+    expect(saved.name, 'Nguyễn Minh An');
+    expect(saved.dateOfBirth, DateTime(2018, 6, 3));
+    expect(saved.grade, 4);
+    expect(await logs.getLogsForChild(c.id, limit: 10), hasLength(1));
+  });
 
   test('chấp nhận bậc Đại học và Sau đại học', () async {
     for (final g in [

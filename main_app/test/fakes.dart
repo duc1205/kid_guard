@@ -134,6 +134,10 @@ class MemoryLocalStore implements LocalStore {
   @override
   Future<void> writeBool(String key, bool value) async => values[key] = value;
   @override
+  Future<int?> readInt(String key) async => values[key] as int?;
+  @override
+  Future<void> writeInt(String key, int value) async => values[key] = value;
+  @override
   Future<void> remove(String key) async => values.remove(key);
 }
 

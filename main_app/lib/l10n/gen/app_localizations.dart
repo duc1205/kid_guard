@@ -659,8 +659,8 @@ abstract class AppLocalizations {
   /// No description provided for @homeHeroBody.
   ///
   /// In en, this message translates to:
-  /// **'Your child gets 15 minutes. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.'**
-  String get homeHeroBody;
+  /// **'Your child gets {duration}. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.'**
+  String homeHeroBody(String duration);
 
   /// No description provided for @homeStartKidMode.
   ///
@@ -1007,8 +1007,8 @@ abstract class AppLocalizations {
   /// No description provided for @registerIntro.
   ///
   /// In en, this message translates to:
-  /// **'Fill in your details to use the phone for 15 minutes.'**
-  String get registerIntro;
+  /// **'Fill in your details to use the phone for {duration}.'**
+  String registerIntro(String duration);
 
   /// No description provided for @registerNameLabel.
   ///
@@ -1620,6 +1620,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Only addresses starting with https:// are allowed.'**
   String get qsInsecureUrl;
+
+  /// No description provided for @registerPickTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Who\'s using the phone?'**
+  String get registerPickTitle;
+
+  /// No description provided for @registerPickIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap your name to use the phone for {duration}.'**
+  String registerPickIntro(String duration);
+
+  /// No description provided for @registerAddNew.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m not on the list'**
+  String get registerAddNew;
+
+  /// No description provided for @registerBackToList.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a saved name'**
+  String get registerBackToList;
+
+  /// No description provided for @registerSavedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong details or a new school year? Ask a parent to update them in the parent area.'**
+  String get registerSavedHint;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @settingsInitialAllowance.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting screen time'**
+  String get settingsInitialAllowance;
+
+  /// No description provided for @settingsInitialAllowanceDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} (default)'**
+  String settingsInitialAllowanceDefault(String duration);
+
+  /// No description provided for @settingsInitialAllowanceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'How long your child can use the phone each time before the first question. Applies from the next session.'**
+  String get settingsInitialAllowanceHint;
+
+  /// No description provided for @settingsMinutesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Minutes'**
+  String get settingsMinutesLabel;
+
+  /// No description provided for @settingsMinutesMin.
+  ///
+  /// In en, this message translates to:
+  /// **'At least {min} minutes.'**
+  String settingsMinutesMin(int min);
+
+  /// No description provided for @settingsMinutesInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a whole number of minutes.'**
+  String get settingsMinutesInvalid;
+
+  /// No description provided for @settingsResetDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Use default ({duration})'**
+  String settingsResetDefault(String duration);
+
+  /// No description provided for @settingsSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get settingsSave;
+
+  /// No description provided for @settingsCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get settingsCancel;
+
+  /// No description provided for @childEditTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit details'**
+  String get childEditTooltip;
+
+  /// No description provided for @childEditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit child details'**
+  String get childEditTitle;
+
+  /// No description provided for @childEditGradeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Grade / level'**
+  String get childEditGradeLabel;
+
+  /// No description provided for @childEditNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Update the grade at the start of each school year so questions match your child\'s level. Past history is kept.'**
+  String get childEditNote;
+
+  /// No description provided for @childEditSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved {name}\'s details.'**
+  String childEditSaved(String name);
 }
 
 class _AppLocalizationsDelegate
