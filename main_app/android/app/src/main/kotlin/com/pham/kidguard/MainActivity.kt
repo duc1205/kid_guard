@@ -35,6 +35,7 @@ class MainActivity : FlutterFragmentActivity() {
                         val s = GuardState.load(this)
                         GuardState.save(this, s.copy(guard = enabled, suspended = false))
                         if (enabled) enterLockTaskIfOwner() else exitLockTask()
+                        SessionGuardService.instance?.syncOverlay()
                         result.success(null)
                     }
                     "suspendGuard" -> {
@@ -44,6 +45,7 @@ class MainActivity : FlutterFragmentActivity() {
                         // Thoát lock task tạm thời để màn nhập mật khẩu của hệ thống
                         // (Android ≤10 là Activity của Settings) không bị chặn.
                         if (suspended) exitLockTask() else if (s.active && s.guard) enterLockTaskIfOwner()
+                        SessionGuardService.instance?.syncOverlay()
                         result.success(null)
                     }
                     "stop" -> {
@@ -130,10 +132,12 @@ class MainActivity : FlutterFragmentActivity() {
     override fun onStart() {
         super.onStart()
         isForeground = true
+        SessionGuardService.instance?.syncOverlay()
     }
 
     override fun onStop() {
         isForeground = false
+        SessionGuardService.instance?.syncOverlay()
         super.onStop()
     }
 

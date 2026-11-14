@@ -6,4 +6,5 @@
     <string name="notif_time_up_text">Trả lời câu hỏi để được dùng tiếp.</string>
     <string name="notif_running_title">KidGuard đang theo dõi thời gian</string>
     <string name="notif_running_text">Thời gian còn lại</string>
+    <string name="overlay_open_quiz">Trả lời câu hỏi</string>
 </resources>
