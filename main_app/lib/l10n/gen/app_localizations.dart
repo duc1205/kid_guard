@@ -620,24 +620,6 @@ abstract class AppLocalizations {
   /// **'So the \"Clear all\" button can\'t close KidGuard.'**
   String get homeRecentsSubtitle;
 
-  /// No description provided for @homeHardLockTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Hard lock — optional, recommended'**
-  String get homeHardLockTitle;
-
-  /// No description provided for @homeHardLockOn.
-  ///
-  /// In en, this message translates to:
-  /// **'On: your child can\'t leave the lock screen in any way.'**
-  String get homeHardLockOn;
-
-  /// No description provided for @homeHardLockOff.
-  ///
-  /// In en, this message translates to:
-  /// **'Fully blocks the Home and Recents buttons and the notification bar while locked. Needs a computer, one-time setup.'**
-  String get homeHardLockOff;
-
   /// No description provided for @homeManage.
   ///
   /// In en, this message translates to:
@@ -674,12 +656,6 @@ abstract class AppLocalizations {
   /// **'Grant'**
   String get homeGrant;
 
-  /// No description provided for @hardLockTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Hard lock'**
-  String get hardLockTitle;
-
   /// No description provided for @hardLockDisableTitle.
   ///
   /// In en, this message translates to:
@@ -689,7 +665,7 @@ abstract class AppLocalizations {
   /// No description provided for @hardLockDisableBody.
   ///
   /// In en, this message translates to:
-  /// **'KidGuard keeps working normally, but when the phone is locked your child can swipe the navigation bar (it\'s pulled back after ~1 second). You must turn off hard lock before uninstalling KidGuard.'**
+  /// **'KidGuard keeps working (with Advanced lock if it\'s on). You must turn this off before uninstalling KidGuard.'**
   String get hardLockDisableBody;
 
   /// No description provided for @hardLockCancel.
@@ -721,276 +697,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Turn off hard lock (requires phone password)'**
   String get hardLockDisableButton;
-
-  /// No description provided for @hardLockIntro.
-  ///
-  /// In en, this message translates to:
-  /// **'One-time setup, takes about 10 minutes, needs a computer and a USB cable.'**
-  String get hardLockIntro;
-
-  /// No description provided for @hardLockStep1Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Turn on Developer options'**
-  String get hardLockStep1Title;
-
-  /// No description provided for @hardLockStep1UsbDebugging.
-  ///
-  /// In en, this message translates to:
-  /// **'Go to {location} › turn on \"USB debugging\".'**
-  String hardLockStep1UsbDebugging(String location);
-
-  /// No description provided for @hardLockStep2Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Temporarily remove accounts & extra users'**
-  String get hardLockStep2Title;
-
-  /// No description provided for @hardLockStep2Accounts.
-  ///
-  /// In en, this message translates to:
-  /// **'Android only allows hard lock when the phone has NO accounts. Go to Settings › Users & accounts (or \"Accounts\") and remove all of them: Google, manufacturer accounts (HeyTap/Oppo, Mi, Samsung…), and app accounts like Zalo, Telegram, WhatsApp if they are listed.'**
-  String get hardLockStep2Accounts;
-
-  /// No description provided for @hardLockStep2NoDataLoss.
-  ///
-  /// In en, this message translates to:
-  /// **'No data is lost. Once step 4 is done you can sign back in right away.'**
-  String get hardLockStep2NoDataLoss;
-
-  /// No description provided for @hardLockStep3Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Prepare the computer'**
-  String get hardLockStep3Title;
-
-  /// No description provided for @hardLockStep3Mac.
-  ///
-  /// In en, this message translates to:
-  /// **'macOS: open Terminal and run the command below (requires Homebrew):'**
-  String get hardLockStep3Mac;
-
-  /// No description provided for @hardLockStep3Windows.
-  ///
-  /// In en, this message translates to:
-  /// **'Windows: download \"SDK Platform-Tools for Windows\" from developer.android.com/tools/releases/platform-tools, unzip it, open the platform-tools folder, type \"cmd\" in the address bar and press Enter to open a command window.'**
-  String get hardLockStep3Windows;
-
-  /// No description provided for @hardLockStep3Plug.
-  ///
-  /// In en, this message translates to:
-  /// **'Plug in the USB cable. When the phone shows \"Allow USB debugging?\" › check \"Always allow from this computer\" › Allow. If asked for a USB mode, choose \"File transfer\".'**
-  String get hardLockStep3Plug;
-
-  /// No description provided for @hardLockStep3Check.
-  ///
-  /// In en, this message translates to:
-  /// **'Check the connection — you should see 1 line ending in \"device\":'**
-  String get hardLockStep3Check;
-
-  /// No description provided for @hardLockStep4Title.
-  ///
-  /// In en, this message translates to:
-  /// **'Turn on hard lock'**
-  String get hardLockStep4Title;
-
-  /// No description provided for @hardLockStep4Run.
-  ///
-  /// In en, this message translates to:
-  /// **'Run the command:'**
-  String get hardLockStep4Run;
-
-  /// No description provided for @hardLockStep4Success.
-  ///
-  /// In en, this message translates to:
-  /// **'It worked when you see \"Success: Device owner set to package com.pham.kidguard\". Go back to the app; the status above will turn green.'**
-  String get hardLockStep4Success;
-
-  /// No description provided for @hardLockStep4After.
-  ///
-  /// In en, this message translates to:
-  /// **'You can now sign back in to your accounts, turn off \"USB debugging\" and unplug the cable.'**
-  String get hardLockStep4After;
-
-  /// No description provided for @hardLockTroubleTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Having trouble?'**
-  String get hardLockTroubleTitle;
-
-  /// No description provided for @hardLockErrAccountsFix.
-  ///
-  /// In en, this message translates to:
-  /// **'There are still accounts on the phone. Redo step 2 and carefully check app accounts too.'**
-  String get hardLockErrAccountsFix;
-
-  /// No description provided for @hardLockErrSecurityFix.
-  ///
-  /// In en, this message translates to:
-  /// **'The phone is blocking commands over USB. Check \"USB debugging\" in Developer options again.'**
-  String get hardLockErrSecurityFix;
-
-  /// No description provided for @hardLockErrUnknownAdminFix.
-  ///
-  /// In en, this message translates to:
-  /// **'KidGuard isn\'t installed on the phone, or the command was mistyped — use the copy button.'**
-  String get hardLockErrUnknownAdminFix;
-
-  /// No description provided for @hardLockErrNoDevice.
-  ///
-  /// In en, this message translates to:
-  /// **'adb devices doesn\'t show the phone / \"unauthorized\"'**
-  String get hardLockErrNoDevice;
-
-  /// No description provided for @hardLockErrNoDeviceFix.
-  ///
-  /// In en, this message translates to:
-  /// **'Unplug and replug the cable, unlock the phone screen and tap \"Allow\" in the USB debugging dialog. Try another cable (some cables only charge).'**
-  String get hardLockErrNoDeviceFix;
-
-  /// No description provided for @hardLockErrNoAdbFix.
-  ///
-  /// In en, this message translates to:
-  /// **'platform-tools isn\'t installed (step 3). On Windows, you must open the command window inside the platform-tools folder.'**
-  String get hardLockErrNoAdbFix;
-
-  /// No description provided for @hardLockStatusOn.
-  ///
-  /// In en, this message translates to:
-  /// **'Hard lock is ON'**
-  String get hardLockStatusOn;
-
-  /// No description provided for @hardLockStatusOff.
-  ///
-  /// In en, this message translates to:
-  /// **'Hard lock is off'**
-  String get hardLockStatusOff;
-
-  /// No description provided for @hardLockStatusOnBody.
-  ///
-  /// In en, this message translates to:
-  /// **'When the phone is locked, your child can\'t press Home or Recents, pull down the notification bar, or force-stop the app. Only the phone password can unlock it.'**
-  String get hardLockStatusOnBody;
-
-  /// No description provided for @hardLockStatusOffBody.
-  ///
-  /// In en, this message translates to:
-  /// **'Without hard lock, KidGuard still brings the lock screen back when your child leaves it, but they may see another screen for ~1 second and could open Settings to force-stop the app if they\'re quick enough. Hard lock blocks this completely.'**
-  String get hardLockStatusOffBody;
-
-  /// No description provided for @hardLockCopy.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy'**
-  String get hardLockCopy;
-
-  /// No description provided for @hardLockCopied.
-  ///
-  /// In en, this message translates to:
-  /// **'Command copied'**
-  String get hardLockCopied;
-
-  /// No description provided for @hardLockDevOppoEnable.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › About device › Version › tap \"Build number\" 7 times in a row and enter the phone password.'**
-  String get hardLockDevOppoEnable;
-
-  /// No description provided for @hardLockDevLocationAdditional.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › Additional settings › Developer options'**
-  String get hardLockDevLocationAdditional;
-
-  /// No description provided for @hardLockDevOppoUsers.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove \"Second space\", \"App cloner\" and guest users (Settings › Apps › App cloner; Settings › Users & accounts).'**
-  String get hardLockDevOppoUsers;
-
-  /// No description provided for @hardLockDevOppoExtra.
-  ///
-  /// In en, this message translates to:
-  /// **'Oppo/Realme only: in Developer options, also turn on \"Disable permission monitoring\". Without it, the command in step 4 will be rejected.'**
-  String get hardLockDevOppoExtra;
-
-  /// No description provided for @hardLockDevXiaomiEnable.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › About phone › tap \"HyperOS/MIUI version\" 7 times in a row.'**
-  String get hardLockDevXiaomiEnable;
-
-  /// No description provided for @hardLockDevXiaomiUsers.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove \"Second space\" and \"Dual apps\" (Settings › Apps › Dual apps).'**
-  String get hardLockDevXiaomiUsers;
-
-  /// No description provided for @hardLockDevXiaomiExtra.
-  ///
-  /// In en, this message translates to:
-  /// **'Xiaomi only: also turn on \"USB debugging (Security settings)\" — this requires a SIM card and a signed-in Mi account; turn it on first, then remove accounts in step 2.'**
-  String get hardLockDevXiaomiExtra;
-
-  /// No description provided for @hardLockDevVivoEnable.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › System › About › Software information › tap \"Software version\" 7 times in a row.'**
-  String get hardLockDevVivoEnable;
-
-  /// No description provided for @hardLockDevLocationSystem.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › System › Developer options'**
-  String get hardLockDevLocationSystem;
-
-  /// No description provided for @hardLockDevVivoUsers.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove \"App clone\" and guest users.'**
-  String get hardLockDevVivoUsers;
-
-  /// No description provided for @hardLockDevSamsungEnable.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › About phone › Software information › tap \"Build number\" 7 times in a row.'**
-  String get hardLockDevSamsungEnable;
-
-  /// No description provided for @hardLockDevSamsungLocation.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › Developer options (at the bottom of the list)'**
-  String get hardLockDevSamsungLocation;
-
-  /// No description provided for @hardLockDevSamsungUsers.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove \"Secure Folder\" and \"Dual Messenger\" if present.'**
-  String get hardLockDevSamsungUsers;
-
-  /// No description provided for @hardLockDevGenericEnable.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › About phone › tap \"Build number\" 7 times in a row.'**
-  String get hardLockDevGenericEnable;
-
-  /// No description provided for @hardLockDevHuaweiLocation.
-  ///
-  /// In en, this message translates to:
-  /// **'Settings › System & updates › Developer options'**
-  String get hardLockDevHuaweiLocation;
-
-  /// No description provided for @hardLockDevHuaweiUsers.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove \"PrivateSpace\", \"App Twin\" and guest users.'**
-  String get hardLockDevHuaweiUsers;
-
-  /// No description provided for @hardLockDevOtherUsers.
-  ///
-  /// In en, this message translates to:
-  /// **'Remove guest users, work profiles and cloned apps if any.'**
-  String get hardLockDevOtherUsers;
 
   /// No description provided for @registerTitle.
   ///
@@ -1740,6 +1446,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved {name}\'s details.'**
   String childEditSaved(String name);
+
+  /// No description provided for @homeAdvancedLockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced lock (Accessibility) — recommended'**
+  String get homeAdvancedLockTitle;
+
+  /// No description provided for @homeAdvancedLockOn.
+  ///
+  /// In en, this message translates to:
+  /// **'On: when time is up your child can\'t pull down notifications or open recents or other apps.'**
+  String get homeAdvancedLockOn;
+
+  /// No description provided for @homeAdvancedLockOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on in Settings › Accessibility right on this phone, no computer needed. Blocks the notification shade, recents and turning KidGuard off.'**
+  String get homeAdvancedLockOff;
+
+  /// No description provided for @advancedLockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced lock'**
+  String get advancedLockTitle;
+
+  /// No description provided for @advancedLockStatusOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced lock is ON'**
+  String get advancedLockStatusOn;
+
+  /// No description provided for @advancedLockStatusOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced lock is off'**
+  String get advancedLockStatusOff;
+
+  /// No description provided for @advancedLockStatusOnBody.
+  ///
+  /// In en, this message translates to:
+  /// **'When time is up or the phone is locked, KidGuard keeps the quiz on screen and your child can\'t turn KidGuard off during a session.'**
+  String get advancedLockStatusOnBody;
+
+  /// No description provided for @advancedLockStatusOffBody.
+  ///
+  /// In en, this message translates to:
+  /// **'KidGuard still covers the screen when time is up, but your child can pull down the notification shade and could turn KidGuard off from Settings during their free time.'**
+  String get advancedLockStatusOffBody;
+
+  /// No description provided for @advancedLockWhatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What it does'**
+  String get advancedLockWhatTitle;
+
+  /// No description provided for @advancedLockWhat1.
+  ///
+  /// In en, this message translates to:
+  /// **'When time is up or the phone is locked: closes the notification shade and blocks recents, the home screen and split screen, bringing the quiz back instantly.'**
+  String get advancedLockWhat1;
+
+  /// No description provided for @advancedLockWhat2.
+  ///
+  /// In en, this message translates to:
+  /// **'During your child\'s whole session: blocks KidGuard\'s settings, force stop and uninstall pages, including turning off its Accessibility access.'**
+  String get advancedLockWhat2;
+
+  /// No description provided for @advancedLockWhat3.
+  ///
+  /// In en, this message translates to:
+  /// **'Incoming and emergency calls still work.'**
+  String get advancedLockWhat3;
+
+  /// No description provided for @advancedLockPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'KidGuard only uses Accessibility to know which app is on top. It does not read, store or send what\'s on your screen.'**
+  String get advancedLockPrivacy;
+
+  /// No description provided for @advancedLockStepsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How to turn it on (about 1 minute)'**
+  String get advancedLockStepsTitle;
+
+  /// No description provided for @advancedLockStepRestricted.
+  ///
+  /// In en, this message translates to:
+  /// **'Android 13 and later, if KidGuard wasn\'t installed from Google Play: open KidGuard\'s App info › tap ⋮ (top right) › \"Allow restricted settings\" › enter the phone\'s password. If you don\'t see it, skip this step.'**
+  String get advancedLockStepRestricted;
+
+  /// No description provided for @advancedLockOpenAppInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Open App info'**
+  String get advancedLockOpenAppInfo;
+
+  /// No description provided for @advancedLockStepEnable.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the button below › choose KidGuard (usually under \"Downloaded apps\" or \"Installed apps\") › turn it on › Allow.'**
+  String get advancedLockStepEnable;
+
+  /// No description provided for @advancedLockOpenSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Accessibility settings'**
+  String get advancedLockOpenSettings;
+
+  /// No description provided for @advancedLockStepBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Come back to KidGuard: the status above turns ON.'**
+  String get advancedLockStepBack;
+
+  /// No description provided for @advancedLockOffNote.
+  ///
+  /// In en, this message translates to:
+  /// **'To turn it off: end your child\'s session first (parent unlock), then go to Settings › Accessibility › KidGuard › off.'**
+  String get advancedLockOffNote;
+
+  /// No description provided for @legacyHardLockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Old hard lock (Device Owner) is on'**
+  String get legacyHardLockTitle;
+
+  /// No description provided for @legacyHardLockBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone had hard lock turned on with a computer in an earlier version. Turn it off before uninstalling KidGuard.'**
+  String get legacyHardLockBody;
 }
 
 class _AppLocalizationsDelegate

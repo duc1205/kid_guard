@@ -98,6 +98,8 @@ class DevicePermissions {
     required this.overlay,
     required this.notifications,
     required this.deviceOwner,
+    this.accessibility = false,
+    this.androidSdk = 0,
     required this.supported,
     this.batteryUnrestricted = false,
     this.manufacturer = '',
@@ -123,8 +125,14 @@ class DevicePermissions {
   final bool overlay;
   final bool notifications;
 
-  /// App là Device Owner → khoá cứng bằng lock task.
+  /// Cũ: app là Device Owner (khoá cứng bật qua adb). Chỉ còn dùng để tắt.
   final bool deviceOwner;
+
+  /// Android: "Khoá nâng cao" — Trợ năng của KidGuard đang bật.
+  final bool accessibility;
+
+  /// Android: API level của máy (0 nếu không phải Android).
+  final int androidSdk;
 
   /// Nền tảng có hỗ trợ kiểm soát ngoài app hay không (Android: có, iOS: không).
   final bool supported;
@@ -181,7 +189,10 @@ abstract interface class DeviceControlRepository {
   Future<bool> openBackgroundPopupSettings();
   Future<void> openAppSettings();
 
-  /// Tắt chế độ khoá cứng (Device Owner). Trả về true nếu đã gỡ thành công.
+  /// Android: mở trang Trợ năng của KidGuard (hoặc danh sách Trợ năng).
+  Future<void> openAccessibilitySettings();
+
+  /// Tắt khoá cứng cũ (Device Owner). Trả về true nếu đã gỡ thành công.
   Future<bool> clearDeviceOwner();
 
   /// iOS: xin quyền Screen Time (hiện hộp thoại Face ID / mật khẩu của hệ thống).

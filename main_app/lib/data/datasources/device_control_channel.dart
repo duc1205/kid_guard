@@ -73,6 +73,8 @@ class DeviceControlChannel implements DeviceControlRepository {
       overlay: flag('overlay'),
       notifications: flag('notifications'),
       deviceOwner: flag('deviceOwner'),
+      accessibility: flag('accessibility'),
+      androidSdk: (map['sdkInt'] as int?) ?? 0,
       batteryUnrestricted: flag('batteryUnrestricted'),
       manufacturer: (map['manufacturer'] as String?) ?? '',
       screenTimeAuthorized: flag('screenTimeAuthorized'),
@@ -110,6 +112,10 @@ class DeviceControlChannel implements DeviceControlRepository {
 
   @override
   Future<void> openAppSettings() => _call('openAppSettings');
+
+  @override
+  Future<void> openAccessibilitySettings() =>
+      _call('openAccessibilitySettings');
 
   @override
   Future<bool> clearDeviceOwner() async =>

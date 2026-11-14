@@ -7,4 +7,6 @@
     <string name="notif_running_title">KidGuard đang theo dõi thời gian</string>
     <string name="notif_running_text">Thời gian còn lại</string>
     <string name="overlay_open_quiz">Trả lời câu hỏi</string>
+    <string name="a11y_summary">Khoá nâng cao: giữ màn câu hỏi khi hết giờ.</string>
+    <string name="a11y_description">KidGuard dùng quyền này để biết ứng dụng nào đang hiện trên màn hình khi bé đang trong phiên dùng máy. Khi hết giờ hoặc máy bị khoá, KidGuard đóng thanh thông báo và đưa màn câu hỏi lên lại thay vì ứng dụng khác, màn đa nhiệm hay màn hình chính. Trong phiên, KidGuard cũng chặn mở trang cài đặt và gỡ cài đặt của chính KidGuard. KidGuard không đọc, không lưu và không gửi nội dung màn hình đi đâu.</string>
 </resources>

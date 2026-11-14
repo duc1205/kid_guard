@@ -325,17 +325,6 @@ class AppLocalizationsVi extends AppLocalizations {
       'Để nút \"Dọn dẹp tất cả\" không tắt được KidGuard.';
 
   @override
-  String get homeHardLockTitle => 'Khoá cứng — tuỳ chọn, khuyên dùng';
-
-  @override
-  String get homeHardLockOn =>
-      'Đang bật: bé không thể thoát màn khoá bằng bất kỳ cách nào.';
-
-  @override
-  String get homeHardLockOff =>
-      'Chặn hoàn toàn nút Home, Đa nhiệm, thanh thông báo khi khoá máy. Cần máy tính, làm 1 lần.';
-
-  @override
   String get homeManage => 'Quản lý';
 
   @override
@@ -357,14 +346,11 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homeGrant => 'Cấp quyền';
 
   @override
-  String get hardLockTitle => 'Khoá cứng';
-
-  @override
   String get hardLockDisableTitle => 'Tắt khoá cứng?';
 
   @override
   String get hardLockDisableBody =>
-      'KidGuard vẫn hoạt động bình thường nhưng khi khoá máy, bé có thể vuốt thanh điều hướng (chỉ bị kéo lại sau ~1 giây). Cần tắt khoá cứng trước khi gỡ cài đặt KidGuard.';
+      'KidGuard vẫn hoạt động bình thường (dùng Khoá nâng cao nếu đã bật). Bắt buộc tắt mục này trước khi gỡ KidGuard.';
 
   @override
   String get hardLockCancel => 'Huỷ';
@@ -381,177 +367,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get hardLockDisableButton => 'Tắt khoá cứng (cần mật khẩu máy)';
-
-  @override
-  String get hardLockIntro =>
-      'Chỉ cần làm 1 lần, mất khoảng 10 phút, cần 1 máy tính và cáp USB.';
-
-  @override
-  String get hardLockStep1Title => 'Bật Tuỳ chọn nhà phát triển';
-
-  @override
-  String hardLockStep1UsbDebugging(String location) {
-    return 'Vào $location › bật \"Gỡ lỗi USB\".';
-  }
-
-  @override
-  String get hardLockStep2Title => 'Tạm xoá tài khoản & người dùng phụ';
-
-  @override
-  String get hardLockStep2Accounts =>
-      'Android chỉ cho bật khoá cứng khi máy KHÔNG có tài khoản nào. Vào Cài đặt › Người dùng & tài khoản (hoặc \"Tài khoản\") và xoá hết: Google, tài khoản hãng (HeyTap/Oppo, Mi, Samsung…), cả tài khoản của app như Zalo, Telegram, WhatsApp nếu có trong danh sách.';
-
-  @override
-  String get hardLockStep2NoDataLoss =>
-      'Dữ liệu không bị mất. Làm xong bước 4 là đăng nhập lại được ngay.';
-
-  @override
-  String get hardLockStep3Title => 'Chuẩn bị máy tính';
-
-  @override
-  String get hardLockStep3Mac =>
-      'macOS: mở Terminal và chạy lệnh dưới (cần Homebrew):';
-
-  @override
-  String get hardLockStep3Windows =>
-      'Windows: tải \"SDK Platform-Tools for Windows\" tại developer.android.com/tools/releases/platform-tools, giải nén, mở thư mục platform-tools, gõ \"cmd\" vào thanh địa chỉ rồi Enter để mở cửa sổ lệnh.';
-
-  @override
-  String get hardLockStep3Plug =>
-      'Cắm cáp USB. Trên điện thoại hiện \"Cho phép gỡ lỗi USB?\" › tick \"Luôn cho phép\" › Cho phép. Nếu được hỏi chế độ USB, chọn \"Truyền tệp\".';
-
-  @override
-  String get hardLockStep3Check =>
-      'Kiểm tra kết nối — phải thấy 1 dòng kết thúc bằng \"device\":';
-
-  @override
-  String get hardLockStep4Title => 'Bật khoá cứng';
-
-  @override
-  String get hardLockStep4Run => 'Chạy lệnh:';
-
-  @override
-  String get hardLockStep4Success =>
-      'Thành công khi thấy \"Success: Device owner set to package com.pham.kidguard\". Quay lại app, trạng thái ở trên sẽ chuyển xanh.';
-
-  @override
-  String get hardLockStep4After =>
-      'Giờ có thể đăng nhập lại các tài khoản, tắt \"Gỡ lỗi USB\" và rút cáp.';
-
-  @override
-  String get hardLockTroubleTitle => 'Gặp lỗi?';
-
-  @override
-  String get hardLockErrAccountsFix =>
-      'Còn tài khoản trên máy. Làm lại bước 2, kiểm tra kỹ cả tài khoản của các app.';
-
-  @override
-  String get hardLockErrSecurityFix =>
-      'Máy chặn lệnh qua USB. Kiểm tra lại \"Gỡ lỗi USB\" trong Tuỳ chọn nhà phát triển.';
-
-  @override
-  String get hardLockErrUnknownAdminFix =>
-      'KidGuard chưa được cài trên máy, hoặc gõ sai lệnh — hãy dùng nút sao chép.';
-
-  @override
-  String get hardLockErrNoDevice =>
-      'adb devices không thấy máy / \"unauthorized\"';
-
-  @override
-  String get hardLockErrNoDeviceFix =>
-      'Rút cáp cắm lại, mở khoá màn hình điện thoại và bấm \"Cho phép\" ở hộp thoại gỡ lỗi USB. Thử cáp khác (một số cáp chỉ sạc được).';
-
-  @override
-  String get hardLockErrNoAdbFix =>
-      'Chưa cài platform-tools (bước 3). Trên Windows phải mở cửa sổ lệnh ngay trong thư mục platform-tools.';
-
-  @override
-  String get hardLockStatusOn => 'Khoá cứng đang BẬT';
-
-  @override
-  String get hardLockStatusOff => 'Khoá cứng đang tắt';
-
-  @override
-  String get hardLockStatusOnBody =>
-      'Khi khoá máy, bé không thể bấm Home, Đa nhiệm, kéo thanh thông báo hay buộc dừng app. Chỉ mật khẩu máy mới mở được.';
-
-  @override
-  String get hardLockStatusOffBody =>
-      'Không bật khoá cứng thì KidGuard vẫn kéo màn khoá lên lại khi bé thoát ra, nhưng bé có thể thấy màn hình khác trong ~1 giây và có thể vào Cài đặt để buộc dừng app nếu đủ nhanh. Khoá cứng chặn hoàn toàn việc này.';
-
-  @override
-  String get hardLockCopy => 'Sao chép';
-
-  @override
-  String get hardLockCopied => 'Đã sao chép lệnh';
-
-  @override
-  String get hardLockDevOppoEnable =>
-      'Cài đặt › Giới thiệu về thiết bị › Phiên bản › chạm liên tục 7 lần vào \"Số phiên bản\" và nhập mật khẩu máy.';
-
-  @override
-  String get hardLockDevLocationAdditional =>
-      'Cài đặt › Cài đặt bổ sung › Tuỳ chọn nhà phát triển';
-
-  @override
-  String get hardLockDevOppoUsers =>
-      'Xoá \"Không gian thứ hai\", \"Nhân bản ứng dụng\" và người dùng khách (Cài đặt › Ứng dụng › Nhân bản ứng dụng; Cài đặt › Người dùng & tài khoản).';
-
-  @override
-  String get hardLockDevOppoExtra =>
-      'Riêng Oppo/Realme: trong Tuỳ chọn nhà phát triển, bật thêm \"Tắt giám sát quyền\" (Disable permission monitoring). Thiếu mục này lệnh ở bước 4 sẽ bị từ chối.';
-
-  @override
-  String get hardLockDevXiaomiEnable =>
-      'Cài đặt › Giới thiệu điện thoại › chạm liên tục 7 lần vào \"Phiên bản HyperOS/MIUI\".';
-
-  @override
-  String get hardLockDevXiaomiUsers =>
-      'Xoá \"Không gian thứ hai\" và \"Ứng dụng kép\" (Cài đặt › Ứng dụng › Ứng dụng kép).';
-
-  @override
-  String get hardLockDevXiaomiExtra =>
-      'Riêng Xiaomi: bật thêm \"Gỡ lỗi USB (Cài đặt bảo mật)\" — mục này cần lắp SIM và đăng nhập Mi account; bật xong mới xoá tài khoản ở bước 2.';
-
-  @override
-  String get hardLockDevVivoEnable =>
-      'Cài đặt › Hệ thống › Giới thiệu › Thông tin phần mềm › chạm liên tục 7 lần vào \"Phiên bản phần mềm\".';
-
-  @override
-  String get hardLockDevLocationSystem =>
-      'Cài đặt › Hệ thống › Tuỳ chọn nhà phát triển';
-
-  @override
-  String get hardLockDevVivoUsers =>
-      'Xoá \"Ứng dụng nhân bản\" và người dùng khách.';
-
-  @override
-  String get hardLockDevSamsungEnable =>
-      'Cài đặt › Thông tin điện thoại › Thông tin phần mềm › chạm liên tục 7 lần vào \"Số hiệu bản tạo\".';
-
-  @override
-  String get hardLockDevSamsungLocation =>
-      'Cài đặt › Tuỳ chọn nhà phát triển (cuối danh sách)';
-
-  @override
-  String get hardLockDevSamsungUsers =>
-      'Xoá \"Thư mục bảo mật\" (Secure Folder) và \"Dual Messenger\" nếu có.';
-
-  @override
-  String get hardLockDevGenericEnable =>
-      'Cài đặt › Giới thiệu điện thoại › chạm liên tục 7 lần vào \"Số bản dựng\".';
-
-  @override
-  String get hardLockDevHuaweiLocation =>
-      'Cài đặt › Hệ thống & cập nhật › Tuỳ chọn nhà phát triển';
-
-  @override
-  String get hardLockDevHuaweiUsers =>
-      'Xoá \"Không gian riêng tư\", \"Ứng dụng song song\" và người dùng khách.';
-
-  @override
-  String get hardLockDevOtherUsers =>
-      'Xoá người dùng khách, hồ sơ công việc và ứng dụng nhân bản nếu có.';
 
   @override
   String get registerTitle => 'Thông tin của bé';
@@ -993,4 +808,82 @@ class AppLocalizationsVi extends AppLocalizations {
   String childEditSaved(String name) {
     return 'Đã lưu thông tin của $name.';
   }
+
+  @override
+  String get homeAdvancedLockTitle => 'Khoá nâng cao (Trợ năng) — khuyên dùng';
+
+  @override
+  String get homeAdvancedLockOn =>
+      'Đang bật: khi hết giờ, bé không kéo được thanh thông báo, không mở được đa nhiệm hay ứng dụng khác.';
+
+  @override
+  String get homeAdvancedLockOff =>
+      'Bật trong Cài đặt › Trợ năng ngay trên máy, không cần máy tính. Chặn thanh thông báo, đa nhiệm và việc tắt KidGuard.';
+
+  @override
+  String get advancedLockTitle => 'Khoá nâng cao';
+
+  @override
+  String get advancedLockStatusOn => 'Khoá nâng cao đang BẬT';
+
+  @override
+  String get advancedLockStatusOff => 'Khoá nâng cao đang tắt';
+
+  @override
+  String get advancedLockStatusOnBody =>
+      'Khi hết giờ hoặc máy bị khoá, KidGuard giữ màn câu hỏi trên màn hình và bé không thể tắt KidGuard trong phiên.';
+
+  @override
+  String get advancedLockStatusOffBody =>
+      'KidGuard vẫn che màn hình khi hết giờ, nhưng bé vẫn kéo được thanh thông báo và có thể vào Cài đặt tắt KidGuard trong lúc được dùng máy.';
+
+  @override
+  String get advancedLockWhatTitle => 'Khoá nâng cao làm gì?';
+
+  @override
+  String get advancedLockWhat1 =>
+      'Khi hết giờ hoặc máy bị khoá: đóng ngay thanh thông báo, chặn màn đa nhiệm, màn hình chính và chia đôi màn hình, đưa màn câu hỏi lên lại tức thì.';
+
+  @override
+  String get advancedLockWhat2 =>
+      'Suốt phiên của bé: chặn mở trang cài đặt, buộc dừng và gỡ cài đặt KidGuard, kể cả việc tắt Trợ năng của KidGuard.';
+
+  @override
+  String get advancedLockWhat3 => 'Cuộc gọi đến và gọi khẩn cấp vẫn dùng được.';
+
+  @override
+  String get advancedLockPrivacy =>
+      'KidGuard chỉ dùng Trợ năng để biết ứng dụng nào đang ở trên cùng; không đọc, không lưu, không gửi nội dung màn hình.';
+
+  @override
+  String get advancedLockStepsTitle => 'Cách bật (khoảng 1 phút)';
+
+  @override
+  String get advancedLockStepRestricted =>
+      'Android 13 trở lên, nếu KidGuard không cài từ CH Play: mở Thông tin ứng dụng KidGuard › bấm ⋮ ở góc trên bên phải › \"Cho phép cài đặt hạn chế\" › nhập mật khẩu máy. Không thấy mục này thì bỏ qua bước này.';
+
+  @override
+  String get advancedLockOpenAppInfo => 'Mở Thông tin ứng dụng';
+
+  @override
+  String get advancedLockStepEnable =>
+      'Bấm nút bên dưới › chọn KidGuard (thường nằm trong \"Ứng dụng đã tải xuống\" hoặc \"Ứng dụng đã cài đặt\") › bật › Cho phép.';
+
+  @override
+  String get advancedLockOpenSettings => 'Mở cài đặt Trợ năng';
+
+  @override
+  String get advancedLockStepBack =>
+      'Quay lại KidGuard: trạng thái ở trên chuyển sang \"đang BẬT\".';
+
+  @override
+  String get advancedLockOffNote =>
+      'Muốn tắt: thu hồi máy (kết thúc phiên của bé) trước, rồi vào Cài đặt › Trợ năng › KidGuard › tắt.';
+
+  @override
+  String get legacyHardLockTitle => 'Khoá cứng cũ (Device Owner) đang bật';
+
+  @override
+  String get legacyHardLockBody =>
+      'Máy này đã bật khoá cứng bằng máy tính ở phiên bản trước. Cần tắt mục này trước khi gỡ KidGuard.';
 }

@@ -63,6 +63,8 @@ class MainActivity : FlutterFragmentActivity() {
                             "overlay" to canDrawOverlays(),
                             "notifications" to hasNotificationPermission(),
                             "deviceOwner" to isDeviceOwner(),
+                            "accessibility" to isAccessibilityEnabled(),
+                            "sdkInt" to Build.VERSION.SDK_INT,
                             "batteryUnrestricted" to isIgnoringBatteryOptimizations(),
                             "manufacturer" to Build.MANUFACTURER.lowercase(),
                         )
@@ -91,6 +93,17 @@ class MainActivity : FlutterFragmentActivity() {
                         result.success(opened)
                     }
                     "openAppSettings" -> result.success(openAppDetails())
+                    // Mở thẳng trang Trợ năng của KidGuard (Android 11+), không được thì mở danh sách Trợ năng.
+                    "openAccessibilitySettings" -> {
+                        val component = ComponentName(this, KidGuardAccessibilityService::class.java)
+                        val opened = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
+                            tryStart(
+                                Intent("android.settings.ACCESSIBILITY_DETAILS_SETTINGS")
+                                    .putExtra(Intent.EXTRA_COMPONENT_NAME, component.flattenToString())
+                            )
+                        if (!opened) tryStart(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+                        result.success(null)
+                    }
                     // Gỡ quyền Device Owner (bắt buộc trước khi gỡ cài đặt app).
                     "clearDeviceOwner" -> {
                         if (isDeviceOwner()) {
@@ -179,6 +192,16 @@ class MainActivity : FlutterFragmentActivity() {
         Build.VERSION.SDK_INT < 33 ||
             ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
             PackageManager.PERMISSION_GRANTED
+
+    private fun isAccessibilityEnabled(): Boolean {
+        val enabled = Settings.Secure.getString(
+            contentResolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
+        ) ?: return false
+        val component = ComponentName(this, KidGuardAccessibilityService::class.java)
+        return enabled.split(':').any {
+            ComponentName.unflattenFromString(it) == component
+        }
+    }
 
     private fun isDeviceOwner(): Boolean {
         val dpm = getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager

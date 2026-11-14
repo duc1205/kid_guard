@@ -348,17 +348,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'So the \"Clear all\" button can\'t close KidGuard.';
 
   @override
-  String get homeHardLockTitle => 'Hard lock — optional, recommended';
-
-  @override
-  String get homeHardLockOn =>
-      'On: your child can\'t leave the lock screen in any way.';
-
-  @override
-  String get homeHardLockOff =>
-      'Fully blocks the Home and Recents buttons and the notification bar while locked. Needs a computer, one-time setup.';
-
-  @override
   String get homeManage => 'Manage';
 
   @override
@@ -380,14 +369,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeGrant => 'Grant';
 
   @override
-  String get hardLockTitle => 'Hard lock';
-
-  @override
   String get hardLockDisableTitle => 'Turn off hard lock?';
 
   @override
   String get hardLockDisableBody =>
-      'KidGuard keeps working normally, but when the phone is locked your child can swipe the navigation bar (it\'s pulled back after ~1 second). You must turn off hard lock before uninstalling KidGuard.';
+      'KidGuard keeps working (with Advanced lock if it\'s on). You must turn this off before uninstalling KidGuard.';
 
   @override
   String get hardLockCancel => 'Cancel';
@@ -405,176 +391,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get hardLockDisableButton =>
       'Turn off hard lock (requires phone password)';
-
-  @override
-  String get hardLockIntro =>
-      'One-time setup, takes about 10 minutes, needs a computer and a USB cable.';
-
-  @override
-  String get hardLockStep1Title => 'Turn on Developer options';
-
-  @override
-  String hardLockStep1UsbDebugging(String location) {
-    return 'Go to $location › turn on \"USB debugging\".';
-  }
-
-  @override
-  String get hardLockStep2Title => 'Temporarily remove accounts & extra users';
-
-  @override
-  String get hardLockStep2Accounts =>
-      'Android only allows hard lock when the phone has NO accounts. Go to Settings › Users & accounts (or \"Accounts\") and remove all of them: Google, manufacturer accounts (HeyTap/Oppo, Mi, Samsung…), and app accounts like Zalo, Telegram, WhatsApp if they are listed.';
-
-  @override
-  String get hardLockStep2NoDataLoss =>
-      'No data is lost. Once step 4 is done you can sign back in right away.';
-
-  @override
-  String get hardLockStep3Title => 'Prepare the computer';
-
-  @override
-  String get hardLockStep3Mac =>
-      'macOS: open Terminal and run the command below (requires Homebrew):';
-
-  @override
-  String get hardLockStep3Windows =>
-      'Windows: download \"SDK Platform-Tools for Windows\" from developer.android.com/tools/releases/platform-tools, unzip it, open the platform-tools folder, type \"cmd\" in the address bar and press Enter to open a command window.';
-
-  @override
-  String get hardLockStep3Plug =>
-      'Plug in the USB cable. When the phone shows \"Allow USB debugging?\" › check \"Always allow from this computer\" › Allow. If asked for a USB mode, choose \"File transfer\".';
-
-  @override
-  String get hardLockStep3Check =>
-      'Check the connection — you should see 1 line ending in \"device\":';
-
-  @override
-  String get hardLockStep4Title => 'Turn on hard lock';
-
-  @override
-  String get hardLockStep4Run => 'Run the command:';
-
-  @override
-  String get hardLockStep4Success =>
-      'It worked when you see \"Success: Device owner set to package com.pham.kidguard\". Go back to the app; the status above will turn green.';
-
-  @override
-  String get hardLockStep4After =>
-      'You can now sign back in to your accounts, turn off \"USB debugging\" and unplug the cable.';
-
-  @override
-  String get hardLockTroubleTitle => 'Having trouble?';
-
-  @override
-  String get hardLockErrAccountsFix =>
-      'There are still accounts on the phone. Redo step 2 and carefully check app accounts too.';
-
-  @override
-  String get hardLockErrSecurityFix =>
-      'The phone is blocking commands over USB. Check \"USB debugging\" in Developer options again.';
-
-  @override
-  String get hardLockErrUnknownAdminFix =>
-      'KidGuard isn\'t installed on the phone, or the command was mistyped — use the copy button.';
-
-  @override
-  String get hardLockErrNoDevice =>
-      'adb devices doesn\'t show the phone / \"unauthorized\"';
-
-  @override
-  String get hardLockErrNoDeviceFix =>
-      'Unplug and replug the cable, unlock the phone screen and tap \"Allow\" in the USB debugging dialog. Try another cable (some cables only charge).';
-
-  @override
-  String get hardLockErrNoAdbFix =>
-      'platform-tools isn\'t installed (step 3). On Windows, you must open the command window inside the platform-tools folder.';
-
-  @override
-  String get hardLockStatusOn => 'Hard lock is ON';
-
-  @override
-  String get hardLockStatusOff => 'Hard lock is off';
-
-  @override
-  String get hardLockStatusOnBody =>
-      'When the phone is locked, your child can\'t press Home or Recents, pull down the notification bar, or force-stop the app. Only the phone password can unlock it.';
-
-  @override
-  String get hardLockStatusOffBody =>
-      'Without hard lock, KidGuard still brings the lock screen back when your child leaves it, but they may see another screen for ~1 second and could open Settings to force-stop the app if they\'re quick enough. Hard lock blocks this completely.';
-
-  @override
-  String get hardLockCopy => 'Copy';
-
-  @override
-  String get hardLockCopied => 'Command copied';
-
-  @override
-  String get hardLockDevOppoEnable =>
-      'Settings › About device › Version › tap \"Build number\" 7 times in a row and enter the phone password.';
-
-  @override
-  String get hardLockDevLocationAdditional =>
-      'Settings › Additional settings › Developer options';
-
-  @override
-  String get hardLockDevOppoUsers =>
-      'Remove \"Second space\", \"App cloner\" and guest users (Settings › Apps › App cloner; Settings › Users & accounts).';
-
-  @override
-  String get hardLockDevOppoExtra =>
-      'Oppo/Realme only: in Developer options, also turn on \"Disable permission monitoring\". Without it, the command in step 4 will be rejected.';
-
-  @override
-  String get hardLockDevXiaomiEnable =>
-      'Settings › About phone › tap \"HyperOS/MIUI version\" 7 times in a row.';
-
-  @override
-  String get hardLockDevXiaomiUsers =>
-      'Remove \"Second space\" and \"Dual apps\" (Settings › Apps › Dual apps).';
-
-  @override
-  String get hardLockDevXiaomiExtra =>
-      'Xiaomi only: also turn on \"USB debugging (Security settings)\" — this requires a SIM card and a signed-in Mi account; turn it on first, then remove accounts in step 2.';
-
-  @override
-  String get hardLockDevVivoEnable =>
-      'Settings › System › About › Software information › tap \"Software version\" 7 times in a row.';
-
-  @override
-  String get hardLockDevLocationSystem =>
-      'Settings › System › Developer options';
-
-  @override
-  String get hardLockDevVivoUsers => 'Remove \"App clone\" and guest users.';
-
-  @override
-  String get hardLockDevSamsungEnable =>
-      'Settings › About phone › Software information › tap \"Build number\" 7 times in a row.';
-
-  @override
-  String get hardLockDevSamsungLocation =>
-      'Settings › Developer options (at the bottom of the list)';
-
-  @override
-  String get hardLockDevSamsungUsers =>
-      'Remove \"Secure Folder\" and \"Dual Messenger\" if present.';
-
-  @override
-  String get hardLockDevGenericEnable =>
-      'Settings › About phone › tap \"Build number\" 7 times in a row.';
-
-  @override
-  String get hardLockDevHuaweiLocation =>
-      'Settings › System & updates › Developer options';
-
-  @override
-  String get hardLockDevHuaweiUsers =>
-      'Remove \"PrivateSpace\", \"App Twin\" and guest users.';
-
-  @override
-  String get hardLockDevOtherUsers =>
-      'Remove guest users, work profiles and cloned apps if any.';
 
   @override
   String get registerTitle => 'About you';
@@ -1047,4 +863,83 @@ class AppLocalizationsEn extends AppLocalizations {
   String childEditSaved(String name) {
     return 'Saved $name\'s details.';
   }
+
+  @override
+  String get homeAdvancedLockTitle =>
+      'Advanced lock (Accessibility) — recommended';
+
+  @override
+  String get homeAdvancedLockOn =>
+      'On: when time is up your child can\'t pull down notifications or open recents or other apps.';
+
+  @override
+  String get homeAdvancedLockOff =>
+      'Turn on in Settings › Accessibility right on this phone, no computer needed. Blocks the notification shade, recents and turning KidGuard off.';
+
+  @override
+  String get advancedLockTitle => 'Advanced lock';
+
+  @override
+  String get advancedLockStatusOn => 'Advanced lock is ON';
+
+  @override
+  String get advancedLockStatusOff => 'Advanced lock is off';
+
+  @override
+  String get advancedLockStatusOnBody =>
+      'When time is up or the phone is locked, KidGuard keeps the quiz on screen and your child can\'t turn KidGuard off during a session.';
+
+  @override
+  String get advancedLockStatusOffBody =>
+      'KidGuard still covers the screen when time is up, but your child can pull down the notification shade and could turn KidGuard off from Settings during their free time.';
+
+  @override
+  String get advancedLockWhatTitle => 'What it does';
+
+  @override
+  String get advancedLockWhat1 =>
+      'When time is up or the phone is locked: closes the notification shade and blocks recents, the home screen and split screen, bringing the quiz back instantly.';
+
+  @override
+  String get advancedLockWhat2 =>
+      'During your child\'s whole session: blocks KidGuard\'s settings, force stop and uninstall pages, including turning off its Accessibility access.';
+
+  @override
+  String get advancedLockWhat3 => 'Incoming and emergency calls still work.';
+
+  @override
+  String get advancedLockPrivacy =>
+      'KidGuard only uses Accessibility to know which app is on top. It does not read, store or send what\'s on your screen.';
+
+  @override
+  String get advancedLockStepsTitle => 'How to turn it on (about 1 minute)';
+
+  @override
+  String get advancedLockStepRestricted =>
+      'Android 13 and later, if KidGuard wasn\'t installed from Google Play: open KidGuard\'s App info › tap ⋮ (top right) › \"Allow restricted settings\" › enter the phone\'s password. If you don\'t see it, skip this step.';
+
+  @override
+  String get advancedLockOpenAppInfo => 'Open App info';
+
+  @override
+  String get advancedLockStepEnable =>
+      'Tap the button below › choose KidGuard (usually under \"Downloaded apps\" or \"Installed apps\") › turn it on › Allow.';
+
+  @override
+  String get advancedLockOpenSettings => 'Open Accessibility settings';
+
+  @override
+  String get advancedLockStepBack =>
+      'Come back to KidGuard: the status above turns ON.';
+
+  @override
+  String get advancedLockOffNote =>
+      'To turn it off: end your child\'s session first (parent unlock), then go to Settings › Accessibility › KidGuard › off.';
+
+  @override
+  String get legacyHardLockTitle => 'Old hard lock (Device Owner) is on';
+
+  @override
+  String get legacyHardLockBody =>
+      'This phone had hard lock turned on with a computer in an earlier version. Turn it off before uninstalling KidGuard.';
 }

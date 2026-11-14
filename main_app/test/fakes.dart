@@ -84,6 +84,8 @@ class FakeDevice implements DeviceControlRepository {
   @override
   Future<void> openAppSettings() async {}
   @override
+  Future<void> openAccessibilitySettings() async {}
+  @override
   Future<bool> clearDeviceOwner() async => true;
   @override
   Future<bool> requestScreenTimeAuthorization() async => true;

@@ -6,7 +6,7 @@ import '../l10n_ext.dart';
 import '../widgets/dependencies_scope.dart';
 import '../widgets/parent_auth_flow.dart';
 import 'child/child_register_screen.dart';
-import 'parent/hard_lock_guide_screen.dart';
+import 'parent/advanced_lock_screen.dart';
 import 'parent/parent_dashboard_screen.dart';
 import 'setup/settings_walkthrough.dart';
 import 'setup/setup_steps.dart';
@@ -247,18 +247,20 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                   ),
                 ),
               _SetupTile(
-                ok: perms.deviceOwner,
+                ok: perms.accessibility,
                 optional: true,
-                title: l10n.homeHardLockTitle,
-                subtitle: perms.deviceOwner
-                    ? l10n.homeHardLockOn
-                    : l10n.homeHardLockOff,
-                fixLabel: perms.deviceOwner ? l10n.homeManage : l10n.homeGuide,
+                title: l10n.homeAdvancedLockTitle,
+                subtitle: perms.accessibility
+                    ? l10n.homeAdvancedLockOn
+                    : l10n.homeAdvancedLockOff,
+                fixLabel: perms.accessibility
+                    ? l10n.homeManage
+                    : l10n.homeGuide,
                 showActionWhenOk: true,
                 onFix: () async {
                   await Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (_) => const HardLockGuideScreen(),
+                      builder: (_) => const AdvancedLockScreen(),
                     ),
                   );
                   _refresh();

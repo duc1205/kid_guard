@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <!-- Xin bỏ tối ưu pin để hệ thống (đặc biệt ColorOS/MIUI) không tắt dịch vụ đếm giờ -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- Thu thanh thông báo khi máy đang khoá (Android ≤ 11; 12+ dùng Trợ năng) -->
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
     <application
         android:label="@string/app_name"
@@ -55,8 +57,22 @@
             </intent-filter>
         </receiver>
 
-        <!-- Tuỳ chọn: đặt app làm Device Owner để khoá cứng (lock task) không cần xác nhận:
-             adb shell dpm set-device-owner com.pham.kidguard/.KidGuardAdminReceiver -->
+        <!-- "Khoá nâng cao": người lớn bật trong Cài đặt › Trợ năng (không cần máy tính). -->
+        <service
+            android:name=".KidGuardAccessibilityService"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service" />
+        </service>
+
+        <!-- Cũ: Device Owner (khoá cứng qua adb). Không còn hướng dẫn bật, chỉ giữ để
+             máy đã bật trước đây vẫn tắt được (bắt buộc trước khi gỡ app). -->
         <receiver
             android:name=".KidGuardAdminReceiver"
             android:exported="true"

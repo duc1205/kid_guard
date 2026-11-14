@@ -25,7 +25,8 @@ lib/
   presentation/    controllers (ChangeNotifier) + screens + widgets
 assets/questions/  ngân hàng câu hỏi grade_1.json … grade_12.json, grade_13.json (Đại học), grade_14.json (Sau đại học)
 android/.../kotlin SessionGuardService (đồng hồ chạy nền + giữ app luôn ở trên khi khoá),
-                   BootReceiver, KidGuardAdminReceiver (tuỳ chọn Device Owner)
+                   KidGuardAccessibilityService (Khoá nâng cao), BootReceiver,
+                   KidGuardAdminReceiver (chỉ để tắt Device Owner cũ)
 ```
 
 ## Chạy
@@ -41,17 +42,19 @@ Trên máy Android, ở màn hình chính hãy cấp các quyền được liệ
 App tự nhận diện hãng (Xiaomi, Oppo/Realme/OnePlus, Vivo/iQOO, Samsung, Huawei/Honor) để hiện thêm
 các mục riêng (Tự khởi động, Bật lên khi chạy nền) và hướng dẫn từng bước cho hãng đó.
 
-Tuỳ chọn khoá cứng (chặn cả thanh điều hướng) trên máy dành riêng cho trẻ — cần máy chưa đăng nhập tài khoản nào:
+**Khoá nâng cao** (tuỳ chọn, khuyên dùng): bật Trợ năng của KidGuard ngay trên máy, không cần máy tính
+(màn hình chính › Khoá nâng cao có hướng dẫn). Khi hết giờ: đóng thanh thông báo, chặn đa nhiệm / màn hình
+chính / app khác; suốt phiên: chặn mở trang cài đặt, buộc dừng, gỡ cài đặt KidGuard. Trên Android 13+, APK
+cài ngoài CH Play phải bật "Cho phép cài đặt hạn chế" trong Thông tin ứng dụng trước. Đưa lên CH Play cần
+khai báo mục đích dùng Accessibility API (kiểm soát của phụ huynh).
 
-```bash
-adb shell dpm set-device-owner com.pham.kidguard/.KidGuardAdminReceiver
-```
+Khoá cứng bằng Device Owner (adb) đã bỏ; máy nào đã bật trước đây vẫn tắt được trong màn Khoá nâng cao.
 
 ## Nền tảng
 
 | Nền tảng | Cách khoá | Build |
 |---|---|---|
-| Android | Foreground service đưa app lên khi hết giờ, kéo lại nếu bé thoát; tuỳ chọn Device Owner (khoá cứng) | `fvm flutter build apk --release --split-per-abi` |
+| Android | Foreground service + lớp che toàn màn hình khi hết giờ, kéo lại nếu bé thoát, dừng video đang phát; tuỳ chọn Khoá nâng cao (Trợ năng) | `fvm flutter build apk --release --split-per-abi` |
 | iOS 16+ | Screen Time API: extension `KidGuardMonitor` bật lá chắn chặn các app đã chọn khi hết giờ; `KidGuardShield` là giao diện lá chắn | `fvm flutter build ios` (cần ký số, xem dưới) |
 | macOS | Kiosk toàn màn hình (ẩn Dock/menu, chặn Cmd+Tab, Buộc thoát), không cho thoát app trong phiên, tự mở khi đăng nhập | `fvm flutter build macos` |
 | Windows | Cửa sổ toàn màn hình luôn trên cùng, chặn phím Windows/Alt+Tab/Alt+F4/Ctrl+Esc, không cho đóng trong phiên, tự chạy khi đăng nhập. Không chặn được Ctrl+Alt+Del | `flutter build windows` — **phải build trên máy Windows** |
