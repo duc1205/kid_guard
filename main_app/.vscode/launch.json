@@ -2,23 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Scan Price (debug)",
+      "name": "KidGuard (debug)",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main.dart",
-      "toolArgs": [
-        "--dart-define-from-file=.dart_defines.json"
-      ]
+      "program": "lib/main.dart"
     },
     {
-      "name": "Scan Price (release — mở từ Home)",
+      "name": "KidGuard (release)",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart",
-      "flutterMode": "release",
-      "toolArgs": [
-        "--dart-define-from-file=.dart_defines.json"
-      ]
+      "flutterMode": "release"
     }
   ]
 }

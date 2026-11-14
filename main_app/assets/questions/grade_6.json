@@ -1,0 +1,202 @@
+[
+  {
+    "id": "g6_toan_01",
+    "subject": "Toán",
+    "topic": "Ước chung lớn nhất",
+    "type": "academic",
+    "question": "Ước chung lớn nhất của 18 và 24 là bao nhiêu?",
+    "options": ["3", "12", "6", "72"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại cách tìm ƯCLN bằng cách phân tích các số ra thừa số nguyên tố (Toán 6)."
+  },
+  {
+    "id": "g6_toan_02",
+    "subject": "Toán",
+    "topic": "Phân số",
+    "type": "academic",
+    "question": "Kết quả của phép tính 2/3 + 1/4 là bao nhiêu?",
+    "options": ["3/7", "11/12", "3/12", "2/12"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại quy tắc quy đồng mẫu số rồi cộng các tử số trong chương Phân số (Toán 6)."
+  },
+  {
+    "id": "g6_toan_03",
+    "subject": "Toán",
+    "topic": "Số nguyên",
+    "type": "academic",
+    "question": "Kết quả của phép tính (-7) + 12 là bao nhiêu?",
+    "options": ["-19", "19", "-5", "5"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại quy tắc cộng hai số nguyên khác dấu trong chương Số nguyên (Toán 6)."
+  },
+  {
+    "id": "g6_nguvan_01",
+    "subject": "Ngữ văn",
+    "topic": "Truyền thuyết",
+    "type": "academic",
+    "question": "Văn bản \"Thánh Gióng\" thuộc thể loại nào?",
+    "options": ["Truyền thuyết", "Truyện cổ tích", "Truyện ngụ ngôn", "Truyện cười"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại đặc điểm của thể loại truyền thuyết qua các văn bản như Thánh Gióng, Sơn Tinh, Thủy Tinh (Ngữ văn 6)."
+  },
+  {
+    "id": "g6_nguvan_02",
+    "subject": "Ngữ văn",
+    "topic": "Biện pháp tu từ so sánh",
+    "type": "academic",
+    "question": "Câu thơ \"Mặt trời xuống biển như hòn lửa\" sử dụng biện pháp tu từ nào?",
+    "options": ["Nhân hóa", "So sánh", "Ẩn dụ", "Hoán dụ"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại biện pháp tu từ so sánh, chú ý các từ so sánh như \"như\", \"là\", \"tựa\" (Ngữ văn 6)."
+  },
+  {
+    "id": "g6_khtn_01",
+    "subject": "Khoa học tự nhiên",
+    "topic": "Tế bào",
+    "type": "academic",
+    "question": "Đơn vị cấu trúc và chức năng cơ bản của mọi cơ thể sống là gì?",
+    "options": ["Mô", "Cơ quan", "Tế bào", "Hệ cơ quan"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài Tế bào – đơn vị cơ sở của sự sống (Khoa học tự nhiên 6)."
+  },
+  {
+    "id": "g6_khtn_02",
+    "subject": "Khoa học tự nhiên",
+    "topic": "Lực",
+    "type": "academic",
+    "question": "Đơn vị đo lực trong hệ đơn vị đo lường chính thức là gì?",
+    "options": ["Kilôgam (kg)", "Mét (m)", "Jun (J)", "Niutơn (N)"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài Lực và biểu diễn lực, ghi nhớ đơn vị của lực là niutơn (N) (Khoa học tự nhiên 6)."
+  },
+  {
+    "id": "g6_lsdl_01",
+    "subject": "Lịch sử và Địa lí",
+    "topic": "Nhà nước Văn Lang",
+    "type": "academic",
+    "question": "Nhà nước đầu tiên của người Việt là nhà nước nào?",
+    "options": ["Âu Lạc", "Văn Lang", "Đại Việt", "Đại Cồ Việt"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài Nhà nước Văn Lang trong phần Lịch sử (Lịch sử và Địa lí 6)."
+  },
+  {
+    "id": "g6_lsdl_02",
+    "subject": "Lịch sử và Địa lí",
+    "topic": "Chuyển động tự quay của Trái Đất",
+    "type": "academic",
+    "question": "Trái Đất tự quay quanh trục một vòng hết khoảng bao lâu?",
+    "options": ["24 giờ", "12 giờ", "365 ngày", "30 ngày"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bài Chuyển động tự quay quanh trục của Trái Đất và hệ quả ngày đêm (Lịch sử và Địa lí 6)."
+  },
+  {
+    "id": "g6_gdcd_01",
+    "subject": "Giáo dục công dân",
+    "topic": "Tiết kiệm",
+    "type": "academic",
+    "question": "Hành vi nào sau đây thể hiện đức tính tiết kiệm?",
+    "options": ["Bật đèn cả ngày dù không dùng", "Mua thật nhiều đồ chơi dù không cần", "Tắt điện, khóa vòi nước khi không sử dụng", "Vứt bỏ đồ dùng học tập còn dùng được"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài Tiết kiệm: biết sử dụng hợp lí thời gian, tiền bạc, điện nước và đồ dùng (Giáo dục công dân 6)."
+  },
+  {
+    "id": "g6_tienganh_01",
+    "subject": "Tiếng Anh",
+    "topic": "Thì hiện tại đơn",
+    "type": "academic",
+    "question": "Chọn từ đúng để hoàn thành câu: \"She ___ to school every day.\"",
+    "options": ["go", "going", "gone", "goes"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại thì hiện tại đơn: với chủ ngữ ngôi thứ ba số ít (he, she, it), động từ thêm \"s\" hoặc \"es\" (Tiếng Anh 6)."
+  },
+  {
+    "id": "g6_tienganh_02",
+    "subject": "Tiếng Anh",
+    "topic": "There is / There are",
+    "type": "academic",
+    "question": "Chọn từ đúng để hoàn thành câu: \"There ___ two books on the desk.\"",
+    "options": ["is", "are", "am", "be"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại cấu trúc \"There is\" (dùng với danh từ số ít) và \"There are\" (dùng với danh từ số nhiều) (Tiếng Anh 6)."
+  },
+  {
+    "id": "g6_tinhoc_01",
+    "subject": "Tin học",
+    "topic": "Đơn vị đo dung lượng thông tin",
+    "type": "academic",
+    "question": "1 byte bằng bao nhiêu bit?",
+    "options": ["8 bit", "2 bit", "10 bit", "1024 bit"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bài Biểu diễn thông tin và các đơn vị đo dung lượng thông tin như bit, byte, KB (Tin học 6)."
+  },
+  {
+    "id": "g6_congnghe_01",
+    "subject": "Công nghệ",
+    "topic": "Thực phẩm và dinh dưỡng",
+    "type": "academic",
+    "question": "Nhóm thực phẩm nào sau đây giàu chất đạm (protein) nhất?",
+    "options": ["Gạo, ngô, khoai", "Rau xanh, trái cây", "Thịt, cá, trứng", "Dầu ăn, mỡ"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài Thực phẩm và dinh dưỡng, ghi nhớ các nhóm chất dinh dưỡng chính và thực phẩm chứa chúng (Công nghệ 6)."
+  },
+  {
+    "id": "g6_mo_01",
+    "subject": "Câu hỏi mở",
+    "topic": "Bắt nạt trên mạng",
+    "type": "open",
+    "question": "Em nhận được tin nhắn trêu chọc, đe dọa từ một tài khoản lạ trên mạng xã hội. Cách xử lý nào phù hợp nhất?",
+    "options": ["Nhắn lại để chửi mắng người đó", "Không trả lời, chụp lại bằng chứng và báo cho bố mẹ, thầy cô", "Xóa tin nhắn và giấu mọi người", "Chia sẻ tin nhắn lên mạng để mọi người cùng chê bai"],
+    "answerIndex": 1,
+    "suggestion": "Em hãy ghi nhớ cách ứng phó với bắt nạt trên mạng: không đáp trả, lưu bằng chứng và tìm sự giúp đỡ của người lớn tin cậy."
+  },
+  {
+    "id": "g6_mo_02",
+    "subject": "Câu hỏi mở",
+    "topic": "Bảo mật tài khoản",
+    "type": "open",
+    "question": "Một bạn cùng lớp xin mật khẩu tài khoản học trực tuyến của em để \"xem giúp\". Em nên làm gì?",
+    "options": ["Cho ngay vì là bạn cùng lớp", "Viết mật khẩu lên bảng cho tiện", "Đổi mật khẩu thành \"123456\" cho dễ nhớ rồi đưa bạn", "Lịch sự từ chối và giữ bí mật mật khẩu của mình"],
+    "answerIndex": 3,
+    "suggestion": "Em hãy nhớ: mật khẩu là thông tin cá nhân cần giữ bí mật, chỉ chia sẻ với bố mẹ khi cần thiết."
+  },
+  {
+    "id": "g6_mo_03",
+    "subject": "Câu hỏi mở",
+    "topic": "Dũng cảm nhận lỗi",
+    "type": "open",
+    "question": "Em vô tình làm hỏng hộp bút của bạn ngồi cạnh. Em nên làm gì?",
+    "options": ["Thành thật xin lỗi bạn và tìm cách sửa hoặc đền bù", "Im lặng để không ai biết", "Đổ lỗi cho bạn khác", "Nói rằng hộp bút đã hỏng từ trước"],
+    "answerIndex": 0,
+    "suggestion": "Em hãy rèn luyện đức tính trung thực và có trách nhiệm: khi mắc lỗi cần dũng cảm nhận lỗi và sửa chữa."
+  },
+  {
+    "id": "g6_xahoi_01",
+    "subject": "Kiến thức xã hội",
+    "topic": "Các dân tộc Việt Nam",
+    "type": "social",
+    "question": "Việt Nam có bao nhiêu dân tộc anh em?",
+    "options": ["45", "50", "54", "64"],
+    "answerIndex": 2,
+    "suggestion": "Em nên tìm hiểu thêm về cộng đồng 54 dân tộc anh em cùng sinh sống trên đất nước Việt Nam."
+  },
+  {
+    "id": "g6_xahoi_02",
+    "subject": "Kiến thức xã hội",
+    "topic": "Các châu lục",
+    "type": "social",
+    "question": "Châu lục nào có diện tích lớn nhất thế giới?",
+    "options": ["Châu Phi", "Châu Mỹ", "Châu Âu", "Châu Á"],
+    "answerIndex": 3,
+    "suggestion": "Em nên tìm hiểu lại về các châu lục trên Trái Đất; châu Á là châu lục rộng lớn nhất."
+  },
+  {
+    "id": "g6_xahoi_03",
+    "subject": "Kiến thức xã hội",
+    "topic": "Danh lam thắng cảnh Việt Nam",
+    "type": "social",
+    "question": "Vịnh Hạ Long nằm ở tỉnh nào của Việt Nam?",
+    "options": ["Hải Phòng", "Quảng Ninh", "Khánh Hòa", "Quảng Bình"],
+    "answerIndex": 1,
+    "suggestion": "Em nên tìm hiểu thêm về Vịnh Hạ Long ở tỉnh Quảng Ninh, một di sản thiên nhiên thế giới nổi tiếng của Việt Nam."
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "id": "g1_toan_01",
+    "subject": "Toán",
+    "topic": "Phép cộng trong phạm vi 10",
+    "type": "academic",
+    "question": "3 + 4 bằng bao nhiêu?",
+    "options": ["6", "7", "8", "5"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bảng cộng trong phạm vi 10 ở môn Toán lớp 1, luyện đếm thêm bằng que tính hoặc ngón tay."
+  },
+  {
+    "id": "g1_toan_02",
+    "subject": "Toán",
+    "topic": "Phép trừ trong phạm vi 10",
+    "type": "academic",
+    "question": "9 - 5 bằng bao nhiêu?",
+    "options": ["4", "3", "5", "14"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bảng trừ trong phạm vi 10, thử bớt dần que tính để tìm kết quả."
+  },
+  {
+    "id": "g1_toan_03",
+    "subject": "Toán",
+    "topic": "So sánh các số trong phạm vi 100",
+    "type": "academic",
+    "question": "Số nào lớn nhất trong các số sau?",
+    "options": ["45", "39", "50", "54"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại cách so sánh số có hai chữ số: so sánh chữ số hàng chục trước, rồi mới đến hàng đơn vị."
+  },
+  {
+    "id": "g1_toan_04",
+    "subject": "Toán",
+    "topic": "Nhận biết hình phẳng",
+    "type": "academic",
+    "question": "Hình nào có 3 cạnh?",
+    "options": ["Hình vuông", "Hình tròn", "Hình tam giác", "Hình chữ nhật"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài nhận biết hình vuông, hình tròn, hình tam giác, hình chữ nhật và đếm số cạnh của mỗi hình."
+  },
+  {
+    "id": "g1_toan_05",
+    "subject": "Toán",
+    "topic": "Các số trong phạm vi 100",
+    "type": "academic",
+    "question": "Số liền sau của số 19 là số nào?",
+    "options": ["18", "20", "21", "10"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại cách đếm và tìm số liền trước, số liền sau trong phạm vi 100. Số liền sau thì lớn hơn 1 đơn vị."
+  },
+  {
+    "id": "g1_tiengviet_01",
+    "subject": "Tiếng Việt",
+    "topic": "Chính tả ng/ngh",
+    "type": "academic",
+    "question": "Từ nào viết đúng chính tả?",
+    "options": ["ngỉ ngơi", "nghỉ nghơi", "nghỉ ngơi", "ngỉ nghơi"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại quy tắc chính tả: viết \"ngh\" khi đứng trước i, e, ê; viết \"ng\" khi đứng trước các vần còn lại."
+  },
+  {
+    "id": "g1_tiengviet_02",
+    "subject": "Tiếng Việt",
+    "topic": "Dấu thanh",
+    "type": "academic",
+    "question": "Tiếng \"mẹ\" có dấu thanh gì?",
+    "options": ["Dấu sắc", "Dấu huyền", "Dấu hỏi", "Dấu nặng"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại các dấu thanh trong Tiếng Việt lớp 1: dấu sắc, huyền, hỏi, ngã, nặng và đọc to từng tiếng."
+  },
+  {
+    "id": "g1_tiengviet_03",
+    "subject": "Tiếng Việt",
+    "topic": "Vần oa",
+    "type": "academic",
+    "question": "Tiếng \"hoa\" có vần gì?",
+    "options": ["oa", "ao", "ho", "a"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại cách tách tiếng thành âm đầu và vần, luyện đọc các vần oa, oe ở môn Tiếng Việt lớp 1."
+  },
+  {
+    "id": "g1_tiengviet_04",
+    "subject": "Tiếng Việt",
+    "topic": "Chính tả c/k",
+    "type": "academic",
+    "question": "Chọn chữ đúng để điền vào chỗ trống: \"...on cá\"",
+    "options": ["k", "c", "q", "gh"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại quy tắc chính tả: viết \"k\" khi đứng trước i, e, ê; viết \"c\" khi đứng trước các âm còn lại như a, o, ô, u."
+  },
+  {
+    "id": "g1_daoduc_01",
+    "subject": "Đạo đức",
+    "topic": "Lễ phép, biết ơn",
+    "type": "academic",
+    "question": "Khi được người khác cho quà, em nên nói gì?",
+    "options": ["Không nói gì", "Cho thêm nữa đi", "Con cảm ơn ạ", "Con chào ạ"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài học về lời nói lễ phép ở môn Đạo đức lớp 1: biết nói lời cảm ơn khi được giúp đỡ hoặc nhận quà."
+  },
+  {
+    "id": "g1_daoduc_02",
+    "subject": "Đạo đức",
+    "topic": "Kính trọng thầy cô",
+    "type": "academic",
+    "question": "Khi gặp thầy cô giáo ở trường, em nên làm gì?",
+    "options": ["Lễ phép chào thầy cô", "Quay mặt đi chỗ khác", "Chạy thật nhanh qua", "Gọi to tên thầy cô"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bài học về lễ phép với thầy cô ở môn Đạo đức lớp 1: khoanh tay, cúi đầu chào khi gặp thầy cô."
+  },
+  {
+    "id": "g1_tnxh_01",
+    "subject": "Tự nhiên và Xã hội",
+    "topic": "Các giác quan",
+    "type": "academic",
+    "question": "Bộ phận nào giúp em nhìn thấy mọi vật xung quanh?",
+    "options": ["Tai", "Mũi", "Mắt", "Lưỡi"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài các giác quan ở môn Tự nhiên và Xã hội lớp 1: mắt để nhìn, tai để nghe, mũi để ngửi, lưỡi để nếm."
+  },
+  {
+    "id": "g1_tnxh_02",
+    "subject": "Tự nhiên và Xã hội",
+    "topic": "Động vật xung quanh em",
+    "type": "academic",
+    "question": "Con vật nào sống dưới nước?",
+    "options": ["Con mèo", "Con gà", "Con chó", "Con cá"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài các con vật xung quanh em ở môn Tự nhiên và Xã hội lớp 1, chú ý nơi sống của từng con vật."
+  },
+  {
+    "id": "g1_tnxh_03",
+    "subject": "Tự nhiên và Xã hội",
+    "topic": "Giữ vệ sinh cơ thể",
+    "type": "academic",
+    "question": "Em nên đánh răng vào lúc nào?",
+    "options": ["Chỉ khi răng bị đau", "Buổi sáng sau khi ngủ dậy và buổi tối trước khi đi ngủ", "Một tuần một lần", "Không cần đánh răng"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài giữ vệ sinh cơ thể ở môn Tự nhiên và Xã hội lớp 1, nhớ đánh răng ít nhất 2 lần mỗi ngày."
+  },
+  {
+    "id": "g1_mithuat_01",
+    "subject": "Mĩ thuật",
+    "topic": "Màu sắc",
+    "type": "academic",
+    "question": "Pha màu vàng với màu xanh lam, em được màu gì?",
+    "options": ["Màu đỏ", "Màu tím", "Màu cam", "Màu xanh lá cây"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài màu sắc ở môn Mĩ thuật lớp 1, thử pha các màu đỏ, vàng, xanh lam với nhau để xem màu mới."
+  },
+  {
+    "id": "g1_mo_01",
+    "subject": "Câu hỏi mở",
+    "topic": "An toàn với người lạ",
+    "type": "open",
+    "question": "Khi có người lạ cho kẹo và rủ em đi chơi, em nên làm gì?",
+    "options": ["Nhận kẹo và đi theo", "Từ chối và báo ngay cho bố mẹ hoặc thầy cô", "Nhận kẹo nhưng không đi", "Rủ thêm bạn cùng đi"],
+    "answerIndex": 1,
+    "suggestion": "Con hãy nhớ: không nhận quà và không đi theo người lạ, luôn báo ngay cho bố mẹ hoặc thầy cô khi có người lạ rủ đi."
+  },
+  {
+    "id": "g1_mo_02",
+    "subject": "Câu hỏi mở",
+    "topic": "Giúp đỡ bạn bè",
+    "type": "open",
+    "question": "Trong giờ ra chơi, em thấy một bạn bị ngã. Em nên làm gì?",
+    "options": ["Cười bạn", "Đi chỗ khác chơi", "Đứng nhìn", "Đỡ bạn dậy và báo cho thầy cô"],
+    "answerIndex": 3,
+    "suggestion": "Con hãy nhớ quan tâm, giúp đỡ bạn bè khi bạn gặp khó khăn, và báo người lớn khi bạn bị đau."
+  },
+  {
+    "id": "g1_mo_03",
+    "subject": "Câu hỏi mở",
+    "topic": "Trung thực",
+    "type": "open",
+    "question": "Em nhặt được hộp bút của bạn trong lớp. Em nên làm gì?",
+    "options": ["Trả lại cho bạn hoặc nhờ cô giáo trả lại", "Giữ lại để dùng", "Vứt đi", "Giấu vào cặp của bạn khác"],
+    "answerIndex": 0,
+    "suggestion": "Con hãy nhớ đức tính trung thực: nhặt được đồ của người khác thì trả lại cho người mất."
+  },
+  {
+    "id": "g1_xahoi_01",
+    "subject": "Kiến thức xã hội",
+    "topic": "An toàn giao thông",
+    "type": "social",
+    "question": "Đèn giao thông màu nào báo hiệu mọi người phải dừng lại?",
+    "options": ["Màu xanh", "Màu vàng", "Màu đỏ", "Màu trắng"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại ý nghĩa đèn giao thông: đèn đỏ dừng lại, đèn vàng đi chậm lại, đèn xanh được đi."
+  },
+  {
+    "id": "g1_xahoi_02",
+    "subject": "Kiến thức xã hội",
+    "topic": "Đất nước Việt Nam",
+    "type": "social",
+    "question": "Thủ đô của Việt Nam là thành phố nào?",
+    "options": ["Thành phố Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Huế"],
+    "answerIndex": 1,
+    "suggestion": "Em hãy nhớ Thủ đô của nước Việt Nam là Hà Nội, có thể nhờ bố mẹ kể thêm về Hà Nội nhé."
+  },
+  {
+    "id": "g1_xahoi_03",
+    "subject": "Kiến thức xã hội",
+    "topic": "Ngày lễ truyền thống",
+    "type": "social",
+    "question": "Tết Trung thu diễn ra vào ngày nào?",
+    "options": ["Mùng 1 tháng Giêng âm lịch", "Ngày 1 tháng 6", "Ngày 2 tháng 9", "Rằm tháng Tám âm lịch"],
+    "answerIndex": 3,
+    "suggestion": "Em hãy nhớ Tết Trung thu là ngày rằm (15) tháng Tám âm lịch, ngày các bạn nhỏ rước đèn, phá cỗ."
+  }
+]

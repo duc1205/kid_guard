@@ -1,0 +1,212 @@
+[
+  {
+    "id": "g2_toan_01",
+    "subject": "Toán",
+    "topic": "Phép cộng có nhớ trong phạm vi 100",
+    "type": "academic",
+    "question": "38 + 25 bằng bao nhiêu?",
+    "options": ["53", "63", "513", "73"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại phép cộng có nhớ trong phạm vi 100 ở môn Toán lớp 2: cộng hàng đơn vị trước, nhớ 1 sang hàng chục."
+  },
+  {
+    "id": "g2_toan_02",
+    "subject": "Toán",
+    "topic": "Phép trừ có nhớ trong phạm vi 100",
+    "type": "academic",
+    "question": "72 - 36 bằng bao nhiêu?",
+    "options": ["46", "44", "36", "34"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại phép trừ có nhớ trong phạm vi 100: đặt tính thẳng cột, trừ hàng đơn vị trước và nhớ khi số bị trừ nhỏ hơn."
+  },
+  {
+    "id": "g2_toan_03",
+    "subject": "Toán",
+    "topic": "Bảng nhân 5",
+    "type": "academic",
+    "question": "5 × 4 bằng bao nhiêu?",
+    "options": ["9", "20", "25", "15"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bảng nhân 2 và bảng nhân 5 ở môn Toán lớp 2, đọc thuộc lòng mỗi ngày."
+  },
+  {
+    "id": "g2_toan_04",
+    "subject": "Toán",
+    "topic": "Đơn vị đo độ dài mét",
+    "type": "academic",
+    "question": "1 m bằng bao nhiêu xăng-ti-mét?",
+    "options": ["10 cm", "1000 cm", "100 cm", "50 cm"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài các đơn vị đo độ dài: 1 m = 10 dm = 100 cm, có thể dùng thước dây để đo thử."
+  },
+  {
+    "id": "g2_toan_05",
+    "subject": "Toán",
+    "topic": "Các số trong phạm vi 1000",
+    "type": "academic",
+    "question": "Số gồm 3 trăm, 0 chục và 5 đơn vị viết là:",
+    "options": ["350", "530", "35", "305"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại cách đọc, viết số có ba chữ số theo hàng trăm, hàng chục, hàng đơn vị ở môn Toán lớp 2."
+  },
+  {
+    "id": "g2_tiengviet_01",
+    "subject": "Tiếng Việt",
+    "topic": "Từ chỉ hoạt động",
+    "type": "academic",
+    "question": "Từ nào là từ chỉ hoạt động?",
+    "options": ["cái bàn", "màu xanh", "chạy", "đẹp"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài từ chỉ sự vật, từ chỉ hoạt động và từ chỉ đặc điểm ở môn Tiếng Việt lớp 2."
+  },
+  {
+    "id": "g2_tiengviet_02",
+    "subject": "Tiếng Việt",
+    "topic": "Câu giới thiệu",
+    "type": "academic",
+    "question": "Câu \"Bạn Lan là học sinh lớp 2.\" là kiểu câu gì?",
+    "options": ["Câu giới thiệu", "Câu nêu hoạt động", "Câu nêu đặc điểm", "Câu hỏi"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại các kiểu câu ở môn Tiếng Việt lớp 2: câu giới thiệu, câu nêu hoạt động, câu nêu đặc điểm."
+  },
+  {
+    "id": "g2_tiengviet_03",
+    "subject": "Tiếng Việt",
+    "topic": "Từ có nghĩa trái ngược",
+    "type": "academic",
+    "question": "Từ nào có nghĩa trái ngược với từ \"cao\"?",
+    "options": ["to", "dài", "lớn", "thấp"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài từ có nghĩa trái ngược nhau ở môn Tiếng Việt lớp 2, ví dụ: cao - thấp, nóng - lạnh."
+  },
+  {
+    "id": "g2_tiengviet_04",
+    "subject": "Tiếng Việt",
+    "topic": "Dấu câu",
+    "type": "academic",
+    "question": "Cuối câu \"Em tên là gì\" cần đặt dấu câu nào?",
+    "options": ["Dấu chấm", "Dấu chấm hỏi", "Dấu phẩy", "Dấu chấm than"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại cách dùng dấu chấm, dấu chấm hỏi, dấu chấm than ở môn Tiếng Việt lớp 2. Câu dùng để hỏi thì kết thúc bằng dấu chấm hỏi."
+  },
+  {
+    "id": "g2_daoduc_01",
+    "subject": "Đạo đức",
+    "topic": "Nhận lỗi và sửa lỗi",
+    "type": "academic",
+    "question": "Em lỡ tay làm vỡ chiếc cốc của mẹ. Em nên làm gì?",
+    "options": ["Nhận lỗi và xin lỗi mẹ", "Giấu mảnh vỡ đi", "Đổ lỗi cho em bé", "Im lặng không nói"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bài nhận lỗi và sửa lỗi ở môn Đạo đức lớp 2: dũng cảm nhận lỗi và cố gắng sửa lỗi."
+  },
+  {
+    "id": "g2_daoduc_02",
+    "subject": "Đạo đức",
+    "topic": "Quý trọng thời gian",
+    "type": "academic",
+    "question": "Việc làm nào thể hiện em biết quý trọng thời gian?",
+    "options": ["Xem ti vi đến khuya", "Để bài tập đến sáng mai mới làm", "Lập thời gian biểu và làm theo", "Ngủ dậy muộn"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài quý trọng thời gian ở môn Đạo đức lớp 2, thử tự lập một thời gian biểu cho mỗi ngày."
+  },
+  {
+    "id": "g2_tnxh_01",
+    "subject": "Tự nhiên và Xã hội",
+    "topic": "Cơ quan vận động",
+    "type": "academic",
+    "question": "Cơ quan vận động của cơ thể gồm những bộ phận nào?",
+    "options": ["Tim và mạch máu", "Xương và cơ", "Mũi và phổi", "Dạ dày và ruột"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài cơ quan vận động ở môn Tự nhiên và Xã hội lớp 2: xương và cơ giúp cơ thể cử động."
+  },
+  {
+    "id": "g2_tnxh_02",
+    "subject": "Tự nhiên và Xã hội",
+    "topic": "Môi trường sống của thực vật",
+    "type": "academic",
+    "question": "Cây sen sống ở đâu?",
+    "options": ["Trên cạn", "Trong sa mạc", "Trên núi đá", "Dưới nước"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài môi trường sống của thực vật và động vật ở môn Tự nhiên và Xã hội lớp 2."
+  },
+  {
+    "id": "g2_tnxh_03",
+    "subject": "Tự nhiên và Xã hội",
+    "topic": "Phòng tránh ngộ độc khi ở nhà",
+    "type": "academic",
+    "question": "Để phòng tránh ngộ độc thức ăn, em nên làm gì?",
+    "options": ["Ăn thức ăn đã bị ôi thiu", "Uống nước chưa đun sôi", "Ăn chín, uống sôi, rửa tay trước khi ăn", "Ăn quả chưa rửa sạch"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài phòng tránh ngộ độc ở môn Tự nhiên và Xã hội lớp 2, nhớ ăn chín, uống sôi và rửa tay sạch sẽ."
+  },
+  {
+    "id": "g2_mithuat_01",
+    "subject": "Mĩ thuật",
+    "topic": "Màu nóng, màu lạnh",
+    "type": "academic",
+    "question": "Màu nào sau đây là màu nóng?",
+    "options": ["Màu đỏ", "Màu xanh lam", "Màu xanh lá cây", "Màu tím"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bài màu nóng, màu lạnh ở môn Mĩ thuật: màu đỏ, cam, vàng là màu nóng; màu xanh lam, xanh lá là màu lạnh."
+  },
+  {
+    "id": "g2_mo_01",
+    "subject": "Câu hỏi mở",
+    "topic": "Chăm chỉ học tập",
+    "type": "open",
+    "question": "Bạn rủ em trốn học để đi chơi điện tử. Em nên làm gì?",
+    "options": ["Đi theo bạn", "Trốn học một buổi cũng không sao", "Từ chối và khuyên bạn đi học", "Rủ thêm nhiều bạn khác đi cùng"],
+    "answerIndex": 2,
+    "suggestion": "Con hãy nhớ đi học đầy đủ là nhiệm vụ của học sinh, biết từ chối lời rủ rê không tốt và khuyên bạn cùng làm điều đúng."
+  },
+  {
+    "id": "g2_mo_02",
+    "subject": "Câu hỏi mở",
+    "topic": "Tiết kiệm nước",
+    "type": "open",
+    "question": "Em thấy vòi nước đang chảy mà không có ai dùng. Em nên làm gì?",
+    "options": ["Mặc kệ", "Khóa vòi nước lại", "Mở to hơn để chơi", "Chờ người khác khóa"],
+    "answerIndex": 1,
+    "suggestion": "Con hãy nhớ tiết kiệm nước: thấy vòi nước chảy lãng phí thì khóa lại ngay nhé."
+  },
+  {
+    "id": "g2_mo_03",
+    "subject": "Câu hỏi mở",
+    "topic": "Khi bị lạc",
+    "type": "open",
+    "question": "Em bị lạc bố mẹ trong siêu thị. Em nên làm gì?",
+    "options": ["Chạy ra ngoài đường tìm bố mẹ", "Đi theo một người lạ", "Ngồi khóc và không nói gì", "Đứng yên và nhờ nhân viên siêu thị hoặc bảo vệ giúp đỡ"],
+    "answerIndex": 3,
+    "suggestion": "Con hãy nhớ khi bị lạc thì đứng yên một chỗ, nhờ nhân viên hoặc bảo vệ giúp, và học thuộc số điện thoại của bố mẹ."
+  },
+  {
+    "id": "g2_xahoi_01",
+    "subject": "Kiến thức xã hội",
+    "topic": "An toàn giao thông",
+    "type": "social",
+    "question": "Khi đi bộ qua đường, em nên đi ở đâu?",
+    "options": ["Trên vạch kẻ đường dành cho người đi bộ", "Bất cứ chỗ nào trên đường", "Chạy thật nhanh giữa các xe", "Trèo qua dải phân cách"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại cách đi bộ an toàn: qua đường ở vạch kẻ dành cho người đi bộ, quan sát kĩ và nắm tay người lớn."
+  },
+  {
+    "id": "g2_xahoi_02",
+    "subject": "Kiến thức xã hội",
+    "topic": "Đất nước Việt Nam",
+    "type": "social",
+    "question": "Trên bản đồ, đất liền nước Việt Nam có hình giống chữ cái nào?",
+    "options": ["Chữ O", "Chữ L", "Chữ S", "Chữ V"],
+    "answerIndex": 2,
+    "suggestion": "Em hãy cùng bố mẹ xem bản đồ Việt Nam để thấy đất nước ta có hình chữ S."
+  },
+  {
+    "id": "g2_xahoi_03",
+    "subject": "Kiến thức xã hội",
+    "topic": "Ngày lễ",
+    "type": "social",
+    "question": "Ngày Quốc tế Thiếu nhi là ngày nào?",
+    "options": ["Ngày 8 tháng 3", "Ngày 1 tháng 6", "Ngày 20 tháng 11", "Ngày 2 tháng 9"],
+    "answerIndex": 1,
+    "suggestion": "Em hãy nhớ ngày 1 tháng 6 là Ngày Quốc tế Thiếu nhi, ngày hội của tất cả các bạn nhỏ."
+  }
+]

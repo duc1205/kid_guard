@@ -1,0 +1,202 @@
+[
+  {
+    "id": "g8_toan_01",
+    "subject": "Toán",
+    "topic": "Hằng đẳng thức đáng nhớ",
+    "type": "academic",
+    "question": "Khai triển biểu thức (x + 3)² ta được kết quả nào?",
+    "options": ["x² + 9", "x² + 3x + 9", "x² + 6x + 9", "x² + 6x + 6"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại hằng đẳng thức bình phương của một tổng: (a + b)² = a² + 2ab + b² (Toán 8)."
+  },
+  {
+    "id": "g8_toan_02",
+    "subject": "Toán",
+    "topic": "Định lí Pythagore",
+    "type": "academic",
+    "question": "Một tam giác vuông có hai cạnh góc vuông dài 6 cm và 8 cm. Cạnh huyền dài bao nhiêu?",
+    "options": ["10 cm", "14 cm", "12 cm", "100 cm"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại định lí Pythagore: bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông (Toán 8)."
+  },
+  {
+    "id": "g8_toan_03",
+    "subject": "Toán",
+    "topic": "Phương trình bậc nhất một ẩn",
+    "type": "academic",
+    "question": "Nghiệm của phương trình 2x − 5 = 7 là gì?",
+    "options": ["x = 1", "x = -6", "x = 12", "x = 6"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại cách giải phương trình bậc nhất một ẩn bằng quy tắc chuyển vế và quy tắc nhân (Toán 8)."
+  },
+  {
+    "id": "g8_nguvan_01",
+    "subject": "Ngữ văn",
+    "topic": "Thơ thất ngôn bát cú Đường luật",
+    "type": "academic",
+    "question": "Một bài thơ thất ngôn bát cú Đường luật có bao nhiêu câu, mỗi câu bao nhiêu chữ?",
+    "options": ["4 câu, mỗi câu 7 chữ", "8 câu, mỗi câu 7 chữ", "8 câu, mỗi câu 5 chữ", "7 câu, mỗi câu 8 chữ"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại đặc điểm thể thơ thất ngôn bát cú Đường luật: \"thất ngôn\" là bảy chữ, \"bát cú\" là tám câu (Ngữ văn 8)."
+  },
+  {
+    "id": "g8_nguvan_02",
+    "subject": "Ngữ văn",
+    "topic": "Từ tượng hình, từ tượng thanh",
+    "type": "academic",
+    "question": "Từ nào sau đây là từ tượng thanh?",
+    "options": ["lom khom", "lênh khênh", "róc rách", "móm mém"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài Từ tượng hình và từ tượng thanh: từ tượng thanh mô phỏng âm thanh, từ tượng hình gợi tả hình ảnh, dáng vẻ (Ngữ văn 8)."
+  },
+  {
+    "id": "g8_khtn_01",
+    "subject": "Khoa học tự nhiên",
+    "topic": "Acid",
+    "type": "academic",
+    "question": "Dung dịch acid làm giấy quỳ tím chuyển sang màu gì?",
+    "options": ["Xanh", "Đỏ", "Vàng", "Không đổi màu"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài Acid và cách nhận biết acid bằng giấy quỳ tím (Khoa học tự nhiên 8)."
+  },
+  {
+    "id": "g8_khtn_02",
+    "subject": "Khoa học tự nhiên",
+    "topic": "Khối lượng riêng",
+    "type": "academic",
+    "question": "Công thức tính khối lượng riêng D của một chất (m là khối lượng, V là thể tích) là gì?",
+    "options": ["D = m · V", "D = V / m", "D = m + V", "D = m / V"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài Khối lượng riêng: khối lượng riêng bằng khối lượng chia cho thể tích, đơn vị kg/m³ (Khoa học tự nhiên 8)."
+  },
+  {
+    "id": "g8_lsdl_01",
+    "subject": "Lịch sử và Địa lí",
+    "topic": "Pháp xâm lược Việt Nam",
+    "type": "academic",
+    "question": "Thực dân Pháp nổ súng mở đầu cuộc xâm lược Việt Nam tại Đà Nẵng vào năm nào?",
+    "options": ["1858", "1862", "1884", "1945"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bài Cuộc kháng chiến chống thực dân Pháp xâm lược từ năm 1858 (Lịch sử và Địa lí 8)."
+  },
+  {
+    "id": "g8_lsdl_02",
+    "subject": "Lịch sử và Địa lí",
+    "topic": "Thổ nhưỡng Việt Nam",
+    "type": "academic",
+    "question": "Nhóm đất nào chiếm diện tích lớn nhất ở nước ta?",
+    "options": ["Đất phù sa", "Đất mặn", "Đất feralit", "Đất mùn núi cao"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài Thổ nhưỡng Việt Nam, đặc điểm và sự phân bố của nhóm đất feralit ở vùng đồi núi (Lịch sử và Địa lí 8)."
+  },
+  {
+    "id": "g8_gdcd_01",
+    "subject": "Giáo dục công dân",
+    "topic": "Phòng ngừa tai nạn cháy, nổ",
+    "type": "academic",
+    "question": "Khi phát hiện đám cháy, em cần gọi số điện thoại khẩn cấp nào để báo cho lực lượng cứu hỏa?",
+    "options": ["113", "115", "111", "114"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài Phòng ngừa tai nạn vũ khí, cháy, nổ và ghi nhớ các số khẩn cấp: 113 (công an), 114 (cứu hỏa), 115 (cấp cứu) (Giáo dục công dân 8)."
+  },
+  {
+    "id": "g8_tienganh_01",
+    "subject": "Tiếng Anh",
+    "topic": "So sánh hơn",
+    "type": "academic",
+    "question": "Chọn đáp án đúng để hoàn thành câu: \"This book is ___ than that one.\"",
+    "options": ["more interesting", "interestinger", "most interesting", "the more interesting"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại cấu trúc so sánh hơn với tính từ dài: more + tính từ + than (Tiếng Anh 8)."
+  },
+  {
+    "id": "g8_tienganh_02",
+    "subject": "Tiếng Anh",
+    "topic": "Động từ chỉ sự yêu thích + V-ing",
+    "type": "academic",
+    "question": "Chọn đáp án đúng để hoàn thành câu: \"I enjoy ___ badminton with my friends.\"",
+    "options": ["play", "playing", "to playing", "played"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại các động từ chỉ sự yêu thích như enjoy, love, like theo sau bởi danh động từ V-ing (Tiếng Anh 8)."
+  },
+  {
+    "id": "g8_tinhoc_01",
+    "subject": "Tin học",
+    "topic": "Cấu trúc rẽ nhánh",
+    "type": "academic",
+    "question": "Trong lập trình, cấu trúc \"nếu ... thì ...\" được gọi là cấu trúc gì?",
+    "options": ["Cấu trúc tuần tự", "Cấu trúc lặp", "Cấu trúc rẽ nhánh", "Cấu trúc dữ liệu"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài các cấu trúc điều khiển cơ bản: tuần tự, rẽ nhánh và lặp (Tin học 8)."
+  },
+  {
+    "id": "g8_congnghe_01",
+    "subject": "Công nghệ",
+    "topic": "Hình chiếu vuông góc",
+    "type": "academic",
+    "question": "Hình chiếu đứng của một vật thể có hướng chiếu như thế nào?",
+    "options": ["Từ trên xuống", "Từ trái sang", "Từ dưới lên", "Từ trước tới"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài Hình chiếu vuông góc: hình chiếu đứng chiếu từ trước tới, hình chiếu bằng từ trên xuống, hình chiếu cạnh từ trái sang (Công nghệ 8)."
+  },
+  {
+    "id": "g8_mo_01",
+    "subject": "Câu hỏi mở",
+    "topic": "Phòng tránh lừa đảo trực tuyến",
+    "type": "open",
+    "question": "Em nhận được tin nhắn báo \"trúng thưởng điện thoại\" và yêu cầu gửi mã OTP vừa nhận để nhận quà. Em nên làm gì?",
+    "options": ["Gửi mã OTP ngay để nhận quà", "Không gửi mã, không bấm vào đường link và báo cho bố mẹ", "Gửi mã cho bạn bè để họ nhận giúp", "Bấm vào đường link để xem thử"],
+    "answerIndex": 1,
+    "suggestion": "Em hãy ghi nhớ: không bao giờ cung cấp mã OTP, mật khẩu cho bất kì ai; tin nhắn trúng thưởng bất ngờ thường là lừa đảo."
+  },
+  {
+    "id": "g8_mo_02",
+    "subject": "Câu hỏi mở",
+    "topic": "Ứng xử văn minh trên mạng",
+    "type": "open",
+    "question": "Trong nhóm chat của lớp, một số bạn đăng ảnh chế để chê bai ngoại hình của một bạn khác. Em nên làm gì?",
+    "options": ["Không hùa theo, góp ý để các bạn dừng lại và báo thầy cô nếu việc đó tiếp diễn", "Thả biểu tượng cười để hòa đồng", "Chia sẻ ảnh sang nhóm khác", "Viết thêm bình luận chê bai"],
+    "answerIndex": 0,
+    "suggestion": "Em hãy ứng xử văn minh trên không gian mạng: tôn trọng người khác, không tham gia và biết lên tiếng trước hành vi bắt nạt."
+  },
+  {
+    "id": "g8_mo_03",
+    "subject": "Câu hỏi mở",
+    "topic": "Làm việc nhóm",
+    "type": "open",
+    "question": "Khi làm bài tập nhóm, có một bạn không chịu làm phần việc được giao. Cách xử lý nào phù hợp nhất?",
+    "options": ["Bỏ tên bạn ra khỏi bài mà không nói gì", "Mắng bạn trước cả lớp", "Trao đổi thẳng thắn, tìm hiểu lí do và cùng phân công lại hợp lí", "Một mình làm hết rồi than phiền với mọi người"],
+    "answerIndex": 2,
+    "suggestion": "Em hãy rèn luyện kĩ năng giao tiếp và hợp tác: khi nhóm gặp vấn đề, cần trao đổi tôn trọng để cùng tìm giải pháp."
+  },
+  {
+    "id": "g8_xahoi_01",
+    "subject": "Kiến thức xã hội",
+    "topic": "Di sản thế giới tại Việt Nam",
+    "type": "social",
+    "question": "Di sản nào của Việt Nam được UNESCO công nhận là Di sản thiên nhiên thế giới đầu tiên (năm 1994)?",
+    "options": ["Phong Nha – Kẻ Bàng", "Quần thể danh thắng Tràng An", "Phố cổ Hội An", "Vịnh Hạ Long"],
+    "answerIndex": 3,
+    "suggestion": "Em nên tìm hiểu thêm về các di sản thế giới của Việt Nam; Vịnh Hạ Long là di sản thiên nhiên thế giới đầu tiên, được công nhận năm 1994."
+  },
+  {
+    "id": "g8_xahoi_02",
+    "subject": "Kiến thức xã hội",
+    "topic": "Địa lí thế giới",
+    "type": "social",
+    "question": "Kênh đào Xuy-ê (Suez) nối liền Địa Trung Hải với biển nào?",
+    "options": ["Biển Đen", "Biển Đỏ", "Biển Ca-ri-bê", "Biển Bắc"],
+    "answerIndex": 1,
+    "suggestion": "Em nên tìm hiểu thêm về kênh đào Xuy-ê ở Ai Cập, tuyến đường thủy nối Địa Trung Hải với Biển Đỏ."
+  },
+  {
+    "id": "g8_xahoi_03",
+    "subject": "Kiến thức xã hội",
+    "topic": "Thể thao thế giới",
+    "type": "social",
+    "question": "Thế vận hội Olympic mùa hè thường được tổ chức bao nhiêu năm một lần?",
+    "options": ["4 năm", "2 năm", "3 năm", "5 năm"],
+    "answerIndex": 0,
+    "suggestion": "Em nên tìm hiểu thêm về Thế vận hội Olympic, sự kiện thể thao lớn nhất thế giới được tổ chức 4 năm một lần."
+  }
+]

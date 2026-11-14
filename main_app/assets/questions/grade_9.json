@@ -1,0 +1,202 @@
+[
+  {
+    "id": "g9_toan_01",
+    "subject": "Toán",
+    "topic": "Căn bậc hai",
+    "type": "academic",
+    "question": "Căn bậc hai số học của 81 là số nào?",
+    "options": ["-9", "±9", "9", "40,5"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại khái niệm căn bậc hai và căn bậc hai số học (Toán 9, chương Căn bậc hai và căn bậc ba)."
+  },
+  {
+    "id": "g9_toan_02",
+    "subject": "Toán",
+    "topic": "Phương trình bậc hai một ẩn",
+    "type": "academic",
+    "question": "Phương trình x² − 5x + 6 = 0 có các nghiệm là:",
+    "options": ["x = 2 và x = 3", "x = −2 và x = −3", "x = 1 và x = 6", "x = −1 và x = 6"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại công thức nghiệm và hệ thức Vi-ét của phương trình bậc hai (Toán 9, chương Phương trình bậc hai một ẩn)."
+  },
+  {
+    "id": "g9_toan_03",
+    "subject": "Toán",
+    "topic": "Tỉ số lượng giác của góc nhọn",
+    "type": "academic",
+    "question": "Giá trị của sin 30° bằng bao nhiêu?",
+    "options": ["√3/2", "√2/2", "1", "1/2"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bảng tỉ số lượng giác của các góc đặc biệt 30°, 45°, 60° (Toán 9, chương Hệ thức lượng trong tam giác vuông)."
+  },
+  {
+    "id": "g9_nguvan_01",
+    "subject": "Ngữ văn",
+    "topic": "Truyện thơ Nôm",
+    "type": "academic",
+    "question": "Tác giả của \"Truyện Kiều\" là ai?",
+    "options": ["Nguyễn Trãi", "Nguyễn Du", "Hồ Xuân Hương", "Nguyễn Đình Chiểu"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài về Nguyễn Du và truyện thơ Nôm \"Truyện Kiều\" (Ngữ văn 9)."
+  },
+  {
+    "id": "g9_nguvan_02",
+    "subject": "Ngữ văn",
+    "topic": "Biện pháp tu từ",
+    "type": "academic",
+    "question": "Câu thơ \"Mặt trời xuống biển như hòn lửa\" (Huy Cận) sử dụng biện pháp tu từ chủ yếu nào?",
+    "options": ["Hoán dụ", "Điệp ngữ", "So sánh", "Nói giảm nói tránh"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại các biện pháp tu từ, đặc biệt là dấu hiệu nhận biết phép so sánh (từ \"như\", \"là\"...) trong phần Tiếng Việt."
+  },
+  {
+    "id": "g9_tienganh_01",
+    "subject": "Tiếng Anh",
+    "topic": "Câu điều kiện loại 2",
+    "type": "academic",
+    "question": "Choose the correct answer: \"If I ___ you, I would study harder.\"",
+    "options": ["am", "were", "will be", "have been"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại cấu trúc câu điều kiện loại 2: If + S + V (quá khứ, \"were\" với mọi ngôi), S + would + V."
+  },
+  {
+    "id": "g9_tienganh_02",
+    "subject": "Tiếng Anh",
+    "topic": "Câu ước với wish",
+    "type": "academic",
+    "question": "Choose the correct answer: \"I wish I ___ more free time now.\"",
+    "options": ["have", "will have", "having", "had"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại cấu trúc câu ước ở hiện tại: S + wish + S + V (quá khứ đơn)."
+  },
+  {
+    "id": "g9_khtn_01",
+    "subject": "KHTN",
+    "topic": "Định luật Ohm",
+    "type": "academic",
+    "question": "Một điện trở được mắc vào hiệu điện thế 12 V thì cường độ dòng điện qua nó là 0,5 A. Giá trị điện trở là:",
+    "options": ["24 Ω", "6 Ω", "12,5 Ω", "0,04 Ω"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại định luật Ohm I = U/R và cách suy ra R = U/I (KHTN 9, phần Điện)."
+  },
+  {
+    "id": "g9_khtn_02",
+    "subject": "KHTN",
+    "topic": "Tính chất hóa học của kim loại",
+    "type": "academic",
+    "question": "Kim loại nào sau đây KHÔNG tác dụng với dung dịch HCl loãng?",
+    "options": ["Fe", "Zn", "Cu", "Mg"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại dãy hoạt động hóa học của kim loại: kim loại đứng sau H (như Cu, Ag, Au) không đẩy được H₂ khỏi dung dịch axit (KHTN 9)."
+  },
+  {
+    "id": "g9_khtn_03",
+    "subject": "KHTN",
+    "topic": "ADN và gen",
+    "type": "academic",
+    "question": "Theo nguyên tắc bổ sung trong phân tử ADN, nucleotide loại A liên kết với loại nào?",
+    "options": ["G", "C", "U", "T"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại cấu trúc ADN và nguyên tắc bổ sung A – T, G – C (KHTN 9, phần Di truyền)."
+  },
+  {
+    "id": "g9_lsdl_01",
+    "subject": "Lịch sử và Địa lí",
+    "topic": "Cách mạng tháng Tám năm 1945",
+    "type": "academic",
+    "question": "Chủ tịch Hồ Chí Minh đọc bản Tuyên ngôn Độc lập khai sinh nước Việt Nam Dân chủ Cộng hòa vào ngày nào?",
+    "options": ["19/8/1945", "2/9/1945", "23/8/1945", "7/5/1954"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài Cách mạng tháng Tám năm 1945 và sự ra đời của nước Việt Nam Dân chủ Cộng hòa (Lịch sử và Địa lí 9)."
+  },
+  {
+    "id": "g9_lsdl_02",
+    "subject": "Lịch sử và Địa lí",
+    "topic": "Vùng Đồng bằng sông Cửu Long",
+    "type": "academic",
+    "question": "Vùng nào là vùng sản xuất lúa gạo lớn nhất nước ta?",
+    "options": ["Đồng bằng sông Hồng", "Tây Nguyên", "Bắc Trung Bộ", "Đồng bằng sông Cửu Long"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài vùng Đồng bằng sông Cửu Long và vai trò sản xuất lương thực của vùng (phần Địa lí 9)."
+  },
+  {
+    "id": "g9_gdcd_01",
+    "subject": "GDCD",
+    "topic": "Vi phạm pháp luật và trách nhiệm pháp lí",
+    "type": "academic",
+    "question": "Người có hành vi phạm tội được quy định trong Bộ luật Hình sự sẽ phải chịu loại trách nhiệm pháp lí nào?",
+    "options": ["Trách nhiệm hình sự", "Trách nhiệm kỉ luật", "Trách nhiệm hành chính", "Trách nhiệm dân sự"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bài Vi phạm pháp luật và trách nhiệm pháp lí, phân biệt các loại trách nhiệm hình sự, hành chính, dân sự, kỉ luật (GDCD 9)."
+  },
+  {
+    "id": "g9_tinhoc_01",
+    "subject": "Tin học",
+    "topic": "Hàm có điều kiện trong bảng tính",
+    "type": "academic",
+    "question": "Trong phần mềm bảng tính, hàm nào dùng để đếm số ô thỏa mãn một điều kiện cho trước?",
+    "options": ["SUM", "COUNTIF", "AVERAGE", "MAX"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại các hàm COUNTIF, SUMIF, IF trong phần mềm bảng tính (Tin học 9)."
+  },
+  {
+    "id": "g9_mo_01",
+    "subject": "Câu hỏi mở",
+    "topic": "An toàn trên mạng",
+    "type": "open",
+    "question": "Một người lạ quen qua mạng xã hội liên tục xin ảnh riêng tư và rủ em gặp mặt một mình. Em nên làm gì?",
+    "options": ["Gửi ảnh để giữ tình bạn", "Đồng ý gặp nhưng không nói với ai", "Từ chối, chặn tài khoản và kể cho bố mẹ hoặc thầy cô", "Tiếp tục nói chuyện để xem người đó là ai"],
+    "answerIndex": 2,
+    "suggestion": "Em nên tìm hiểu các kĩ năng an toàn trên mạng: không chia sẻ thông tin, hình ảnh riêng tư với người lạ và luôn báo cho người lớn tin cậy khi gặp tình huống bất thường."
+  },
+  {
+    "id": "g9_mo_02",
+    "subject": "Câu hỏi mở",
+    "topic": "Định hướng nghề nghiệp",
+    "type": "open",
+    "question": "Sắp thi vào lớp 10, em đang phân vân chọn trường và hướng học tiếp. Cách làm nào phù hợp nhất?",
+    "options": ["Chọn trường mà bạn thân chọn", "Tìm hiểu sở thích, năng lực của bản thân và trao đổi với gia đình, thầy cô", "Chọn ngẫu nhiên cho nhanh", "Chọn trường nổi tiếng nhất dù không phù hợp với sức học"],
+    "answerIndex": 1,
+    "suggestion": "Em nên tìm hiểu về định hướng nghề nghiệp: đánh giá sở thích, năng lực bản thân và tham khảo ý kiến gia đình, thầy cô trước khi quyết định."
+  },
+  {
+    "id": "g9_mo_03",
+    "subject": "Câu hỏi mở",
+    "topic": "Ứng xử khi chứng kiến bắt nạt",
+    "type": "open",
+    "question": "Em thấy một bạn cùng lớp thường xuyên bị nhóm bạn khác trêu chọc, bắt nạt. Em nên làm gì?",
+    "options": ["Báo cho thầy cô hoặc người lớn tin cậy và động viên, hỗ trợ bạn bị bắt nạt", "Coi như không thấy vì không liên quan đến mình", "Quay video đăng lên mạng xã hội", "Tham gia trêu chọc cùng nhóm bạn"],
+    "answerIndex": 0,
+    "suggestion": "Em nên tìm hiểu cách phòng, chống bạo lực học đường: lên tiếng, báo cho người lớn và quan tâm, giúp đỡ bạn bị bắt nạt."
+  },
+  {
+    "id": "g9_xahoi_01",
+    "subject": "Kiến thức xã hội",
+    "topic": "Địa lí Việt Nam",
+    "type": "social",
+    "question": "Đỉnh núi cao nhất Việt Nam (còn được gọi là \"nóc nhà Đông Dương\") là đỉnh nào?",
+    "options": ["Bạch Mã", "Ngọc Linh", "Tây Côn Lĩnh", "Phan Xi Păng"],
+    "answerIndex": 3,
+    "suggestion": "Em nên tìm hiểu thêm về địa hình Việt Nam, đặc biệt là dãy Hoàng Liên Sơn với đỉnh Phan Xi Păng (3 143 m)."
+  },
+  {
+    "id": "g9_xahoi_02",
+    "subject": "Kiến thức xã hội",
+    "topic": "Tổ chức quốc tế",
+    "type": "social",
+    "question": "Tổ chức Liên hợp quốc được thành lập vào năm nào?",
+    "options": ["1918", "1939", "1945", "1975"],
+    "answerIndex": 2,
+    "suggestion": "Em nên tìm hiểu thêm về sự ra đời của Liên hợp quốc sau Chiến tranh thế giới thứ hai (năm 1945)."
+  },
+  {
+    "id": "g9_xahoi_03",
+    "subject": "Kiến thức xã hội",
+    "topic": "Việt Nam và ASEAN",
+    "type": "social",
+    "question": "Việt Nam chính thức trở thành thành viên của Hiệp hội các quốc gia Đông Nam Á (ASEAN) vào năm nào?",
+    "options": ["1995", "1967", "1986", "2007"],
+    "answerIndex": 0,
+    "suggestion": "Em nên tìm hiểu thêm về quá trình Việt Nam hội nhập khu vực, gia nhập ASEAN năm 1995."
+  }
+]

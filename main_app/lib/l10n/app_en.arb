@@ -1,0 +1,410 @@
+{
+  "@@locale": "en",
+  "appTitle": "KidGuard",
+  "durationSeconds": "{count, plural, =1{1 second} other{{count} seconds}}",
+  "@durationSeconds": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "durationMinutes": "{count, plural, =1{1 minute} other{{count} minutes}}",
+  "@durationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHours": "{count, plural, =1{1 hour} other{{count} hours}}",
+  "@durationHours": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "durationHoursMinutes": "{hours} h {minutes} min",
+  "@durationHoursMinutes": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "questionTypeAcademic": "School subject",
+  "questionTypeOpen": "Open question",
+  "questionTypeSocial": "General knowledge",
+  "validationNameRequired": "Please enter your full name.",
+  "validationDobRequired": "Please choose your date of birth.",
+  "validationDobInvalid": "Invalid date of birth.",
+  "validationGradeRequired": "Please choose your grade (1 – 12).",
+  "authFailed": "Wrong password or authentication was cancelled.",
+  "authNotAvailable": "This phone has no screen lock. Go to Settings and set a PIN/password first.",
+  "authReasonRevoke": "Enter the phone password to take the phone back and turn off kid mode",
+  "authReasonParentArea": "Enter the phone password to open the parent area",
+  "authReasonDisableHardLock": "Enter the phone password to turn off hard lock",
+  "setupBack": "Tap the Back button (◁) to return to KidGuard.",
+  "setupOverlayTitle": "Display over other apps",
+  "setupOverlayStepOpenPage": "The phone opens KidGuard's \"Display over other apps\" page.",
+  "setupOverlayStepOpenList": "The phone opens a LIST of apps. Scroll down (or use the search box 🔍) to find KidGuard and tap it.",
+  "setupOverlayStepToggle": "Turn on the \"Allow display over other apps\" switch.",
+  "setupOverlayNote": "Only turn this on for KidGuard; leave other apps as they are.",
+  "setupAutoStartOppoTitle": "Autostart (Oppo / Realme / OnePlus)",
+  "setupAutoStartOppoStep1": "The phone opens KidGuard's \"App info\" page.",
+  "setupAutoStartOppoStep2": "Scroll down and tap \"Battery usage\" (or \"Battery\").",
+  "setupAutoStartOppoStep3": "Turn on ALL switches on this page, including: \"Allow background activity\", \"Allow auto launch\" (or \"Auto launch\"), and \"Allow launch by other apps\" if present.",
+  "setupAutoStartOppoStep4": "If there is an \"Optimize battery usage\" option, choose \"Don't optimize\" / \"Allow\".",
+  "setupAutoStartOppoNote": "Older phones (ColorOS 11 and earlier): go to Phone Manager › Privacy permissions › Startup manager › turn on KidGuard.",
+  "setupAutoStartXiaomiTitle": "Autostart (Xiaomi / Redmi / POCO)",
+  "setupAutoStartXiaomiStep1": "The phone opens the \"Autostart\" list.",
+  "setupFindAndToggle": "Find KidGuard and turn on the switch next to it.",
+  "setupAutoStartXiaomiNote": "If the phone opens the App info page: turn on \"Autostart\", then go to \"Battery saver\" › choose \"No restrictions\".",
+  "setupAutoStartVivoTitle": "Autostart (Vivo / iQOO)",
+  "setupAutoStartVivoStep1": "The phone opens the \"Autostart\" / \"Background startup manager\" list.",
+  "setupAutoStartVivoNote": "If the phone opens the App info page: go to \"Permissions\" › \"Autostart\" and turn it on.",
+  "setupAutoStartHuaweiTitle": "App launch (Huawei / Honor)",
+  "setupAutoStartHuaweiStep1": "The phone opens the \"App launch\" list.",
+  "setupAutoStartHuaweiStep2": "Find KidGuard and turn OFF the \"Manage automatically\" switch.",
+  "setupAutoStartHuaweiStep3": "In the dialog that appears, turn on all 3 options \"Auto-launch\", \"Secondary launch\", \"Run in background\" › OK.",
+  "setupAutoStartTitle": "Autostart",
+  "setupAutoStartStep1": "The phone opens KidGuard's App info page.",
+  "setupAutoStartStep2": "Go to \"Battery\" › choose \"Unrestricted\".",
+  "setupPopupXiaomiTitle": "Background pop-ups (Xiaomi)",
+  "setupPopupXiaomiStep1": "The phone opens KidGuard's \"Other permissions\" page.",
+  "setupPopupXiaomiStep2": "Tap \"Display pop-up windows while running in the background\" › choose \"Always allow\".",
+  "setupPopupXiaomiStep3": "Tap \"Display pop-up windows\" › choose \"Always allow\".",
+  "setupPopupXiaomiNote": "If the phone opens the App info page: go to \"App permissions\" › \"Other permissions\".",
+  "setupPopupVivoTitle": "Background pop-ups (Vivo)",
+  "setupPopupVivoStep1": "The phone opens KidGuard's permissions page.",
+  "setupPopupVivoStep2": "Turn on \"Display pop-up windows while running in the background\" (some phones call it \"Start apps from background\").",
+  "setupPopupVivoNote": "If the phone opens the App info page: go to \"Permissions\" › \"Other permissions\".",
+  "setupRecentsTitle": "Lock KidGuard in Recents",
+  "setupRecentsStepOpen": "Open Recents: swipe up from the bottom edge and hold (or tap the ▢ button).",
+  "setupRecentsStepOppo": "On the KidGuard card, tap the ⋮ button at the top (or swipe the card down) › choose \"Lock\".",
+  "setupRecentsStepXiaomi": "Long-press the KidGuard card › tap the lock icon 🔒.",
+  "setupRecentsStepVivo": "Swipe the KidGuard card down (or long-press it) › choose \"Lock\" 🔒.",
+  "setupRecentsStepHuawei": "Swipe the KidGuard card down › tap the lock icon 🔒.",
+  "setupRecentsStepSamsung": "Tap the KidGuard icon above the card › choose \"Keep open\".",
+  "setupRecentsStepOther": "Long-press the KidGuard card; if there is a \"Lock\" / \"Pin\" option, choose it.",
+  "setupRecentsStepDone": "Once the KidGuard card shows a lock icon, you're done. Go back to KidGuard.",
+  "setupRecentsNote": "Once locked, your child can't close KidGuard even by tapping \"Clear all\".",
+  "setupConfirmQuestion": "Have you finished this step for KidGuard?",
+  "setupConfirmAgain": "Not yet, try again",
+  "setupConfirmDone": "Done",
+  "setupReadStepsFirst": "Read the steps first, then tap \"Open settings\":",
+  "setupFollowSteps": "Follow these steps:",
+  "setupOpenSettings": "Open settings",
+  "setupGotIt": "Got it",
+  "homeParentArea": "Parent area",
+  "homeParentAreaSubtitle": "See screen time and right/wrong answers for each child",
+  "homeSetupHeader": "Setup on this phone",
+  "homeScreenLockTitle": "Screen lock password",
+  "homeScreenLockSubtitle": "Required — lets adults take the phone back and unlock it.",
+  "homeOverlaySubtitle": "So the question screen pops up when time is up, even if your child is in another app.",
+  "homePopupTitle": "Display pop-up windows while running in background",
+  "homeConfirmedOn": "You confirmed this is on.",
+  "homePopupSubtitle": "A {brand}-specific permission. Without it, the question screen won't pop up when time is up.",
+  "@homePopupSubtitle": {
+    "placeholders": {
+      "brand": {
+        "type": "String"
+      }
+    }
+  },
+  "homeReview": "Review",
+  "homeGuide": "Guide",
+  "homeNotificationsTitle": "Notifications",
+  "homeNotificationsSubtitle": "Shows the countdown timer in the notification bar.",
+  "homeBatteryTitle": "Unrestricted battery",
+  "homeBatterySubtitle": "So the system doesn't stop the timer while your child uses other apps.",
+  "homeAutoStartSubtitle": "So lock mode keeps working when your child clears Recents or restarts the phone.",
+  "homeConfirmedLocked": "You confirmed it is locked.",
+  "homeRecentsSubtitle": "So the \"Clear all\" button can't close KidGuard.",
+  "homeHardLockTitle": "Hard lock — optional, recommended",
+  "homeHardLockOn": "On: your child can't leave the lock screen in any way.",
+  "homeHardLockOff": "Fully blocks the Home and Recents buttons and the notification bar while locked. Needs a computer, one-time setup.",
+  "homeManage": "Manage",
+  "homeIosNotice": "When time is up, Screen Time blocks the selected apps. Your child opens KidGuard to answer the question. For even stronger locking, also turn on Guided Access (Settings › Accessibility › Guided Access).",
+  "homeHeroTitle": "🧒  Lend the phone to your child",
+  "homeHeroBody": "Your child gets 15 minutes. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.",
+  "homeStartKidMode": "Start kid mode",
+  "homeGrant": "Grant",
+  "hardLockTitle": "Hard lock",
+  "hardLockDisableTitle": "Turn off hard lock?",
+  "hardLockDisableBody": "KidGuard keeps working normally, but when the phone is locked your child can swipe the navigation bar (it's pulled back after ~1 second). You must turn off hard lock before uninstalling KidGuard.",
+  "hardLockCancel": "Cancel",
+  "hardLockTurnOff": "Turn off",
+  "hardLockDisabledOk": "Hard lock is off. You can now uninstall KidGuard like a normal app.",
+  "hardLockDisableFailed": "Couldn't turn off hard lock.",
+  "hardLockDisableButton": "Turn off hard lock (requires phone password)",
+  "hardLockIntro": "One-time setup, takes about 10 minutes, needs a computer and a USB cable.",
+  "hardLockStep1Title": "Turn on Developer options",
+  "hardLockStep1UsbDebugging": "Go to {location} › turn on \"USB debugging\".",
+  "@hardLockStep1UsbDebugging": {
+    "placeholders": {
+      "location": {
+        "type": "String"
+      }
+    }
+  },
+  "hardLockStep2Title": "Temporarily remove accounts & extra users",
+  "hardLockStep2Accounts": "Android only allows hard lock when the phone has NO accounts. Go to Settings › Users & accounts (or \"Accounts\") and remove all of them: Google, manufacturer accounts (HeyTap/Oppo, Mi, Samsung…), and app accounts like Zalo, Telegram, WhatsApp if they are listed.",
+  "hardLockStep2NoDataLoss": "No data is lost. Once step 4 is done you can sign back in right away.",
+  "hardLockStep3Title": "Prepare the computer",
+  "hardLockStep3Mac": "macOS: open Terminal and run the command below (requires Homebrew):",
+  "hardLockStep3Windows": "Windows: download \"SDK Platform-Tools for Windows\" from developer.android.com/tools/releases/platform-tools, unzip it, open the platform-tools folder, type \"cmd\" in the address bar and press Enter to open a command window.",
+  "hardLockStep3Plug": "Plug in the USB cable. When the phone shows \"Allow USB debugging?\" › check \"Always allow from this computer\" › Allow. If asked for a USB mode, choose \"File transfer\".",
+  "hardLockStep3Check": "Check the connection — you should see 1 line ending in \"device\":",
+  "hardLockStep4Title": "Turn on hard lock",
+  "hardLockStep4Run": "Run the command:",
+  "hardLockStep4Success": "It worked when you see \"Success: Device owner set to package com.pham.kidguard\". Go back to the app; the status above will turn green.",
+  "hardLockStep4After": "You can now sign back in to your accounts, turn off \"USB debugging\" and unplug the cable.",
+  "hardLockTroubleTitle": "Having trouble?",
+  "hardLockErrAccountsFix": "There are still accounts on the phone. Redo step 2 and carefully check app accounts too.",
+  "hardLockErrSecurityFix": "The phone is blocking commands over USB. Check \"USB debugging\" in Developer options again.",
+  "hardLockErrUnknownAdminFix": "KidGuard isn't installed on the phone, or the command was mistyped — use the copy button.",
+  "hardLockErrNoDevice": "adb devices doesn't show the phone / \"unauthorized\"",
+  "hardLockErrNoDeviceFix": "Unplug and replug the cable, unlock the phone screen and tap \"Allow\" in the USB debugging dialog. Try another cable (some cables only charge).",
+  "hardLockErrNoAdbFix": "platform-tools isn't installed (step 3). On Windows, you must open the command window inside the platform-tools folder.",
+  "hardLockStatusOn": "Hard lock is ON",
+  "hardLockStatusOff": "Hard lock is off",
+  "hardLockStatusOnBody": "When the phone is locked, your child can't press Home or Recents, pull down the notification bar, or force-stop the app. Only the phone password can unlock it.",
+  "hardLockStatusOffBody": "Without hard lock, KidGuard still brings the lock screen back when your child leaves it, but they may see another screen for ~1 second and could open Settings to force-stop the app if they're quick enough. Hard lock blocks this completely.",
+  "hardLockCopy": "Copy",
+  "hardLockCopied": "Command copied",
+  "hardLockDevOppoEnable": "Settings › About device › Version › tap \"Build number\" 7 times in a row and enter the phone password.",
+  "hardLockDevLocationAdditional": "Settings › Additional settings › Developer options",
+  "hardLockDevOppoUsers": "Remove \"Second space\", \"App cloner\" and guest users (Settings › Apps › App cloner; Settings › Users & accounts).",
+  "hardLockDevOppoExtra": "Oppo/Realme only: in Developer options, also turn on \"Disable permission monitoring\". Without it, the command in step 4 will be rejected.",
+  "hardLockDevXiaomiEnable": "Settings › About phone › tap \"HyperOS/MIUI version\" 7 times in a row.",
+  "hardLockDevXiaomiUsers": "Remove \"Second space\" and \"Dual apps\" (Settings › Apps › Dual apps).",
+  "hardLockDevXiaomiExtra": "Xiaomi only: also turn on \"USB debugging (Security settings)\" — this requires a SIM card and a signed-in Mi account; turn it on first, then remove accounts in step 2.",
+  "hardLockDevVivoEnable": "Settings › System › About › Software information › tap \"Software version\" 7 times in a row.",
+  "hardLockDevLocationSystem": "Settings › System › Developer options",
+  "hardLockDevVivoUsers": "Remove \"App clone\" and guest users.",
+  "hardLockDevSamsungEnable": "Settings › About phone › Software information › tap \"Build number\" 7 times in a row.",
+  "hardLockDevSamsungLocation": "Settings › Developer options (at the bottom of the list)",
+  "hardLockDevSamsungUsers": "Remove \"Secure Folder\" and \"Dual Messenger\" if present.",
+  "hardLockDevGenericEnable": "Settings › About phone › tap \"Build number\" 7 times in a row.",
+  "hardLockDevHuaweiLocation": "Settings › System & updates › Developer options",
+  "hardLockDevHuaweiUsers": "Remove \"PrivateSpace\", \"App Twin\" and guest users.",
+  "hardLockDevOtherUsers": "Remove guest users, work profiles and cloned apps if any.",
+  "registerTitle": "About you",
+  "registerGreeting": "Hi there! 👋",
+  "registerIntro": "Fill in your details to use the phone for 15 minutes.",
+  "registerNameLabel": "Full name",
+  "registerNameHint": "Example: Alex Smith",
+  "registerDobLabel": "Date of birth",
+  "registerDobPick": "Choose your birthday",
+  "registerGradeLabel": "What grade are you in?",
+  "registerGradeChip": "Grade {grade}",
+  "@registerGradeChip": {
+    "placeholders": {
+      "grade": {
+        "type": "int"
+      }
+    }
+  },
+  "registerLevelPrimary": "Primary",
+  "registerLevelLowerSecondary": "Middle",
+  "registerLevelUpperSecondary": "High",
+  "registerNeedsScreenLock": "This phone has no screen lock. A parent needs to set a password first so they can take the phone back.",
+  "registerErrorGeneric": "Something went wrong: {error}",
+  "@registerErrorGeneric": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "registerStart": "Start using the phone",
+  "runningGreeting": "Hi {name}!",
+  "@runningGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "runningGrade": "Grade {grade}",
+  "@runningGrade": {
+    "placeholders": {
+      "grade": {
+        "type": "int"
+      }
+    }
+  },
+  "runningTimeLeft": "Time left",
+  "runningRules": "When time is up, you'll answer 1 question.\nGet it right for 5 more minutes. Get it wrong and the phone will lock.",
+  "runningUseOtherApps": "Use other apps",
+  "quizCorrect": "🎉 Correct! You get 5 more minutes.",
+  "quizTimeUp": "Time's up!",
+  "quizInstruction": "Answer correctly to get 5 more minutes.",
+  "quizSubmit": "Answer",
+  "reviewWrong": "Not quite right!",
+  "reviewYourChoice": "You chose",
+  "reviewCorrectAnswer": "Correct answer",
+  "reviewSuggestionTitle": "What to review",
+  "reviewLockNotice": "When you tap OK, the phone will lock. Please give the phone to your parents.",
+  "commonOk": "OK",
+  "lockedTitle": "Phone locked",
+  "lockedMessage": "Hey {name}, please give the phone to your parents.\nRemember to review what was suggested!",
+  "@lockedMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "lockedUnlockButton": "Adult: unlock & take back phone",
+  "revokeButton": "Adult: take back phone",
+  "dashboardTitle": "Parent area",
+  "dashboardEmpty": "No child has used this phone yet.",
+  "dashboardTotalTime": "Total time",
+  "dashboardCorrect": "Correct",
+  "dashboardWrong": "Wrong",
+  "dashboardChildren": "Children",
+  "dashboardChildInfo": "Grade {grade} · {age, plural, =1{1 year old} other{{age} years old}}",
+  "@dashboardChildInfo": {
+    "placeholders": {
+      "grade": {
+        "type": "int"
+      },
+      "age": {
+        "type": "int"
+      }
+    }
+  },
+  "reportChildInfo": "Grade {grade} · Born {dob}",
+  "@reportChildInfo": {
+    "placeholders": {
+      "grade": {
+        "type": "int"
+      },
+      "dob": {
+        "type": "String"
+      }
+    }
+  },
+  "reportTimeUsed": "Time used",
+  "reportCorrect": "Correct",
+  "reportWrong": "Wrong",
+  "reportWeakTopicsTitle": "Topics to review",
+  "reportWrongTimes": "{count, plural, =1{wrong once} other{wrong {count} times}}",
+  "@reportWrongTimes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportHistoryTitle": "Usage history ({count, plural, =1{1 session} other{{count} sessions}})",
+  "@reportHistoryTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportNoSessions": "No sessions yet.",
+  "reportLoadMore": "Load more",
+  "reportLogRetention": "Logs are kept for up to {days, plural, =1{1 day} other{{days} days}}.",
+  "@reportLogRetention": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "reportStatusActive": "In progress",
+  "reportStatusLocked": "Locked after a wrong answer",
+  "reportStatusRevoked": "Taken back by an adult",
+  "reportSessionSummary": "Used {duration} · {count, plural, =1{1 question} other{{count} questions}} (✅ {correct}  ❌ {wrong})",
+  "@reportSessionSummary": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      },
+      "correct": {
+        "type": "int"
+      },
+      "wrong": {
+        "type": "int"
+      }
+    }
+  },
+  "reportEndedAt": "Ended: {time}",
+  "@reportEndedAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "reportNoAttempts": "No questions answered yet.",
+  "reportAttemptTitle": "Question {number} · {subject} — {topic}",
+  "@reportAttemptTitle": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "subject": {
+        "type": "String"
+      },
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "reportChosenAnswer": "Child chose: {letter}. {option}",
+  "@reportChosenAnswer": {
+    "placeholders": {
+      "letter": {
+        "type": "String"
+      },
+      "option": {
+        "type": "String"
+      }
+    }
+  },
+  "reportCorrectAnswer": "Correct answer: {letter}. {option}",
+  "@reportCorrectAnswer": {
+    "placeholders": {
+      "letter": {
+        "type": "String"
+      },
+      "option": {
+        "type": "String"
+      }
+    }
+  },
+  "quizLoadError": "Could not load the question: {error}",
+  "@quizLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "homeScreenTimeTitle": "Screen Time permission",
+  "homeScreenTimeSubtitle": "Lets KidGuard block the apps you choose when time is up. Confirm with Face ID or the phone passcode.",
+  "homeLimitedAppsTitle": "Apps blocked when time is up",
+  "homeLimitedAppsSubtitle": "Choose the apps or app categories (e.g. Games, Social, Entertainment). Do not select KidGuard.",
+  "homeLimitedAppsOn": "Selected. You can change the list at any time.",
+  "homeLimitedAppsChoose": "Choose",
+  "homeLimitedAppsChange": "Change",
+  "homeScreenTimeFirst": "Grant the Screen Time permission first.",
+  "homeDesktopTitle": "How locking works on this computer",
+  "homeMacNotice": "When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can't be quit and reopens automatically after login.",
+  "homeWindowsNotice": "When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until the question is answered or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can't be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.",
+  "homeWindowsHelloHint": "Windows Hello must be set up (Settings › Accounts › Sign-in options › PIN).",
+  "runningIosHint": "Swipe up (or press the Home button) to use other apps."
+}

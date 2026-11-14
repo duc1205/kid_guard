@@ -1,0 +1,212 @@
+[
+  {
+    "id": "g4_toan_01",
+    "subject": "Toán",
+    "topic": "Số có nhiều chữ số - Lớp triệu",
+    "type": "academic",
+    "question": "Số một triệu (1 000 000) có bao nhiêu chữ số 0?",
+    "options": ["5", "6", "7", "9"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài các số có nhiều chữ số, lớp nghìn và lớp triệu ở môn Toán lớp 4."
+  },
+  {
+    "id": "g4_toan_02",
+    "subject": "Toán",
+    "topic": "Phép cộng phân số",
+    "type": "academic",
+    "question": "2/5 + 1/5 bằng bao nhiêu?",
+    "options": ["3/10", "2/25", "3/5", "1/5"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại phép cộng hai phân số cùng mẫu số ở môn Toán lớp 4: cộng hai tử số và giữ nguyên mẫu số."
+  },
+  {
+    "id": "g4_toan_03",
+    "subject": "Toán",
+    "topic": "Số trung bình cộng",
+    "type": "academic",
+    "question": "Trung bình cộng của ba số 4, 6 và 8 là bao nhiêu?",
+    "options": ["6", "18", "7", "5"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại cách tìm số trung bình cộng ở môn Toán lớp 4: tính tổng các số rồi chia cho số các số hạng."
+  },
+  {
+    "id": "g4_toan_04",
+    "subject": "Toán",
+    "topic": "Góc nhọn, góc tù, góc bẹt",
+    "type": "academic",
+    "question": "Góc tù là góc như thế nào?",
+    "options": ["Góc bé hơn góc vuông", "Góc bằng góc vuông", "Góc bằng hai góc vuông", "Góc lớn hơn góc vuông nhưng bé hơn góc bẹt"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài góc nhọn, góc tù, góc bẹt ở môn Toán lớp 4, dùng ê ke để so sánh với góc vuông."
+  },
+  {
+    "id": "g4_tiengviet_01",
+    "subject": "Tiếng Việt",
+    "topic": "Danh từ",
+    "type": "academic",
+    "question": "Từ nào là danh từ?",
+    "options": ["chạy", "xinh đẹp", "dòng sông", "nhanh nhẹn"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài danh từ, động từ, tính từ ở môn Tiếng Việt lớp 4: danh từ là từ chỉ sự vật như người, con vật, đồ vật, hiện tượng."
+  },
+  {
+    "id": "g4_tiengviet_02",
+    "subject": "Tiếng Việt",
+    "topic": "Biện pháp nhân hóa",
+    "type": "academic",
+    "question": "Câu nào có sử dụng biện pháp nhân hóa?",
+    "options": ["Mặt Trời mọc ở đằng đông.", "Ông Mặt Trời mỉm cười chào bé.", "Trời hôm nay rất nắng.", "Mặt Trời to hơn Trái Đất."],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại biện pháp nhân hóa ở môn Tiếng Việt lớp 4: gọi hoặc tả sự vật bằng những từ dùng cho con người."
+  },
+  {
+    "id": "g4_tiengviet_03",
+    "subject": "Tiếng Việt",
+    "topic": "Chủ ngữ và vị ngữ",
+    "type": "academic",
+    "question": "Chủ ngữ trong câu \"Đàn chim bay về phía chân trời.\" là gì?",
+    "options": ["bay về phía chân trời", "phía chân trời", "bay", "Đàn chim"],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài chủ ngữ và vị ngữ ở môn Tiếng Việt lớp 4: chủ ngữ trả lời câu hỏi \"Ai?\", \"Cái gì?\", \"Con gì?\"."
+  },
+  {
+    "id": "g4_daoduc_01",
+    "subject": "Đạo đức",
+    "topic": "Biết ơn người lao động",
+    "type": "academic",
+    "question": "Việc làm nào thể hiện sự biết ơn người lao động?",
+    "options": ["Giữ gìn đồ dùng và không vứt rác bừa bãi", "Lãng phí cơm, thức ăn", "Vẽ bậy lên tường", "Chế giễu cô lao công"],
+    "answerIndex": 0,
+    "suggestion": "Em nên ôn lại bài biết ơn người lao động ở môn Đạo đức lớp 4: trân trọng và giữ gìn sản phẩm của người lao động."
+  },
+  {
+    "id": "g4_khoahoc_01",
+    "subject": "Khoa học",
+    "topic": "Sự chuyển thể của nước",
+    "type": "academic",
+    "question": "Ở điều kiện bình thường, nước tinh khiết sôi ở nhiệt độ bao nhiêu?",
+    "options": ["0°C", "50°C", "100°C", "37°C"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài nước và sự chuyển thể của nước ở môn Khoa học lớp 4: nước sôi ở 100°C và đông đặc ở 0°C."
+  },
+  {
+    "id": "g4_khoahoc_02",
+    "subject": "Khoa học",
+    "topic": "Thực vật cần gì để sống",
+    "type": "academic",
+    "question": "Để sống và phát triển bình thường, thực vật cần những yếu tố nào?",
+    "options": ["Chỉ cần nước", "Ánh sáng, nước, không khí và chất khoáng", "Chỉ cần ánh sáng", "Bóng tối và nước"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài nhu cầu sống của thực vật ở môn Khoa học lớp 4, có thể làm thí nghiệm trồng cây đậu để quan sát."
+  },
+  {
+    "id": "g4_lichsudiali_01",
+    "subject": "Lịch sử và Địa lí",
+    "topic": "Đền Hùng và lễ giỗ Tổ Hùng Vương",
+    "type": "academic",
+    "question": "Lễ giỗ Tổ Hùng Vương được tổ chức vào ngày nào?",
+    "options": ["Mùng 1 tháng Giêng âm lịch", "Rằm tháng Tám âm lịch", "Mùng 10 tháng 3 âm lịch", "Mùng 5 tháng 5 âm lịch"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài Đền Hùng và lễ giỗ Tổ Hùng Vương ở môn Lịch sử và Địa lí lớp 4."
+  },
+  {
+    "id": "g4_lichsudiali_02",
+    "subject": "Lịch sử và Địa lí",
+    "topic": "Thiên nhiên vùng Nam Bộ",
+    "type": "academic",
+    "question": "Đồng bằng nào lớn nhất nước ta?",
+    "options": ["Đồng bằng Bắc Bộ", "Đồng bằng sông Cửu Long", "Đồng bằng duyên hải miền Trung", "Cao nguyên Mộc Châu"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài thiên nhiên vùng Nam Bộ ở môn Lịch sử và Địa lí lớp 4, quan sát lược đồ các đồng bằng của nước ta."
+  },
+  {
+    "id": "g4_tienganh_01",
+    "subject": "Tiếng Anh",
+    "topic": "Time - Hỏi giờ",
+    "type": "academic",
+    "question": "Câu trả lời đúng cho câu hỏi \"What time is it?\" là gì?",
+    "options": ["It's Monday.", "It's sunny.", "I'm ten years old.", "It's seven o'clock."],
+    "answerIndex": 3,
+    "suggestion": "Em nên ôn lại bài hỏi và trả lời về giờ trong Tiếng Anh lớp 4: \"What time is it?\" - \"It's ... o'clock.\"."
+  },
+  {
+    "id": "g4_tinhoc_01",
+    "subject": "Tin học",
+    "topic": "Soạn thảo văn bản",
+    "type": "academic",
+    "question": "Khi soạn thảo văn bản, phím nào dùng để xóa kí tự ở bên trái con trỏ?",
+    "options": ["Enter", "Backspace", "Shift", "Delete"],
+    "answerIndex": 1,
+    "suggestion": "Em nên ôn lại bài soạn thảo văn bản ở môn Tin học lớp 4: phím Backspace xóa kí tự bên trái, phím Delete xóa kí tự bên phải con trỏ."
+  },
+  {
+    "id": "g4_congnghe_01",
+    "subject": "Công nghệ",
+    "topic": "Trồng và chăm sóc hoa trong chậu",
+    "type": "academic",
+    "question": "Khi trồng cây hoa trong chậu, việc làm nào giúp cây phát triển tốt?",
+    "options": ["Tưới thật nhiều nước liên tục mỗi giờ", "Đặt chậu trong tủ kín", "Tưới nước vừa đủ và đặt chậu ở nơi có ánh sáng", "Không bao giờ tưới nước"],
+    "answerIndex": 2,
+    "suggestion": "Em nên ôn lại bài trồng và chăm sóc hoa trong chậu ở môn Công nghệ lớp 4: tưới nước vừa đủ, đủ ánh sáng và nhổ cỏ dại."
+  },
+  {
+    "id": "g4_mo_01",
+    "subject": "Câu hỏi mở",
+    "topic": "Sinh hoạt điều độ",
+    "type": "open",
+    "question": "Bạn rủ em chơi game trên mạng đến nửa đêm. Em nên làm gì?",
+    "options": ["Từ chối và đi ngủ đúng giờ để giữ sức khỏe", "Chơi đến sáng cho vui", "Chơi lén khi bố mẹ đã ngủ", "Nghỉ học ngày mai để ngủ bù"],
+    "answerIndex": 0,
+    "suggestion": "Con hãy nhớ ngủ đủ giấc và đúng giờ giúp con khỏe mạnh, học tốt; hãy biết từ chối khi bị rủ chơi game quá khuya."
+  },
+  {
+    "id": "g4_mo_02",
+    "subject": "Câu hỏi mở",
+    "topic": "Trung thực trong học tập",
+    "type": "open",
+    "question": "Trong giờ kiểm tra, bạn ngồi cạnh nhờ em cho chép bài. Em nên làm gì?",
+    "options": ["Cho bạn chép hết bài", "Nhắc đáp án nhỏ cho bạn", "Đổi bài cho bạn", "Từ chối nhẹ nhàng và khuyên bạn tự làm bài"],
+    "answerIndex": 3,
+    "suggestion": "Con hãy nhớ trung thực trong học tập: không cho chép và không chép bài, sau giờ kiểm tra có thể giúp bạn ôn bài."
+  },
+  {
+    "id": "g4_mo_03",
+    "subject": "Câu hỏi mở",
+    "topic": "Phòng cháy chữa cháy",
+    "type": "open",
+    "question": "Em phát hiện có khói và lửa bốc lên trong nhà. Em nên làm gì?",
+    "options": ["Trốn vào gầm giường", "Đứng xem lửa cháy", "Thoát ra ngoài, báo ngay cho người lớn và gọi 114", "Quay lại lấy đồ chơi"],
+    "answerIndex": 2,
+    "suggestion": "Con hãy nhớ khi có cháy phải nhanh chóng thoát ra nơi an toàn, kêu cứu người lớn và gọi số 114 (Cứu hỏa)."
+  },
+  {
+    "id": "g4_xahoi_01",
+    "subject": "Kiến thức xã hội",
+    "topic": "Số điện thoại khẩn cấp",
+    "type": "social",
+    "question": "Ở Việt Nam, khi cần gọi xe cấp cứu y tế, em gọi số nào?",
+    "options": ["113", "114", "115", "1080"],
+    "answerIndex": 2,
+    "suggestion": "Em hãy nhớ các số khẩn cấp: 113 là Công an, 114 là Cứu hỏa, 115 là Cấp cứu y tế."
+  },
+  {
+    "id": "g4_xahoi_02",
+    "subject": "Kiến thức xã hội",
+    "topic": "Các châu lục",
+    "type": "social",
+    "question": "Việt Nam nằm ở châu lục nào?",
+    "options": ["Châu Âu", "Châu Á", "Châu Phi", "Châu Mỹ"],
+    "answerIndex": 1,
+    "suggestion": "Em hãy xem quả địa cầu hoặc bản đồ thế giới để thấy Việt Nam nằm ở khu vực Đông Nam Á, thuộc châu Á."
+  },
+  {
+    "id": "g4_xahoi_03",
+    "subject": "Kiến thức xã hội",
+    "topic": "Ngày lễ",
+    "type": "social",
+    "question": "Ngày Nhà giáo Việt Nam là ngày nào?",
+    "options": ["Ngày 8 tháng 3", "Ngày 1 tháng 6", "Ngày 2 tháng 9", "Ngày 20 tháng 11"],
+    "answerIndex": 3,
+    "suggestion": "Em hãy nhớ ngày 20 tháng 11 là Ngày Nhà giáo Việt Nam, ngày để tri ân thầy cô giáo."
+  }
+]
