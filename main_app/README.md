@@ -86,3 +86,13 @@ App tự theo ngôn ngữ của máy: **tiếng Việt** nếu máy dùng tiến
 - Thêm ngôn ngữ mới: tạo `lib/l10n/app_<mã>.arb` với đủ các key như `app_en.arb` — app tự nhận.
 - Chuỗi native Android (thông báo đếm giờ): `android/app/src/main/res/values*/strings.xml`.
 - Nội dung câu hỏi theo chương trình GDPT Việt Nam nên giữ tiếng Việt ở mọi ngôn ngữ.
+
+## Nguồn câu hỏi
+
+- Lớp 1–12: theo Chương trình GDPT 2018 (TT 32/2018/TT-BGDĐT) đã sửa đổi theo TT 13/2022 và TT 17/2025,
+  xếp chủ đề theo bộ SGK thống nhất "Kết nối tri thức với cuộc sống" (từ năm học 2026–2027).
+- Đại học / Sau đại học: chương trình các học phần lý luận chính trị bắt buộc, TT 05/2020 (GDQP-AN),
+  TT 53/2026 (quy chế sau đại học), Hiến pháp 2013 (sửa đổi 2025), BLDS 2015 và tài liệu học thuật chuẩn.
+- Mỗi câu có trường `source` ghi căn cứ (môn – lớp – chủ đề – yêu cầu cần đạt, hoặc điều luật).
+  Câu hỏi do AI soạn và đối chiếu; nên để giáo viên rà lại trước khi dùng thật.
+- Khi sửa nội dung một câu, hãy đặt **id mới** (lịch sử trả lời lưu nội dung câu hỏi theo id).

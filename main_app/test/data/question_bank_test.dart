@@ -16,7 +16,16 @@ void main() {
     test('ngân hàng câu hỏi lớp $grade hợp lệ', () {
       final file = File('assets/questions/grade_$grade.json');
       expect(file.existsSync(), isTrue);
-      final list = (jsonDecode(file.readAsStringSync()) as List)
+      final raw = jsonDecode(file.readAsStringSync()) as List;
+      for (final e in raw) {
+        final m = e as Map;
+        expect(
+          (m['source'] as String?)?.trim() ?? '',
+          isNotEmpty,
+          reason: '${m['id']}: thiếu nguồn chương trình (source)',
+        );
+      }
+      final list = raw
           .map(
             (e) => QuestionMapper.fromAsset(
               Map<String, dynamic>.from(e as Map),
