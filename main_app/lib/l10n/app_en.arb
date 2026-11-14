@@ -411,5 +411,37 @@
   "homeMacNotice": "When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can't be quit and reopens automatically after login.",
   "homeWindowsNotice": "When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until the question is answered or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can't be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.",
   "homeWindowsHelloHint": "Windows Hello must be set up (Settings › Accounts › Sign-in options › PIN).",
-  "runningIosHint": "Swipe up (or press the Home button) to use other apps."
+  "runningIosHint": "Swipe up (or press the Home button) to use other apps.",
+  "commonCancel": "Cancel",
+  "dashboardQuestionSource": "Question source",
+  "qsTitle": "Question source",
+  "qsSource": "Source",
+  "qsDefaultSource": "Default (KidGuard)",
+  "qsCustomSource": "Custom",
+  "qsVersion": "Question bank version",
+  "qsDownloaded": "Grades using downloaded questions",
+  "qsBundledOnly": "Using the questions built into the app",
+  "qsLastSync": "Last checked",
+  "qsNever": "Never",
+  "qsSyncNow": "Update now",
+  "qsChangeSource": "Change question source",
+  "qsChangeTitle": "manifest.json address",
+  "qsUseDefault": "Use default source",
+  "qsSave": "Save and download",
+  "qsHelp": "Questions are downloaded over the internet and stored on this device, so they still work offline. Every file is checked for format and checksum; if anything is wrong, the app keeps the questions it already has. A custom source (for example your school's) needs a manifest.json and grade_N.json files in the same format: grades 1–12, 13 = University, 14 = Postgraduate.",
+  "qsResultUpdated": "Question bank updated to version {version}.",
+  "@qsResultUpdated": {
+    "placeholders": {
+      "version": {
+        "type": "int"
+      }
+    }
+  },
+  "qsResultUpToDate": "The question bank is already up to date.",
+  "qsErrorNetwork": "Couldn't download questions (check the connection or address). The app keeps using the questions already on this device.",
+  "qsErrorManifest": "manifest.json is not in the right format. The app keeps using the questions already on this device.",
+  "qsErrorQuestions": "A question file is not in the right format. The app keeps using the questions already on this device.",
+  "qsErrorChecksum": "A question file doesn't match the checksum in the manifest. The app keeps using the questions already on this device.",
+  "qsInvalidUrl": "This address is not valid.",
+  "qsInsecureUrl": "Only addresses starting with https:// are allowed."
 }

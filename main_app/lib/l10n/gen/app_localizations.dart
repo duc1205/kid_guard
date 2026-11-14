@@ -1470,6 +1470,156 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Swipe up (or press the Home button) to use other apps.'**
   String get runningIosHint;
+
+  /// No description provided for @commonCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get commonCancel;
+
+  /// No description provided for @dashboardQuestionSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Question source'**
+  String get dashboardQuestionSource;
+
+  /// No description provided for @qsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Question source'**
+  String get qsTitle;
+
+  /// No description provided for @qsSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get qsSource;
+
+  /// No description provided for @qsDefaultSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Default (KidGuard)'**
+  String get qsDefaultSource;
+
+  /// No description provided for @qsCustomSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get qsCustomSource;
+
+  /// No description provided for @qsVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Question bank version'**
+  String get qsVersion;
+
+  /// No description provided for @qsDownloaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Grades using downloaded questions'**
+  String get qsDownloaded;
+
+  /// No description provided for @qsBundledOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Using the questions built into the app'**
+  String get qsBundledOnly;
+
+  /// No description provided for @qsLastSync.
+  ///
+  /// In en, this message translates to:
+  /// **'Last checked'**
+  String get qsLastSync;
+
+  /// No description provided for @qsNever.
+  ///
+  /// In en, this message translates to:
+  /// **'Never'**
+  String get qsNever;
+
+  /// No description provided for @qsSyncNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Update now'**
+  String get qsSyncNow;
+
+  /// No description provided for @qsChangeSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Change question source'**
+  String get qsChangeSource;
+
+  /// No description provided for @qsChangeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'manifest.json address'**
+  String get qsChangeTitle;
+
+  /// No description provided for @qsUseDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Use default source'**
+  String get qsUseDefault;
+
+  /// No description provided for @qsSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save and download'**
+  String get qsSave;
+
+  /// No description provided for @qsHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Questions are downloaded over the internet and stored on this device, so they still work offline. Every file is checked for format and checksum; if anything is wrong, the app keeps the questions it already has. A custom source (for example your school\'s) needs a manifest.json and grade_N.json files in the same format: grades 1–12, 13 = University, 14 = Postgraduate.'**
+  String get qsHelp;
+
+  /// No description provided for @qsResultUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Question bank updated to version {version}.'**
+  String qsResultUpdated(int version);
+
+  /// No description provided for @qsResultUpToDate.
+  ///
+  /// In en, this message translates to:
+  /// **'The question bank is already up to date.'**
+  String get qsResultUpToDate;
+
+  /// No description provided for @qsErrorNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t download questions (check the connection or address). The app keeps using the questions already on this device.'**
+  String get qsErrorNetwork;
+
+  /// No description provided for @qsErrorManifest.
+  ///
+  /// In en, this message translates to:
+  /// **'manifest.json is not in the right format. The app keeps using the questions already on this device.'**
+  String get qsErrorManifest;
+
+  /// No description provided for @qsErrorQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'A question file is not in the right format. The app keeps using the questions already on this device.'**
+  String get qsErrorQuestions;
+
+  /// No description provided for @qsErrorChecksum.
+  ///
+  /// In en, this message translates to:
+  /// **'A question file doesn\'t match the checksum in the manifest. The app keeps using the questions already on this device.'**
+  String get qsErrorChecksum;
+
+  /// No description provided for @qsInvalidUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'This address is not valid.'**
+  String get qsInvalidUrl;
+
+  /// No description provided for @qsInsecureUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Only addresses starting with https:// are allowed.'**
+  String get qsInsecureUrl;
 }
 
 class _AppLocalizationsDelegate

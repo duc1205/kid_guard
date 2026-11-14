@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:main_app/core/constants/app_constants.dart';
 import 'package:main_app/data/models/json_mappers.dart';
@@ -54,4 +55,30 @@ void main() {
       );
     });
   }
+
+  test(
+    'manifest.json khớp với các file câu hỏi (chạy tool/make_question_manifest.dart)',
+    () {
+      final m =
+          jsonDecode(File('assets/questions/manifest.json').readAsStringSync())
+              as Map<String, dynamic>;
+      final grades = m['grades'] as Map<String, dynamic>;
+      for (
+        var grade = AppConstants.minGrade;
+        grade <= AppConstants.maxGrade;
+        grade++
+      ) {
+        final entry = grades['$grade'] as Map<String, dynamic>?;
+        expect(entry, isNotNull, reason: 'manifest thiếu lớp $grade');
+        final bytes = File(
+          'assets/questions/${entry!['file']}',
+        ).readAsBytesSync();
+        expect(
+          sha256.convert(bytes).toString(),
+          entry['sha256'],
+          reason: 'grade_$grade.json đã sửa nhưng chưa sinh lại manifest',
+        );
+      }
+    },
+  );
 }

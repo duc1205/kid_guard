@@ -7,6 +7,7 @@ import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
 import '../../widgets/stat_tile.dart';
 import 'child_report_screen.dart';
+import 'question_source_screen.dart';
 
 /// Khu vực phụ huynh: danh sách các bé đã dùng máy và thống kê tổng quan.
 class ParentDashboardScreen extends StatefulWidget {
@@ -28,7 +29,19 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
     final controller = DependenciesScope.of(context).parentController;
     final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.dashboardTitle)),
+      appBar: AppBar(
+        title: Text(l10n.dashboardTitle),
+        actions: [
+          IconButton(
+            tooltip: l10n.dashboardQuestionSource,
+            icon: const Icon(Icons.library_books_rounded),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const QuestionSourceScreen()),
+            ),
+          ),
+        ],
+      ),
       body: ListenableBuilder(
         listenable: controller,
         builder: (context, _) {

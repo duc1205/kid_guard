@@ -96,3 +96,21 @@ App tự theo ngôn ngữ của máy: **tiếng Việt** nếu máy dùng tiến
 - Mỗi câu có trường `source` ghi căn cứ (môn – lớp – chủ đề – yêu cầu cần đạt, hoặc điều luật).
   Câu hỏi do AI soạn và đối chiếu; nên để giáo viên rà lại trước khi dùng thật.
 - Khi sửa nội dung một câu, hãy đặt **id mới** (lịch sử trả lời lưu nội dung câu hỏi theo id).
+
+### Cập nhật câu hỏi qua internet (không cần phát hành app mới)
+
+App tải `manifest.json` từ `AppConstants.defaultQuestionSourceUrl`
+(`https://raw.githubusercontent.com/duc1205/kid_guard_question/main/manifest.json`), tối đa 6 giờ/lần
+khi mở app, hoặc khi phụ huynh bấm **Khu vực phụ huynh › Nguồn câu hỏi › Cập nhật ngay**.
+
+- Chỉ tải các file có mã sha256 khác bản đang có; kiểm tra mã + định dạng rồi lưu vào SQLite.
+  Bất kỳ lỗi nào → giữ nguyên bản cũ. Mất mạng → dùng bản đã tải, hoặc bộ đóng gói sẵn.
+- Phụ huynh có thể đổi sang nguồn khác (chỉ `https://`), ví dụ ngân hàng câu hỏi của nhà trường.
+
+Quy trình sửa câu hỏi:
+
+1. Sửa `assets/questions/grade_N.json` (câu sửa nội dung → id mới).
+2. `fvm dart run tool/make_question_manifest.dart` → cập nhật `manifest.json`, tự tăng `version`.
+3. `fvm flutter test` (kiểm tra định dạng + manifest khớp file).
+4. Chép `assets/questions/*.json` vào repo **công khai** [kid_guard_question](https://github.com/duc1205/kid_guard_question) rồi push.
+   (Repo mã nguồn đang private nên app không đọc trực tiếp được.)

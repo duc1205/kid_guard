@@ -1,6 +1,7 @@
 import '../entities/active_session.dart';
 import '../entities/child_profile.dart';
 import '../entities/question.dart';
+import '../entities/question_bank.dart';
 import '../entities/usage_log.dart';
 import '../entities/usage_stats.dart';
 
@@ -11,6 +12,19 @@ abstract interface class ChildRepository {
 
 abstract interface class QuestionRepository {
   Future<List<Question>> getQuestionsForGrade(int grade);
+}
+
+/// Ngân hàng câu hỏi tải từ internet (manifest.json + grade_N.json), lưu lại trên
+/// máy để dùng khi mất mạng; chưa tải được thì dùng bộ đóng gói sẵn trong app.
+abstract interface class QuestionBankRepository {
+  Future<QuestionBankInfo> getInfo();
+
+  /// Tải bản mới nếu manifest có phiên bản cao hơn. Lỗi thì giữ nguyên bản cũ.
+  Future<QuestionSyncResult> sync();
+
+  /// Đổi địa chỉ manifest; `null` = quay về nguồn mặc định. Xoá câu hỏi đã tải
+  /// của nguồn cũ.
+  Future<void> setSource(String? manifestUrl);
 }
 
 /// Trạng thái phiên đang diễn ra (1 bản ghi nhỏ, đọc/ghi thường xuyên).

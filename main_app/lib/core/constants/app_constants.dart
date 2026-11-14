@@ -21,6 +21,17 @@ class AppConstants {
   /// Tự động xoá nhật ký cũ hơn khoảng này để dữ liệu không phình mãi.
   static const Duration logRetention = Duration(days: 180);
 
+  /// Nguồn câu hỏi mặc định: repo GitHub công khai chỉ chứa câu hỏi
+  /// (manifest.json + grade_N.json, cùng định dạng assets/questions/).
+  static const String defaultQuestionSourceUrl =
+      'https://raw.githubusercontent.com/duc1205/kid_guard_question/main/manifest.json';
+
+  /// Tự kiểm tra bản câu hỏi mới khi mở app, tối đa 1 lần mỗi khoảng này.
+  static const Duration questionSyncInterval = Duration(hours: 6);
+
+  /// Giới hạn kích thước mỗi file tải về để tránh nguồn lạ làm đầy bộ nhớ.
+  static const int maxQuestionFileBytes = 2 * 1024 * 1024;
+
   /// Số phiên tải mỗi lần trong màn lịch sử của phụ huynh.
   static const int historyPageSize = 20;
 }

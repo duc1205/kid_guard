@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/services.dart';
+import 'package:main_app/data/datasources/local_store.dart';
 import 'package:main_app/data/datasources/app_database.dart';
 import 'package:main_app/domain/entities/active_session.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
@@ -105,4 +110,36 @@ Future<AppDatabase> openTestDatabase() {
     factory: databaseFactoryFfiNoIsolate,
     path: inMemoryDatabasePath,
   );
+}
+
+/// LocalStore trong bộ nhớ (không cần plugin SharedPreferences).
+class MemoryLocalStore implements LocalStore {
+  final values = <String, Object>{};
+  @override
+  Future<List<Map<String, dynamic>>> readList(String key) async =>
+      (values[key] as List<Map<String, dynamic>>?) ?? [];
+  @override
+  Future<void> writeList(String key, List<Map<String, dynamic>> value) async =>
+      values[key] = value;
+  @override
+  Future<Map<String, dynamic>?> readObject(String key) async =>
+      values[key] == null
+      ? null
+      : Map<String, dynamic>.from(jsonDecode(jsonEncode(values[key])) as Map);
+  @override
+  Future<void> writeObject(String key, Map<String, dynamic> value) async =>
+      values[key] = value;
+  @override
+  Future<bool> readBool(String key) async => (values[key] as bool?) ?? false;
+  @override
+  Future<void> writeBool(String key, bool value) async => values[key] = value;
+  @override
+  Future<void> remove(String key) async => values.remove(key);
+}
+
+/// Đọc asset thẳng từ ổ đĩa của project (để test dùng bộ câu hỏi thật).
+class FileAssetBundle extends CachingAssetBundle {
+  @override
+  Future<ByteData> load(String key) async =>
+      ByteData.sublistView(await File(key).readAsBytes());
 }

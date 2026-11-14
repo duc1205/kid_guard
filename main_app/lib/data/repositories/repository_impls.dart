@@ -1,17 +1,7 @@
 import '../../domain/entities/active_session.dart';
-import '../../domain/entities/question.dart';
 import '../../domain/repositories/repositories.dart';
 import '../datasources/local_store.dart';
-import '../datasources/question_asset_datasource.dart';
 import '../models/json_mappers.dart';
-
-class QuestionRepositoryImpl implements QuestionRepository {
-  QuestionRepositoryImpl(this._assets);
-  final QuestionAssetDataSource _assets;
-
-  @override
-  Future<List<Question>> getQuestionsForGrade(int grade) => _assets.load(grade);
-}
 
 /// Phiên đang chạy chỉ là 1 bản ghi nhỏ (<2 KB) → để trong SharedPreferences
 /// cho đọc nhanh lúc mở app, tách khỏi CSDL lịch sử.

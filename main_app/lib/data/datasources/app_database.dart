@@ -13,12 +13,13 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 ///   chỉ lưu id câu hỏi + thứ tự đáp án + lựa chọn (~40 byte thay vì ~570 byte JSON).
 /// - Index theo (child_id, thời gian) cho các truy vấn thống kê / phân trang.
 /// - Xoá phiên → các lượt trả lời bị xoá theo (ON DELETE CASCADE).
+/// - `question_bank`: câu hỏi tải từ internet để dùng khi mất mạng (v2).
 class AppDatabase {
   AppDatabase._(this.db);
 
   final Database db;
 
-  static const _version = 1;
+  static const _version = 2;
 
   static Future<AppDatabase> open({
     DatabaseFactory? factory,
@@ -33,7 +34,13 @@ class AppDatabase {
         onConfigure: (db) async {
           await db.execute('PRAGMA foreign_keys = ON');
         },
-        onCreate: (db, version) => _createV1(db),
+        onCreate: (db, version) async {
+          await _createV1(db);
+          await _createV2(db);
+        },
+        onUpgrade: (db, oldVersion, newVersion) async {
+          if (oldVersion < 2) await _createV2(db);
+        },
       ),
     );
     return AppDatabase._(db);
@@ -100,6 +107,14 @@ class AppDatabase {
       ..execute('CREATE INDEX idx_attempts_question ON attempts(question_id)');
     await batch.commit(noResult: true);
   }
+
+  /// v2: câu hỏi tải từ internet (mỗi lớp 1 dòng, JSON nguyên file + mã kiểm tra).
+  static Future<void> _createV2(Database db) => db.execute('''
+    CREATE TABLE question_bank (
+      grade   INTEGER PRIMARY KEY,
+      sha256  TEXT NOT NULL,
+      json    TEXT NOT NULL
+    )''');
 
   Future<void> close() => db.close();
 }

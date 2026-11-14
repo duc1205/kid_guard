@@ -836,4 +836,86 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get runningIosHint =>
       'Vuốt lên (hoặc bấm nút Home) để dùng ứng dụng khác.';
+
+  @override
+  String get commonCancel => 'Huỷ';
+
+  @override
+  String get dashboardQuestionSource => 'Nguồn câu hỏi';
+
+  @override
+  String get qsTitle => 'Nguồn câu hỏi';
+
+  @override
+  String get qsSource => 'Nguồn';
+
+  @override
+  String get qsDefaultSource => 'Mặc định (KidGuard)';
+
+  @override
+  String get qsCustomSource => 'Tuỳ chỉnh';
+
+  @override
+  String get qsVersion => 'Phiên bản bộ câu hỏi';
+
+  @override
+  String get qsDownloaded => 'Lớp dùng câu hỏi tải về';
+
+  @override
+  String get qsBundledOnly => 'Đang dùng bộ câu hỏi có sẵn trong app';
+
+  @override
+  String get qsLastSync => 'Kiểm tra lần cuối';
+
+  @override
+  String get qsNever => 'Chưa';
+
+  @override
+  String get qsSyncNow => 'Cập nhật ngay';
+
+  @override
+  String get qsChangeSource => 'Đổi nguồn câu hỏi';
+
+  @override
+  String get qsChangeTitle => 'Địa chỉ manifest.json';
+
+  @override
+  String get qsUseDefault => 'Dùng nguồn mặc định';
+
+  @override
+  String get qsSave => 'Lưu và tải';
+
+  @override
+  String get qsHelp =>
+      'Câu hỏi được tải qua internet rồi lưu trên máy để dùng cả khi mất mạng. Mỗi file đều được kiểm tra định dạng và mã kiểm tra; nếu có lỗi, app giữ nguyên bộ câu hỏi đang có. Nguồn tuỳ chỉnh (ví dụ của nhà trường) cần một file manifest.json và các file grade_N.json cùng định dạng: lớp 1–12, 13 = Đại học, 14 = Sau đại học.';
+
+  @override
+  String qsResultUpdated(int version) {
+    return 'Đã cập nhật bộ câu hỏi lên phiên bản $version.';
+  }
+
+  @override
+  String get qsResultUpToDate => 'Bộ câu hỏi đã là bản mới nhất.';
+
+  @override
+  String get qsErrorNetwork =>
+      'Không tải được câu hỏi (kiểm tra mạng hoặc địa chỉ). App tiếp tục dùng bộ câu hỏi đang có trên máy.';
+
+  @override
+  String get qsErrorManifest =>
+      'manifest.json không đúng định dạng. App tiếp tục dùng bộ câu hỏi đang có trên máy.';
+
+  @override
+  String get qsErrorQuestions =>
+      'Có file câu hỏi sai định dạng. App tiếp tục dùng bộ câu hỏi đang có trên máy.';
+
+  @override
+  String get qsErrorChecksum =>
+      'File câu hỏi không khớp mã kiểm tra trong manifest. App tiếp tục dùng bộ câu hỏi đang có trên máy.';
+
+  @override
+  String get qsInvalidUrl => 'Địa chỉ không hợp lệ.';
+
+  @override
+  String get qsInsecureUrl => 'Chỉ chấp nhận địa chỉ bắt đầu bằng https://';
 }

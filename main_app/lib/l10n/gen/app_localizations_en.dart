@@ -889,4 +889,87 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get runningIosHint =>
       'Swipe up (or press the Home button) to use other apps.';
+
+  @override
+  String get commonCancel => 'Cancel';
+
+  @override
+  String get dashboardQuestionSource => 'Question source';
+
+  @override
+  String get qsTitle => 'Question source';
+
+  @override
+  String get qsSource => 'Source';
+
+  @override
+  String get qsDefaultSource => 'Default (KidGuard)';
+
+  @override
+  String get qsCustomSource => 'Custom';
+
+  @override
+  String get qsVersion => 'Question bank version';
+
+  @override
+  String get qsDownloaded => 'Grades using downloaded questions';
+
+  @override
+  String get qsBundledOnly => 'Using the questions built into the app';
+
+  @override
+  String get qsLastSync => 'Last checked';
+
+  @override
+  String get qsNever => 'Never';
+
+  @override
+  String get qsSyncNow => 'Update now';
+
+  @override
+  String get qsChangeSource => 'Change question source';
+
+  @override
+  String get qsChangeTitle => 'manifest.json address';
+
+  @override
+  String get qsUseDefault => 'Use default source';
+
+  @override
+  String get qsSave => 'Save and download';
+
+  @override
+  String get qsHelp =>
+      'Questions are downloaded over the internet and stored on this device, so they still work offline. Every file is checked for format and checksum; if anything is wrong, the app keeps the questions it already has. A custom source (for example your school\'s) needs a manifest.json and grade_N.json files in the same format: grades 1–12, 13 = University, 14 = Postgraduate.';
+
+  @override
+  String qsResultUpdated(int version) {
+    return 'Question bank updated to version $version.';
+  }
+
+  @override
+  String get qsResultUpToDate => 'The question bank is already up to date.';
+
+  @override
+  String get qsErrorNetwork =>
+      'Couldn\'t download questions (check the connection or address). The app keeps using the questions already on this device.';
+
+  @override
+  String get qsErrorManifest =>
+      'manifest.json is not in the right format. The app keeps using the questions already on this device.';
+
+  @override
+  String get qsErrorQuestions =>
+      'A question file is not in the right format. The app keeps using the questions already on this device.';
+
+  @override
+  String get qsErrorChecksum =>
+      'A question file doesn\'t match the checksum in the manifest. The app keeps using the questions already on this device.';
+
+  @override
+  String get qsInvalidUrl => 'This address is not valid.';
+
+  @override
+  String get qsInsecureUrl =>
+      'Only addresses starting with https:// are allowed.';
 }
