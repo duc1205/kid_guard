@@ -54,13 +54,27 @@ Khoá cứng bằng Device Owner (adb) đã bỏ; máy nào đã bật trước 
 
 | Nền tảng | Cách khoá | Build |
 |---|---|---|
-| Android | Foreground service + lớp che toàn màn hình khi hết giờ, kéo lại nếu bé thoát, dừng video đang phát; tuỳ chọn Khoá nâng cao (Trợ năng) | `fvm flutter build apk --release --split-per-abi` |
+| Android | Foreground service + lớp che toàn màn hình khi hết giờ, kéo lại nếu bé thoát, dừng video đang phát; tuỳ chọn Khoá nâng cao (Trợ năng) | `fvm flutter build appbundle --release` (cần keystore, xem dưới) |
 | iOS 16+ | Screen Time API: extension `KidGuardMonitor` bật lá chắn chặn các app đã chọn khi hết giờ; `KidGuardShield` là giao diện lá chắn | `fvm flutter build ios` (cần ký số, xem dưới) |
 | macOS | Kiosk toàn màn hình (ẩn Dock/menu, chặn Cmd+Tab, Buộc thoát), không cho thoát app trong phiên, tự mở khi đăng nhập | `fvm flutter build macos` |
 | Windows | Cửa sổ toàn màn hình luôn trên cùng, chặn phím Windows/Alt+Tab/Alt+F4/Ctrl+Esc, không cho đóng trong phiên, tự chạy khi đăng nhập. Không chặn được Ctrl+Alt+Del | `flutter build windows` — **phải build trên máy Windows** |
 
 Code native: `android/app/src/main/kotlin/…`, `ios/Runner/DeviceControl.swift` + `ios/Shared`, `ios/KidGuardMonitor`, `ios/KidGuardShield`,
 `macos/Runner/DeviceControl.swift`, `windows/runner/device_control.{h,cpp}` — cùng channel `kidguard/device_control`.
+
+### Android: ký bản phát hành (Play Store)
+
+1. Tạo upload keystore (một lần, giữ bí mật):
+   ```bash
+   keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+   ```
+2. Chép `android/key.properties.example` → `android/key.properties`, điền mật khẩu và đường dẫn `storeFile`.
+   File này và `*.jks` đã nằm trong `.gitignore` — không commit.
+3. Chưa có `key.properties` thì `flutter build … --release` vẫn chạy (ký debug, chỉ để dev).
+   Có file rồi thì bản release dùng upload key:
+   ```bash
+   fvm flutter build appbundle --release
+   ```
 
 ### iOS: Family Controls
 

@@ -1,0 +1,6 @@
+storePassword=CHANGE_ME
+keyPassword=CHANGE_ME
+keyAlias=upload
+# Đường dẫn tuyệt đối tới file .jks (khuyến nghị). Relative path tính từ android/app/.
+# Ví dụ: /Users/you/upload-keystore.jks
+storeFile=../upload-keystore.jks
