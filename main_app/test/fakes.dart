@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:main_app/data/datasources/local_store.dart';
 import 'package:main_app/data/datasources/app_database.dart';
+import 'package:main_app/data/datasources/question_remote_datasource.dart';
 import 'package:main_app/domain/entities/active_session.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:main_app/domain/entities/child_profile.dart';
@@ -149,3 +151,30 @@ class FileAssetBundle extends CachingAssetBundle {
   Future<ByteData> load(String key) async =>
       ByteData.sublistView(await File(key).readAsBytes());
 }
+
+/// "Máy chủ" giả cho dio: [handler] trả về (mã trạng thái, nội dung) theo URL.
+class FakeDioAdapter implements HttpClientAdapter {
+  FakeDioAdapter(this.handler);
+  final Future<(int, List<int>)> Function(Uri url) handler;
+
+  @override
+  Future<ResponseBody> fetch(
+    RequestOptions options,
+    Stream<Uint8List>? requestStream,
+    Future<void>? cancelFuture,
+  ) async {
+    final (status, body) = await handler(options.uri);
+    return ResponseBody.fromBytes(body, status);
+  }
+
+  @override
+  void close({bool force = false}) {}
+}
+
+/// Nguồn câu hỏi trỏ vào [FakeDioAdapter].
+QuestionRemoteDataSource fakeRemote(
+  Future<(int, List<int>)> Function(Uri url) handler,
+) => QuestionRemoteDataSource(
+  dio: Dio(BaseOptions(responseType: ResponseType.bytes))
+    ..httpClientAdapter = FakeDioAdapter(handler),
+);

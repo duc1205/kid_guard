@@ -3,13 +3,10 @@ import 'dart:io';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/testing.dart';
 import 'package:main_app/core/constants/app_constants.dart';
 import 'package:main_app/data/datasources/app_database.dart';
 import 'package:main_app/data/datasources/question_asset_datasource.dart';
 import 'package:main_app/data/datasources/question_cache_datasource.dart';
-import 'package:main_app/data/datasources/question_remote_datasource.dart';
 import 'package:main_app/data/models/question_file_parser.dart';
 import 'package:main_app/data/repositories/question_bank_repository.dart';
 import 'package:main_app/domain/entities/question_bank.dart';
@@ -66,15 +63,12 @@ void main() {
     repo = QuestionBankRepositoryImpl(
       assets: QuestionAssetDataSource(bundle: FileAssetBundle()),
       cache: QuestionCacheDataSource(db),
-      remote: QuestionRemoteDataSource(
-        client: MockClient((req) async {
-          requested.add(req.url.toString());
-          final body = server[req.url.toString()];
-          return body == null
-              ? http.Response('not found', 404)
-              : http.Response.bytes(utf8.encode(body), 200);
-        }),
-      ),
+      remote: fakeRemote((url) async {
+        requested.add(url.toString());
+        final body = server[url.toString()];
+        if (body == null) return (404, utf8.encode('not found'));
+        return (200, utf8.encode(body));
+      }),
       store: store,
     );
   });

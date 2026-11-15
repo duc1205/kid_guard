@@ -51,24 +51,32 @@ class AppDependencies {
   final QuestionBankController questionBankController;
   final SettingsController settingsController;
 
-  static Future<AppDependencies> create() async {
+  /// Các tham số tuỳ chọn chỉ để test thay phần phụ thuộc nền tảng
+  /// (bộ nhớ, CSDL, kênh native, xác thực); app thật gọi không tham số.
+  static Future<AppDependencies> create({
+    @visibleForTesting LocalStore? store,
+    @visibleForTesting AppDatabase? database,
+    @visibleForTesting DeviceControlRepository? device,
+    @visibleForTesting ParentAuthRepository? parentAuth,
+    @visibleForTesting QuestionRemoteDataSource? remote,
+  }) async {
     const uuid = Uuid();
     String newId() => uuid.v4();
 
-    final store = LocalStore(SharedPreferencesAsync());
-    final database = await AppDatabase.open();
+    store ??= LocalStore(SharedPreferencesAsync());
+    database ??= await AppDatabase.open();
     final ChildRepository children = SqliteChildRepository(database);
     final UsageLogRepository logs = SqliteUsageLogRepository(database);
     final ActiveSessionRepository active = PrefsActiveSessionRepository(store);
     final questionBank = QuestionBankRepositoryImpl(
       assets: QuestionAssetDataSource(),
       cache: QuestionCacheDataSource(database),
-      remote: QuestionRemoteDataSource(),
+      remote: remote ?? QuestionRemoteDataSource(),
       store: store,
     );
     final QuestionRepository questions = questionBank;
-    final DeviceControlRepository device = DeviceControlChannel();
-    final ParentAuthRepository parentAuth = LocalAuthDataSource();
+    device ??= DeviceControlChannel();
+    parentAuth ??= LocalAuthDataSource();
     final SettingsRepository settings = PrefsSettingsRepository(store);
     final settingsController = SettingsController(
       settings: settings,
