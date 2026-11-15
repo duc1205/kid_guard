@@ -8,6 +8,7 @@ import 'screens/child/quiz_screen.dart';
 import 'screens/child/review_screen.dart';
 import 'screens/child/running_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/setup/parent_consent_screen.dart';
 import 'l10n_ext.dart';
 import 'widgets/dependencies_scope.dart';
 
@@ -87,7 +88,7 @@ class _RootState extends State<_Root> with WidgetsBindingObserver {
             if (mounted) Navigator.of(context).popUntil((r) => r.isFirst);
           });
         }
-        if (session == null) return const HomeScreen();
+        if (session == null) return const _HomeGate();
 
         final screen = switch (session.status) {
           GuardStatus.running => const RunningScreen(),
@@ -104,5 +105,39 @@ class _RootState extends State<_Root> with WidgetsBindingObserver {
         );
       },
     );
+  }
+}
+
+/// Hiện màn đồng ý phụ huynh lần đầu, rồi mới vào Home.
+class _HomeGate extends StatefulWidget {
+  const _HomeGate();
+
+  @override
+  State<_HomeGate> createState() => _HomeGateState();
+}
+
+class _HomeGateState extends State<_HomeGate> {
+  bool? _accepted;
+
+  @override
+  void initState() {
+    super.initState();
+    DependenciesScope.of(context).parentConsent.hasAccepted().then((ok) {
+      if (mounted) setState(() => _accepted = ok);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final accepted = _accepted;
+    if (accepted == null) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    if (!accepted) {
+      return ParentConsentScreen(
+        onAccepted: () => setState(() => _accepted = true),
+      );
+    }
+    return const HomeScreen();
   }
 }

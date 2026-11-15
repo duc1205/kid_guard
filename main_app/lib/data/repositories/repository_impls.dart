@@ -65,3 +65,16 @@ class PrefsSetupChecklistRepository implements SetupChecklistRepository {
   Future<void> setConfirmed(String key, bool confirmed) =>
       _store.writeBool(_k(key), confirmed);
 }
+
+class PrefsParentConsentRepository implements ParentConsentRepository {
+  PrefsParentConsentRepository(this._store);
+  final LocalStore _store;
+
+  static const _key = 'kg.parent_consent_v1';
+
+  @override
+  Future<bool> hasAccepted() => _store.readBool(_key);
+
+  @override
+  Future<void> accept() => _store.writeBool(_key, true);
+}

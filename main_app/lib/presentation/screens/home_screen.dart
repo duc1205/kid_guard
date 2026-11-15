@@ -8,6 +8,7 @@ import '../widgets/parent_auth_flow.dart';
 import 'child/child_register_screen.dart';
 import 'parent/advanced_lock_screen.dart';
 import 'parent/parent_dashboard_screen.dart';
+import 'setup/privacy_policy_screen.dart';
 import 'setup/settings_walkthrough.dart';
 import 'setup/setup_steps.dart';
 
@@ -305,6 +306,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                     ? l10n.homeMacNotice
                     : '${l10n.homeWindowsNotice}\n\n${l10n.homeWindowsHelloHint}',
               ),
+            const SizedBox(height: 8),
+            TextButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const PrivacyPolicyScreen()),
+              ),
+              child: Text(l10n.homePrivacyPolicy),
+            ),
           ],
         ),
       ),

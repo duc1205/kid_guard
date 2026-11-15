@@ -91,6 +91,54 @@ class AppLocalizationsEn extends AppLocalizations {
       'Enter the phone password to turn off hard lock';
 
   @override
+  String get consentTitle => 'For parents';
+
+  @override
+  String get consentIntro =>
+      'KidGuard is a parental screen-time tool. Please confirm before using it on this device.';
+
+  @override
+  String get consentBulletParent =>
+      'Only a parent or guardian should set up KidGuard.';
+
+  @override
+  String get consentBulletLocal =>
+      'Profiles and usage history stay on this device. KidGuard does not create online accounts.';
+
+  @override
+  String get consentBulletChildData =>
+      'A child\'s name, date of birth and grade are stored locally to pick questions and show parent reports.';
+
+  @override
+  String get consentBulletNetwork =>
+      'The app may download question files over HTTPS. Those requests do not include your child\'s personal details.';
+
+  @override
+  String get consentReadPolicy => 'Read privacy policy';
+
+  @override
+  String get consentAgree => 'I am a parent/guardian and I agree';
+
+  @override
+  String get privacyTitle => 'Privacy policy';
+
+  @override
+  String get privacyBody =>
+      'KidGuard stores child profiles and screen-time/quiz history only on this device. Parent unlock uses the device passcode or biometrics. Optional lock features (Accessibility on Android, Screen Time on iOS, kiosk on desktop) are used for parental control on this device, not to sell data or read messages. Question updates are downloaded over HTTPS without uploading child data. Full policy (also for store listings):';
+
+  @override
+  String get privacyOnlineLabel => 'Public URL';
+
+  @override
+  String get privacyCopyUrl => 'Copy policy URL';
+
+  @override
+  String get privacyUrlCopied => 'Privacy policy URL copied.';
+
+  @override
+  String get homePrivacyPolicy => 'Privacy policy';
+
+  @override
   String get setupBack => 'Tap the Back button (◁) to return to KidGuard.';
 
   @override

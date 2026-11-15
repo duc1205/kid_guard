@@ -24,6 +24,10 @@ class AppConstants {
   /// Tự động xoá nhật ký cũ hơn khoảng này để dữ liệu không phình mãi.
   static const Duration logRetention = Duration(days: 180);
 
+  /// Chính sách quyền riêng tư công khai (dùng cho store listing + in-app).
+  static const String privacyPolicyUrl =
+      'https://github.com/duc1205/kid_guard/blob/main/PRIVACY.md';
+
   /// Nguồn câu hỏi mặc định: repo GitHub công khai chỉ chứa câu hỏi
   /// (manifest.json + grade_N.json, cùng định dạng assets/questions/).
   static const String defaultQuestionSourceUrl =

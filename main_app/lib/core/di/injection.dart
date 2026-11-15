@@ -35,6 +35,7 @@ class AppDependencies {
     required this.getChildHistory,
     required this.getWeakTopics,
     required this.setupChecklist,
+    required this.parentConsent,
     required this.questionBankController,
     required this.settingsController,
   });
@@ -46,6 +47,7 @@ class AppDependencies {
   final GetChildHistoryUseCase getChildHistory;
   final GetWeakTopicsUseCase getWeakTopics;
   final SetupChecklistRepository setupChecklist;
+  final ParentConsentRepository parentConsent;
   final QuestionBankController questionBankController;
   final SettingsController settingsController;
 
@@ -99,6 +101,7 @@ class AppDependencies {
       getChildHistory: GetChildHistoryUseCase(logs),
       getWeakTopics: GetWeakTopicsUseCase(logs),
       setupChecklist: PrefsSetupChecklistRepository(store),
+      parentConsent: PrefsParentConsentRepository(store),
       settingsController: settingsController,
       questionBankController: questionBankController,
       guardController: GuardController(

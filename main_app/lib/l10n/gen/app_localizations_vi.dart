@@ -71,6 +71,54 @@ class AppLocalizationsVi extends AppLocalizations {
   String get authReasonDisableHardLock => 'Nhập mật khẩu máy để tắt khoá cứng';
 
   @override
+  String get consentTitle => 'Dành cho phụ huynh';
+
+  @override
+  String get consentIntro =>
+      'KidGuard là công cụ kiểm soát thời gian dùng máy của trẻ. Hãy xác nhận trước khi dùng trên máy này.';
+
+  @override
+  String get consentBulletParent =>
+      'Chỉ bố mẹ hoặc người giám hộ nên thiết lập KidGuard.';
+
+  @override
+  String get consentBulletLocal =>
+      'Hồ sơ và nhật ký dùng máy lưu trên máy này. KidGuard không tạo tài khoản trực tuyến.';
+
+  @override
+  String get consentBulletChildData =>
+      'Họ tên, ngày sinh và lớp của bé được lưu cục bộ để chọn câu hỏi và báo cáo cho phụ huynh.';
+
+  @override
+  String get consentBulletNetwork =>
+      'App có thể tải file câu hỏi qua HTTPS. Yêu cầu đó không kèm thông tin cá nhân của bé.';
+
+  @override
+  String get consentReadPolicy => 'Đọc chính sách quyền riêng tư';
+
+  @override
+  String get consentAgree => 'Tôi là phụ huynh/người giám hộ và đồng ý';
+
+  @override
+  String get privacyTitle => 'Chính sách quyền riêng tư';
+
+  @override
+  String get privacyBody =>
+      'KidGuard lưu hồ sơ trẻ và nhật ký thời gian/câu hỏi chỉ trên máy này. Người lớn mở khoá bằng mật khẩu máy hoặc sinh trắc học. Các tính năng khoá tuỳ chọn (Trợ năng trên Android, Screen Time trên iOS, kiosk trên máy tính) dùng để kiểm soát của phụ huynh trên máy này, không bán dữ liệu hay đọc tin nhắn. Cập nhật câu hỏi tải qua HTTPS, không gửi dữ liệu trẻ lên máy chủ. Chính sách đầy đủ (dùng cho store):';
+
+  @override
+  String get privacyOnlineLabel => 'Địa chỉ công khai';
+
+  @override
+  String get privacyCopyUrl => 'Sao chép đường dẫn chính sách';
+
+  @override
+  String get privacyUrlCopied => 'Đã sao chép đường dẫn chính sách.';
+
+  @override
+  String get homePrivacyPolicy => 'Chính sách quyền riêng tư';
+
+  @override
   String get setupBack => 'Bấm nút Quay lại (◁) để trở về KidGuard.';
 
   @override
