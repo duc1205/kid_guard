@@ -947,6 +947,16 @@ class AppLocalizationsVi extends AppLocalizations {
       'Muốn tắt: thu hồi máy (kết thúc phiên của bé) trước, rồi vào Cài đặt › Trợ năng › KidGuard › tắt.';
 
   @override
+  String get advancedLockDisclosureTitle => 'Trước khi bật Khoá nâng cao';
+
+  @override
+  String get advancedLockDisclosureBody =>
+      'Dịch vụ Trợ năng của KidGuard chỉ biết package ứng dụng nào đang ở phía trước trong phiên do phụ huynh bắt đầu. Không đọc, không lưu, không gửi nội dung màn hình.\n\nHết giờ: đóng thanh thông báo và đưa màn câu hỏi lên lại. Trong phiên: chặn Cài đặt và trình gỡ cài đặt để bé không tắt KidGuard. Cuộc gọi vẫn dùng được. Ngoài phiên, dịch vụ không làm gì.\n\nBạn sẽ tự bật trong Cài đặt hệ thống. Có thể tắt bất cứ lúc nào sau khi kết thúc phiên của bé.';
+
+  @override
+  String get advancedLockAgreeContinue => 'Tôi đã hiểu — tiếp tục';
+
+  @override
   String get legacyHardLockTitle => 'Khoá cứng cũ (Device Owner) đang bật';
 
   @override

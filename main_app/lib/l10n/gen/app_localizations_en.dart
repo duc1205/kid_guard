@@ -1003,6 +1003,16 @@ class AppLocalizationsEn extends AppLocalizations {
       'To turn it off: end your child\'s session first (parent unlock), then go to Settings › Accessibility › KidGuard › off.';
 
   @override
+  String get advancedLockDisclosureTitle => 'Before you turn on Advanced lock';
+
+  @override
+  String get advancedLockDisclosureBody =>
+      'KidGuard\'s Accessibility service will see only which app package is in the foreground during a parent-started session. It does not read, store or send anything on the screen.\n\nWhen time is up it closes the notification shade and brings the quiz back. During a session it blocks Settings and uninstallers so your child cannot turn KidGuard off. Calls still work. Outside a session the service does nothing.\n\nYou will turn it on yourself in system Settings. You can turn it off anytime after ending the child\'s session.';
+
+  @override
+  String get advancedLockAgreeContinue => 'I understand — continue';
+
+  @override
   String get legacyHardLockTitle => 'Old hard lock (Device Owner) is on';
 
   @override

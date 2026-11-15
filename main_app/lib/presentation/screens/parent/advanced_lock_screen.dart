@@ -44,6 +44,33 @@ class _AdvancedLockScreenState extends State<AdvancedLockScreen>
     if (mounted) setState(() => _perms = p);
   }
 
+  /// Play: công bố nổi bật + đồng ý rõ ràng trước khi mở Cài đặt › Trợ năng.
+  Future<void> _openAccessibilitySettingsToEnable() async {
+    final l10n = context.l10n;
+    final agreed = await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.advancedLockDisclosureTitle),
+        content: SingleChildScrollView(
+          child: Text(l10n.advancedLockDisclosureBody),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.commonCancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.advancedLockAgreeContinue),
+          ),
+        ],
+      ),
+    );
+    if (agreed != true || !mounted) return;
+    await DependenciesScope.of(context).device.openAccessibilitySettings();
+  }
+
   Future<void> _disableLegacyHardLock() async {
     final deps = DependenciesScope.of(context);
     final l10n = context.l10n;
@@ -154,7 +181,7 @@ class _AdvancedLockScreenState extends State<AdvancedLockScreen>
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: FilledButton.icon(
-                            onPressed: device.openAccessibilitySettings,
+                            onPressed: _openAccessibilitySettingsToEnable,
                             icon: const Icon(Icons.accessibility_new_rounded),
                             label: Text(l10n.advancedLockOpenSettings),
                           ),
