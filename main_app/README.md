@@ -84,6 +84,7 @@ Code native: `android/app/src/main/kotlin/…`, `ios/Runner/DeviceControl.swift`
 3. Muốn phát hành TestFlight/App Store: gửi yêu cầu **Family Controls (Distribution)** tại
    developer.apple.com/contact/request/family-controls-distribution cho cả 3 bundle id
    (`com.pham.kidguard`, `.monitor`, `.shield`) và chờ Apple duyệt.
+4. `ios/Shared/PrivacyInfo.xcprivacy` khai báo API lý do bắt buộc (UserDefaults, …) cho Runner + 2 extension.
 
 ### Windows
 

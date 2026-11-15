@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		06D569BFD4F39970575896C7 /* KidGuardShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD33669A870E527B37D4721 /* KidGuardShared.swift */; };
+		0A1B2C3D4E5F60718293A4B5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0F1E2D3C4B5A69788796A5B4 /* PrivacyInfo.xcprivacy */; };
+		0B2C3D4E5F60718293A4B5C6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0F1E2D3C4B5A69788796A5B4 /* PrivacyInfo.xcprivacy */; };
+		0C3D4E5F60718293A4B5C6D7 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0F1E2D3C4B5A69788796A5B4 /* PrivacyInfo.xcprivacy */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		26A5C51D9F9CAEA81A4CA51B /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01541D97CBCFF749A332A855 /* Pods_RunnerTests.framework */; };
 		2B3F77715DC987269028B1DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC8D8A76E99332F46FD8DC /* Foundation.framework */; };
@@ -79,6 +82,7 @@
 
 /* Begin PBXFileReference section */
 		01541D97CBCFF749A332A855 /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F1E2D3C4B5A69788796A5B4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		12987A566A72E55EEA56DCB0 /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				5FD33669A870E527B37D4721 /* KidGuardShared.swift */,
+				0F1E2D3C4B5A69788796A5B4 /* PrivacyInfo.xcprivacy */,
 			);
 			name = Shared;
 			path = Shared;
@@ -413,6 +418,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B2C3D4E5F60718293A4B5C6 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +430,7 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+				0A1B2C3D4E5F60718293A4B5 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3D4E5F60718293A4B5C6D7 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

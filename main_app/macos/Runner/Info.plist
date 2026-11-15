@@ -24,6 +24,8 @@
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>$(PRODUCT_COPYRIGHT)</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Use Touch ID or the Mac password so a parent can take the computer back and view the child's activity. / Dùng Touch ID hoặc mật khẩu Mac để người lớn thu hồi máy và xem nhật ký của bé.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
