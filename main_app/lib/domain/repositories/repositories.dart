@@ -76,9 +76,6 @@ abstract interface class UsageLogRepository {
 
   /// Xoá các phiên đã kết thúc trước [cutoff]. Trả về số phiên đã xoá.
   Future<int> deleteEndedBefore(DateTime cutoff);
-
-  /// Xoá snapshot câu hỏi không còn attempt nào tham chiếu.
-  Future<void> pruneOrphanQuestionSnapshots();
 }
 
 /// Nền tảng đang chạy — mỗi nền tảng có cách khoá máy khác nhau.

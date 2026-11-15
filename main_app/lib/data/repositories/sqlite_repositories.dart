@@ -280,11 +280,6 @@ class SqliteUsageLogRepository implements UsageLogRepository {
   }
 
   @override
-  Future<void> pruneOrphanQuestionSnapshots() => _db.rawDelete('''
-    DELETE FROM question_snapshots
-    WHERE id NOT IN (SELECT DISTINCT question_id FROM attempts)''');
-
-  @override
   Future<int> deleteEndedBefore(DateTime cutoff) =>
       _db.transaction((txn) async {
         final deleted = await txn.delete(

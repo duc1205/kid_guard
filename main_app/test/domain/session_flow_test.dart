@@ -150,12 +150,12 @@ void main() {
       grade: 4,
     );
     await start(a);
-    expect(
-      () => deleteChild(a.id),
+    await expectLater(
+      deleteChild(a.id),
       throwsA(isA<ActiveSessionExistsException>()),
     );
-    expect(
-      () => clearAll(),
+    await expectLater(
+      clearAll(),
       throwsA(isA<ActiveSessionExistsException>()),
     );
 
