@@ -135,7 +135,7 @@ class _EditChildScreenState extends State<EditChildScreen> {
             const SizedBox(height: 10),
             Text(
               l10n.childEditNote,
-              style: const TextStyle(color: Colors.black54),
+              style: const TextStyle(color: AppColors.textSecondary),
             ),
             if (_error != null) ...[
               const SizedBox(height: 16),

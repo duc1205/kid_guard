@@ -95,7 +95,7 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
                       l10n.gradeLabel(c.grade),
                       formatDate(c.dateOfBirth),
                     ),
-                    style: const TextStyle(color: Colors.black54),
+                    style: const TextStyle(color: AppColors.textSecondary),
                   ),
                   const SizedBox(height: 14),
                   Row(
@@ -194,7 +194,7 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
                           ),
                           style: const TextStyle(
                             fontSize: 12,
-                            color: Colors.black45,
+                            color: AppColors.textTertiary,
                           ),
                         ),
                 ),
@@ -253,7 +253,7 @@ class _SessionCard extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 l10n.reportEndedAt(formatDateTime(log.endedAt!)),
-                style: const TextStyle(color: Colors.black54),
+                style: const TextStyle(color: AppColors.textSecondary),
               ),
             ),
           if (log.attempts.isEmpty)
@@ -308,7 +308,7 @@ class _AttemptTile extends StatelessWidget {
               ),
               Text(
                 formatTime(a.answeredAt),
-                style: const TextStyle(fontSize: 12, color: Colors.black45),
+                style: const TextStyle(fontSize: 12, color: AppColors.textTertiary),
               ),
             ],
           ),

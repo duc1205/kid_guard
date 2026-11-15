@@ -140,7 +140,7 @@ class _AdvancedLockScreenState extends State<AdvancedLockScreen>
                 const SizedBox(height: 8),
                 Text(
                   l10n.advancedLockPrivacy,
-                  style: const TextStyle(color: Colors.black54),
+                  style: const TextStyle(color: AppColors.textSecondary),
                 ),
                 const SizedBox(height: 20),
                 if (perms.accessibility)
@@ -304,7 +304,7 @@ class _Bullet extends StatelessWidget {
           child: number == null
               ? const Padding(
                   padding: EdgeInsets.only(top: 7),
-                  child: Icon(Icons.circle, size: 7, color: Colors.black45),
+                  child: Icon(Icons.circle, size: 7, color: AppColors.textTertiary),
                 )
               : CircleAvatar(
                   radius: 11,

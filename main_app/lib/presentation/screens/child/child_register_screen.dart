@@ -201,7 +201,7 @@ class _ChildRegisterScreenState extends State<ChildRegisterScreen> {
       const SizedBox(height: 16),
       Text(
         l10n.registerSavedHint,
-        style: const TextStyle(color: Colors.black54),
+        style: const TextStyle(color: AppColors.textSecondary),
         textAlign: TextAlign.center,
       ),
     ];
@@ -410,7 +410,7 @@ class _GradeChip extends StatelessWidget {
               level,
               style: TextStyle(
                 fontSize: 11,
-                color: selected ? Colors.white70 : Colors.black45,
+                color: selected ? Colors.white70 : AppColors.textTertiary,
               ),
             ),
           ],

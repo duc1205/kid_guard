@@ -58,7 +58,7 @@ class RunningScreen extends StatelessWidget {
                           l10n.runningGrade(
                             l10n.gradeLabel(session.child.grade),
                           ),
-                          style: const TextStyle(color: Colors.black54),
+                          style: const TextStyle(color: AppColors.textSecondary),
                         ),
                       ],
                     ),
@@ -97,7 +97,7 @@ class RunningScreen extends StatelessWidget {
                             children: [
                               Text(
                                 l10n.runningTimeLeft,
-                                style: const TextStyle(color: Colors.black54),
+                                style: const TextStyle(color: AppColors.textSecondary),
                               ),
                               Text(
                                 formatCountdown(remaining),
@@ -137,7 +137,7 @@ class RunningScreen extends StatelessWidget {
                   label: Text(l10n.runningUseOtherApps),
                 ),
               const SizedBox(height: 8),
-              const ParentRevokeButton(color: Colors.black54),
+              const ParentRevokeButton(color: AppColors.textSecondary),
             ],
           ),
         ),

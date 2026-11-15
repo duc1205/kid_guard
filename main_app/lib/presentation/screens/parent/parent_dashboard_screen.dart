@@ -61,7 +61,7 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
                   child: Text(
                     l10n.dashboardEmpty,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 16, color: Colors.black54),
+                    style: const TextStyle(fontSize: 16, color: AppColors.textSecondary),
                   ),
                 ),
               ],
@@ -175,7 +175,7 @@ class _ChildCard extends StatelessWidget {
                     Text(
                       '${l10n.dashboardChildInfo(l10n.gradeLabel(c.grade), c.ageAt(DateTime.now()))}'
                       '${last == null ? '' : ' · ${formatDateTime(last)}'}',
-                      style: const TextStyle(color: Colors.black54),
+                      style: const TextStyle(color: AppColors.textSecondary),
                     ),
                     const SizedBox(height: 6),
                     Text(

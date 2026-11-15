@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/app_theme.dart';
+
 /// Ô thống kê nhỏ (nhãn + số liệu) dùng trong khu vực phụ huynh.
 class StatTile extends StatelessWidget {
   const StatTile({
@@ -19,9 +21,18 @@ class StatTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label,
-            style: const TextStyle(color: Colors.black54, fontSize: 13),
+          // Một dòng (thu nhỏ nếu cần) để các ô cạnh nhau luôn cao bằng nhau.
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              label,
+              maxLines: 1,
+              style: const TextStyle(
+                color: AppColors.textSecondary,
+                fontSize: 13,
+              ),
+            ),
           ),
           const SizedBox(height: 6),
           FittedBox(

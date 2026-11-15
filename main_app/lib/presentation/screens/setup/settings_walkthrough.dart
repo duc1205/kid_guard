@@ -108,7 +108,7 @@ class _GuideSheet extends StatelessWidget {
               opensSettings
                   ? context.l10n.setupReadStepsFirst
                   : context.l10n.setupFollowSteps,
-              style: const TextStyle(color: Colors.black54),
+              style: const TextStyle(color: AppColors.textSecondary),
             ),
             const SizedBox(height: 16),
             for (final (i, step) in guide.steps.indexed)

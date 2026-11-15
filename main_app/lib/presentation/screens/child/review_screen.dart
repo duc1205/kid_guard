@@ -138,7 +138,7 @@ class _ReviewScreenState extends State<ReviewScreen> {
                     Text(
                       l10n.reviewLockNotice,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.black54),
+                      style: const TextStyle(color: AppColors.textSecondary),
                     ),
                   ],
                 ),

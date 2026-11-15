@@ -185,7 +185,7 @@ class _QuestionSourceScreenState extends State<QuestionSourceScreen> {
               const SizedBox(height: 20),
               Text(
                 l10n.qsHelp,
-                style: const TextStyle(color: Colors.black54, height: 1.4),
+                style: const TextStyle(color: AppColors.textSecondary, height: 1.4),
               ),
             ],
           );

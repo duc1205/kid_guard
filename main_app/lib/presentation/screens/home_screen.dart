@@ -422,28 +422,59 @@ class _SetupTile extends StatelessWidget {
         : unknown
         ? Icons.settings_suggest_rounded
         : Icons.error_rounded;
+    final theme = Theme.of(context);
+    final showAction = (!ok || showActionWhenOk) && onFix != null;
+    // Nút hành động nằm dưới mô tả (không chiếm cột bên phải) để chữ không bị ép hẹp.
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Card(
-        child: ListTile(
-          leading: loading
-              ? const SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                )
-              : Icon(icon, color: color),
-          title: Text(
-            title,
-            style: const TextStyle(fontWeight: FontWeight.w600),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(16, 14, 16, showAction ? 6 : 14),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 1),
+                child: loading
+                    ? const SizedBox(
+                        width: 22,
+                        height: 22,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : Icon(icon, color: color, size: 22),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: theme.textTheme.titleMedium),
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                    if (showAction)
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton.icon(
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 0),
+                            visualDensity: VisualDensity.compact,
+                          ),
+                          onPressed: onFix,
+                          icon: const Icon(Icons.arrow_forward_rounded, size: 18),
+                          iconAlignment: IconAlignment.end,
+                          label: Text(fixLabel ?? context.l10n.homeGrant),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          subtitle: Text(subtitle),
-          trailing: (!ok || showActionWhenOk) && onFix != null
-              ? TextButton(
-                  onPressed: onFix,
-                  child: Text(fixLabel ?? context.l10n.homeGrant),
-                )
-              : null,
         ),
       ),
     );

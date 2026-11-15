@@ -103,7 +103,11 @@ class _QuizScreenState extends State<QuizScreen> {
                       : question.subject,
                   AppColors.primary,
                 ),
-                _Tag(l10n.questionType(question.type), AppColors.kid),
+                _Tag(
+                  l10n.questionType(question.type),
+                  AppColors.kid,
+                  textColor: AppColors.kidDeep,
+                ),
               ],
             ),
             const SizedBox(height: 14),
@@ -138,7 +142,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Text(l10n.quizSubmit),
             ),
             const SizedBox(height: 8),
-            const Center(child: ParentRevokeButton(color: Colors.black54)),
+            const Center(child: ParentRevokeButton(color: AppColors.textSecondary)),
           ],
         ),
       ),
@@ -147,20 +151,21 @@ class _QuizScreenState extends State<QuizScreen> {
 }
 
 class _Tag extends StatelessWidget {
-  const _Tag(this.text, this.color);
+  const _Tag(this.text, this.color, {this.textColor});
   final String text;
   final Color color;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
     decoration: BoxDecoration(
-      color: color.withValues(alpha: 0.12),
+      color: color.withValues(alpha: 0.14),
       borderRadius: BorderRadius.circular(20),
     ),
     child: Text(
       text,
-      style: TextStyle(color: color, fontWeight: FontWeight.w700),
+      style: TextStyle(color: textColor ?? color, fontWeight: FontWeight.w700),
     ),
   );
 }
