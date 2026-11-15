@@ -1600,7 +1600,7 @@ abstract class AppLocalizations {
   /// No description provided for @advancedLockWhat2.
   ///
   /// In en, this message translates to:
-  /// **'During your child\'s whole session: blocks KidGuard\'s settings, force stop and uninstall pages, including turning off its Accessibility access.'**
+  /// **'During your child\'s whole session: blocks Settings and uninstallers so your child cannot turn KidGuard off (including Accessibility).'**
   String get advancedLockWhat2;
 
   /// No description provided for @advancedLockWhat3.
@@ -1612,7 +1612,7 @@ abstract class AppLocalizations {
   /// No description provided for @advancedLockPrivacy.
   ///
   /// In en, this message translates to:
-  /// **'KidGuard only uses Accessibility to know which app is on top. It does not read, store or send what\'s on your screen.'**
+  /// **'KidGuard only uses Accessibility to know which app package is on top. It does not read, store or send what\'s on your screen.'**
   String get advancedLockPrivacy;
 
   /// No description provided for @advancedLockStepsTitle.

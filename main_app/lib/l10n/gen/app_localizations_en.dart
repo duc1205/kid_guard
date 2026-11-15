@@ -954,14 +954,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get advancedLockWhat2 =>
-      'During your child\'s whole session: blocks KidGuard\'s settings, force stop and uninstall pages, including turning off its Accessibility access.';
+      'During your child\'s whole session: blocks Settings and uninstallers so your child cannot turn KidGuard off (including Accessibility).';
 
   @override
   String get advancedLockWhat3 => 'Incoming and emergency calls still work.';
 
   @override
   String get advancedLockPrivacy =>
-      'KidGuard only uses Accessibility to know which app is on top. It does not read, store or send what\'s on your screen.';
+      'KidGuard only uses Accessibility to know which app package is on top. It does not read, store or send what\'s on your screen.';
 
   @override
   String get advancedLockStepsTitle => 'How to turn it on (about 1 minute)';

@@ -10,32 +10,33 @@ import android.view.accessibility.AccessibilityEvent
 /**
  * "Khoá nâng cao": người lớn bật trong Cài đặt › Trợ năng, không cần máy tính.
  *
- * Chỉ dùng để biết ứng dụng nào đang ở trên cùng; không đọc, không lưu, không gửi
- * nội dung màn hình đi đâu. Chỉ phản ứng khi có phiên đang chạy:
+ * Chỉ dùng package name của cửa sổ đang hiện (từ AccessibilityEvent); không đọc
+ * cây nội dung màn hình. Chỉ phản ứng khi có phiên đang chạy:
  * - Hết giờ / đang khoá: đóng thanh thông báo, chặn đa nhiệm / màn hình chính /
- *   app khác bằng cách đưa KidGuard lên lại ngay (nhanh hơn vòng 1 giây của service).
- * - Suốt phiên (kể cả lúc bé đang được dùng máy): chặn mở trang cài đặt / gỡ cài đặt
- *   của KidGuard để bé không tắt được KidGuard. Người lớn thu hồi máy xong là hết chặn.
+ *   app khác bằng cách đưa KidGuard lên lại ngay.
+ * - Suốt phiên: chặn mở Cài đặt / trình gỡ cài đặt (bé không tắt được KidGuard).
+ *   Người lớn thu hồi máy xong là hết chặn.
  */
 class KidGuardAccessibilityService : AccessibilityService() {
 
     private var lastFrontAt = 0L
-    private var lastSettingsCheckAt = 0L
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        val pkg = event?.packageName?.toString() ?: return
+        if (event?.eventType != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) return
+        val pkg = event.packageName?.toString() ?: return
         if (pkg == packageName) return
         val state = GuardState.load(this)
         if (!state.active || state.suspended) return
         val guarded = state.guard ||
             (state.deadline > 0 && System.currentTimeMillis() >= state.deadline)
 
-        if (pkg in SETTINGS_PACKAGES && showsKidGuard(event)) {
+        // Suốt phiên: chặn Cài đặt / gỡ app theo package (không cần đọc nội dung cửa sổ).
+        if (pkg in SETTINGS_PACKAGES) {
             performGlobalAction(GLOBAL_ACTION_BACK)
             if (guarded) bringAppToFront()
             return
         }
-        if (!guarded || event.eventType != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) return
+        if (!guarded) return
         if (isAllowedWhileGuarded(pkg)) return
 
         if (pkg == SYSTEM_UI) {
@@ -46,21 +47,6 @@ class KidGuardAccessibilityService : AccessibilityService() {
     }
 
     override fun onInterrupt() {}
-
-    /** Trang cài đặt / hộp thoại gỡ cài đặt có nhắc tới KidGuard. */
-    private fun showsKidGuard(event: AccessibilityEvent): Boolean {
-        val now = SystemClock.uptimeMillis()
-        if (event.eventType == AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED &&
-            now - lastSettingsCheckAt < SETTINGS_CHECK_THROTTLE_MS
-        ) return false
-        lastSettingsCheckAt = now
-        val root = rootInActiveWindow ?: return false
-        return try {
-            root.findAccessibilityNodeInfosByText(getString(R.string.app_name)).isNotEmpty()
-        } catch (_: Exception) {
-            false
-        }
-    }
 
     /** Cuộc gọi đến / gọi khẩn cấp và bàn phím vẫn được dùng khi bị khoá. */
     private fun isAllowedWhileGuarded(pkg: String): Boolean {
@@ -103,7 +89,6 @@ class KidGuardAccessibilityService : AccessibilityService() {
     companion object {
         private const val SYSTEM_UI = "com.android.systemui"
         private const val FRONT_THROTTLE_MS = 300L
-        private const val SETTINGS_CHECK_THROTTLE_MS = 400L
 
         /** Cài đặt / trình gỡ cài đặt của Android và các hãng. */
         private val SETTINGS_PACKAGES = setOf(

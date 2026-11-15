@@ -898,14 +898,14 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get advancedLockWhat2 =>
-      'Suốt phiên của bé: chặn mở trang cài đặt, buộc dừng và gỡ cài đặt KidGuard, kể cả việc tắt Trợ năng của KidGuard.';
+      'Suốt phiên của bé: chặn Cài đặt và trình gỡ cài đặt để bé không tắt được KidGuard (kể cả Trợ năng).';
 
   @override
   String get advancedLockWhat3 => 'Cuộc gọi đến và gọi khẩn cấp vẫn dùng được.';
 
   @override
   String get advancedLockPrivacy =>
-      'KidGuard chỉ dùng Trợ năng để biết ứng dụng nào đang ở trên cùng; không đọc, không lưu, không gửi nội dung màn hình.';
+      'KidGuard chỉ dùng Trợ năng để biết package ứng dụng nào đang ở trên cùng; không đọc, không lưu, không gửi nội dung màn hình.';
 
   @override
   String get advancedLockStepsTitle => 'Cách bật (khoảng 1 phút)';

@@ -71,11 +71,12 @@
                 android:resource="@xml/accessibility_service" />
         </service>
 
-        <!-- Cũ: Device Owner (khoá cứng qua adb). Không còn hướng dẫn bật, chỉ giữ để
-             máy đã bật trước đây vẫn tắt được (bắt buộc trước khi gỡ app). -->
+        <!-- Cũ: Device Owner (khoá cứng qua adb). Không còn kích hoạt mới; chỉ giữ
+             component để clearDeviceOwnerApp vẫn chạy trên máy đã bật trước đây.
+             exported=false: không nhận DEVICE_ADMIN_ENABLED từ ngoài. -->
         <receiver
             android:name=".KidGuardAdminReceiver"
-            android:exported="true"
+            android:exported="false"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
