@@ -451,7 +451,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeIosNotice =>
-      'When time is up, Screen Time blocks the selected apps. Your child opens KidGuard to answer the question. For even stronger locking, also turn on Guided Access (Settings › Accessibility › Guided Access).';
+      'Set this up on your child\'s iPhone: the child\'s Apple ID must be in your Family Sharing group. When time is up, Screen Time blocks only the apps you chose — not the whole phone. Your child opens KidGuard to answer. After a parent approves Screen Time, the child can\'t delete KidGuard or turn that access off. For even stronger locking, also turn on Guided Access (Settings › Accessibility › Guided Access).';
 
   @override
   String get homeHeroTitle => '🧒  Lend the phone to your child';
@@ -618,6 +618,14 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get lockedTitleIos => 'Time\'s up';
+
+  @override
+  String lockedMessageIos(String name) {
+    return 'Hey $name, the apps your parents chose are blocked until they unlock.\nOpen KidGuard to answer, or give the phone to a parent.';
+  }
+
+  @override
   String get lockedUnlockButton => 'Adult: unlock & take back phone';
 
   @override
@@ -762,18 +770,18 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get homeScreenTimeTitle => 'Screen Time permission';
+  String get homeScreenTimeTitle => 'Screen Time (Family Sharing)';
 
   @override
   String get homeScreenTimeSubtitle =>
-      'Lets KidGuard block the apps you choose when time is up. Confirm with Face ID or the phone passcode.';
+      'Install on the child\'s iPhone (child Apple ID in Family Sharing). A parent approves with their Apple ID so KidGuard can block the apps you choose when time is up.';
 
   @override
   String get homeLimitedAppsTitle => 'Apps blocked when time is up';
 
   @override
   String get homeLimitedAppsSubtitle =>
-      'Choose the apps or app categories (e.g. Games, Social, Entertainment). Do not select KidGuard.';
+      'Choose the apps or app categories (e.g. Games, Social, Entertainment). Do not select KidGuard. Other apps stay usable.';
 
   @override
   String get homeLimitedAppsOn =>
@@ -786,7 +794,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeLimitedAppsChange => 'Change';
 
   @override
-  String get homeScreenTimeFirst => 'Grant the Screen Time permission first.';
+  String get homeScreenTimeFirst => 'Grant Screen Time (Family Sharing) first.';
 
   @override
   String get homeDesktopTitle => 'How locking works on this computer';

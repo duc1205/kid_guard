@@ -791,7 +791,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeIosNotice.
   ///
   /// In en, this message translates to:
-  /// **'When time is up, Screen Time blocks the selected apps. Your child opens KidGuard to answer the question. For even stronger locking, also turn on Guided Access (Settings › Accessibility › Guided Access).'**
+  /// **'Set this up on your child\'s iPhone: the child\'s Apple ID must be in your Family Sharing group. When time is up, Screen Time blocks only the apps you chose — not the whole phone. Your child opens KidGuard to answer. After a parent approves Screen Time, the child can\'t delete KidGuard or turn that access off. For even stronger locking, also turn on Guided Access (Settings › Accessibility › Guided Access).'**
   String get homeIosNotice;
 
   /// No description provided for @homeHeroTitle.
@@ -1082,6 +1082,18 @@ abstract class AppLocalizations {
   /// **'Hey {name}, please give the phone to your parents.\nRemember to review what was suggested!'**
   String lockedMessage(String name);
 
+  /// No description provided for @lockedTitleIos.
+  ///
+  /// In en, this message translates to:
+  /// **'Time\'s up'**
+  String get lockedTitleIos;
+
+  /// No description provided for @lockedMessageIos.
+  ///
+  /// In en, this message translates to:
+  /// **'Hey {name}, the apps your parents chose are blocked until they unlock.\nOpen KidGuard to answer, or give the phone to a parent.'**
+  String lockedMessageIos(String name);
+
   /// No description provided for @lockedUnlockButton.
   ///
   /// In en, this message translates to:
@@ -1264,13 +1276,13 @@ abstract class AppLocalizations {
   /// No description provided for @homeScreenTimeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Screen Time permission'**
+  /// **'Screen Time (Family Sharing)'**
   String get homeScreenTimeTitle;
 
   /// No description provided for @homeScreenTimeSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Lets KidGuard block the apps you choose when time is up. Confirm with Face ID or the phone passcode.'**
+  /// **'Install on the child\'s iPhone (child Apple ID in Family Sharing). A parent approves with their Apple ID so KidGuard can block the apps you choose when time is up.'**
   String get homeScreenTimeSubtitle;
 
   /// No description provided for @homeLimitedAppsTitle.
@@ -1282,7 +1294,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeLimitedAppsSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Choose the apps or app categories (e.g. Games, Social, Entertainment). Do not select KidGuard.'**
+  /// **'Choose the apps or app categories (e.g. Games, Social, Entertainment). Do not select KidGuard. Other apps stay usable.'**
   String get homeLimitedAppsSubtitle;
 
   /// No description provided for @homeLimitedAppsOn.
@@ -1306,7 +1318,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeScreenTimeFirst.
   ///
   /// In en, this message translates to:
-  /// **'Grant the Screen Time permission first.'**
+  /// **'Grant Screen Time (Family Sharing) first.'**
   String get homeScreenTimeFirst;
 
   /// No description provided for @homeDesktopTitle.

@@ -426,7 +426,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeIosNotice =>
-      'Hết giờ, Screen Time sẽ chặn các ứng dụng đã chọn. Bé mở KidGuard để trả lời câu hỏi. Muốn khoá chặt hơn, bật thêm Truy cập được hướng dẫn (Cài đặt › Trợ năng › Truy cập được hướng dẫn).';
+      'Cài trên iPhone của bé: Apple ID của bé phải thuộc nhóm Chia sẻ trong gia đình của bạn. Hết giờ, Screen Time chỉ chặn các ứng dụng bạn đã chọn — không khoá cả máy. Bé mở KidGuard để trả lời. Với quyền kiểu phụ huynh, bé không tự xoá KidGuard hay tắt quyền Screen Time. Muốn khoá chặt hơn, bật thêm Truy cập được hướng dẫn (Cài đặt › Trợ năng › Truy cập được hướng dẫn).';
 
   @override
   String get homeHeroTitle => '🧒  Cho bé mượn máy';
@@ -592,6 +592,14 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
+  String get lockedTitleIos => 'Hết giờ dùng máy';
+
+  @override
+  String lockedMessageIos(String name) {
+    return '$name ơi, các ứng dụng bố mẹ đã chọn đang bị chặn cho tới khi người lớn mở khoá.\nMở KidGuard để trả lời câu hỏi, hoặc đưa máy cho bố mẹ.';
+  }
+
+  @override
   String get lockedUnlockButton => 'Người lớn mở khoá & thu hồi máy';
 
   @override
@@ -706,18 +714,18 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get homeScreenTimeTitle => 'Quyền Screen Time';
+  String get homeScreenTimeTitle => 'Screen Time (Chia sẻ trong gia đình)';
 
   @override
   String get homeScreenTimeSubtitle =>
-      'Cho phép KidGuard chặn các ứng dụng bạn chọn khi hết giờ. Xác nhận bằng Face ID hoặc mật khẩu máy.';
+      'Cài trên iPhone của bé (Apple ID của bé trong Chia sẻ trong gia đình). Phụ huynh duyệt bằng Apple ID của mình để KidGuard chặn các ứng dụng bạn chọn khi hết giờ.';
 
   @override
   String get homeLimitedAppsTitle => 'Ứng dụng bị chặn khi hết giờ';
 
   @override
   String get homeLimitedAppsSubtitle =>
-      'Chọn ứng dụng hoặc nhóm ứng dụng (vd. Trò chơi, Mạng xã hội, Giải trí). Không chọn KidGuard.';
+      'Chọn ứng dụng hoặc nhóm ứng dụng (vd. Trò chơi, Mạng xã hội, Giải trí). Không chọn KidGuard. Các ứng dụng khác vẫn dùng được.';
 
   @override
   String get homeLimitedAppsOn =>
@@ -730,7 +738,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homeLimitedAppsChange => 'Đổi';
 
   @override
-  String get homeScreenTimeFirst => 'Hãy cấp quyền Screen Time trước.';
+  String get homeScreenTimeFirst =>
+      'Hãy cấp quyền Screen Time (Chia sẻ trong gia đình) trước.';
 
   @override
   String get homeDesktopTitle => 'Cách khoá trên máy tính này';

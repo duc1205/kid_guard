@@ -6,7 +6,7 @@ import '../../domain/repositories/repositories.dart';
 
 /// Cầu nối tới phần native của từng nền tảng (cùng tên channel, cùng giao thức):
 /// - Android: SessionGuardService + MainActivity (Kotlin)
-/// - iOS: Screen Time API — FamilyControls/ManagedSettings/DeviceActivity (Swift)
+/// - iOS: Screen Time API — FamilyControls (`.child`) / ManagedSettings / DeviceActivity (Swift)
 /// - macOS: chế độ kiosk toàn màn hình (Swift)
 /// - Windows: cửa sổ toàn màn hình luôn trên cùng + chặn phím hệ thống (C++)
 /// Nền tảng khác: các lệnh là no-op.

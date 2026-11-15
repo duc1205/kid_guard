@@ -8,6 +8,10 @@ import UIKit
 /// Điều khiển thiết bị trên iOS cho KidGuard (channel "kidguard/device_control"),
 /// dùng Screen Time API (FamilyControls + ManagedSettings + DeviceActivity).
 ///
+/// Cấp quyền bằng [FamilyControlsMember.child]: máy phải đăng nhập Apple ID của bé
+/// trong Family Sharing; phụ huynh duyệt bằng Apple ID của mình. Bé không tự gỡ
+/// quyền / xoá app để vượt lá chắn (khác với `.individual`).
+///
 /// - startTimer: gỡ lá chắn, lên lịch DeviceActivity kết thúc đúng lúc hết giờ →
 ///   extension KidGuardMonitor bật lá chắn chặn các app đã chọn (kể cả khi KidGuard đang tắt).
 /// - setGuard(true/false): bật/gỡ lá chắn ngay (khi KidGuard đang mở).
@@ -40,7 +44,7 @@ final class DeviceControl: NSObject {
     case "requestScreenTimeAuthorization":
       Task { @MainActor in
         do {
-          try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
+          try await AuthorizationCenter.shared.requestAuthorization(for: .child)
         } catch {
           NSLog("KidGuard: Screen Time authorization failed: \(error)")
         }

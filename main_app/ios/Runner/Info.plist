@@ -32,7 +32,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSFaceIDUsageDescription</key>
-	<string>Use Face ID or the phone passcode so a parent can take the phone back and view the child's activity. / Dùng Face ID hoặc mật khẩu máy để người lớn thu hồi máy và xem nhật ký của bé.</string>
+	<string>Use Face ID or the phone passcode so a parent can take the phone back and view the child's activity.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

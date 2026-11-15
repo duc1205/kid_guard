@@ -1,0 +1,2 @@
+/* Bản địa hoá các khoá Info.plist */
+"NSFaceIDUsageDescription" = "Dùng Face ID hoặc mật khẩu máy để người lớn thu hồi máy và xem nhật ký của bé.";

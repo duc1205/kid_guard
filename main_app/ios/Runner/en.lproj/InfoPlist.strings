@@ -1,0 +1,2 @@
+/* Localized versions of Info.plist keys */
+"NSFaceIDUsageDescription" = "Use Face ID or the phone passcode so a parent can take the phone back and view the child's activity.";

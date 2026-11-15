@@ -202,7 +202,7 @@ abstract interface class DeviceControlRepository {
   /// Tắt khoá cứng cũ (Device Owner). Trả về true nếu đã gỡ thành công.
   Future<bool> clearDeviceOwner();
 
-  /// iOS: xin quyền Screen Time (hiện hộp thoại Face ID / mật khẩu của hệ thống).
+  /// iOS: xin quyền Screen Time dạng parental (`.child`) — phụ huynh duyệt qua Family Sharing.
   Future<bool> requestScreenTimeAuthorization();
 
   /// iOS: mở bảng chọn ứng dụng của Apple để chọn các app bị chặn khi hết giờ.
