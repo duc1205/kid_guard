@@ -126,6 +126,77 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     await _refresh();
   }
 
+  /// Xin Screen Time: thử `.child` trước; thất bại thì hỏi có phải máy bố mẹ cho mượn không → `.individual`.
+  Future<void> _requestScreenTime() async {
+    final device = DependenciesScope.of(context).device;
+    final l10n = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+
+    Future<void> showError(ScreenTimeAuthResult r) async {
+      messenger.showSnackBar(
+        SnackBar(content: Text(_screenTimeErrorMessage(l10n, r.errorCode))),
+      );
+    }
+
+    var result = await device.requestScreenTimeAuthorization(
+      mode: ScreenTimeAuthMode.child,
+    );
+    if (!mounted) return;
+    if (result.approved) {
+      await _refresh();
+      return;
+    }
+    if (result.errorCode == 'cancelled') {
+      await showError(result);
+      return;
+    }
+
+    final borrow = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.screenTimeBorrowTitle),
+        content: Text(l10n.screenTimeBorrowBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.screenTimeBorrowCancel),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.screenTimeBorrowConfirm),
+          ),
+        ],
+      ),
+    );
+    if (!mounted) return;
+    if (borrow != true) {
+      await showError(result);
+      return;
+    }
+
+    result = await device.requestScreenTimeAuthorization(
+      mode: ScreenTimeAuthMode.individual,
+    );
+    if (!mounted) return;
+    if (result.approved) {
+      messenger.showSnackBar(
+        SnackBar(content: Text(l10n.screenTimeIndividualWarning)),
+      );
+    } else {
+      await showError(result);
+    }
+    await _refresh();
+  }
+
+  static String _screenTimeErrorMessage(AppLocalizations l10n, String? code) =>
+      switch (code) {
+        'cancelled' => l10n.screenTimeErrorCancelled,
+        'unavailable' => l10n.screenTimeErrorUnavailable,
+        'restricted' || 'invalidAccount' => l10n.screenTimeErrorNotChildAccount,
+        'denied' => l10n.screenTimeErrorDenied,
+        _ => l10n.screenTimeErrorFailed,
+      };
+
   Future<void> _openParentArea() async {
     final parent = DependenciesScope.of(context).parentController;
     final result = await parent.authenticate(
@@ -326,10 +397,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 ok: perms.screenTimeAuthorized,
                 title: l10n.homeScreenTimeTitle,
                 subtitle: l10n.homeScreenTimeSubtitle,
-                onFix: () async {
-                  await device.requestScreenTimeAuthorization();
-                  await _refresh();
-                },
+                onFix: _requestScreenTime,
               ),
               _SetupTile(
                 ok: perms.limitedAppsSelected,

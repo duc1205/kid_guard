@@ -80,9 +80,9 @@ Code native: `android/app/src/main/kotlin/…`, `ios/Runner/DeviceControl.swift`
 
 1. Mở `ios/Runner.xcworkspace` bằng Xcode, chọn Team cho 3 target `Runner`, `KidGuardMonitor`, `KidGuardShield`
    (Signing & Capabilities). Xcode tự tạo App ID, App Group `group.com.pham.kidguard` và capability Family Controls.
-2. App xin quyền Screen Time kiểu **parental** (`AuthorizationCenter.requestAuthorization(for: .child)`):
-   cài trên **iPhone của bé**, Apple ID của bé phải thuộc **Family Sharing** của phụ huynh;
-   phụ huynh duyệt bằng Apple ID của mình. Bé không tự xoá app / tắt quyền để vượt lá chắn.
+2. Screen Time có **hai chế độ** (app thử `.child` trước, rồi hỏi nếu cần `.individual`):
+   - **iPhone của bé** (`.child`): Apple ID trẻ em trong **Family Sharing**; phụ huynh duyệt — bé khó xoá app / tắt quyền.
+   - **iPhone bố mẹ cho mượn** (`.individual`): vẫn chặn app đã chọn, nhưng bé có thể xoá KidGuard — nên bật Truy cập được hướng dẫn.
 3. Chạy trên **iPhone thật** (Screen Time không chạy trên Simulator). Bản Development dùng được ngay.
 4. Muốn phát hành TestFlight/App Store: gửi yêu cầu **Family Controls (Distribution)** tại
    developer.apple.com/contact/request/family-controls-distribution cho cả 3 bundle id

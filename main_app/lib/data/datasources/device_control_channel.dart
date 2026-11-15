@@ -6,7 +6,7 @@ import '../../domain/repositories/repositories.dart';
 
 /// Cầu nối tới phần native của từng nền tảng (cùng tên channel, cùng giao thức):
 /// - Android: SessionGuardService + MainActivity (Kotlin)
-/// - iOS: Screen Time API — FamilyControls (`.child`) / ManagedSettings / DeviceActivity (Swift)
+/// - iOS: Screen Time API — FamilyControls (`.child` / `.individual`) / ManagedSettings / DeviceActivity
 /// - macOS: chế độ kiosk toàn màn hình (Swift)
 /// - Windows: cửa sổ toàn màn hình luôn trên cùng + chặn phím hệ thống (C++)
 /// Nền tảng khác: các lệnh là no-op.
@@ -91,8 +91,37 @@ class DeviceControlChannel implements DeviceControlRepository {
       _call('requestNotificationPermission');
 
   @override
-  Future<bool> requestScreenTimeAuthorization() async =>
-      await _call<bool>('requestScreenTimeAuthorization') ?? false;
+  Future<ScreenTimeAuthResult> requestScreenTimeAuthorization({
+    ScreenTimeAuthMode mode = ScreenTimeAuthMode.child,
+  }) async {
+    final modeName = mode == ScreenTimeAuthMode.individual
+        ? 'individual'
+        : 'child';
+    try {
+      final map = await _channel.invokeMapMethod<String, Object?>(
+        'requestScreenTimeAuthorization',
+        {'mode': modeName},
+      );
+      if (map == null) {
+        return ScreenTimeAuthResult(
+          approved: false,
+          mode: mode,
+          errorCode: 'unavailable',
+        );
+      }
+      return ScreenTimeAuthResult(
+        approved: map['approved'] == true,
+        mode: mode,
+        errorCode: map['errorCode'] as String?,
+      );
+    } on MissingPluginException {
+      return ScreenTimeAuthResult(
+        approved: false,
+        mode: mode,
+        errorCode: 'unavailable',
+      );
+    }
+  }
 
   @override
   Future<bool> chooseLimitedApps() async =>

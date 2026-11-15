@@ -791,7 +791,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeIosNotice.
   ///
   /// In en, this message translates to:
-  /// **'Set this up on your child\'s iPhone: the child\'s Apple ID must be in your Family Sharing group. When time is up, Screen Time blocks only the apps you chose — not the whole phone. Your child opens KidGuard to answer. After a parent approves Screen Time, the child can\'t delete KidGuard or turn that access off. For even stronger locking, also turn on Guided Access (Settings › Accessibility › Guided Access).'**
+  /// **'Best on the child\'s iPhone (child Apple ID in Family Sharing): after a parent approves, the child can\'t delete KidGuard or turn Screen Time access off. On a parent\'s iPhone lent to the child, KidGuard can still block selected apps, but the child could delete the app — turn on Guided Access too. When time is up, only the apps you chose are blocked — not the whole phone.'**
   String get homeIosNotice;
 
   /// No description provided for @homeHeroTitle.
@@ -1091,7 +1091,7 @@ abstract class AppLocalizations {
   /// No description provided for @lockedMessageIos.
   ///
   /// In en, this message translates to:
-  /// **'Hey {name}, the apps your parents chose are blocked until they unlock.\nOpen KidGuard to answer, or give the phone to a parent.'**
+  /// **'Hey {name}, the apps your parents chose are blocked.\nPlease give the phone to a parent to unlock.'**
   String lockedMessageIos(String name);
 
   /// No description provided for @lockedUnlockButton.
@@ -1276,13 +1276,13 @@ abstract class AppLocalizations {
   /// No description provided for @homeScreenTimeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Screen Time (Family Sharing)'**
+  /// **'Screen Time permission'**
   String get homeScreenTimeTitle;
 
   /// No description provided for @homeScreenTimeSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Install on the child\'s iPhone (child Apple ID in Family Sharing). A parent approves with their Apple ID so KidGuard can block the apps you choose when time is up.'**
+  /// **'Lets KidGuard block the apps you choose when time is up. Prefer the child\'s iPhone in Family Sharing; parent\'s phone lent to the child also works with a weaker lock.'**
   String get homeScreenTimeSubtitle;
 
   /// No description provided for @homeLimitedAppsTitle.
@@ -1318,8 +1318,68 @@ abstract class AppLocalizations {
   /// No description provided for @homeScreenTimeFirst.
   ///
   /// In en, this message translates to:
-  /// **'Grant Screen Time (Family Sharing) first.'**
+  /// **'Grant the Screen Time permission first.'**
   String get homeScreenTimeFirst;
+
+  /// No description provided for @screenTimeBorrowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Is this a parent\'s iPhone?'**
+  String get screenTimeBorrowTitle;
+
+  /// No description provided for @screenTimeBorrowBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen Time for a child account needs the child\'s Apple ID in Family Sharing. If this is your iPhone and you are lending it to your child, continue with a weaker lock: your child could delete KidGuard or turn Screen Time access off. Turn on Guided Access for a stronger lock.'**
+  String get screenTimeBorrowBody;
+
+  /// No description provided for @screenTimeBorrowConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, parent\'s phone'**
+  String get screenTimeBorrowConfirm;
+
+  /// No description provided for @screenTimeBorrowCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Not now'**
+  String get screenTimeBorrowCancel;
+
+  /// No description provided for @screenTimeIndividualWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Weaker lock: your child could delete KidGuard. Turn on Guided Access (Settings › Accessibility › Guided Access).'**
+  String get screenTimeIndividualWarning;
+
+  /// No description provided for @screenTimeErrorCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen Time permission was cancelled.'**
+  String get screenTimeErrorCancelled;
+
+  /// No description provided for @screenTimeErrorUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen Time is not available on this device.'**
+  String get screenTimeErrorUnavailable;
+
+  /// No description provided for @screenTimeErrorNotChildAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'This iPhone is not signed in with a child\'s Apple ID in Family Sharing. If you are lending your phone, choose \"Yes, parent\'s phone\" when asked.'**
+  String get screenTimeErrorNotChildAccount;
+
+  /// No description provided for @screenTimeErrorDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Screen Time permission was not granted.'**
+  String get screenTimeErrorDenied;
+
+  /// No description provided for @screenTimeErrorFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not enable Screen Time. Try again.'**
+  String get screenTimeErrorFailed;
 
   /// No description provided for @homeDesktopTitle.
   ///

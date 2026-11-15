@@ -8,9 +8,9 @@ import UIKit
 /// Điều khiển thiết bị trên iOS cho KidGuard (channel "kidguard/device_control"),
 /// dùng Screen Time API (FamilyControls + ManagedSettings + DeviceActivity).
 ///
-/// Cấp quyền bằng [FamilyControlsMember.child]: máy phải đăng nhập Apple ID của bé
-/// trong Family Sharing; phụ huynh duyệt bằng Apple ID của mình. Bé không tự gỡ
-/// quyền / xoá app để vượt lá chắn (khác với `.individual`).
+/// Cấp quyền Screen Time: ưu tiên [FamilyControlsMember.child] (Apple ID trẻ em
+/// trong Family Sharing — bé khó vượt). App Flutter có thể gọi lại với
+/// `.individual` khi phụ huynh cho bé mượn iPhone của mình (bé có thể xoá app).
 ///
 /// - startTimer: gỡ lá chắn, lên lịch DeviceActivity kết thúc đúng lúc hết giờ →
 ///   extension KidGuardMonitor bật lá chắn chặn các app đã chọn (kể cả khi KidGuard đang tắt).
@@ -42,13 +42,32 @@ final class DeviceControl: NSObject {
         "limitedAppsSelected": KidGuardShared.hasSelection(),
       ])
     case "requestScreenTimeAuthorization":
+      let mode = (args?["mode"] as? String) ?? "child"
+      let member: FamilyControlsMember = mode == "individual" ? .individual : .child
       Task { @MainActor in
         do {
-          try await AuthorizationCenter.shared.requestAuthorization(for: .child)
+          try await AuthorizationCenter.shared.requestAuthorization(for: member)
+          let ok = AuthorizationCenter.shared.authorizationStatus == .approved
+          result([
+            "approved": ok,
+            "mode": mode,
+            "errorCode": ok ? NSNull() : "denied",
+          ] as [String: Any])
+        } catch let error as FamilyControlsError {
+          NSLog("KidGuard: Screen Time authorization failed (\(mode)): \(error)")
+          result([
+            "approved": false,
+            "mode": mode,
+            "errorCode": Self.screenTimeErrorCode(error),
+          ] as [String: Any])
         } catch {
-          NSLog("KidGuard: Screen Time authorization failed: \(error)")
+          NSLog("KidGuard: Screen Time authorization failed (\(mode)): \(error)")
+          result([
+            "approved": false,
+            "mode": mode,
+            "errorCode": "failed",
+          ] as [String: Any])
         }
-        result(AuthorizationCenter.shared.authorizationStatus == .approved)
       }
     case "chooseLimitedApps":
       presentPicker(result: result)
@@ -92,6 +111,19 @@ final class DeviceControl: NSObject {
     } catch {
       NSLog("KidGuard: startMonitoring failed: \(error)")
     }
+  }
+
+  /// Mã lỗi gọn cho Dart (l10n). Map theo tên case để khỏi phụ thuộc SDK.
+  private static func screenTimeErrorCode(_ error: FamilyControlsError) -> String {
+    let name = String(describing: error).lowercased()
+    if name.contains("cancel") { return "cancelled" }
+    if name.contains("unavailable") { return "unavailable" }
+    // Xin `.child` trên máy không phải tài khoản trẻ em / Family Sharing thường ra restricted.
+    if name.contains("restricted") { return "restricted" }
+    if name.contains("invalid") || name.contains("conflict") || name.contains("account") {
+      return "invalidAccount"
+    }
+    return "failed"
   }
 
   private func presentPicker(result: @escaping FlutterResult) {

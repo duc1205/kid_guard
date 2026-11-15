@@ -97,7 +97,9 @@ class FakeDevice implements DeviceControlRepository {
   @override
   Future<bool> clearDeviceOwner() async => true;
   @override
-  Future<bool> requestScreenTimeAuthorization() async => true;
+  Future<ScreenTimeAuthResult> requestScreenTimeAuthorization({
+    ScreenTimeAuthMode mode = ScreenTimeAuthMode.child,
+  }) async => ScreenTimeAuthResult(approved: true, mode: mode);
   @override
   Future<bool> chooseLimitedApps() async => true;
 }

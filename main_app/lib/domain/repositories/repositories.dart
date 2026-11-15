@@ -174,6 +174,30 @@ enum OemFamily {
   };
 }
 
+/// Kiểu cấp quyền Family Controls trên iOS.
+enum ScreenTimeAuthMode {
+  /// Máy đăng nhập Apple ID trẻ em trong Family Sharing — bé khó vượt.
+  child,
+
+  /// Máy của phụ huynh cho bé mượn — bé có thể xoá app / tắt quyền.
+  individual,
+}
+
+/// Kết quả xin quyền Screen Time (iOS).
+class ScreenTimeAuthResult {
+  const ScreenTimeAuthResult({
+    required this.approved,
+    required this.mode,
+    this.errorCode,
+  });
+
+  final bool approved;
+  final ScreenTimeAuthMode mode;
+
+  /// cancelled | unavailable | restricted | invalidAccount | denied | failed
+  final String? errorCode;
+}
+
 /// Điều khiển cấp thiết bị: đồng hồ chạy nền, giữ app luôn ở trên khi khoá.
 abstract interface class DeviceControlRepository {
   Future<void> startTimer(DateTime endsAt);
@@ -202,8 +226,10 @@ abstract interface class DeviceControlRepository {
   /// Tắt khoá cứng cũ (Device Owner). Trả về true nếu đã gỡ thành công.
   Future<bool> clearDeviceOwner();
 
-  /// iOS: xin quyền Screen Time dạng parental (`.child`) — phụ huynh duyệt qua Family Sharing.
-  Future<bool> requestScreenTimeAuthorization();
+  /// iOS: xin quyền Screen Time (`.child` hoặc `.individual`).
+  Future<ScreenTimeAuthResult> requestScreenTimeAuthorization({
+    ScreenTimeAuthMode mode = ScreenTimeAuthMode.child,
+  });
 
   /// iOS: mở bảng chọn ứng dụng của Apple để chọn các app bị chặn khi hết giờ.
   Future<bool> chooseLimitedApps();

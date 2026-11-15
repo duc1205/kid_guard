@@ -35,7 +35,7 @@ The app may download question files from a HTTPS URL (default: the public KidGua
 Permissions are used only for parental control on this device, for example:
 
 - Android: overlay, notifications, foreground service, optional Accessibility for stronger lock; parents may set battery to unrestricted in system settings
-- iOS: Screen Time / Family Controls (parental / child Apple ID in Family Sharing) to block selected apps when time is up; Face ID / passcode for parent unlock
+- iOS: Screen Time / Family Controls to block selected apps when time is up (child Apple ID in Family Sharing preferred; parent’s phone lent to a child also supported with a weaker lock); Face ID / passcode for parent unlock
 - macOS / Windows: full-screen lock / kiosk behavior; device passcode or Windows Hello for parent unlock
 
 KidGuard does not use Accessibility or Screen Time to read message content, keystrokes, or to sell data.

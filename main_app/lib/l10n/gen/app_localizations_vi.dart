@@ -426,7 +426,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeIosNotice =>
-      'Cài trên iPhone của bé: Apple ID của bé phải thuộc nhóm Chia sẻ trong gia đình của bạn. Hết giờ, Screen Time chỉ chặn các ứng dụng bạn đã chọn — không khoá cả máy. Bé mở KidGuard để trả lời. Với quyền kiểu phụ huynh, bé không tự xoá KidGuard hay tắt quyền Screen Time. Muốn khoá chặt hơn, bật thêm Truy cập được hướng dẫn (Cài đặt › Trợ năng › Truy cập được hướng dẫn).';
+      'Nên cài trên iPhone của bé (Apple ID trẻ em trong Chia sẻ trong gia đình): sau khi phụ huynh duyệt, bé không tự xoá KidGuard hay tắt quyền Screen Time. Trên iPhone của bố mẹ cho bé mượn vẫn chặn được app đã chọn, nhưng bé có thể xoá app — nên bật thêm Truy cập được hướng dẫn. Hết giờ chỉ chặn các ứng dụng bạn chọn — không khoá cả máy.';
 
   @override
   String get homeHeroTitle => '🧒  Cho bé mượn máy';
@@ -596,7 +596,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String lockedMessageIos(String name) {
-    return '$name ơi, các ứng dụng bố mẹ đã chọn đang bị chặn cho tới khi người lớn mở khoá.\nMở KidGuard để trả lời câu hỏi, hoặc đưa máy cho bố mẹ.';
+    return '$name ơi, các ứng dụng bố mẹ đã chọn đang bị chặn.\nCon hãy đưa máy cho bố mẹ để mở khoá.';
   }
 
   @override
@@ -714,11 +714,11 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get homeScreenTimeTitle => 'Screen Time (Chia sẻ trong gia đình)';
+  String get homeScreenTimeTitle => 'Quyền Screen Time';
 
   @override
   String get homeScreenTimeSubtitle =>
-      'Cài trên iPhone của bé (Apple ID của bé trong Chia sẻ trong gia đình). Phụ huynh duyệt bằng Apple ID của mình để KidGuard chặn các ứng dụng bạn chọn khi hết giờ.';
+      'Cho phép KidGuard chặn các ứng dụng bạn chọn khi hết giờ. Nên dùng iPhone của bé trong Chia sẻ trong gia đình; máy bố mẹ cho mượn vẫn được nhưng khoá yếu hơn.';
 
   @override
   String get homeLimitedAppsTitle => 'Ứng dụng bị chặn khi hết giờ';
@@ -738,8 +738,41 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homeLimitedAppsChange => 'Đổi';
 
   @override
-  String get homeScreenTimeFirst =>
-      'Hãy cấp quyền Screen Time (Chia sẻ trong gia đình) trước.';
+  String get homeScreenTimeFirst => 'Hãy cấp quyền Screen Time trước.';
+
+  @override
+  String get screenTimeBorrowTitle => 'Đây là iPhone của bố mẹ?';
+
+  @override
+  String get screenTimeBorrowBody =>
+      'Quyền Screen Time cho tài khoản trẻ em cần Apple ID của bé trong Chia sẻ trong gia đình. Nếu đây là iPhone của bạn và bạn cho bé mượn, tiếp tục với khoá yếu hơn: bé có thể xoá KidGuard hoặc tắt quyền Screen Time. Nên bật thêm Truy cập được hướng dẫn.';
+
+  @override
+  String get screenTimeBorrowConfirm => 'Đúng, máy bố mẹ';
+
+  @override
+  String get screenTimeBorrowCancel => 'Để sau';
+
+  @override
+  String get screenTimeIndividualWarning =>
+      'Khoá yếu hơn: bé có thể xoá KidGuard. Hãy bật Truy cập được hướng dẫn (Cài đặt › Trợ năng › Truy cập được hướng dẫn).';
+
+  @override
+  String get screenTimeErrorCancelled => 'Đã huỷ cấp quyền Screen Time.';
+
+  @override
+  String get screenTimeErrorUnavailable =>
+      'Screen Time không dùng được trên máy này.';
+
+  @override
+  String get screenTimeErrorNotChildAccount =>
+      'Máy này không đăng nhập tài khoản trẻ em trong Chia sẻ trong gia đình. Nếu đang cho bé mượn máy bố mẹ, chọn \"Đúng, máy bố mẹ\" khi được hỏi.';
+
+  @override
+  String get screenTimeErrorDenied => 'Chưa được cấp quyền Screen Time.';
+
+  @override
+  String get screenTimeErrorFailed => 'Không bật được Screen Time. Thử lại.';
 
   @override
   String get homeDesktopTitle => 'Cách khoá trên máy tính này';
