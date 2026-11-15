@@ -134,13 +134,11 @@ void main() {
   );
 
   test('xoá hồ sơ bé kèm lịch sử; xoá hết dữ liệu trẻ', () async {
-    final deleteChild = DeleteChildUseCase(children, logs, active);
-    final clearAll = ClearAllChildrenDataUseCase(
-      children,
-      logs,
-      active,
-      settings,
-    );
+    final deleteChild = DeleteChildUseCase(children, active);
+    final clearAll = ClearAllChildrenDataUseCase(children, active);
+    final setAllowance = SetInitialAllowanceUseCase(settings);
+    await setAllowance(const Duration(hours: 2));
+
     final a = await register(
       name: 'An',
       dateOfBirth: DateTime(2018, 1, 1),
@@ -152,6 +150,15 @@ void main() {
       grade: 4,
     );
     await start(a);
+    expect(
+      () => deleteChild(a.id),
+      throwsA(isA<ActiveSessionExistsException>()),
+    );
+    expect(
+      () => clearAll(),
+      throwsA(isA<ActiveSessionExistsException>()),
+    );
+
     clock.advance(const Duration(minutes: 2));
     await revoke(await active.get() as ActiveSession);
     expect(await logs.getLogsForChild(a.id, limit: 10), hasLength(1));
@@ -160,11 +167,11 @@ void main() {
     expect((await children.getChildren()).single.id, b.id);
     expect(await logs.getLogsForChild(a.id, limit: 10), isEmpty);
 
-    await start(b);
     await clearAll();
     expect(await children.getChildren(), isEmpty);
     expect(await active.get(), isNull);
-    expect(await settings.getInitialAllowance(), const Duration(minutes: 15));
+    // Cài đặt phụ huynh (thời gian dùng ban đầu) giữ nguyên.
+    expect(await settings.getInitialAllowance(), const Duration(hours: 2));
   });
 
   test('người lớn sửa thông tin bé: giữ id và lịch sử, lên lớp', () async {

@@ -55,15 +55,21 @@ class SqliteChildRepository implements ChildRepository {
     }
   });
 
-  @override
-  Future<void> deleteChild(String id) => _database.db.delete(
-    'children',
-    where: 'id = ?',
-    whereArgs: [id],
-  );
+  static Future<void> _pruneOrphanSnapshots(Transaction txn) => txn.rawDelete('''
+    DELETE FROM question_snapshots
+    WHERE id NOT IN (SELECT DISTINCT question_id FROM attempts)''');
 
   @override
-  Future<void> deleteAllChildren() => _database.db.delete('children');
+  Future<void> deleteChild(String id) => _database.db.transaction((txn) async {
+    await txn.delete('children', where: 'id = ?', whereArgs: [id]);
+    await _pruneOrphanSnapshots(txn);
+  });
+
+  @override
+  Future<void> deleteAllChildren() => _database.db.transaction((txn) async {
+    await txn.delete('children');
+    await _pruneOrphanSnapshots(txn);
+  });
 }
 
 class SqliteUsageLogRepository implements UsageLogRepository {

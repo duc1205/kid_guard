@@ -48,11 +48,13 @@ class ParentController extends ChangeNotifier {
     return updated;
   }
 
+  /// Ném [ActiveSessionExistsException] nếu còn phiên đang chạy.
   Future<void> deleteChild(String childId) async {
     await _deleteChild(childId);
     await load();
   }
 
+  /// Ném [ActiveSessionExistsException] nếu còn phiên đang chạy.
   Future<void> clearAllChildrenData() async {
     await _clearAllChildrenData();
     await load();

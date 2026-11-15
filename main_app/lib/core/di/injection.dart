@@ -141,13 +141,8 @@ class AppDependencies {
         getReports: GetChildReportsUseCase(children, logs),
         authenticateParent: authenticate,
         updateChild: UpdateChildUseCase(children),
-        deleteChild: DeleteChildUseCase(children, logs, active),
-        clearAllChildrenData: ClearAllChildrenDataUseCase(
-          children,
-          logs,
-          active,
-          settings,
-        ),
+        deleteChild: DeleteChildUseCase(children, active),
+        clearAllChildrenData: ClearAllChildrenDataUseCase(children, active),
       ),
     );
   }

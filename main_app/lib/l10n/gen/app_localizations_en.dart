@@ -136,7 +136,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyBody =>
-      'KidGuard stores child profiles and screen-time/quiz history only on this device. Parent unlock uses the device passcode or biometrics. Optional lock features (Accessibility on Android, Screen Time on iOS, kiosk on desktop) are used for parental control on this device, not to sell data or read messages. Question updates are downloaded over HTTPS without uploading child data. Full policy (also for store listings):';
+      'KidGuard stores child profiles and screen-time/quiz history only on this device. Parents can delete one child or all child data in the Parent area after device passcode or biometrics; question files and parental-control settings stay. Parent unlock uses the device passcode or biometrics. Optional lock features (Accessibility on Android, Screen Time on iOS, kiosk on desktop) are used for parental control on this device, not to sell data or read messages. Question updates are downloaded over HTTPS without uploading child data. Full policy (also for store listings):';
 
   @override
   String get privacyOnlineLabel => 'Public URL';
@@ -246,6 +246,45 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get setupAutoStartStep2 =>
       'Go to \"Battery\" › choose \"Unrestricted\".';
+
+  @override
+  String get setupBatteryTitle => 'Unrestricted battery';
+
+  @override
+  String get setupBatteryStepOpen =>
+      'The phone opens battery optimization settings (or a list of apps).';
+
+  @override
+  String get setupBatteryStepFind =>
+      'Find KidGuard in the list (use search 🔍 if needed).';
+
+  @override
+  String get setupBatteryStepToggle =>
+      'Set KidGuard to \"Unrestricted\" / \"Don\'t optimize\" / \"Allow\".';
+
+  @override
+  String get setupBatteryNote =>
+      'If KidGuard is missing from the list, open App info for KidGuard › Battery › Unrestricted.';
+
+  @override
+  String get setupBatteryOppoStep1 =>
+      'The phone opens \"Battery optimization\" (or \"Optimize battery use\").';
+
+  @override
+  String get setupBatteryOppoStep2 =>
+      'At the top, switch from \"Not optimized\" / \"Apps not optimized\" to \"All apps\" (or \"All\").';
+
+  @override
+  String get setupBatteryOppoStep3 =>
+      'Scroll or search 🔍 to find KidGuard and tap it.';
+
+  @override
+  String get setupBatteryOppoNote =>
+      'If the list never shows KidGuard: open App info › Battery usage › turn on \"Allow background activity\" and choose \"Don\'t optimize\".';
+
+  @override
+  String get setupBatteryXiaomiStep =>
+      'Open KidGuard › Battery saver › choose \"No restrictions\".';
 
   @override
   String get setupPopupXiaomiTitle => 'Background pop-ups (Xiaomi)';
@@ -973,6 +1012,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get clearAllDataDone => 'All child data on this device was deleted.';
+
+  @override
+  String get deleteBlockedActiveSession =>
+      'Finish or stop the child\'s session before deleting data.';
 
   @override
   String get homeAdvancedLockTitle =>

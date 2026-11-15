@@ -115,7 +115,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get privacyBody =>
-      'KidGuard lưu hồ sơ trẻ và nhật ký thời gian/câu hỏi chỉ trên máy này. Người lớn mở khoá bằng mật khẩu máy hoặc sinh trắc học. Các tính năng khoá tuỳ chọn (Trợ năng trên Android, Screen Time trên iOS, kiosk trên máy tính) dùng để kiểm soát của phụ huynh trên máy này, không bán dữ liệu hay đọc tin nhắn. Cập nhật câu hỏi tải qua HTTPS, không gửi dữ liệu trẻ lên máy chủ. Chính sách đầy đủ (dùng cho store):';
+      'KidGuard lưu hồ sơ trẻ và nhật ký thời gian/câu hỏi chỉ trên máy này. Phụ huynh có thể xoá một bé hoặc toàn bộ dữ liệu trẻ trong Khu vực phụ huynh sau khi xác thực mật khẩu máy hoặc sinh trắc học; bộ câu hỏi và cài đặt khoá vẫn giữ. Người lớn mở khoá bằng mật khẩu máy hoặc sinh trắc học. Các tính năng khoá tuỳ chọn (Trợ năng trên Android, Screen Time trên iOS, kiosk trên máy tính) dùng để kiểm soát của phụ huynh trên máy này, không bán dữ liệu hay đọc tin nhắn. Cập nhật câu hỏi tải qua HTTPS, không gửi dữ liệu trẻ lên máy chủ. Chính sách đầy đủ (dùng cho store):';
 
   @override
   String get privacyOnlineLabel => 'Địa chỉ công khai';
@@ -224,6 +224,44 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get setupAutoStartStep2 => 'Vào \"Pin\" › chọn \"Không hạn chế\".';
+
+  @override
+  String get setupBatteryTitle => 'Không giới hạn pin';
+
+  @override
+  String get setupBatteryStepOpen =>
+      'Máy mở trang tối ưu hoá pin (hoặc danh sách ứng dụng).';
+
+  @override
+  String get setupBatteryStepFind =>
+      'Tìm KidGuard trong danh sách (dùng ô tìm kiếm 🔍 nếu có).';
+
+  @override
+  String get setupBatteryStepToggle =>
+      'Đặt KidGuard thành \"Không giới hạn\" / \"Không tối ưu\" / \"Cho phép\".';
+
+  @override
+  String get setupBatteryNote =>
+      'Nếu không thấy KidGuard trong danh sách: mở Thông tin ứng dụng › Pin › Không giới hạn.';
+
+  @override
+  String get setupBatteryOppoStep1 =>
+      'Máy mở trang \"Tối ưu hoá pin\" (hoặc \"Tối ưu mức dùng pin\").';
+
+  @override
+  String get setupBatteryOppoStep2 =>
+      'Ở trên cùng, chuyển từ \"Chưa tối ưu\" / \"Ứng dụng chưa tối ưu\" sang \"Tất cả ứng dụng\" (hoặc \"Tất cả\").';
+
+  @override
+  String get setupBatteryOppoStep3 => 'Cuộn hoặc tìm 🔍 KidGuard rồi chạm vào.';
+
+  @override
+  String get setupBatteryOppoNote =>
+      'Nếu vẫn không thấy KidGuard: mở Thông tin ứng dụng › Mức sử dụng pin › bật \"Cho phép hoạt động nền\" và chọn \"Không tối ưu\".';
+
+  @override
+  String get setupBatteryXiaomiStep =>
+      'Mở KidGuard › Tiết kiệm pin › chọn \"Không hạn chế\".';
 
   @override
   String get setupPopupXiaomiTitle => 'Bật lên khi chạy nền (Xiaomi)';
@@ -917,6 +955,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get clearAllDataDone => 'Đã xoá toàn bộ dữ liệu trẻ trên máy này.';
+
+  @override
+  String get deleteBlockedActiveSession =>
+      'Hãy kết thúc phiên của bé trước khi xoá dữ liệu.';
 
   @override
   String get homeAdvancedLockTitle => 'Khoá nâng cao (Trợ năng) — khuyên dùng';

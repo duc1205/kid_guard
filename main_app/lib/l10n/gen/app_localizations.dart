@@ -275,7 +275,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyBody.
   ///
   /// In en, this message translates to:
-  /// **'KidGuard stores child profiles and screen-time/quiz history only on this device. Parent unlock uses the device passcode or biometrics. Optional lock features (Accessibility on Android, Screen Time on iOS, kiosk on desktop) are used for parental control on this device, not to sell data or read messages. Question updates are downloaded over HTTPS without uploading child data. Full policy (also for store listings):'**
+  /// **'KidGuard stores child profiles and screen-time/quiz history only on this device. Parents can delete one child or all child data in the Parent area after device passcode or biometrics; question files and parental-control settings stay. Parent unlock uses the device passcode or biometrics. Optional lock features (Accessibility on Android, Screen Time on iOS, kiosk on desktop) are used for parental control on this device, not to sell data or read messages. Question updates are downloaded over HTTPS without uploading child data. Full policy (also for store listings):'**
   String get privacyBody;
 
   /// No description provided for @privacyOnlineLabel.
@@ -457,6 +457,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go to \"Battery\" › choose \"Unrestricted\".'**
   String get setupAutoStartStep2;
+
+  /// No description provided for @setupBatteryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unrestricted battery'**
+  String get setupBatteryTitle;
+
+  /// No description provided for @setupBatteryStepOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'The phone opens battery optimization settings (or a list of apps).'**
+  String get setupBatteryStepOpen;
+
+  /// No description provided for @setupBatteryStepFind.
+  ///
+  /// In en, this message translates to:
+  /// **'Find KidGuard in the list (use search 🔍 if needed).'**
+  String get setupBatteryStepFind;
+
+  /// No description provided for @setupBatteryStepToggle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set KidGuard to \"Unrestricted\" / \"Don\'t optimize\" / \"Allow\".'**
+  String get setupBatteryStepToggle;
+
+  /// No description provided for @setupBatteryNote.
+  ///
+  /// In en, this message translates to:
+  /// **'If KidGuard is missing from the list, open App info for KidGuard › Battery › Unrestricted.'**
+  String get setupBatteryNote;
+
+  /// No description provided for @setupBatteryOppoStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'The phone opens \"Battery optimization\" (or \"Optimize battery use\").'**
+  String get setupBatteryOppoStep1;
+
+  /// No description provided for @setupBatteryOppoStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'At the top, switch from \"Not optimized\" / \"Apps not optimized\" to \"All apps\" (or \"All\").'**
+  String get setupBatteryOppoStep2;
+
+  /// No description provided for @setupBatteryOppoStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Scroll or search 🔍 to find KidGuard and tap it.'**
+  String get setupBatteryOppoStep3;
+
+  /// No description provided for @setupBatteryOppoNote.
+  ///
+  /// In en, this message translates to:
+  /// **'If the list never shows KidGuard: open App info › Battery usage › turn on \"Allow background activity\" and choose \"Don\'t optimize\".'**
+  String get setupBatteryOppoNote;
+
+  /// No description provided for @setupBatteryXiaomiStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Open KidGuard › Battery saver › choose \"No restrictions\".'**
+  String get setupBatteryXiaomiStep;
 
   /// No description provided for @setupPopupXiaomiTitle.
   ///
@@ -1632,6 +1692,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All child data on this device was deleted.'**
   String get clearAllDataDone;
+
+  /// No description provided for @deleteBlockedActiveSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish or stop the child\'s session before deleting data.'**
+  String get deleteBlockedActiveSession;
 
   /// No description provided for @homeAdvancedLockTitle.
   ///

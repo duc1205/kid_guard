@@ -1,6 +1,6 @@
 # KidGuard Privacy Policy
 
-Last updated: 2026-11-15
+Last updated: 2026-11-16
 
 KidGuard is a parental screen-time app. A parent sets it up on a device their child uses. When the allowed time ends, the child answers a knowledge question to continue, or the device is locked until a parent unlocks it with the device passcode or biometrics.
 
@@ -19,6 +19,13 @@ All of the following stay **on this device** (local storage / SQLite). KidGuard 
 
 Answer history older than 180 days is deleted automatically on the device.
 
+Parents can also delete data in the app (Parent area, after device passcode or biometrics):
+
+- Delete one child: removes that child’s profile and usage history on this device
+- Delete all child data: removes every child profile and usage history on this device
+
+These actions do not remove the cached question bank or parental-control settings such as the initial screen-time allowance. Uninstalling KidGuard also removes local app data on the device.
+
 ## Network use
 
 The app may download question files from a HTTPS URL (default: the public KidGuard question repository, or another HTTPS source a parent chooses). That request does **not** include the child’s name, date of birth, or usage history.
@@ -27,7 +34,7 @@ The app may download question files from a HTTPS URL (default: the public KidGua
 
 Permissions are used only for parental control on this device, for example:
 
-- Android: overlay, notifications, foreground service, optional Accessibility for stronger lock, battery exemptions
+- Android: overlay, notifications, foreground service, optional Accessibility for stronger lock; parents may set battery to unrestricted in system settings
 - iOS: Screen Time / Family Controls to block selected apps when time is up; Face ID / passcode for parent unlock
 - macOS / Windows: full-screen lock / kiosk behavior; device passcode or Windows Hello for parent unlock
 

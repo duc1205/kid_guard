@@ -257,7 +257,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 ok: perms.batteryUnrestricted,
                 title: l10n.homeBatteryTitle,
                 subtitle: l10n.homeBatterySubtitle,
-                onFix: device.openBatteryOptimizationSettings,
+                fixLabel: l10n.homeGuide,
+                onFix: () => _walkthrough(
+                  batteryGuide(l10n, perms.oem),
+                  device.openBatteryOptimizationSettings,
+                ),
               ),
               if (perms.oem.hasAutoStart)
                 _SetupTile(

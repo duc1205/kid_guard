@@ -113,3 +113,36 @@ SetupGuide recentsLockGuide(AppLocalizations l10n, OemFamily oem) => SetupGuide(
   ],
   note: l10n.setupRecentsNote,
 );
+
+SetupGuide batteryGuide(AppLocalizations l10n, OemFamily oem) => switch (oem) {
+  OemFamily.oppo => SetupGuide(
+    title: l10n.setupBatteryTitle,
+    steps: [
+      l10n.setupBatteryOppoStep1,
+      l10n.setupBatteryOppoStep2,
+      l10n.setupBatteryOppoStep3,
+      l10n.setupBatteryStepToggle,
+      l10n.setupBack,
+    ],
+    note: l10n.setupBatteryOppoNote,
+  ),
+  OemFamily.xiaomi => SetupGuide(
+    title: l10n.setupBatteryTitle,
+    steps: [
+      l10n.setupBatteryStepOpen,
+      l10n.setupBatteryStepFind,
+      l10n.setupBatteryXiaomiStep,
+      l10n.setupBack,
+    ],
+  ),
+  _ => SetupGuide(
+    title: l10n.setupBatteryTitle,
+    steps: [
+      l10n.setupBatteryStepOpen,
+      l10n.setupBatteryStepFind,
+      l10n.setupBatteryStepToggle,
+      l10n.setupBack,
+    ],
+    note: l10n.setupBatteryNote,
+  ),
+};

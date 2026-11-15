@@ -81,40 +81,37 @@ class GetWeakTopicsUseCase {
       _logs.getWeakTopics(childId, limit: 5);
 }
 
-/// Xoá một hồ sơ trẻ và lịch sử gắn với bé. Nếu đang có phiên của bé đó → huỷ phiên.
+/// Không xoá dữ liệu khi còn phiên đang chạy (đồng hồ / khoá native vẫn active).
+class ActiveSessionExistsException implements Exception {
+  const ActiveSessionExistsException();
+}
+
+/// Xoá một hồ sơ trẻ và lịch sử gắn với bé (CASCADE + dọn snapshot trong 1 txn).
 class DeleteChildUseCase {
-  DeleteChildUseCase(this._children, this._logs, this._active);
+  DeleteChildUseCase(this._children, this._active);
 
   final ChildRepository _children;
-  final UsageLogRepository _logs;
   final ActiveSessionRepository _active;
 
   Future<void> call(String childId) async {
-    final session = await _active.get();
-    if (session?.child.id == childId) await _active.clear();
+    if (await _active.get() != null) {
+      throw const ActiveSessionExistsException();
+    }
     await _children.deleteChild(childId);
-    await _logs.pruneOrphanQuestionSnapshots();
   }
 }
 
-/// Xoá mọi hồ sơ trẻ + lịch sử trên máy (không đụng ngân hàng câu hỏi đã tải).
+/// Xoá mọi hồ sơ trẻ + lịch sử trên máy. Giữ cài đặt phụ huynh và ngân hàng câu hỏi.
 class ClearAllChildrenDataUseCase {
-  ClearAllChildrenDataUseCase(
-    this._children,
-    this._logs,
-    this._active,
-    this._settings,
-  );
+  ClearAllChildrenDataUseCase(this._children, this._active);
 
   final ChildRepository _children;
-  final UsageLogRepository _logs;
   final ActiveSessionRepository _active;
-  final SettingsRepository _settings;
 
   Future<void> call() async {
-    await _active.clear();
+    if (await _active.get() != null) {
+      throw const ActiveSessionExistsException();
+    }
     await _children.deleteAllChildren();
-    await _logs.pruneOrphanQuestionSnapshots();
-    await _settings.setInitialAllowance(null);
   }
 }

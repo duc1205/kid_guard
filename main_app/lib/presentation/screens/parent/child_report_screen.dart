@@ -70,7 +70,15 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
       return;
     }
     final name = _child.name;
-    await parent.deleteChild(_child.id);
+    try {
+      await parent.deleteChild(_child.id);
+    } on ActiveSessionExistsException {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.deleteBlockedActiveSession)),
+      );
+      return;
+    }
     if (!mounted) return;
     ScaffoldMessenger.of(
       context,

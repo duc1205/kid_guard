@@ -56,7 +56,15 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
       showParentAuthMessage(context, auth);
       return;
     }
-    await parent.clearAllChildrenData();
+    try {
+      await parent.clearAllChildrenData();
+    } on ActiveSessionExistsException {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(l10n.deleteBlockedActiveSession)),
+      );
+      return;
+    }
     if (!mounted) return;
     ScaffoldMessenger.of(
       context,
