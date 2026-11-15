@@ -206,6 +206,18 @@ abstract class AppLocalizations {
   /// **'Enter the phone password to turn off hard lock'**
   String get authReasonDisableHardLock;
 
+  /// No description provided for @authReasonDeleteChild.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the phone password to delete this child\'s data'**
+  String get authReasonDeleteChild;
+
+  /// No description provided for @authReasonClearAllData.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the phone password to delete all child data on this device'**
+  String get authReasonClearAllData;
+
   /// No description provided for @consentTitle.
   ///
   /// In en, this message translates to:
@@ -689,7 +701,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeBatterySubtitle.
   ///
   /// In en, this message translates to:
-  /// **'So the system doesn\'t stop the timer while your child uses other apps.'**
+  /// **'Open battery settings and set KidGuard to Unrestricted / Don\'t optimize so the timer keeps running.'**
   String get homeBatterySubtitle;
 
   /// No description provided for @homeAutoStartSubtitle.
@@ -1560,6 +1572,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Saved {name}\'s details.'**
   String childEditSaved(String name);
+
+  /// No description provided for @childDeleteTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete child'**
+  String get childDeleteTooltip;
+
+  /// No description provided for @childDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete {name}?'**
+  String childDeleteTitle(String name);
+
+  /// No description provided for @childDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently deletes this child\'s profile and usage history on this device. It cannot be undone.'**
+  String get childDeleteBody;
+
+  /// No description provided for @childDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get childDeleteConfirm;
+
+  /// No description provided for @childDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Deleted {name}\'s data.'**
+  String childDeleted(String name);
+
+  /// No description provided for @clearAllDataTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all child data?'**
+  String get clearAllDataTitle;
+
+  /// No description provided for @clearAllDataBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This permanently deletes every child profile and usage history on this device. Question files and app settings for parental controls stay. It cannot be undone.'**
+  String get clearAllDataBody;
+
+  /// No description provided for @clearAllDataConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all'**
+  String get clearAllDataConfirm;
+
+  /// No description provided for @clearAllDataButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete all child data'**
+  String get clearAllDataButton;
+
+  /// No description provided for @clearAllDataDone.
+  ///
+  /// In en, this message translates to:
+  /// **'All child data on this device was deleted.'**
+  String get clearAllDataDone;
 
   /// No description provided for @homeAdvancedLockTitle.
   ///

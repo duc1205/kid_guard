@@ -133,6 +133,40 @@ void main() {
     },
   );
 
+  test('xoá hồ sơ bé kèm lịch sử; xoá hết dữ liệu trẻ', () async {
+    final deleteChild = DeleteChildUseCase(children, logs, active);
+    final clearAll = ClearAllChildrenDataUseCase(
+      children,
+      logs,
+      active,
+      settings,
+    );
+    final a = await register(
+      name: 'An',
+      dateOfBirth: DateTime(2018, 1, 1),
+      grade: 3,
+    );
+    final b = await register(
+      name: 'Bình',
+      dateOfBirth: DateTime(2017, 2, 2),
+      grade: 4,
+    );
+    await start(a);
+    clock.advance(const Duration(minutes: 2));
+    await revoke(await active.get() as ActiveSession);
+    expect(await logs.getLogsForChild(a.id, limit: 10), hasLength(1));
+
+    await deleteChild(a.id);
+    expect((await children.getChildren()).single.id, b.id);
+    expect(await logs.getLogsForChild(a.id, limit: 10), isEmpty);
+
+    await start(b);
+    await clearAll();
+    expect(await children.getChildren(), isEmpty);
+    expect(await active.get(), isNull);
+    expect(await settings.getInitialAllowance(), const Duration(minutes: 15));
+  });
+
   test('người lớn sửa thông tin bé: giữ id và lịch sử, lên lớp', () async {
     final c = await register(
       name: 'Minh An',

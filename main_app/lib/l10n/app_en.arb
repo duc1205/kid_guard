@@ -49,6 +49,8 @@
   "authReasonParentArea": "Enter the phone password to open the parent area",
   "authReasonRegisterChild": "Enter the phone password to add a child's profile",
   "authReasonDisableHardLock": "Enter the phone password to turn off hard lock",
+  "authReasonDeleteChild": "Enter the phone password to delete this child's data",
+  "authReasonClearAllData": "Enter the phone password to delete all child data on this device",
   "consentTitle": "For parents",
   "consentIntro": "KidGuard is a parental screen-time tool. Please confirm before using it on this device.",
   "consentBulletParent": "Only a parent or guardian should set up KidGuard.",
@@ -136,7 +138,7 @@
   "homeNotificationsTitle": "Notifications",
   "homeNotificationsSubtitle": "Shows the countdown timer in the notification bar.",
   "homeBatteryTitle": "Unrestricted battery",
-  "homeBatterySubtitle": "So the system doesn't stop the timer while your child uses other apps.",
+  "homeBatterySubtitle": "Open battery settings and set KidGuard to Unrestricted / Don't optimize so the timer keeps running.",
   "homeAutoStartSubtitle": "So lock mode keeps working when your child clears Recents or restarts the phone.",
   "homeConfirmedLocked": "You confirmed it is locked.",
   "homeRecentsSubtitle": "So the \"Clear all\" button can't close KidGuard.",
@@ -476,6 +478,30 @@
       }
     }
   },
+  "childDeleteTooltip": "Delete child",
+  "childDeleteTitle": "Delete {name}?",
+  "@childDeleteTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "childDeleteBody": "This permanently deletes this child's profile and usage history on this device. It cannot be undone.",
+  "childDeleteConfirm": "Delete",
+  "childDeleted": "Deleted {name}'s data.",
+  "@childDeleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "clearAllDataTitle": "Delete all child data?",
+  "clearAllDataBody": "This permanently deletes every child profile and usage history on this device. Question files and app settings for parental controls stay. It cannot be undone.",
+  "clearAllDataConfirm": "Delete all",
+  "clearAllDataButton": "Delete all child data",
+  "clearAllDataDone": "All child data on this device was deleted.",
   "homeAdvancedLockTitle": "Advanced lock (Accessibility) — recommended",
   "homeAdvancedLockOn": "On: when time is up your child can't pull down notifications or open recents or other apps.",
   "homeAdvancedLockOff": "Turn on in Settings › Accessibility right on this phone, no computer needed. Blocks the notification shade, recents and turning KidGuard off.",

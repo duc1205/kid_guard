@@ -10,13 +10,19 @@ class ParentController extends ChangeNotifier {
     required GetChildReportsUseCase getReports,
     required AuthenticateParentUseCase authenticateParent,
     required UpdateChildUseCase updateChild,
+    required DeleteChildUseCase deleteChild,
+    required ClearAllChildrenDataUseCase clearAllChildrenData,
   }) : _getReports = getReports,
        _authenticateParent = authenticateParent,
-       _updateChild = updateChild;
+       _updateChild = updateChild,
+       _deleteChild = deleteChild,
+       _clearAllChildrenData = clearAllChildrenData;
 
   final GetChildReportsUseCase _getReports;
   final AuthenticateParentUseCase _authenticateParent;
   final UpdateChildUseCase _updateChild;
+  final DeleteChildUseCase _deleteChild;
+  final ClearAllChildrenDataUseCase _clearAllChildrenData;
 
   bool loading = false;
   List<ChildReport> reports = const [];
@@ -40,6 +46,16 @@ class ParentController extends ChangeNotifier {
     );
     await load();
     return updated;
+  }
+
+  Future<void> deleteChild(String childId) async {
+    await _deleteChild(childId);
+    await load();
+  }
+
+  Future<void> clearAllChildrenData() async {
+    await _clearAllChildrenData();
+    await load();
   }
 
   Future<void> load() async {

@@ -95,6 +95,14 @@ class AppLocalizationsEn extends AppLocalizations {
       'Enter the phone password to turn off hard lock';
 
   @override
+  String get authReasonDeleteChild =>
+      'Enter the phone password to delete this child\'s data';
+
+  @override
+  String get authReasonClearAllData =>
+      'Enter the phone password to delete all child data on this device';
+
+  @override
   String get consentTitle => 'For parents';
 
   @override
@@ -386,7 +394,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeBatterySubtitle =>
-      'So the system doesn\'t stop the timer while your child uses other apps.';
+      'Open battery settings and set KidGuard to Unrestricted / Don\'t optimize so the timer keeps running.';
 
   @override
   String get homeAutoStartSubtitle =>
@@ -929,6 +937,42 @@ class AppLocalizationsEn extends AppLocalizations {
   String childEditSaved(String name) {
     return 'Saved $name\'s details.';
   }
+
+  @override
+  String get childDeleteTooltip => 'Delete child';
+
+  @override
+  String childDeleteTitle(String name) {
+    return 'Delete $name?';
+  }
+
+  @override
+  String get childDeleteBody =>
+      'This permanently deletes this child\'s profile and usage history on this device. It cannot be undone.';
+
+  @override
+  String get childDeleteConfirm => 'Delete';
+
+  @override
+  String childDeleted(String name) {
+    return 'Deleted $name\'s data.';
+  }
+
+  @override
+  String get clearAllDataTitle => 'Delete all child data?';
+
+  @override
+  String get clearAllDataBody =>
+      'This permanently deletes every child profile and usage history on this device. Question files and app settings for parental controls stay. It cannot be undone.';
+
+  @override
+  String get clearAllDataConfirm => 'Delete all';
+
+  @override
+  String get clearAllDataButton => 'Delete all child data';
+
+  @override
+  String get clearAllDataDone => 'All child data on this device was deleted.';
 
   @override
   String get homeAdvancedLockTitle =>

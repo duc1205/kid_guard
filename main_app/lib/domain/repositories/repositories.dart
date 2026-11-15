@@ -8,6 +8,12 @@ import '../entities/usage_stats.dart';
 abstract interface class ChildRepository {
   Future<List<ChildProfile>> getChildren();
   Future<void> saveChild(ChildProfile child);
+
+  /// Xoá hồ sơ trẻ; sessions/attempts gắn với trẻ bị xoá theo CASCADE.
+  Future<void> deleteChild(String id);
+
+  /// Xoá mọi hồ sơ trẻ (và lịch sử gắn theo CASCADE).
+  Future<void> deleteAllChildren();
 }
 
 /// Cài đặt do người lớn chọn.
@@ -70,6 +76,9 @@ abstract interface class UsageLogRepository {
 
   /// Xoá các phiên đã kết thúc trước [cutoff]. Trả về số phiên đã xoá.
   Future<int> deleteEndedBefore(DateTime cutoff);
+
+  /// Xoá snapshot câu hỏi không còn attempt nào tham chiếu.
+  Future<void> pruneOrphanQuestionSnapshots();
 }
 
 /// Nền tảng đang chạy — mỗi nền tảng có cách khoá máy khác nhau.
@@ -180,7 +189,8 @@ abstract interface class DeviceControlRepository {
   Future<DevicePermissions> getPermissions();
   Future<void> requestOverlayPermission();
   Future<void> requestNotificationPermission();
-  Future<void> requestIgnoreBatteryOptimizations();
+  /// Mở trang cài đặt tối ưu pin của hệ thống (không cần quyền đặc biệt).
+  Future<void> openBatteryOptimizationSettings();
 
   /// Mở màn "Tự khởi động" của hãng. Trả về false nếu chỉ mở được trang thông tin app.
   Future<bool> openAutoStartSettings();

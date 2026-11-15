@@ -99,8 +99,8 @@ class DeviceControlChannel implements DeviceControlRepository {
       await _call<bool>('chooseLimitedApps') ?? false;
 
   @override
-  Future<void> requestIgnoreBatteryOptimizations() =>
-      _call('requestIgnoreBatteryOptimizations');
+  Future<void> openBatteryOptimizationSettings() =>
+      _call('openBatteryOptimizationSettings');
 
   @override
   Future<bool> openAutoStartSettings() async =>

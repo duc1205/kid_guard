@@ -80,3 +80,41 @@ class GetWeakTopicsUseCase {
   Future<List<WeakTopic>> call(String childId) =>
       _logs.getWeakTopics(childId, limit: 5);
 }
+
+/// Xoá một hồ sơ trẻ và lịch sử gắn với bé. Nếu đang có phiên của bé đó → huỷ phiên.
+class DeleteChildUseCase {
+  DeleteChildUseCase(this._children, this._logs, this._active);
+
+  final ChildRepository _children;
+  final UsageLogRepository _logs;
+  final ActiveSessionRepository _active;
+
+  Future<void> call(String childId) async {
+    final session = await _active.get();
+    if (session?.child.id == childId) await _active.clear();
+    await _children.deleteChild(childId);
+    await _logs.pruneOrphanQuestionSnapshots();
+  }
+}
+
+/// Xoá mọi hồ sơ trẻ + lịch sử trên máy (không đụng ngân hàng câu hỏi đã tải).
+class ClearAllChildrenDataUseCase {
+  ClearAllChildrenDataUseCase(
+    this._children,
+    this._logs,
+    this._active,
+    this._settings,
+  );
+
+  final ChildRepository _children;
+  final UsageLogRepository _logs;
+  final ActiveSessionRepository _active;
+  final SettingsRepository _settings;
+
+  Future<void> call() async {
+    await _active.clear();
+    await _children.deleteAllChildren();
+    await _logs.pruneOrphanQuestionSnapshots();
+    await _settings.setInitialAllowance(null);
+  }
+}

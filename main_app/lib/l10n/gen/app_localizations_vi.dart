@@ -75,6 +75,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get authReasonDisableHardLock => 'Nhập mật khẩu máy để tắt khoá cứng';
 
   @override
+  String get authReasonDeleteChild => 'Nhập mật khẩu máy để xoá dữ liệu của bé';
+
+  @override
+  String get authReasonClearAllData =>
+      'Nhập mật khẩu máy để xoá toàn bộ dữ liệu trẻ trên máy này';
+
+  @override
   String get consentTitle => 'Dành cho phụ huynh';
 
   @override
@@ -363,7 +370,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeBatterySubtitle =>
-      'Để hệ thống không tự tắt bộ đếm giờ khi bé dùng app khác.';
+      'Mở cài đặt pin và đặt KidGuard thành Không giới hạn / Không tối ưu để bộ đếm giờ không bị tắt.';
 
   @override
   String get homeAutoStartSubtitle =>
@@ -874,6 +881,42 @@ class AppLocalizationsVi extends AppLocalizations {
   String childEditSaved(String name) {
     return 'Đã lưu thông tin của $name.';
   }
+
+  @override
+  String get childDeleteTooltip => 'Xoá bé';
+
+  @override
+  String childDeleteTitle(String name) {
+    return 'Xoá $name?';
+  }
+
+  @override
+  String get childDeleteBody =>
+      'Thao tác này xoá vĩnh viễn hồ sơ và lịch sử dùng máy của bé trên máy này. Không hoàn tác được.';
+
+  @override
+  String get childDeleteConfirm => 'Xoá';
+
+  @override
+  String childDeleted(String name) {
+    return 'Đã xoá dữ liệu của $name.';
+  }
+
+  @override
+  String get clearAllDataTitle => 'Xoá toàn bộ dữ liệu trẻ?';
+
+  @override
+  String get clearAllDataBody =>
+      'Thao tác này xoá vĩnh viễn mọi hồ sơ trẻ và lịch sử dùng máy trên máy này. Bộ câu hỏi đã tải và cài đặt khoá vẫn giữ. Không hoàn tác được.';
+
+  @override
+  String get clearAllDataConfirm => 'Xoá hết';
+
+  @override
+  String get clearAllDataButton => 'Xoá toàn bộ dữ liệu trẻ';
+
+  @override
+  String get clearAllDataDone => 'Đã xoá toàn bộ dữ liệu trẻ trên máy này.';
 
   @override
   String get homeAdvancedLockTitle => 'Khoá nâng cao (Trợ năng) — khuyên dùng';

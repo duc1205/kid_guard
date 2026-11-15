@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/formatters.dart';
+import '../../../domain/repositories/repositories.dart';
 import '../../../domain/usecases/parent_usecases.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
+import '../../widgets/parent_auth_flow.dart';
 import '../../widgets/stat_tile.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../domain/usecases/settings_usecases.dart';
@@ -24,6 +26,41 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
   void initState() {
     super.initState();
     DependenciesScope.of(context).parentController.load();
+  }
+
+  Future<void> _clearAllData() async {
+    final l10n = context.l10n;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.clearAllDataTitle),
+        content: Text(l10n.clearAllDataBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.commonCancel),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.clearAllDataConfirm),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    final parent = DependenciesScope.of(context).parentController;
+    final auth = await parent.authenticate(reason: l10n.authReasonClearAllData);
+    if (!mounted) return;
+    if (auth != ParentAuthResult.success) {
+      showParentAuthMessage(context, auth);
+      return;
+    }
+    await parent.clearAllChildrenData();
+    if (!mounted) return;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(l10n.clearAllDataDone)));
   }
 
   @override
@@ -120,6 +157,13 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
                   _ChildCard(report: r),
                   const SizedBox(height: 10),
                 ],
+                const SizedBox(height: 16),
+                OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(foregroundColor: AppColors.danger),
+                  onPressed: _clearAllData,
+                  icon: const Icon(Icons.delete_forever_rounded),
+                  label: Text(l10n.clearAllDataButton),
+                ),
               ],
             ),
           );

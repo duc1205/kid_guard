@@ -28,6 +28,13 @@ class InMemoryChildRepository implements ChildRepository {
     children.removeWhere((c) => c.id == child.id);
     children.add(child);
   }
+
+  @override
+  Future<void> deleteChild(String id) async =>
+      children.removeWhere((c) => c.id == id);
+
+  @override
+  Future<void> deleteAllChildren() async => children.clear();
 }
 
 class InMemoryActiveSessionRepository implements ActiveSessionRepository {
@@ -78,7 +85,7 @@ class FakeDevice implements DeviceControlRepository {
   @override
   Future<void> suspendGuard(bool suspended) async {}
   @override
-  Future<void> requestIgnoreBatteryOptimizations() async {}
+  Future<void> openBatteryOptimizationSettings() async {}
   @override
   Future<bool> openAutoStartSettings() async => true;
   @override

@@ -10,8 +10,6 @@
     <!-- Cho phép đưa app lên trên cùng khi hết giờ (Android 10+ chặn mở Activity từ nền nếu thiếu quyền này) -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <!-- Xin bỏ tối ưu pin để hệ thống (đặc biệt ColorOS/MIUI) không tắt dịch vụ đếm giờ -->
-    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <!-- Thu thanh thông báo khi máy đang khoá (Android ≤ 11; 12+ dùng Trợ năng) -->
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 

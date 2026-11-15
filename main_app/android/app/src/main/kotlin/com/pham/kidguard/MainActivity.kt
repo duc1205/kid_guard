@@ -69,15 +69,10 @@ class MainActivity : FlutterFragmentActivity() {
                             "manufacturer" to Build.MANUFACTURER.lowercase(),
                         )
                     )
-                    "requestIgnoreBatteryOptimizations" -> {
-                        if (!isIgnoringBatteryOptimizations()) {
-                            tryStart(
-                                Intent(
-                                    Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
-                                    Uri.parse("package:$packageName")
-                                )
-                            ) || openAppDetails()
-                        }
+                    // Mở trang cài đặt tối ưu pin (không xin quyền REQUEST_IGNORE_…).
+                    "openBatteryOptimizationSettings" -> {
+                        tryStart(Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)) ||
+                            openAppDetails()
                         result.success(null)
                     }
                     // Trả về true nếu mở được đúng màn "Tự khởi động" của hãng, false nếu phải mở trang thông tin app.

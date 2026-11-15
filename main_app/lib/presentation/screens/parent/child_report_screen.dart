@@ -6,9 +6,11 @@ import '../../../core/utils/formatters.dart';
 import '../../../domain/entities/child_profile.dart';
 import '../../../domain/entities/usage_log.dart';
 import '../../../domain/entities/usage_stats.dart';
+import '../../../domain/repositories/repositories.dart';
 import '../../../domain/usecases/parent_usecases.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
+import '../../widgets/parent_auth_flow.dart';
 import '../../widgets/stat_tile.dart';
 import 'edit_child_screen.dart';
 
@@ -37,6 +39,43 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
       MaterialPageRoute(builder: (_) => EditChildScreen(child: _child)),
     );
     if (updated != null && mounted) setState(() => _child = updated);
+  }
+
+  Future<void> _delete() async {
+    final l10n = context.l10n;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.childDeleteTitle(_child.name)),
+        content: Text(l10n.childDeleteBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.commonCancel),
+          ),
+          FilledButton(
+            style: FilledButton.styleFrom(backgroundColor: AppColors.danger),
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.childDeleteConfirm),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    final parent = DependenciesScope.of(context).parentController;
+    final auth = await parent.authenticate(reason: l10n.authReasonDeleteChild);
+    if (!mounted) return;
+    if (auth != ParentAuthResult.success) {
+      showParentAuthMessage(context, auth);
+      return;
+    }
+    final name = _child.name;
+    await parent.deleteChild(_child.id);
+    if (!mounted) return;
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(l10n.childDeleted(name))));
+    Navigator.of(context).pop();
   }
 
   @override
@@ -76,6 +115,11 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
             tooltip: l10n.childEditTooltip,
             icon: const Icon(Icons.edit_rounded),
             onPressed: _edit,
+          ),
+          IconButton(
+            tooltip: l10n.childDeleteTooltip,
+            icon: const Icon(Icons.delete_outline_rounded),
+            onPressed: _delete,
           ),
         ],
       ),

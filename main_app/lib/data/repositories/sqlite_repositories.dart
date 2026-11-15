@@ -54,6 +54,16 @@ class SqliteChildRepository implements ChildRepository {
       });
     }
   });
+
+  @override
+  Future<void> deleteChild(String id) => _database.db.delete(
+    'children',
+    where: 'id = ?',
+    whereArgs: [id],
+  );
+
+  @override
+  Future<void> deleteAllChildren() => _database.db.delete('children');
 }
 
 class SqliteUsageLogRepository implements UsageLogRepository {
@@ -262,6 +272,11 @@ class SqliteUsageLogRepository implements UsageLogRepository {
         ),
     ];
   }
+
+  @override
+  Future<void> pruneOrphanQuestionSnapshots() => _db.rawDelete('''
+    DELETE FROM question_snapshots
+    WHERE id NOT IN (SELECT DISTINCT question_id FROM attempts)''');
 
   @override
   Future<int> deleteEndedBefore(DateTime cutoff) =>
