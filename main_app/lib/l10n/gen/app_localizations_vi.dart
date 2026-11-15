@@ -962,4 +962,24 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get legacyHardLockBody =>
       'Máy này đã bật khoá cứng bằng máy tính ở phiên bản trước. Cần tắt mục này trước khi gỡ KidGuard.';
+
+  @override
+  String get advancedLockDroppedTitle => 'Khoá nâng cao đã bị tắt';
+
+  @override
+  String get advancedLockDroppedBody =>
+      'Android tự tắt Khoá nâng cao khi KidGuard bị buộc dừng (Cài đặt › Buộc dừng, dọn dẹp đa nhiệm trên một số máy, hoặc cài lại app). Hãy bật lại trước khi đưa máy cho bé.';
+
+  @override
+  String get advancedLockTurnOnAgain => 'Bật lại';
+
+  @override
+  String get advancedLockStopUsing => 'Không dùng nữa';
+
+  @override
+  String get advancedLockDroppedStartBody =>
+      'Khoá nâng cao đang tắt nên bé có thể kéo thanh thông báo và vào Cài đặt tắt KidGuard. Bật lại trước khi đưa máy cho bé?';
+
+  @override
+  String get advancedLockContinueAnyway => 'Vẫn tiếp tục';
 }

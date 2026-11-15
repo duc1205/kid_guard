@@ -93,15 +93,10 @@ class MainActivity : FlutterFragmentActivity() {
                         result.success(opened)
                     }
                     "openAppSettings" -> result.success(openAppDetails())
-                    // Mở thẳng trang Trợ năng của KidGuard (Android 11+), không được thì mở danh sách Trợ năng.
+                    // Mở danh sách Trợ năng. (Trang chi tiết ACCESSIBILITY_DETAILS_SETTINGS cần quyền
+                    // OPEN_ACCESSIBILITY_DETAILS_SETTINGS chỉ dành cho app hệ thống → luôn bị từ chối.)
                     "openAccessibilitySettings" -> {
-                        val component = ComponentName(this, KidGuardAccessibilityService::class.java)
-                        val opened = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R &&
-                            tryStart(
-                                Intent("android.settings.ACCESSIBILITY_DETAILS_SETTINGS")
-                                    .putExtra(Intent.EXTRA_COMPONENT_NAME, component.flattenToString())
-                            )
-                        if (!opened) tryStart(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+                        tryStart(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
                         result.success(null)
                     }
                     // Gỡ quyền Device Owner (bắt buộc trước khi gỡ cài đặt app).

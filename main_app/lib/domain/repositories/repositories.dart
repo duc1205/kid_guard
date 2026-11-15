@@ -209,6 +209,12 @@ abstract interface class SetupChecklistRepository {
   Future<void> setConfirmed(String key, bool confirmed);
 }
 
+/// Ghi nhớ Khoá nâng cao (Trợ năng Android) đã từng bật trên máy này.
+abstract interface class AdvancedLockMemoryRepository {
+  Future<bool> wasSeenOn();
+  Future<void> setSeenOn(bool seenOn);
+}
+
 /// Đồng ý của phụ huynh lần đầu mở app (trước khi lưu hồ sơ trẻ).
 abstract interface class ParentConsentRepository {
   Future<bool> hasAccepted();

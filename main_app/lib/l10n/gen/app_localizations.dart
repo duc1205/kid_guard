@@ -1710,6 +1710,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This phone had hard lock turned on with a computer in an earlier version. Turn it off before uninstalling KidGuard.'**
   String get legacyHardLockBody;
+
+  /// No description provided for @advancedLockDroppedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced lock was turned off'**
+  String get advancedLockDroppedTitle;
+
+  /// No description provided for @advancedLockDroppedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Android turns Advanced lock off when KidGuard is force-stopped (Settings › Force stop, clearing Recents on some phones, or reinstalling the app). Turn it on again before giving the phone to your child.'**
+  String get advancedLockDroppedBody;
+
+  /// No description provided for @advancedLockTurnOnAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on again'**
+  String get advancedLockTurnOnAgain;
+
+  /// No description provided for @advancedLockStopUsing.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop using it'**
+  String get advancedLockStopUsing;
+
+  /// No description provided for @advancedLockDroppedStartBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced lock is off, so your child can pull down the notification shade and turn KidGuard off in Settings. Turn it on again before handing over the phone?'**
+  String get advancedLockDroppedStartBody;
+
+  /// No description provided for @advancedLockContinueAnyway.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue anyway'**
+  String get advancedLockContinueAnyway;
 }
 
 class _AppLocalizationsDelegate

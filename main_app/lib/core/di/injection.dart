@@ -14,6 +14,7 @@ import '../../data/repositories/question_bank_repository.dart';
 import '../../data/repositories/repository_impls.dart';
 import '../../data/repositories/sqlite_repositories.dart';
 import '../../domain/repositories/repositories.dart';
+import '../../domain/usecases/advanced_lock_usecases.dart';
 import '../../domain/usecases/parent_usecases.dart';
 import '../../domain/usecases/pick_question.dart';
 import '../../domain/usecases/question_bank_usecases.dart';
@@ -36,6 +37,7 @@ class AppDependencies {
     required this.getWeakTopics,
     required this.setupChecklist,
     required this.parentConsent,
+    required this.checkAdvancedLock,
     required this.questionBankController,
     required this.settingsController,
   });
@@ -48,6 +50,7 @@ class AppDependencies {
   final GetWeakTopicsUseCase getWeakTopics;
   final SetupChecklistRepository setupChecklist;
   final ParentConsentRepository parentConsent;
+  final CheckAdvancedLockUseCase checkAdvancedLock;
   final QuestionBankController questionBankController;
   final SettingsController settingsController;
 
@@ -110,6 +113,9 @@ class AppDependencies {
       getWeakTopics: GetWeakTopicsUseCase(logs),
       setupChecklist: PrefsSetupChecklistRepository(store),
       parentConsent: PrefsParentConsentRepository(store),
+      checkAdvancedLock: CheckAdvancedLockUseCase(
+        PrefsAdvancedLockMemoryRepository(store),
+      ),
       settingsController: settingsController,
       questionBankController: questionBankController,
       guardController: GuardController(

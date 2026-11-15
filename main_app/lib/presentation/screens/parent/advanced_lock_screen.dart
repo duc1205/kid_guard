@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_theme.dart';
 import '../../../domain/repositories/repositories.dart';
+import '../../../domain/usecases/advanced_lock_usecases.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
 import '../../widgets/parent_auth_flow.dart';
@@ -18,6 +19,7 @@ class AdvancedLockScreen extends StatefulWidget {
 class _AdvancedLockScreenState extends State<AdvancedLockScreen>
     with WidgetsBindingObserver {
   DevicePermissions? _perms;
+  AdvancedLockStatus _status = AdvancedLockStatus.off;
   bool _busy = false;
 
   @override
@@ -40,8 +42,10 @@ class _AdvancedLockScreenState extends State<AdvancedLockScreen>
   }
 
   Future<void> _refresh() async {
-    final p = await DependenciesScope.of(context).device.getPermissions();
-    if (mounted) setState(() => _perms = p);
+    final deps = DependenciesScope.of(context);
+    final p = await deps.device.getPermissions();
+    final status = await deps.checkAdvancedLock(p);
+    if (mounted) setState(() => (_perms = p, _status = status));
   }
 
   /// Play: công bố nổi bật + đồng ý rõ ràng trước khi mở Cài đặt › Trợ năng.
@@ -127,7 +131,7 @@ class _AdvancedLockScreenState extends State<AdvancedLockScreen>
           : ListView(
               padding: const EdgeInsets.fromLTRB(20, 4, 20, 40),
               children: [
-                _StatusCard(enabled: perms.accessibility),
+                _StatusCard(status: _status),
                 const SizedBox(height: 20),
                 _Section(
                   title: l10n.advancedLockWhatTitle,
@@ -218,13 +222,32 @@ class _AdvancedLockScreenState extends State<AdvancedLockScreen>
 }
 
 class _StatusCard extends StatelessWidget {
-  const _StatusCard({required this.enabled});
-  final bool enabled;
+  const _StatusCard({required this.status});
+  final AdvancedLockStatus status;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final color = enabled ? AppColors.success : AppColors.kid;
+    final (color, icon, title, body) = switch (status) {
+      AdvancedLockStatus.on => (
+        AppColors.success,
+        Icons.verified_user_rounded,
+        l10n.advancedLockStatusOn,
+        l10n.advancedLockStatusOnBody,
+      ),
+      AdvancedLockStatus.off => (
+        AppColors.kid,
+        Icons.shield_outlined,
+        l10n.advancedLockStatusOff,
+        l10n.advancedLockStatusOffBody,
+      ),
+      AdvancedLockStatus.droppedBySystem => (
+        AppColors.danger,
+        Icons.gpp_maybe_rounded,
+        l10n.advancedLockDroppedTitle,
+        l10n.advancedLockDroppedBody,
+      ),
+    };
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -234,20 +257,14 @@ class _StatusCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            enabled ? Icons.verified_user_rounded : Icons.shield_outlined,
-            color: color,
-            size: 32,
-          ),
+          Icon(icon, color: color, size: 32),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  enabled
-                      ? l10n.advancedLockStatusOn
-                      : l10n.advancedLockStatusOff,
+                  title,
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 17,
@@ -255,11 +272,7 @@ class _StatusCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(
-                  enabled
-                      ? l10n.advancedLockStatusOnBody
-                      : l10n.advancedLockStatusOffBody,
-                ),
+                Text(body),
               ],
             ),
           ),

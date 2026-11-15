@@ -500,5 +500,11 @@
   "advancedLockDisclosureBody": "KidGuard's Accessibility service will see only which app package is in the foreground during a parent-started session. It does not read, store or send anything on the screen.\n\nWhen time is up it closes the notification shade and brings the quiz back. During a session it blocks Settings and uninstallers so your child cannot turn KidGuard off. Calls still work. Outside a session the service does nothing.\n\nYou will turn it on yourself in system Settings. You can turn it off anytime after ending the child's session.",
   "advancedLockAgreeContinue": "I understand — continue",
   "legacyHardLockTitle": "Old hard lock (Device Owner) is on",
-  "legacyHardLockBody": "This phone had hard lock turned on with a computer in an earlier version. Turn it off before uninstalling KidGuard."
+  "legacyHardLockBody": "This phone had hard lock turned on with a computer in an earlier version. Turn it off before uninstalling KidGuard.",
+  "advancedLockDroppedTitle": "Advanced lock was turned off",
+  "advancedLockDroppedBody": "Android turns Advanced lock off when KidGuard is force-stopped (Settings › Force stop, clearing Recents on some phones, or reinstalling the app). Turn it on again before giving the phone to your child.",
+  "advancedLockTurnOnAgain": "Turn on again",
+  "advancedLockStopUsing": "Stop using it",
+  "advancedLockDroppedStartBody": "Advanced lock is off, so your child can pull down the notification shade and turn KidGuard off in Settings. Turn it on again before handing over the phone?",
+  "advancedLockContinueAnyway": "Continue anyway"
 }

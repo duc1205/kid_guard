@@ -66,6 +66,20 @@ class PrefsSetupChecklistRepository implements SetupChecklistRepository {
       _store.writeBool(_k(key), confirmed);
 }
 
+class PrefsAdvancedLockMemoryRepository
+    implements AdvancedLockMemoryRepository {
+  PrefsAdvancedLockMemoryRepository(this._store);
+  final LocalStore _store;
+
+  static const _key = 'kg.advanced_lock_seen_on';
+
+  @override
+  Future<bool> wasSeenOn() => _store.readBool(_key);
+
+  @override
+  Future<void> setSeenOn(bool seenOn) => _store.writeBool(_key, seenOn);
+}
+
 class PrefsParentConsentRepository implements ParentConsentRepository {
   PrefsParentConsentRepository(this._store);
   final LocalStore _store;

@@ -267,5 +267,11 @@
   "advancedLockDisclosureBody": "Dịch vụ Trợ năng của KidGuard chỉ biết package ứng dụng nào đang ở phía trước trong phiên do phụ huynh bắt đầu. Không đọc, không lưu, không gửi nội dung màn hình.\n\nHết giờ: đóng thanh thông báo và đưa màn câu hỏi lên lại. Trong phiên: chặn Cài đặt và trình gỡ cài đặt để bé không tắt KidGuard. Cuộc gọi vẫn dùng được. Ngoài phiên, dịch vụ không làm gì.\n\nBạn sẽ tự bật trong Cài đặt hệ thống. Có thể tắt bất cứ lúc nào sau khi kết thúc phiên của bé.",
   "advancedLockAgreeContinue": "Tôi đã hiểu — tiếp tục",
   "legacyHardLockTitle": "Khoá cứng cũ (Device Owner) đang bật",
-  "legacyHardLockBody": "Máy này đã bật khoá cứng bằng máy tính ở phiên bản trước. Cần tắt mục này trước khi gỡ KidGuard."
+  "legacyHardLockBody": "Máy này đã bật khoá cứng bằng máy tính ở phiên bản trước. Cần tắt mục này trước khi gỡ KidGuard.",
+  "advancedLockDroppedTitle": "Khoá nâng cao đã bị tắt",
+  "advancedLockDroppedBody": "Android tự tắt Khoá nâng cao khi KidGuard bị buộc dừng (Cài đặt › Buộc dừng, dọn dẹp đa nhiệm trên một số máy, hoặc cài lại app). Hãy bật lại trước khi đưa máy cho bé.",
+  "advancedLockTurnOnAgain": "Bật lại",
+  "advancedLockStopUsing": "Không dùng nữa",
+  "advancedLockDroppedStartBody": "Khoá nâng cao đang tắt nên bé có thể kéo thanh thông báo và vào Cài đặt tắt KidGuard. Bật lại trước khi đưa máy cho bé?",
+  "advancedLockContinueAnyway": "Vẫn tiếp tục"
 }

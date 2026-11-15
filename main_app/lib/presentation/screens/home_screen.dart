@@ -4,6 +4,7 @@ import '../../core/theme/app_theme.dart';
 import '../../domain/repositories/repositories.dart';
 import '../l10n_ext.dart';
 import '../widgets/dependencies_scope.dart';
+import '../../domain/usecases/advanced_lock_usecases.dart';
 import '../widgets/parent_auth_flow.dart';
 import 'child/child_register_screen.dart';
 import 'parent/advanced_lock_screen.dart';
@@ -22,6 +23,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   DevicePermissions? _perms;
   bool? _lockAvailable;
+  AdvancedLockStatus _advancedLock = AdvancedLockStatus.off;
 
   /// Các mục người lớn đã xác nhận bật (hệ thống không cho app tự kiểm tra).
   Set<String> _confirmed = const {};
@@ -49,14 +51,60 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     final deps = DependenciesScope.of(context);
     final perms = await deps.device.getPermissions();
     final lock = await deps.parentAuth.isAvailable();
+    final advancedLock = await deps.checkAdvancedLock(perms);
     final confirmed = await deps.setupChecklist.getConfirmed();
     if (mounted) {
       setState(() {
         _perms = perms;
+        _advancedLock = advancedLock;
         _lockAvailable = lock;
         _confirmed = confirmed;
       });
     }
+  }
+
+  Future<void> _openAdvancedLock() async {
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const AdvancedLockScreen()));
+    await _refresh();
+  }
+
+  Future<void> _forgetAdvancedLock() async {
+    await DependenciesScope.of(context).checkAdvancedLock.forget();
+    await _refresh();
+  }
+
+  /// Khoá nâng cao vừa bị hệ thống tắt → hỏi phụ huynh bật lại trước khi đưa máy.
+  Future<void> _startChildMode() async {
+    await _refresh();
+    if (!mounted) return;
+    if (_advancedLock == AdvancedLockStatus.droppedBySystem) {
+      final l10n = context.l10n;
+      final turnOn = await showDialog<bool>(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          icon: const Icon(Icons.gpp_maybe_rounded, color: AppColors.danger),
+          title: Text(l10n.advancedLockDroppedTitle),
+          content: Text(l10n.advancedLockDroppedStartBody),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: Text(l10n.advancedLockContinueAnyway),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(ctx, true),
+              child: Text(l10n.advancedLockTurnOnAgain),
+            ),
+          ],
+        ),
+      );
+      if (!mounted || turnOn == null) return;
+      if (turnOn) return _openAdvancedLock();
+    }
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => const ChildRegisterScreen()));
   }
 
   /// Hướng dẫn trước → mở Cài đặt → hỏi đã bật chưa → ghi nhớ.
@@ -128,11 +176,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               ],
             ),
             const SizedBox(height: 28),
-            _HeroCard(
-              onStart: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const ChildRegisterScreen()),
+            if (_advancedLock == AdvancedLockStatus.droppedBySystem) ...[
+              _DroppedLockCard(
+                onTurnOn: _openAdvancedLock,
+                onForget: _forgetAdvancedLock,
               ),
-            ),
+              const SizedBox(height: 16),
+            ],
+            _HeroCard(onStart: _startChildMode),
             const SizedBox(height: 16),
             Card(
               child: ListTile(
@@ -250,23 +301,20 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 ),
               _SetupTile(
                 ok: perms.accessibility,
-                optional: true,
+                optional: _advancedLock != AdvancedLockStatus.droppedBySystem,
                 title: l10n.homeAdvancedLockTitle,
                 subtitle: perms.accessibility
                     ? l10n.homeAdvancedLockOn
+                    : _advancedLock == AdvancedLockStatus.droppedBySystem
+                    ? l10n.advancedLockDroppedTitle
                     : l10n.homeAdvancedLockOff,
                 fixLabel: perms.accessibility
                     ? l10n.homeManage
+                    : _advancedLock == AdvancedLockStatus.droppedBySystem
+                    ? l10n.advancedLockTurnOnAgain
                     : l10n.homeGuide,
                 showActionWhenOk: true,
-                onFix: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => const AdvancedLockScreen(),
-                    ),
-                  );
-                  _refresh();
-                },
+                onFix: _openAdvancedLock,
               ),
             ],
             if (perms != null && perms.platform == DevicePlatform.ios) ...[
@@ -476,6 +524,71 @@ class _SetupTile extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Cảnh báo nổi bật: Khoá nâng cao từng bật nhưng bị hệ thống tắt.
+class _DroppedLockCard extends StatelessWidget {
+  const _DroppedLockCard({required this.onTurnOn, required this.onForget});
+  final VoidCallback onTurnOn;
+  final VoidCallback onForget;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.fromLTRB(18, 16, 18, 10),
+      decoration: BoxDecoration(
+        color: AppColors.danger.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColors.danger.withValues(alpha: 0.35)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.gpp_maybe_rounded, color: AppColors.danger),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Text(
+                  l10n.advancedLockDroppedTitle,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    color: AppColors.danger,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          Text(
+            l10n.advancedLockDroppedBody,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: AppColors.textSecondary,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            children: [
+              FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: AppColors.danger,
+                  minimumSize: const Size(0, 44),
+                ),
+                onPressed: onTurnOn,
+                child: Text(l10n.advancedLockTurnOnAgain),
+              ),
+              const SizedBox(width: 8),
+              TextButton(
+                onPressed: onForget,
+                child: Text(l10n.advancedLockStopUsing),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

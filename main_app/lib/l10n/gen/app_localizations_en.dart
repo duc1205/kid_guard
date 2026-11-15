@@ -1018,4 +1018,24 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get legacyHardLockBody =>
       'This phone had hard lock turned on with a computer in an earlier version. Turn it off before uninstalling KidGuard.';
+
+  @override
+  String get advancedLockDroppedTitle => 'Advanced lock was turned off';
+
+  @override
+  String get advancedLockDroppedBody =>
+      'Android turns Advanced lock off when KidGuard is force-stopped (Settings › Force stop, clearing Recents on some phones, or reinstalling the app). Turn it on again before giving the phone to your child.';
+
+  @override
+  String get advancedLockTurnOnAgain => 'Turn on again';
+
+  @override
+  String get advancedLockStopUsing => 'Stop using it';
+
+  @override
+  String get advancedLockDroppedStartBody =>
+      'Advanced lock is off, so your child can pull down the notification shade and turn KidGuard off in Settings. Turn it on again before handing over the phone?';
+
+  @override
+  String get advancedLockContinueAnyway => 'Continue anyway';
 }

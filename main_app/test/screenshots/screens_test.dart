@@ -76,9 +76,13 @@ Future<void> _loadFonts() async {
   }
 }
 
-Future<AppDependencies> _deps({bool consent = true}) async {
+Future<AppDependencies> _deps({
+  bool consent = true,
+  bool lockDropped = false,
+}) async {
   final store = MemoryLocalStore();
   if (consent) await store.writeBool('kg.parent_consent_v1', true);
+  if (lockDropped) await store.writeBool('kg.advanced_lock_seen_on', true);
   return AppDependencies.create(
     store: store,
     database: await openTestDatabase(),
@@ -96,14 +100,18 @@ void main() {
     await _loadFonts();
   });
 
-  Future<void> boot(WidgetTester t, {bool consent = true}) async {
+  Future<void> boot(
+    WidgetTester t, {
+    bool consent = true,
+    bool lockDropped = false,
+  }) async {
     t.view.physicalSize = const Size(1080, 2340);
     t.view.devicePixelRatio = 2.625;
     t.platformDispatcher.localesTestValue = const [Locale('vi')];
     addTearDown(t.view.reset);
     addTearDown(t.platformDispatcher.clearLocalesTestValue);
     await t.runAsync(() async {
-      deps = await _deps(consent: consent);
+      deps = await _deps(consent: consent, lockDropped: lockDropped);
     });
     await t.pumpWidget(KidGuardApp(deps: deps));
     await t.runAsync(() => deps.guardController.init());
@@ -119,9 +127,9 @@ void main() {
   }
 
   Future<void> push(WidgetTester t, Widget screen) async {
-    t.state<NavigatorState>(find.byType(Navigator).first).push(
-      MaterialPageRoute<void>(builder: (_) => screen),
-    );
+    t
+        .state<NavigatorState>(find.byType(Navigator).first)
+        .push(MaterialPageRoute<void>(builder: (_) => screen));
     await settle(t);
   }
 
@@ -161,7 +169,9 @@ void main() {
   shotTest('04 register', (t) async {
     await boot(t);
     await push(t, const ChildRegisterScreen());
-    await t.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+    await t.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 50)),
+    );
     await shot(t, '04_register_form');
   });
 
@@ -207,6 +217,17 @@ void main() {
       ChildReportScreen(report: deps.parentController.reports.first),
     );
     await shot(t, '10_report');
+  });
+
+  shotTest('14 advanced lock dropped', (t) async {
+    await boot(t, lockDropped: true);
+    await shot(t, '14_home_lock_dropped');
+    await t.tap(find.byType(FilledButton).at(1));
+    await settle(t);
+    await shot(t, '15_start_dialog');
+    await t.tap(find.byType(FilledButton).last);
+    await settle(t);
+    await shot(t, '16_advanced_lock_dropped');
   });
 
   shotTest('11 settings screens', (t) async {
