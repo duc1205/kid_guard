@@ -168,6 +168,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               subtitle: l10n.homeScreenLockSubtitle,
             ),
             if (perms != null && perms.platform == DevicePlatform.android) ...[
+              _InfoCard(text: l10n.homeAndroidNotice),
               _SetupTile(
                 ok: perms.overlay,
                 title: l10n.setupOverlayTitle,

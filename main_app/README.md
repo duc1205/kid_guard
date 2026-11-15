@@ -118,7 +118,7 @@ App tự theo ngôn ngữ của máy: **tiếng Việt** nếu máy dùng tiến
 ### Cập nhật câu hỏi qua internet (không cần phát hành app mới)
 
 App tải `manifest.json` từ `AppConstants.defaultQuestionSourceUrl`
-(`https://raw.githubusercontent.com/duc1205/kid_guard_question/main/manifest.json`), tối đa 6 giờ/lần
+(`https://raw.githubusercontent.com/duc1205/kid_guard_question/main/manifest.json`), tối đa 15 phút/lần
 khi mở app, hoặc khi phụ huynh bấm **Khu vực phụ huynh › Nguồn câu hỏi › Cập nhật ngay**.
 
 - Chỉ tải các file có mã sha256 khác bản đang có; kiểm tra mã + định dạng rồi lưu vào SQLite.

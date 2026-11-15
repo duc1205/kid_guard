@@ -813,6 +813,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'Questions are downloaded over the internet and stored on this device, so they still work offline. Every file is checked for format and checksum; if anything is wrong, the app keeps the questions it already has. A custom source (for example your school\'s) needs a manifest.json and grade_N.json files in the same format: grades 1–12, 13 = University, 14 = Postgraduate.';
 
   @override
+  String get qsCustomSourceWarningTitle => 'Use only a trusted source';
+
+  @override
+  String get qsCustomSourceWarningBody =>
+      'KidGuard will download and show questions from this HTTPS address. Use only a source you trust (for example your school). A malicious source could show inappropriate or wrong content to your child.';
+
+  @override
+  String get qsCustomSourceConfirm => 'I trust this source';
+
+  @override
+  String get homeAndroidNotice =>
+      'When time is up, KidGuard comes to the front (overlay) and shows a question. For a stronger lock—blocking the notification shade, Recents and turning KidGuard off—turn on Advanced lock (Accessibility) below. Emergency and incoming calls still work.';
+
+  @override
   String qsResultUpdated(int version) {
     return 'Question bank updated to version $version.';
   }

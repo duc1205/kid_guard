@@ -1369,6 +1369,30 @@ abstract class AppLocalizations {
   /// **'Questions are downloaded over the internet and stored on this device, so they still work offline. Every file is checked for format and checksum; if anything is wrong, the app keeps the questions it already has. A custom source (for example your school\'s) needs a manifest.json and grade_N.json files in the same format: grades 1–12, 13 = University, 14 = Postgraduate.'**
   String get qsHelp;
 
+  /// No description provided for @qsCustomSourceWarningTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use only a trusted source'**
+  String get qsCustomSourceWarningTitle;
+
+  /// No description provided for @qsCustomSourceWarningBody.
+  ///
+  /// In en, this message translates to:
+  /// **'KidGuard will download and show questions from this HTTPS address. Use only a source you trust (for example your school). A malicious source could show inappropriate or wrong content to your child.'**
+  String get qsCustomSourceWarningBody;
+
+  /// No description provided for @qsCustomSourceConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'I trust this source'**
+  String get qsCustomSourceConfirm;
+
+  /// No description provided for @homeAndroidNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'When time is up, KidGuard comes to the front (overlay) and shows a question. For a stronger lock—blocking the notification shade, Recents and turning KidGuard off—turn on Advanced lock (Accessibility) below. Emergency and incoming calls still work.'**
+  String get homeAndroidNotice;
+
   /// No description provided for @qsResultUpdated.
   ///
   /// In en, this message translates to:

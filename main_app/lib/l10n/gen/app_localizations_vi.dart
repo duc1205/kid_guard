@@ -759,6 +759,20 @@ class AppLocalizationsVi extends AppLocalizations {
       'Câu hỏi được tải qua internet rồi lưu trên máy để dùng cả khi mất mạng. Mỗi file đều được kiểm tra định dạng và mã kiểm tra; nếu có lỗi, app giữ nguyên bộ câu hỏi đang có. Nguồn tuỳ chỉnh (ví dụ của nhà trường) cần một file manifest.json và các file grade_N.json cùng định dạng: lớp 1–12, 13 = Đại học, 14 = Sau đại học.';
 
   @override
+  String get qsCustomSourceWarningTitle => 'Chỉ dùng nguồn đáng tin';
+
+  @override
+  String get qsCustomSourceWarningBody =>
+      'KidGuard sẽ tải và hiện câu hỏi từ địa chỉ HTTPS này. Chỉ dùng nguồn bạn tin tưởng (ví dụ nhà trường). Nguồn xấu có thể đưa nội dung không phù hợp hoặc sai cho bé.';
+
+  @override
+  String get qsCustomSourceConfirm => 'Tôi tin nguồn này';
+
+  @override
+  String get homeAndroidNotice =>
+      'Hết giờ, KidGuard hiện lên (lớp phủ) và đưa ra câu hỏi. Muốn khoá chặt hơn—chặn thanh thông báo, đa nhiệm và việc tắt KidGuard—hãy bật Khoá nâng cao (Trợ năng) bên dưới. Cuộc gọi đến và gọi khẩn cấp vẫn dùng được.';
+
+  @override
   String qsResultUpdated(int version) {
     return 'Đã cập nhật bộ câu hỏi lên phiên bản $version.';
   }

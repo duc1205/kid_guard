@@ -61,7 +61,31 @@ class _QuestionSourceScreenState extends State<QuestionSourceScreen> {
       builder: (_) =>
           _SourceDialog(initial: info.isDefaultSource ? '' : info.sourceUrl),
     );
-    if (picked == null) return;
+    if (picked == null || !mounted) return;
+    // Nguồn tuỳ chỉnh → xác nhận phụ huynh chỉ dùng URL tin cậy.
+    if (picked.url != null) {
+      final trusted = await showDialog<bool>(
+        context: context,
+        builder: (ctx) {
+          final l10n = ctx.l10n;
+          return AlertDialog(
+            title: Text(l10n.qsCustomSourceWarningTitle),
+            content: Text(l10n.qsCustomSourceWarningBody),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(ctx, false),
+                child: Text(l10n.commonCancel),
+              ),
+              FilledButton(
+                onPressed: () => Navigator.pop(ctx, true),
+                child: Text(l10n.qsCustomSourceConfirm),
+              ),
+            ],
+          );
+        },
+      );
+      if (trusted != true || !mounted) return;
+    }
     _show(await c.changeSource(picked.url));
   }
 
