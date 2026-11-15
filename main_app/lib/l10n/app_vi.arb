@@ -16,6 +16,7 @@
   "authNotAvailable": "Máy chưa cài mật khẩu màn hình khoá. Hãy vào Cài đặt để cài mã PIN/mật khẩu.",
   "authReasonRevoke": "Nhập mật khẩu máy để thu hồi điện thoại và tắt chế độ trẻ em",
   "authReasonParentArea": "Nhập mật khẩu máy để vào khu vực phụ huynh",
+  "authReasonRegisterChild": "Nhập mật khẩu máy để thêm hồ sơ của bé",
   "authReasonDisableHardLock": "Nhập mật khẩu máy để tắt khoá cứng",
   "consentTitle": "Dành cho phụ huynh",
   "consentIntro": "KidGuard là công cụ kiểm soát thời gian dùng máy của trẻ. Hãy xác nhận trước khi dùng trên máy này.",

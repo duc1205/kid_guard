@@ -68,6 +68,10 @@ class AppLocalizationsVi extends AppLocalizations {
       'Nhập mật khẩu máy để vào khu vực phụ huynh';
 
   @override
+  String get authReasonRegisterChild =>
+      'Nhập mật khẩu máy để thêm hồ sơ của bé';
+
+  @override
   String get authReasonDisableHardLock => 'Nhập mật khẩu máy để tắt khoá cứng';
 
   @override

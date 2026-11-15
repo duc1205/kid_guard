@@ -5,9 +5,11 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../domain/entities/child_profile.dart';
 import '../../../domain/usecases/register_child.dart';
+import '../../../domain/repositories/repositories.dart';
 import '../../controllers/guard_controller.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
+import '../../widgets/parent_auth_flow.dart';
 
 /// Trẻ chọn tên đã lưu, hoặc nhập tên, ngày sinh và lớp đang học trước khi được dùng máy.
 /// Thông tin đã lưu chỉ người lớn sửa được (khu vực phụ huynh).
@@ -33,13 +35,39 @@ class _ChildRegisterScreenState extends State<ChildRegisterScreen> {
   void initState() {
     super.initState();
     DependenciesScope.of(context).guardController.savedChildren().then(
-      (list) {
-        if (mounted) setState(() => (_saved = list, _showForm = list.isEmpty));
-      },
-      onError: (Object _) {
-        if (mounted) setState(() => (_saved = const [], _showForm = true));
-      },
+      _onSavedLoaded,
+      onError: (Object _) => _onSavedLoaded(const []),
     );
+  }
+
+  /// Chưa có hồ sơ nào → giữ màn chờ, xác thực phụ huynh rồi mới hiện form
+  /// (tránh lộ danh sách trống phía sau hộp thoại hệ thống).
+  Future<void> _onSavedLoaded(List<ChildProfile> list) async {
+    if (!mounted) return;
+    if (list.isNotEmpty) {
+      setState(() => (_saved = list, _showForm = false));
+      return;
+    }
+    if (await _openNewChildForm(popOnFail: true) && mounted) {
+      setState(() => _saved = list);
+    }
+  }
+
+  /// Thêm hồ sơ trẻ mới chỉ sau khi phụ huynh xác thực mật khẩu máy.
+  /// Trả về `true` nếu xác thực thành công (form đã mở).
+  Future<bool> _openNewChildForm({bool popOnFail = false}) async {
+    final parent = DependenciesScope.of(context).parentController;
+    final result = await parent.authenticate(
+      reason: context.l10n.authReasonRegisterChild,
+    );
+    if (!mounted) return false;
+    if (result != ParentAuthResult.success) {
+      showParentAuthMessage(context, result);
+      if (popOnFail) Navigator.of(context).pop();
+      return false;
+    }
+    setState(() => (_showForm = true, _error = null));
+    return true;
   }
 
   @override
@@ -166,9 +194,7 @@ class _ChildRegisterScreenState extends State<ChildRegisterScreen> {
         ),
       const SizedBox(height: 12),
       OutlinedButton.icon(
-        onPressed: _submitting
-            ? null
-            : () => setState(() => (_showForm = true, _error = null)),
+        onPressed: _submitting ? null : () => _openNewChildForm(),
         icon: const Icon(Icons.person_add_alt_1_rounded),
         label: Text(l10n.registerAddNew),
       ),

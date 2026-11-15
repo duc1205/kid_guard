@@ -87,6 +87,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Enter the phone password to open the parent area';
 
   @override
+  String get authReasonRegisterChild =>
+      'Enter the phone password to add a child\'s profile';
+
+  @override
   String get authReasonDisableHardLock =>
       'Enter the phone password to turn off hard lock';
 

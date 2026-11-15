@@ -194,6 +194,12 @@ abstract class AppLocalizations {
   /// **'Enter the phone password to open the parent area'**
   String get authReasonParentArea;
 
+  /// No description provided for @authReasonRegisterChild.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the phone password to add a child\'s profile'**
+  String get authReasonRegisterChild;
+
   /// No description provided for @authReasonDisableHardLock.
   ///
   /// In en, this message translates to:

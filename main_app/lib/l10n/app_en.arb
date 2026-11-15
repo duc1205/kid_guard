@@ -47,6 +47,7 @@
   "authNotAvailable": "This phone has no screen lock. Go to Settings and set a PIN/password first.",
   "authReasonRevoke": "Enter the phone password to take the phone back and turn off kid mode",
   "authReasonParentArea": "Enter the phone password to open the parent area",
+  "authReasonRegisterChild": "Enter the phone password to add a child's profile",
   "authReasonDisableHardLock": "Enter the phone password to turn off hard lock",
   "consentTitle": "For parents",
   "consentIntro": "KidGuard is a parental screen-time tool. Please confirm before using it on this device.",
