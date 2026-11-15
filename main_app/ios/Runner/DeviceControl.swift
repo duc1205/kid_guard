@@ -120,7 +120,9 @@ final class DeviceControl: NSObject {
     if name.contains("unavailable") { return "unavailable" }
     // Xin `.child` trên máy không phải tài khoản trẻ em / Family Sharing thường ra restricted.
     if name.contains("restricted") { return "restricted" }
-    if name.contains("invalid") || name.contains("conflict") || name.contains("account") {
+    // Đã có app kiểm soát phụ huynh khác giữ quyền Screen Time trên máy.
+    if name.contains("conflict") { return "conflict" }
+    if name.contains("invalid") || name.contains("account") {
       return "invalidAccount"
     }
     return "failed"

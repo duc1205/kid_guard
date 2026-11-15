@@ -765,6 +765,10 @@ class AppLocalizationsVi extends AppLocalizations {
       'Screen Time không dùng được trên máy này.';
 
   @override
+  String get screenTimeErrorConflict =>
+      'Đã có ứng dụng kiểm soát phụ huynh khác đang giữ quyền Screen Time trên iPhone này. Gỡ quyền của ứng dụng đó (Cài đặt › Thời gian sử dụng) rồi thử lại.';
+
+  @override
   String get screenTimeErrorNotChildAccount =>
       'Máy này không đăng nhập tài khoản trẻ em trong Chia sẻ trong gia đình. Nếu đang cho bé mượn máy bố mẹ, chọn \"Đúng, máy bố mẹ\" khi được hỏi.';
 
@@ -779,7 +783,38 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeMacNotice =>
-      'Hết giờ, KidGuard hiện lên toàn màn hình ở chế độ kiosk: Dock, thanh menu, Cmd+Tab và Buộc thoát đều bị vô hiệu cho tới khi bé trả lời câu hỏi hoặc người lớn mở khoá bằng mật khẩu Mac / Touch ID. Trong phiên, KidGuard không thể bị tắt và tự mở lại sau khi đăng nhập.';
+      'Hết giờ, KidGuard hiện lên toàn màn hình ở chế độ kiosk: Dock, thanh menu, Cmd+Tab và Buộc thoát đều bị vô hiệu cho tới khi bé trả lời câu hỏi hoặc người lớn mở khoá bằng mật khẩu Mac / Touch ID. Trong phiên, KidGuard không thể bị tắt, và tự mở lại sau khi đăng nhập nếu bạn cho phép ở mục bên dưới.';
+
+  @override
+  String get macRelaunchTitle => 'Tự mở lại KidGuard sau khi đăng nhập?';
+
+  @override
+  String get macRelaunchBody =>
+      'Trong phiên của bé, KidGuard có thể thêm vào Mục đăng nhập để tự mở lại nếu bé đăng xuất hoặc khởi động lại máy Mac. macOS sẽ hiện thông báo \"Đã thêm mục đăng nhập\". Mục này được gỡ khi phiên kết thúc. Bạn có thể đổi lại trên màn hình chính bất cứ lúc nào.';
+
+  @override
+  String get macRelaunchAllow => 'Cho phép';
+
+  @override
+  String get macRelaunchDeny => 'Không cho phép';
+
+  @override
+  String get homeMacRelaunchTitle =>
+      'Tự mở lại sau khi đăng nhập (trong phiên)';
+
+  @override
+  String get homeMacRelaunchOn =>
+      'Đang bật: bé đăng xuất hoặc khởi động lại máy Mac thì KidGuard tự mở lại. Tự gỡ khi phiên kết thúc.';
+
+  @override
+  String get homeMacRelaunchOff =>
+      'Đang tắt: bé có thể thoát khoá bằng cách đăng xuất hoặc khởi động lại máy Mac.';
+
+  @override
+  String get homeMacRelaunchEnable => 'Bật';
+
+  @override
+  String get homeMacRelaunchDisable => 'Tắt';
 
   @override
   String get homeWindowsNotice =>

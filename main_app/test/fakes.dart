@@ -102,6 +102,8 @@ class FakeDevice implements DeviceControlRepository {
   }) async => ScreenTimeAuthResult(approved: true, mode: mode);
   @override
   Future<bool> chooseLimitedApps() async => true;
+  @override
+  Future<void> setRelaunchAfterLogin(bool allowed) async {}
 }
 
 Question q(String id, {int grade = 3, int answer = 0}) => Question(

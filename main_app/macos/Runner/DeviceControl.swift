@@ -24,6 +24,14 @@ final class DeviceControl: NSObject, NSWindowDelegate {
     static let active = "kg.native.active"
     static let deadline = "kg.native.deadline"
     static let guardOn = "kg.native.guard"
+    static let relaunch = "kg.native.relaunchAfterLogin"
+  }
+
+  /// Phụ huynh đã đồng ý cho KidGuard tự mở lại sau khi đăng nhập trong phiên
+  /// (App Store 2.4.5: không tự chạy lúc đăng nhập khi chưa có đồng ý).
+  private var relaunchAllowed: Bool {
+    get { defaults.bool(forKey: Key.relaunch) }
+    set { defaults.set(newValue, forKey: Key.relaunch) }
   }
 
   /// Đang có phiên (từ lúc bé bắt đầu tới khi người lớn thu hồi).
@@ -73,7 +81,7 @@ final class DeviceControl: NSObject, NSWindowDelegate {
       sessionActive = true
       guardOn = false
       beginNapGuard()
-      setLaunchAtLogin(true)
+      setLaunchAtLogin(relaunchAllowed)
       scheduleDeadline()
       applyGuard()
       result(nil)
@@ -99,6 +107,10 @@ final class DeviceControl: NSObject, NSWindowDelegate {
       result(nil)
     case "moveToBackground":
       NSApp.hide(nil)
+      result(nil)
+    case "setRelaunchAfterLogin":
+      relaunchAllowed = (args?["allowed"] as? Bool) ?? false
+      setLaunchAtLogin(relaunchAllowed && sessionActive)
       result(nil)
     case "permissionStatus":
       result([

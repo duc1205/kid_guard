@@ -124,6 +124,10 @@ class DeviceControlChannel implements DeviceControlRepository {
   }
 
   @override
+  Future<void> setRelaunchAfterLogin(bool allowed) =>
+      _call('setRelaunchAfterLogin', {'allowed': allowed});
+
+  @override
   Future<bool> chooseLimitedApps() async =>
       await _call<bool>('chooseLimitedApps') ?? false;
 

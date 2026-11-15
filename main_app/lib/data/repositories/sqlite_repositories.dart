@@ -55,7 +55,8 @@ class SqliteChildRepository implements ChildRepository {
     }
   });
 
-  static Future<void> _pruneOrphanSnapshots(Transaction txn) => txn.rawDelete('''
+  static Future<void> _pruneOrphanSnapshots(Transaction txn) =>
+      txn.rawDelete('''
     DELETE FROM question_snapshots
     WHERE id NOT IN (SELECT DISTINCT question_id FROM attempts)''');
 

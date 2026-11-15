@@ -52,7 +52,14 @@ class PrefsSetupChecklistRepository implements SetupChecklistRepository {
   PrefsSetupChecklistRepository(this._store);
   final LocalStore _store;
 
-  static const keys = ['autostart', 'background_popup', 'recents_lock'];
+  static const keys = [
+    'autostart',
+    'background_popup',
+    'recents_lock',
+    SetupChecklistRepository.screenTimeIndividual,
+    SetupChecklistRepository.macRelaunchAsked,
+    SetupChecklistRepository.macRelaunchAllowed,
+  ];
   static String _k(String key) => 'kg.setup.$key';
 
   @override

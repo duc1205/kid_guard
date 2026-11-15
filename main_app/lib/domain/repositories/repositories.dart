@@ -194,7 +194,7 @@ class ScreenTimeAuthResult {
   final bool approved;
   final ScreenTimeAuthMode mode;
 
-  /// cancelled | unavailable | restricted | invalidAccount | denied | failed
+  /// cancelled | unavailable | restricted | invalidAccount | conflict | denied | failed
   final String? errorCode;
 }
 
@@ -210,6 +210,7 @@ abstract interface class DeviceControlRepository {
   Future<DevicePermissions> getPermissions();
   Future<void> requestOverlayPermission();
   Future<void> requestNotificationPermission();
+
   /// Mở trang cài đặt tối ưu pin của hệ thống (không cần quyền đặc biệt).
   Future<void> openBatteryOptimizationSettings();
 
@@ -226,6 +227,10 @@ abstract interface class DeviceControlRepository {
   /// Tắt khoá cứng cũ (Device Owner). Trả về true nếu đã gỡ thành công.
   Future<bool> clearDeviceOwner();
 
+  /// macOS: cho phép tự mở lại KidGuard sau khi đăng nhập khi đang có phiên
+  /// (cần phụ huynh đồng ý). Nền tảng khác: không làm gì.
+  Future<void> setRelaunchAfterLogin(bool allowed);
+
   /// iOS: xin quyền Screen Time (`.child` hoặc `.individual`).
   Future<ScreenTimeAuthResult> requestScreenTimeAuthorization({
     ScreenTimeAuthMode mode = ScreenTimeAuthMode.child,
@@ -238,6 +243,13 @@ abstract interface class DeviceControlRepository {
 /// Ghi nhớ các bước thiết lập mà hệ thống không cho app tự kiểm tra
 /// (vd. "Tự khởi động" trên Oppo/Xiaomi) — do người lớn tự xác nhận đã bật.
 abstract interface class SetupChecklistRepository {
+  /// iOS: quyền Screen Time cấp kiểu `.individual` (máy bố mẹ cho mượn) → khoá yếu hơn.
+  static const screenTimeIndividual = 'screen_time_individual';
+
+  /// macOS: đã hỏi / đã cho phép tự mở lại KidGuard sau khi đăng nhập trong phiên.
+  static const macRelaunchAsked = 'mac_relaunch_asked';
+  static const macRelaunchAllowed = 'mac_relaunch_allowed';
+
   Future<Set<String>> getConfirmed();
   Future<void> setConfirmed(String key, bool confirmed);
 }

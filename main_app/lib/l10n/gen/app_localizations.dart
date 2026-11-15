@@ -1363,6 +1363,12 @@ abstract class AppLocalizations {
   /// **'Screen Time is not available on this device.'**
   String get screenTimeErrorUnavailable;
 
+  /// No description provided for @screenTimeErrorConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'Another parental-control app already holds Screen Time access on this iPhone. Remove that app\'s access (Settings › Screen Time) and try again.'**
+  String get screenTimeErrorConflict;
+
   /// No description provided for @screenTimeErrorNotChildAccount.
   ///
   /// In en, this message translates to:
@@ -1390,8 +1396,62 @@ abstract class AppLocalizations {
   /// No description provided for @homeMacNotice.
   ///
   /// In en, this message translates to:
-  /// **'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit and reopens automatically after login.'**
+  /// **'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.'**
   String get homeMacNotice;
+
+  /// No description provided for @macRelaunchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen KidGuard after login?'**
+  String get macRelaunchTitle;
+
+  /// No description provided for @macRelaunchBody.
+  ///
+  /// In en, this message translates to:
+  /// **'During your child\'s session, KidGuard can add itself as a login item so it reopens if your child logs out or restarts the Mac. macOS will show a \"Login item added\" notice. It is removed when the session ends. You can change this on the home screen anytime.'**
+  String get macRelaunchBody;
+
+  /// No description provided for @macRelaunchAllow.
+  ///
+  /// In en, this message translates to:
+  /// **'Allow'**
+  String get macRelaunchAllow;
+
+  /// No description provided for @macRelaunchDeny.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t allow'**
+  String get macRelaunchDeny;
+
+  /// No description provided for @homeMacRelaunchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reopen after login (during a session)'**
+  String get homeMacRelaunchTitle;
+
+  /// No description provided for @homeMacRelaunchOn.
+  ///
+  /// In en, this message translates to:
+  /// **'On: if your child logs out or restarts the Mac, KidGuard reopens. Removed when the session ends.'**
+  String get homeMacRelaunchOn;
+
+  /// No description provided for @homeMacRelaunchOff.
+  ///
+  /// In en, this message translates to:
+  /// **'Off: your child could escape the lock by logging out or restarting the Mac.'**
+  String get homeMacRelaunchOff;
+
+  /// No description provided for @homeMacRelaunchEnable.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on'**
+  String get homeMacRelaunchEnable;
+
+  /// No description provided for @homeMacRelaunchDisable.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off'**
+  String get homeMacRelaunchDisable;
 
   /// No description provided for @homeWindowsNotice.
   ///

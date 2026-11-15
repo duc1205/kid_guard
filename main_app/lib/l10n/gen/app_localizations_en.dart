@@ -822,6 +822,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Screen Time is not available on this device.';
 
   @override
+  String get screenTimeErrorConflict =>
+      'Another parental-control app already holds Screen Time access on this iPhone. Remove that app\'s access (Settings › Screen Time) and try again.';
+
+  @override
   String get screenTimeErrorNotChildAccount =>
       'This iPhone is not signed in with a child\'s Apple ID in Family Sharing. If you are lending your phone, choose \"Yes, parent\'s phone\" when asked.';
 
@@ -837,7 +841,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeMacNotice =>
-      'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit and reopens automatically after login.';
+      'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.';
+
+  @override
+  String get macRelaunchTitle => 'Reopen KidGuard after login?';
+
+  @override
+  String get macRelaunchBody =>
+      'During your child\'s session, KidGuard can add itself as a login item so it reopens if your child logs out or restarts the Mac. macOS will show a \"Login item added\" notice. It is removed when the session ends. You can change this on the home screen anytime.';
+
+  @override
+  String get macRelaunchAllow => 'Allow';
+
+  @override
+  String get macRelaunchDeny => 'Don\'t allow';
+
+  @override
+  String get homeMacRelaunchTitle => 'Reopen after login (during a session)';
+
+  @override
+  String get homeMacRelaunchOn =>
+      'On: if your child logs out or restarts the Mac, KidGuard reopens. Removed when the session ends.';
+
+  @override
+  String get homeMacRelaunchOff =>
+      'Off: your child could escape the lock by logging out or restarting the Mac.';
+
+  @override
+  String get homeMacRelaunchEnable => 'Turn on';
+
+  @override
+  String get homeMacRelaunchDisable => 'Turn off';
 
   @override
   String get homeWindowsNotice =>

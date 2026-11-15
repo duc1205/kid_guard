@@ -75,10 +75,56 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     await _refresh();
   }
 
+  /// macOS: lưu lựa chọn của phụ huynh và báo cho phần native.
+  Future<void> _setMacRelaunch(bool allowed) async {
+    final deps = DependenciesScope.of(context);
+    await deps.setupChecklist.setConfirmed(
+      SetupChecklistRepository.macRelaunchAsked,
+      true,
+    );
+    await deps.setupChecklist.setConfirmed(
+      SetupChecklistRepository.macRelaunchAllowed,
+      allowed,
+    );
+    await deps.device.setRelaunchAfterLogin(allowed);
+    await _refresh();
+  }
+
+  /// macOS, lần đầu: hỏi có cho KidGuard tự mở lại sau khi đăng nhập trong phiên.
+  /// Trả về false nếu phụ huynh đóng hộp thoại (không bắt đầu).
+  Future<bool> _askMacRelaunchOnce() async {
+    if (_perms?.platform != DevicePlatform.macos ||
+        _confirmed.contains(SetupChecklistRepository.macRelaunchAsked)) {
+      return true;
+    }
+    final l10n = context.l10n;
+    final allow = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.macRelaunchTitle),
+        content: Text(l10n.macRelaunchBody),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: Text(l10n.macRelaunchDeny),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(ctx, true),
+            child: Text(l10n.macRelaunchAllow),
+          ),
+        ],
+      ),
+    );
+    if (allow == null || !mounted) return false;
+    await _setMacRelaunch(allow);
+    return mounted;
+  }
+
   /// Khoá nâng cao vừa bị hệ thống tắt → hỏi phụ huynh bật lại trước khi đưa máy.
   Future<void> _startChildMode() async {
     await _refresh();
     if (!mounted) return;
+    if (!await _askMacRelaunchOnce() || !mounted) return;
     if (_advancedLock == AdvancedLockStatus.droppedBySystem) {
       final l10n = context.l10n;
       final turnOn = await showDialog<bool>(
@@ -128,9 +174,16 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   /// Xin Screen Time: thử `.child` trước; thất bại thì hỏi có phải máy bố mẹ cho mượn không → `.individual`.
   Future<void> _requestScreenTime() async {
-    final device = DependenciesScope.of(context).device;
+    final deps = DependenciesScope.of(context);
+    final device = deps.device;
     final l10n = context.l10n;
     final messenger = ScaffoldMessenger.of(context);
+    // Nhớ kiểu quyền để luôn hiện cảnh báo "khoá yếu hơn" với máy bố mẹ cho mượn.
+    Future<void> rememberIndividual(bool individual) =>
+        deps.setupChecklist.setConfirmed(
+          SetupChecklistRepository.screenTimeIndividual,
+          individual,
+        );
 
     Future<void> showError(ScreenTimeAuthResult r) async {
       messenger.showSnackBar(
@@ -143,10 +196,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     );
     if (!mounted) return;
     if (result.approved) {
+      await rememberIndividual(false);
       await _refresh();
       return;
     }
-    if (result.errorCode == 'cancelled') {
+    // Huỷ / app khác đang giữ quyền: hỏi "máy bố mẹ?" cũng không giúp được.
+    if (result.errorCode == 'cancelled' || result.errorCode == 'conflict') {
       await showError(result);
       return;
     }
@@ -179,6 +234,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     );
     if (!mounted) return;
     if (result.approved) {
+      await rememberIndividual(true);
       messenger.showSnackBar(
         SnackBar(content: Text(l10n.screenTimeIndividualWarning)),
       );
@@ -192,6 +248,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       switch (code) {
         'cancelled' => l10n.screenTimeErrorCancelled,
         'unavailable' => l10n.screenTimeErrorUnavailable,
+        'conflict' => l10n.screenTimeErrorConflict,
         'restricted' || 'invalidAccount' => l10n.screenTimeErrorNotChildAccount,
         'denied' => l10n.screenTimeErrorDenied,
         _ => l10n.screenTimeErrorFailed,
@@ -399,6 +456,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 subtitle: l10n.homeScreenTimeSubtitle,
                 onFix: _requestScreenTime,
               ),
+              if (perms.screenTimeAuthorized &&
+                  _confirmed.contains(
+                    SetupChecklistRepository.screenTimeIndividual,
+                  ))
+                _InfoCard(text: l10n.screenTimeIndividualWarning),
               _SetupTile(
                 ok: perms.limitedAppsSelected,
                 title: l10n.homeLimitedAppsTitle,
@@ -420,6 +482,32 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
               ),
               _InfoCard(text: l10n.homeIosNotice),
             ],
+            if (perms != null && perms.platform == DevicePlatform.macos)
+              _SetupTile(
+                ok: _confirmed.contains(
+                  SetupChecklistRepository.macRelaunchAllowed,
+                ),
+                optional: true,
+                title: l10n.homeMacRelaunchTitle,
+                subtitle:
+                    _confirmed.contains(
+                      SetupChecklistRepository.macRelaunchAllowed,
+                    )
+                    ? l10n.homeMacRelaunchOn
+                    : l10n.homeMacRelaunchOff,
+                fixLabel:
+                    _confirmed.contains(
+                      SetupChecklistRepository.macRelaunchAllowed,
+                    )
+                    ? l10n.homeMacRelaunchDisable
+                    : l10n.homeMacRelaunchEnable,
+                showActionWhenOk: true,
+                onFix: () => _setMacRelaunch(
+                  !_confirmed.contains(
+                    SetupChecklistRepository.macRelaunchAllowed,
+                  ),
+                ),
+              ),
             if (perms != null && perms.platform.isDesktop)
               _InfoCard(
                 title: l10n.homeDesktopTitle,
@@ -585,7 +673,10 @@ class _SetupTile extends StatelessWidget {
                             visualDensity: VisualDensity.compact,
                           ),
                           onPressed: onFix,
-                          icon: const Icon(Icons.arrow_forward_rounded, size: 18),
+                          icon: const Icon(
+                            Icons.arrow_forward_rounded,
+                            size: 18,
+                          ),
                           iconAlignment: IconAlignment.end,
                           label: Text(fixLabel ?? context.l10n.homeGrant),
                         ),

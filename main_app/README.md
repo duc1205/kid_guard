@@ -137,4 +137,4 @@ Quy trình sửa câu hỏi:
    Kiểm tra chất lượng: `python3 ../../kid_guard_question/scripts/check_questions.py assets/questions`.
 3. `fvm flutter test` (kiểm tra định dạng + manifest khớp file).
 4. Chép `assets/questions/*.json` vào repo **công khai** [kid_guard_question](https://github.com/duc1205/kid_guard_question) rồi push.
-   (Repo mã nguồn đang private nên app không đọc trực tiếp được.)
+   App đọc nhánh **main** của repo này, nên merge vào main là phát hành câu hỏi cho mọi máy.
