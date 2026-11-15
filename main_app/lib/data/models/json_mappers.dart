@@ -43,6 +43,8 @@ class QuestionMapper {
     optionOrder: j['optionOrder'] == null
         ? const [0, 1, 2, 3]
         : List<int>.from(j['optionOrder'] as List),
+    difficulty: j['difficulty'] as int?,
+    term: j['term'] as int?,
   );
 
   static Json toJson(Question q) => {
@@ -56,6 +58,8 @@ class QuestionMapper {
     'suggestion': q.suggestion,
     'grade': q.grade,
     'optionOrder': q.optionOrder,
+    if (q.difficulty != null) 'difficulty': q.difficulty,
+    if (q.term != null) 'term': q.term,
   };
 
   static Question fromJson(Json j) => fromAsset(j, j['grade'] as int);

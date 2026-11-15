@@ -23,6 +23,8 @@ class Question {
     required this.answerIndex,
     required this.suggestion,
     this.optionOrder = const [0, 1, 2, 3],
+    this.difficulty,
+    this.term,
   }) : assert(options.length == 4);
 
   final String id;
@@ -38,6 +40,12 @@ class Question {
 
   /// Gợi ý phần kiến thức cần củng cố khi trả lời sai.
   final String suggestion;
+
+  /// Độ khó 1 (dễ) – 3 (khó); null = chưa phân loại.
+  final int? difficulty;
+
+  /// Học kỳ 1 hoặc 2 của năm học; null = cả năm / không áp dụng.
+  final int? term;
 
   /// optionOrder[i] = vị trí gốc (trong ngân hàng câu hỏi) của đáp án đang hiển thị ở ô i.
   final List<int> optionOrder;
@@ -58,6 +66,8 @@ class Question {
       answerIndex: order.indexOf(answerIndex),
       suggestion: suggestion,
       optionOrder: [for (final i in order) optionOrder[i]],
+      difficulty: difficulty,
+      term: term,
     );
   }
 }

@@ -127,8 +127,10 @@ khi mở app, hoặc khi phụ huynh bấm **Khu vực phụ huynh › Nguồn c
 
 Quy trình sửa câu hỏi:
 
-1. Sửa `assets/questions/grade_N.json` (câu sửa nội dung → id mới).
+1. Sửa `assets/questions/grade_N.json` (câu sửa nội dung → id mới). Định dạng và các trường tuỳ chọn
+   (`difficulty`, `term`, `status`): xem README của repo câu hỏi.
 2. `fvm dart run tool/make_question_manifest.dart` → cập nhật `manifest.json`, tự tăng `version`.
+   Kiểm tra chất lượng: `python3 ../../kid_guard_question/scripts/check_questions.py assets/questions`.
 3. `fvm flutter test` (kiểm tra định dạng + manifest khớp file).
 4. Chép `assets/questions/*.json` vào repo **công khai** [kid_guard_question](https://github.com/duc1205/kid_guard_question) rồi push.
    (Repo mã nguồn đang private nên app không đọc trực tiếp được.)
