@@ -1,3 +1,5 @@
+import 'study_task.dart';
+
 /// Một lần trẻ trả lời câu hỏi (lưu đủ nội dung để người lớn xem lại).
 class QuestionAttempt {
   const QuestionAttempt({
@@ -46,6 +48,7 @@ class UsageLog {
     this.lockedAt,
     this.usedTime = Duration.zero,
     this.attempts = const [],
+    this.completions = const [],
   });
 
   final String id;
@@ -62,6 +65,9 @@ class UsageLog {
   final Duration usedTime;
   final List<QuestionAttempt> attempts;
 
+  /// Các việc học bé đã làm xong trong phiên.
+  final List<TaskCompletion> completions;
+
   int get correctCount => attempts.where((a) => a.isCorrect).length;
   int get wrongCount => attempts.length - correctCount;
   bool get isActive => endedAt == null;
@@ -71,6 +77,7 @@ class UsageLog {
     DateTime? lockedAt,
     Duration? usedTime,
     List<QuestionAttempt>? attempts,
+    List<TaskCompletion>? completions,
   }) => UsageLog(
     id: id,
     childId: childId,
@@ -81,5 +88,6 @@ class UsageLog {
     lockedAt: lockedAt ?? this.lockedAt,
     usedTime: usedTime ?? this.usedTime,
     attempts: attempts ?? this.attempts,
+    completions: completions ?? this.completions,
   );
 }

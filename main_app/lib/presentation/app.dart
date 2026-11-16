@@ -7,6 +7,8 @@ import 'screens/child/locked_screen.dart';
 import 'screens/child/quiz_screen.dart';
 import 'screens/child/review_screen.dart';
 import 'screens/child/running_screen.dart';
+import 'screens/child/task_timer_screen.dart';
+import 'screens/child/tasks_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/setup/parent_consent_screen.dart';
 import 'l10n_ext.dart';
@@ -92,6 +94,8 @@ class _RootState extends State<_Root> with WidgetsBindingObserver {
 
         final screen = switch (session.status) {
           GuardStatus.running => const RunningScreen(),
+          GuardStatus.tasks => const TasksScreen(),
+          GuardStatus.taskTimer => const TaskTimerScreen(),
           GuardStatus.quiz => const QuizScreen(),
           GuardStatus.review => const ReviewScreen(),
           GuardStatus.locked => const LockedScreen(),

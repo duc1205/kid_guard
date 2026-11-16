@@ -21,6 +21,7 @@ import '../../domain/usecases/question_bank_usecases.dart';
 import '../../domain/usecases/register_child.dart';
 import '../../domain/usecases/session_usecases.dart';
 import '../../domain/usecases/settings_usecases.dart';
+import '../../domain/usecases/study_task_usecases.dart';
 import '../../presentation/controllers/guard_controller.dart';
 import '../../presentation/controllers/parent_controller.dart';
 import '../../presentation/controllers/question_bank_controller.dart';
@@ -40,6 +41,9 @@ class AppDependencies {
     required this.checkAdvancedLock,
     required this.questionBankController,
     required this.settingsController,
+    required this.getStudyTasks,
+    required this.saveStudyTask,
+    required this.deleteStudyTask,
   });
 
   final GuardController guardController;
@@ -53,6 +57,9 @@ class AppDependencies {
   final CheckAdvancedLockUseCase checkAdvancedLock;
   final QuestionBankController questionBankController;
   final SettingsController settingsController;
+  final GetStudyTasksUseCase getStudyTasks;
+  final SaveStudyTaskUseCase saveStudyTask;
+  final DeleteStudyTaskUseCase deleteStudyTask;
 
   /// Các tham số tuỳ chọn chỉ để test thay phần phụ thuộc nền tảng
   /// (bộ nhớ, CSDL, kênh native, xác thực); app thật gọi không tham số.
@@ -71,6 +78,8 @@ class AppDependencies {
     final ChildRepository children = SqliteChildRepository(database);
     final UsageLogRepository logs = SqliteUsageLogRepository(database);
     final ActiveSessionRepository active = PrefsActiveSessionRepository(store);
+    final StudyTaskRepository studyTasks = SqliteStudyTaskRepository(database);
+    final todayTasks = GetTodayTasksUseCase(studyTasks);
     final questionBank = QuestionBankRepositoryImpl(
       assets: QuestionAssetDataSource(),
       cache: QuestionCacheDataSource(database),
@@ -117,6 +126,9 @@ class AppDependencies {
         PrefsAdvancedLockMemoryRepository(store),
       ),
       settingsController: settingsController,
+      getStudyTasks: GetStudyTasksUseCase(studyTasks),
+      saveStudyTask: SaveStudyTaskUseCase(studyTasks, newId),
+      deleteStudyTask: DeleteStudyTaskUseCase(studyTasks),
       questionBankController: questionBankController,
       guardController: GuardController(
         activeSessions: active,
@@ -131,11 +143,27 @@ class AppDependencies {
           settings,
           newId,
         ),
-        handleTimeUp: HandleTimeUpUseCase(active, logs, device, pickQuestion),
+        handleTimeUp: HandleTimeUpUseCase(
+          active,
+          logs,
+          device,
+          pickQuestion,
+          todayTasks,
+        ),
         submitAnswer: SubmitAnswerUseCase(active, logs, device),
         acknowledgeWrong: AcknowledgeWrongAnswerUseCase(active, logs, device),
         revokeSession: RevokeSessionUseCase(active, logs, device),
         authenticateParent: authenticate,
+        todayTasks: todayTasks,
+        chooseQuiz: ChooseQuizUseCase(active, pickQuestion),
+        startTimerTask: StartTimerTaskUseCase(active),
+        cancelTimerTask: CancelTimerTaskUseCase(active),
+        completeTask: CompleteTaskUseCase(
+          active,
+          studyTasks,
+          todayTasks,
+          device,
+        ),
       ),
       parentController: ParentController(
         getReports: GetChildReportsUseCase(children, logs),

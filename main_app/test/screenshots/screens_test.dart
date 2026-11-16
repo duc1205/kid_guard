@@ -9,12 +9,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:main_app/core/di/injection.dart';
 import 'package:main_app/domain/entities/active_session.dart';
+import 'package:main_app/domain/entities/study_task.dart';
 import 'package:main_app/domain/repositories/repositories.dart';
 import 'package:main_app/presentation/app.dart';
 import 'package:main_app/presentation/screens/parent/advanced_lock_screen.dart';
 import 'package:main_app/presentation/screens/parent/child_report_screen.dart';
 import 'package:main_app/presentation/screens/parent/parent_dashboard_screen.dart';
 import 'package:main_app/presentation/screens/parent/question_source_screen.dart';
+import 'package:main_app/presentation/screens/parent/study_tasks_screen.dart';
 import 'package:main_app/presentation/screens/child/child_register_screen.dart';
 import 'package:main_app/presentation/screens/setup/privacy_policy_screen.dart';
 
@@ -217,6 +219,42 @@ void main() {
       ChildReportScreen(report: deps.parentController.reports.first),
     );
     await shot(t, '10_report');
+  });
+
+  shotTest('17 study tasks', (t) async {
+    await boot(t);
+    late StudyTask reading;
+    await t.runAsync(() async {
+      await startChild();
+      final child = deps.guardController.session!.child;
+      await deps.saveStudyTask(
+        childId: child.id,
+        title: 'Làm bài tập Toán trang 32',
+        kind: StudyTaskKind.check,
+        reward: const Duration(minutes: 20),
+      );
+      reading = await deps.saveStudyTask(
+        childId: child.id,
+        title: 'Đọc sách',
+        kind: StudyTaskKind.timer,
+        duration: const Duration(minutes: 20),
+        reward: const Duration(minutes: 15),
+      );
+    });
+    await timeUp(t);
+    await shot(t, '17_tasks');
+    await t.runAsync(() => deps.guardController.startTimerTask(reading));
+    await settle(t);
+    await shot(t, '18_task_timer');
+    final child = deps.guardController.session!.child;
+    await push(t, StudyTasksScreen(child: child));
+    await t.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 50)),
+    );
+    await shot(t, '19_parent_tasks');
+    await t.tap(find.text('Thêm việc'));
+    await settle(t);
+    await shot(t, '20_task_editor');
   });
 
   shotTest('14 advanced lock dropped', (t) async {

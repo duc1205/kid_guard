@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:sqflite/sqflite.dart';
 
 import '../../domain/entities/child_profile.dart';
+import '../../domain/entities/study_task.dart';
 import '../../domain/entities/usage_log.dart';
 import '../../domain/entities/usage_stats.dart';
 import '../../domain/repositories/repositories.dart';
@@ -214,6 +215,19 @@ class SqliteUsageLogRepository implements UsageLogRepository {
       WHERE a.session_id IN ($placeholders)
       ORDER BY a.answered_at''', ids);
 
+    final completionRows = await _db.query(
+      'task_completions',
+      where: 'session_id IN ($placeholders)',
+      whereArgs: ids,
+      orderBy: 'completed_at',
+    );
+    final completions = <String, List<TaskCompletion>>{};
+    for (final r in completionRows) {
+      completions
+          .putIfAbsent(r['session_id'] as String, () => [])
+          .add(_completionFromRow(r));
+    }
+
     final bySession = <String, List<QuestionAttempt>>{};
     for (final r in attemptRows) {
       final canonical = List<String>.from(jsonDecode(r['options'] as String));
@@ -251,6 +265,7 @@ class SqliteUsageLogRepository implements UsageLogRepository {
           lockedAt: _dtOrNull(s['locked_at']),
           usedTime: Duration(seconds: s['used_seconds'] as int),
           attempts: bySession[s['id']] ?? const [],
+          completions: completions[s['id']] ?? const [],
         ),
     ];
   }
@@ -295,5 +310,89 @@ class SqliteUsageLogRepository implements UsageLogRepository {
             WHERE id NOT IN (SELECT DISTINCT question_id FROM attempts)''');
         }
         return deleted;
+      });
+}
+
+TaskCompletion _completionFromRow(Map<String, Object?> r) => TaskCompletion(
+  taskId: r['task_id'] as String,
+  title: r['title'] as String,
+  kind: StudyTaskKind.values.byName(r['kind'] as String),
+  reward: Duration(minutes: r['reward_minutes'] as int),
+  completedAt: _dt(r['completed_at']),
+);
+
+class SqliteStudyTaskRepository implements StudyTaskRepository {
+  SqliteStudyTaskRepository(this._database);
+  final AppDatabase _database;
+
+  Database get _db => _database.db;
+
+  @override
+  Future<List<StudyTask>> getTasks(String childId) async {
+    final rows = await _db.query(
+      'study_tasks',
+      where: 'child_id = ?',
+      whereArgs: [childId],
+      orderBy: 'position, created_at',
+    );
+    return [
+      for (final r in rows)
+        StudyTask(
+          id: r['id'] as String,
+          childId: r['child_id'] as String,
+          title: r['title'] as String,
+          kind: StudyTaskKind.values.byName(r['kind'] as String),
+          duration: r['duration_minutes'] == null
+              ? null
+              : Duration(minutes: r['duration_minutes'] as int),
+          reward: Duration(minutes: r['reward_minutes'] as int),
+          position: r['position'] as int,
+          createdAt: _dt(r['created_at']),
+        ),
+    ];
+  }
+
+  @override
+  Future<void> saveTask(StudyTask t) => _db.insert('study_tasks', {
+    'id': t.id,
+    'child_id': t.childId,
+    'title': t.title,
+    'kind': t.kind.name,
+    'duration_minutes': t.duration?.inMinutes,
+    'reward_minutes': t.reward.inMinutes,
+    'position': t.position,
+    'created_at': _ms(t.createdAt),
+  }, conflictAlgorithm: ConflictAlgorithm.replace);
+
+  @override
+  Future<void> deleteTask(String id) =>
+      _db.delete('study_tasks', where: 'id = ?', whereArgs: [id]);
+
+  @override
+  Future<Set<String>> completedTaskIds(
+    String childId, {
+    required DateTime from,
+    required DateTime to,
+  }) async {
+    final rows = await _db.query(
+      'task_completions',
+      columns: ['task_id'],
+      distinct: true,
+      where: 'child_id = ? AND completed_at >= ? AND completed_at < ?',
+      whereArgs: [childId, _ms(from), _ms(to)],
+    );
+    return {for (final r in rows) r['task_id'] as String};
+  }
+
+  @override
+  Future<void> addCompletion(String logId, String childId, TaskCompletion c) =>
+      _db.insert('task_completions', {
+        'session_id': logId,
+        'child_id': childId,
+        'task_id': c.taskId,
+        'title': c.title,
+        'kind': c.kind.name,
+        'reward_minutes': c.reward.inMinutes,
+        'completed_at': _ms(c.completedAt),
       });
 }

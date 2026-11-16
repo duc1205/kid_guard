@@ -13,6 +13,7 @@ import '../../widgets/dependencies_scope.dart';
 import '../../widgets/parent_auth_flow.dart';
 import '../../widgets/stat_tile.dart';
 import 'edit_child_screen.dart';
+import 'study_tasks_screen.dart';
 
 /// Log chi tiết của một bé: từng phiên, thời gian dùng, từng câu hỏi đúng/sai.
 /// Lịch sử được tải theo trang (cuộn tới cuối thì tải thêm) để mở nhanh dù dữ liệu nhiều.
@@ -30,6 +31,7 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
   List<WeakTopic> _weak = const [];
   bool _loading = false;
   bool _hasMore = true;
+  int? _taskCount;
 
   /// Thông tin bé hiện tại (cập nhật sau khi người lớn sửa).
   late ChildProfile _child = widget.report.child;
@@ -39,6 +41,18 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
       MaterialPageRoute(builder: (_) => EditChildScreen(child: _child)),
     );
     if (updated != null && mounted) setState(() => _child = updated);
+  }
+
+  Future<void> _loadTaskCount() async {
+    final tasks = await DependenciesScope.of(context).getStudyTasks(_child.id);
+    if (mounted) setState(() => _taskCount = tasks.length);
+  }
+
+  Future<void> _openTasks() async {
+    await Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => StudyTasksScreen(child: _child)));
+    await _loadTaskCount();
   }
 
   Future<void> _delete() async {
@@ -74,9 +88,9 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
       await parent.deleteChild(_child.id);
     } on ActiveSessionExistsException {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.deleteBlockedActiveSession)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.deleteBlockedActiveSession)));
       return;
     }
     if (!mounted) return;
@@ -94,6 +108,7 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
       if (mounted) setState(() => _weak = w);
     });
     _loadMore();
+    _loadTaskCount();
   }
 
   Future<void> _loadMore() async {
@@ -148,6 +163,21 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
                       formatDate(c.dateOfBirth),
                     ),
                     style: const TextStyle(color: AppColors.textSecondary),
+                  ),
+                  const SizedBox(height: 14),
+                  Card(
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.checklist_rounded,
+                        color: AppColors.primary,
+                      ),
+                      title: Text(l10n.studyTasksTitle),
+                      subtitle: _taskCount == null
+                          ? null
+                          : Text(l10n.reportStudyTasksCount(_taskCount!)),
+                      trailing: const Icon(Icons.chevron_right_rounded),
+                      onTap: _openTasks,
+                    ),
                   ),
                   const SizedBox(height: 14),
                   Row(
@@ -291,6 +321,10 @@ class _SessionCard extends StatelessWidget {
                 log.wrongCount,
               ),
             ),
+            if (log.completions.isNotEmpty) ...[
+              const SizedBox(height: 2),
+              Text(l10n.reportSessionTasks(log.completions.length)),
+            ],
             const SizedBox(height: 2),
             Text(
               status.$1,
@@ -308,12 +342,32 @@ class _SessionCard extends StatelessWidget {
                 style: const TextStyle(color: AppColors.textSecondary),
               ),
             ),
-          if (log.attempts.isEmpty)
+          for (final c in log.completions)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.task_alt_rounded,
+                    color: AppColors.success,
+                    size: 20,
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      '${formatTime(c.completedAt).substring(0, 5)}  '
+                      '${l10n.reportTaskDone(c.title, l10n.duration(c.reward))}',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          if (log.attempts.isEmpty && log.completions.isEmpty)
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Text(l10n.reportNoAttempts),
+                child: Text(l10n.reportNoActivity),
               ),
             ),
           for (final (i, a) in log.attempts.indexed)
@@ -360,7 +414,10 @@ class _AttemptTile extends StatelessWidget {
               ),
               Text(
                 formatTime(a.answeredAt),
-                style: const TextStyle(fontSize: 12, color: AppColors.textTertiary),
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: AppColors.textTertiary,
+                ),
               ),
             ],
           ),

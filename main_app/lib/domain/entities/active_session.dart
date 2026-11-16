@@ -1,11 +1,18 @@
 import 'child_profile.dart';
 import 'question.dart';
+import 'study_task.dart';
 
 enum GuardStatus {
   /// Trẻ đang được dùng máy, đếm ngược tới [ActiveSession.endsAt].
   running,
 
-  /// Hết giờ, bắt buộc trả lời câu hỏi.
+  /// Hết giờ: bé chọn một việc học (hoặc trả lời câu hỏi) để được dùng tiếp.
+  tasks,
+
+  /// Bé đang làm việc học hẹn giờ: đếm ngược tới [ActiveSession.taskEndsAt].
+  taskTimer,
+
+  /// Bắt buộc trả lời câu hỏi (bé chọn, hoặc chưa có việc học nào).
   quiz,
 
   /// Vừa trả lời sai: hiển thị gợi ý, trẻ phải bấm OK.
@@ -25,6 +32,8 @@ class ActiveSession {
     this.segmentStartedAt,
     this.currentQuestion,
     this.chosenIndex,
+    this.currentTask,
+    this.taskEndsAt,
   });
 
   final String logId;
@@ -42,6 +51,11 @@ class ActiveSession {
   final Question? currentQuestion;
   final int? chosenIndex;
 
+  /// Việc hẹn giờ đang làm ([GuardStatus.taskTimer]) và lúc làm xong — lưu lại
+  /// để tắt app mở lại không bị tính lại từ đầu.
+  final StudyTask? currentTask;
+  final DateTime? taskEndsAt;
+
   bool get isGuarded => status != GuardStatus.running;
 
   Duration remaining(DateTime now) {
@@ -55,8 +69,11 @@ class ActiveSession {
     DateTime? segmentStartedAt,
     Question? currentQuestion,
     int? chosenIndex,
+    StudyTask? currentTask,
+    DateTime? taskEndsAt,
     bool clearSegment = false,
     bool clearQuestion = false,
+    bool clearTask = false,
   }) => ActiveSession(
     logId: logId,
     child: child,
@@ -69,5 +86,7 @@ class ActiveSession {
         ? null
         : currentQuestion ?? this.currentQuestion,
     chosenIndex: clearQuestion ? null : chosenIndex ?? this.chosenIndex,
+    currentTask: clearTask ? null : currentTask ?? this.currentTask,
+    taskEndsAt: clearTask ? null : taskEndsAt ?? this.taskEndsAt,
   );
 }

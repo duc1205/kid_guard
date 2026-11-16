@@ -11,6 +11,13 @@ class AppConstants {
   /// Thời gian thưởng cho mỗi câu trả lời đúng.
   static const Duration bonusPerCorrectAnswer = Duration(minutes: 5);
 
+  /// Việc học: lựa chọn phần thưởng (phút) và thời gian việc hẹn giờ (phút).
+  static const List<int> taskRewardChoices = [5, 10, 15, 20, 30, 45, 60];
+  static const List<int> taskDurationChoices = [5, 10, 15, 20, 30, 45, 60];
+  static const Duration defaultTaskReward = Duration(minutes: 15);
+  static const Duration defaultTaskDuration = Duration(minutes: 20);
+  static const int maxTaskTitleLength = 80;
+
   /// Lớp 1..12 là phổ thông; 13 = Đại học, 14 = Sau đại học.
   static const int minGrade = 1;
   static const int maxSchoolGrade = 12;

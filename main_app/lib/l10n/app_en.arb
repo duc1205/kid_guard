@@ -170,7 +170,7 @@
   "homeManage": "Manage",
   "homeIosNotice": "Best on the child's iPhone (child Apple ID in Family Sharing): after a parent approves, the child can't delete KidGuard or turn Screen Time access off. On a parent's iPhone lent to the child, KidGuard can still block selected apps, but the child could delete the app — turn on Guided Access too. When time is up, only the apps you chose are blocked — not the whole phone.",
   "homeHeroTitle": "🧒  Lend the phone to your child",
-  "homeHeroBody": "Your child gets {duration}. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.",
+  "homeHeroBody": "Your child gets {duration}. When time is up, they finish a study task you set, or answer 1 question for their grade (right: 5 more minutes, wrong: the device locks until a parent unlocks it).",
   "homeStartKidMode": "Start kid mode",
   "homeGrant": "Grant",
   "hardLockDisableTitle": "Turn off hard lock?",
@@ -231,7 +231,7 @@
     }
   },
   "runningTimeLeft": "Time left",
-  "runningRules": "When time is up, you'll answer 1 question.\nGet it right for 5 more minutes. Get it wrong and the phone will lock.",
+  "runningRules": "When time is up, finish a study task for more time,\nor answer 1 question: right = 5 more minutes, wrong = locked.",
   "runningUseOtherApps": "Use other apps",
   "quizCorrect": "🎉 Correct! You get 5 more minutes.",
   "quizTimeUp": "Time's up!",
@@ -349,7 +349,6 @@
       }
     }
   },
-  "reportNoAttempts": "No questions answered yet.",
   "reportAttemptTitle": "Question {number} · {subject} — {topic}",
   "@reportAttemptTitle": {
     "placeholders": {
@@ -587,5 +586,158 @@
   "advancedLockTurnOnAgain": "Turn on again",
   "advancedLockStopUsing": "Stop using it",
   "advancedLockDroppedStartBody": "Advanced lock is off, so your child can pull down the notification shade and turn KidGuard off in Settings. Turn it on again before handing over the phone?",
-  "advancedLockContinueAnyway": "Continue anyway"
+  "advancedLockContinueAnyway": "Continue anyway",
+  "tasksTitle": "Time's up!",
+  "tasksIntro": "{name}, finish one task to get more time.",
+  "@tasksIntro": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksReward": "+{reward}",
+  "@tasksReward": {
+    "placeholders": {
+      "reward": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksKindCheck": "A parent checks it",
+  "tasksKindTimer": "{duration} timer",
+  "@tasksKindTimer": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksDoneToday": "Done today",
+  "tasksAskParent": "I'm done",
+  "tasksStartTimer": "Start",
+  "tasksAllDone": "You've finished all of today's tasks. You can answer a question for more time.",
+  "tasksQuizTitle": "Answer a question",
+  "tasksQuizBody": "Right: +{reward}. Wrong: the device locks.",
+  "@tasksQuizBody": {
+    "placeholders": {
+      "reward": {
+        "type": "String"
+      }
+    }
+  },
+  "tasksQuizButton": "Answer",
+  "tasksApproved": "Well done! {reward} more.",
+  "@tasksApproved": {
+    "placeholders": {
+      "reward": {
+        "type": "String"
+      }
+    }
+  },
+  "authReasonApproveTask": "Confirm the task is done: {task}",
+  "@authReasonApproveTask": {
+    "placeholders": {
+      "task": {
+        "type": "String"
+      }
+    }
+  },
+  "taskTimerLeft": "Time left",
+  "taskTimerHint": "The device stays locked while you work. When the timer ends you get {reward} automatically.",
+  "@taskTimerHint": {
+    "placeholders": {
+      "reward": {
+        "type": "String"
+      }
+    }
+  },
+  "taskTimerCancel": "Choose another task",
+  "taskTimerCancelTitle": "Stop this task?",
+  "taskTimerCancelBody": "The time so far won't count.",
+  "taskTimerCancelConfirm": "Stop",
+  "studyTasksTitle": "Daily study tasks",
+  "studyTasksIntro": "When time is up, {name} picks a task. Finishing it earns more time. Each task counts once a day. Answering a question is always an option.",
+  "@studyTasksIntro": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "studyTasksEmpty": "No tasks yet. When time is up, your child answers a question as before.",
+  "studyTasksAdd": "Add task",
+  "studyTasksEdit": "Edit task",
+  "studyTaskTitleLabel": "Task",
+  "studyTaskTitleHint": "e.g. Math homework, page 32",
+  "studyTaskKindLabel": "How it's checked",
+  "studyTaskKindCheck": "Parent approves",
+  "studyTaskKindCheckHint": "Your child taps “I'm done”, then you enter the device passcode to approve.",
+  "studyTaskKindTimer": "Timer",
+  "studyTaskKindTimerHint": "A countdown runs on the locked screen. When it ends, the task is done.",
+  "studyTaskDurationLabel": "Duration",
+  "studyTaskRewardLabel": "Extra time earned",
+  "studyTaskSuggestions": "Suggestions",
+  "studyTaskSuggestHomework": "Do homework",
+  "studyTaskSuggestReading": "Read a book",
+  "studyTaskSuggestVocabulary": "Learn English words",
+  "studyTaskSuggestWriting": "Handwriting practice",
+  "studyTaskSummaryCheck": "Parent approves · +{reward}",
+  "@studyTaskSummaryCheck": {
+    "placeholders": {
+      "reward": {
+        "type": "String"
+      }
+    }
+  },
+  "studyTaskSummaryTimer": "{duration} timer · +{reward}",
+  "@studyTaskSummaryTimer": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      },
+      "reward": {
+        "type": "String"
+      }
+    }
+  },
+  "studyTaskDeleteTitle": "Delete “{task}”?",
+  "@studyTaskDeleteTitle": {
+    "placeholders": {
+      "task": {
+        "type": "String"
+      }
+    }
+  },
+  "studyTaskDeleteBody": "Past history is kept.",
+  "studyTaskDeleteConfirm": "Delete",
+  "validationTaskTitleRequired": "Enter a task name.",
+  "reportStudyTasksCount": "{count, plural, =0{No tasks yet} =1{1 task} other{{count} tasks}}",
+  "@reportStudyTasksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportTaskDone": "Done: {task} · +{reward}",
+  "@reportTaskDone": {
+    "placeholders": {
+      "task": {
+        "type": "String"
+      },
+      "reward": {
+        "type": "String"
+      }
+    }
+  },
+  "reportSessionTasks": "{count, plural, =1{1 task done} other{{count} tasks done}}",
+  "@reportSessionTasks": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reportNoActivity": "No tasks or questions yet."
 }

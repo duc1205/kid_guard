@@ -4,7 +4,13 @@ import '../entities/child_profile.dart';
 import '../repositories/repositories.dart';
 
 /// Lỗi dữ liệu nhập — domain chỉ trả mã lỗi, tầng giao diện tự dịch theo ngôn ngữ máy.
-enum ValidationError { nameRequired, dobRequired, dobInvalid, gradeRequired }
+enum ValidationError {
+  nameRequired,
+  dobRequired,
+  dobInvalid,
+  gradeRequired,
+  taskTitleRequired,
+}
 
 class ValidationException implements Exception {
   const ValidationException(this.error);

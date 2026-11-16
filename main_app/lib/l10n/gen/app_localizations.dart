@@ -893,7 +893,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeHeroBody.
   ///
   /// In en, this message translates to:
-  /// **'Your child gets {duration}. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.'**
+  /// **'Your child gets {duration}. When time is up, they finish a study task you set, or answer 1 question for their grade (right: 5 more minutes, wrong: the device locks until a parent unlocks it).'**
   String homeHeroBody(String duration);
 
   /// No description provided for @homeStartKidMode.
@@ -1091,7 +1091,7 @@ abstract class AppLocalizations {
   /// No description provided for @runningRules.
   ///
   /// In en, this message translates to:
-  /// **'When time is up, you\'ll answer 1 question.\nGet it right for 5 more minutes. Get it wrong and the phone will lock.'**
+  /// **'When time is up, finish a study task for more time,\nor answer 1 question: right = 5 more minutes, wrong = locked.'**
   String get runningRules;
 
   /// No description provided for @runningUseOtherApps.
@@ -1332,12 +1332,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ended: {time}'**
   String reportEndedAt(String time);
-
-  /// No description provided for @reportNoAttempts.
-  ///
-  /// In en, this message translates to:
-  /// **'No questions answered yet.'**
-  String get reportNoAttempts;
 
   /// No description provided for @reportAttemptTitle.
   ///
@@ -2106,6 +2100,300 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue anyway'**
   String get advancedLockContinueAnyway;
+
+  /// No description provided for @tasksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Time\'s up!'**
+  String get tasksTitle;
+
+  /// No description provided for @tasksIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}, finish one task to get more time.'**
+  String tasksIntro(String name);
+
+  /// No description provided for @tasksReward.
+  ///
+  /// In en, this message translates to:
+  /// **'+{reward}'**
+  String tasksReward(String reward);
+
+  /// No description provided for @tasksKindCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'A parent checks it'**
+  String get tasksKindCheck;
+
+  /// No description provided for @tasksKindTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} timer'**
+  String tasksKindTimer(String duration);
+
+  /// No description provided for @tasksDoneToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Done today'**
+  String get tasksDoneToday;
+
+  /// No description provided for @tasksAskParent.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m done'**
+  String get tasksAskParent;
+
+  /// No description provided for @tasksStartTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get tasksStartTimer;
+
+  /// No description provided for @tasksAllDone.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve finished all of today\'s tasks. You can answer a question for more time.'**
+  String get tasksAllDone;
+
+  /// No description provided for @tasksQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer a question'**
+  String get tasksQuizTitle;
+
+  /// No description provided for @tasksQuizBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Right: +{reward}. Wrong: the device locks.'**
+  String tasksQuizBody(String reward);
+
+  /// No description provided for @tasksQuizButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer'**
+  String get tasksQuizButton;
+
+  /// No description provided for @tasksApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Well done! {reward} more.'**
+  String tasksApproved(String reward);
+
+  /// No description provided for @authReasonApproveTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm the task is done: {task}'**
+  String authReasonApproveTask(String task);
+
+  /// No description provided for @taskTimerLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Time left'**
+  String get taskTimerLeft;
+
+  /// No description provided for @taskTimerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The device stays locked while you work. When the timer ends you get {reward} automatically.'**
+  String taskTimerHint(String reward);
+
+  /// No description provided for @taskTimerCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose another task'**
+  String get taskTimerCancel;
+
+  /// No description provided for @taskTimerCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop this task?'**
+  String get taskTimerCancelTitle;
+
+  /// No description provided for @taskTimerCancelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The time so far won\'t count.'**
+  String get taskTimerCancelBody;
+
+  /// No description provided for @taskTimerCancelConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop'**
+  String get taskTimerCancelConfirm;
+
+  /// No description provided for @studyTasksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily study tasks'**
+  String get studyTasksTitle;
+
+  /// No description provided for @studyTasksIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'When time is up, {name} picks a task. Finishing it earns more time. Each task counts once a day. Answering a question is always an option.'**
+  String studyTasksIntro(String name);
+
+  /// No description provided for @studyTasksEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No tasks yet. When time is up, your child answers a question as before.'**
+  String get studyTasksEmpty;
+
+  /// No description provided for @studyTasksAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add task'**
+  String get studyTasksAdd;
+
+  /// No description provided for @studyTasksEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit task'**
+  String get studyTasksEdit;
+
+  /// No description provided for @studyTaskTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Task'**
+  String get studyTaskTitleLabel;
+
+  /// No description provided for @studyTaskTitleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Math homework, page 32'**
+  String get studyTaskTitleHint;
+
+  /// No description provided for @studyTaskKindLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'How it\'s checked'**
+  String get studyTaskKindLabel;
+
+  /// No description provided for @studyTaskKindCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Parent approves'**
+  String get studyTaskKindCheck;
+
+  /// No description provided for @studyTaskKindCheckHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your child taps “I\'m done”, then you enter the device passcode to approve.'**
+  String get studyTaskKindCheckHint;
+
+  /// No description provided for @studyTaskKindTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'Timer'**
+  String get studyTaskKindTimer;
+
+  /// No description provided for @studyTaskKindTimerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'A countdown runs on the locked screen. When it ends, the task is done.'**
+  String get studyTaskKindTimerHint;
+
+  /// No description provided for @studyTaskDurationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get studyTaskDurationLabel;
+
+  /// No description provided for @studyTaskRewardLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra time earned'**
+  String get studyTaskRewardLabel;
+
+  /// No description provided for @studyTaskSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestions'**
+  String get studyTaskSuggestions;
+
+  /// No description provided for @studyTaskSuggestHomework.
+  ///
+  /// In en, this message translates to:
+  /// **'Do homework'**
+  String get studyTaskSuggestHomework;
+
+  /// No description provided for @studyTaskSuggestReading.
+  ///
+  /// In en, this message translates to:
+  /// **'Read a book'**
+  String get studyTaskSuggestReading;
+
+  /// No description provided for @studyTaskSuggestVocabulary.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn English words'**
+  String get studyTaskSuggestVocabulary;
+
+  /// No description provided for @studyTaskSuggestWriting.
+  ///
+  /// In en, this message translates to:
+  /// **'Handwriting practice'**
+  String get studyTaskSuggestWriting;
+
+  /// No description provided for @studyTaskSummaryCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Parent approves · +{reward}'**
+  String studyTaskSummaryCheck(String reward);
+
+  /// No description provided for @studyTaskSummaryTimer.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} timer · +{reward}'**
+  String studyTaskSummaryTimer(String duration, String reward);
+
+  /// No description provided for @studyTaskDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete “{task}”?'**
+  String studyTaskDeleteTitle(String task);
+
+  /// No description provided for @studyTaskDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Past history is kept.'**
+  String get studyTaskDeleteBody;
+
+  /// No description provided for @studyTaskDeleteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get studyTaskDeleteConfirm;
+
+  /// No description provided for @validationTaskTitleRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a task name.'**
+  String get validationTaskTitleRequired;
+
+  /// No description provided for @reportStudyTasksCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{No tasks yet} =1{1 task} other{{count} tasks}}'**
+  String reportStudyTasksCount(int count);
+
+  /// No description provided for @reportTaskDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done: {task} · +{reward}'**
+  String reportTaskDone(String task, String reward);
+
+  /// No description provided for @reportSessionTasks.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 task done} other{{count} tasks done}}'**
+  String reportSessionTasks(int count);
+
+  /// No description provided for @reportNoActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'No tasks or questions yet.'**
+  String get reportNoActivity;
 }
 
 class _AppLocalizationsDelegate

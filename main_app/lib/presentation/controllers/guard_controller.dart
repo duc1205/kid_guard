@@ -5,12 +5,17 @@ import 'package:flutter/foundation.dart';
 import '../../core/utils/clock.dart';
 import '../../domain/entities/active_session.dart';
 import '../../domain/entities/child_profile.dart';
+import '../../domain/entities/study_task.dart';
 import '../../domain/repositories/repositories.dart';
 import '../../domain/usecases/parent_usecases.dart';
 import '../../domain/usecases/register_child.dart';
 import '../../domain/usecases/session_usecases.dart';
+import '../../domain/usecases/study_task_usecases.dart';
 
-/// Máy trạng thái của phiên dùng máy: running → quiz → (running | review → locked).
+/// Máy trạng thái của phiên dùng máy:
+/// running → tasks → (việc bố mẹ duyệt | taskTimer → running)
+///                 → quiz → (running | review → locked).
+/// Chưa có việc học nào: running → quiz như trước.
 class GuardController extends ChangeNotifier {
   GuardController({
     required ActiveSessionRepository activeSessions,
@@ -24,6 +29,11 @@ class GuardController extends ChangeNotifier {
     required AcknowledgeWrongAnswerUseCase acknowledgeWrong,
     required RevokeSessionUseCase revokeSession,
     required AuthenticateParentUseCase authenticateParent,
+    required GetTodayTasksUseCase todayTasks,
+    required ChooseQuizUseCase chooseQuiz,
+    required StartTimerTaskUseCase startTimerTask,
+    required CancelTimerTaskUseCase cancelTimerTask,
+    required CompleteTaskUseCase completeTask,
     Clock clock = systemClock,
   }) : _activeSessions = activeSessions,
        _children = children,
@@ -36,6 +46,11 @@ class GuardController extends ChangeNotifier {
        _acknowledgeWrong = acknowledgeWrong,
        _revokeSession = revokeSession,
        _authenticateParent = authenticateParent,
+       _todayTasks = todayTasks,
+       _chooseQuiz = chooseQuiz,
+       _startTimerTask = startTimerTask,
+       _cancelTimerTask = cancelTimerTask,
+       _completeTask = completeTask,
        _clock = clock;
 
   final ActiveSessionRepository _activeSessions;
@@ -49,6 +64,11 @@ class GuardController extends ChangeNotifier {
   final AcknowledgeWrongAnswerUseCase _acknowledgeWrong;
   final RevokeSessionUseCase _revokeSession;
   final AuthenticateParentUseCase _authenticateParent;
+  final GetTodayTasksUseCase _todayTasks;
+  final ChooseQuizUseCase _chooseQuiz;
+  final StartTimerTaskUseCase _startTimerTask;
+  final CancelTimerTaskUseCase _cancelTimerTask;
+  final CompleteTaskUseCase _completeTask;
   final Clock _clock;
 
   Timer? _ticker;
@@ -85,10 +105,13 @@ class GuardController extends ChangeNotifier {
   }
 
   /// Gọi khi trạng thái phiên đổi: vẽ lại màn hình và bật/tắt timer.
-  /// Timer chỉ chạy khi trẻ đang dùng máy (running) — lúc khác không tốn CPU/pin.
+  /// Timer chỉ chạy khi đang đếm ngược (dùng máy / việc hẹn giờ) — lúc khác
+  /// không tốn CPU/pin.
   void _changed() {
     clockTick.value = _clock();
-    final running = session?.status == GuardStatus.running;
+    final status = session?.status;
+    final running =
+        status == GuardStatus.running || status == GuardStatus.taskTimer;
     if (running && _ticker == null) {
       _ticker = Timer.periodic(const Duration(seconds: 1), (_) {
         clockTick.value = _clock();
@@ -109,11 +132,22 @@ class GuardController extends ChangeNotifier {
 
   Future<void> _checkTimeUp() async {
     final s = session;
-    if (s == null || s.status != GuardStatus.running || _transitioning) return;
-    if (_clock().isBefore(s.endsAt)) return;
+    if (s == null || _transitioning) return;
+    final now = _clock();
+    final Future<ActiveSession> Function() step;
+    if (s.status == GuardStatus.running && !now.isBefore(s.endsAt)) {
+      step = () => _handleTimeUp(s);
+    } else if (s.status == GuardStatus.taskTimer &&
+        s.currentTask != null &&
+        !now.isBefore(s.taskEndsAt!)) {
+      // Xong việc hẹn giờ → tự cộng phút, bé không phải bấm gì.
+      step = () => _completeTask(s, s.currentTask!);
+    } else {
+      return;
+    }
     _transitioning = true;
     try {
-      session = await _handleTimeUp(s);
+      session = await step();
       error = null;
     } catch (e) {
       error = '$e';
@@ -165,6 +199,62 @@ class GuardController extends ChangeNotifier {
     if (s == null) return;
     session = await _acknowledgeWrong(s);
     _changed();
+  }
+
+  /// Việc học của bé hôm nay (màn chọn việc).
+  Future<List<TodayTask>> todayTasks() async {
+    final s = session;
+    if (s == null) return const [];
+    return _todayTasks(s.child.id);
+  }
+
+  /// Bé chọn trả lời câu hỏi thay vì làm việc học.
+  Future<void> chooseQuiz() async {
+    final s = session;
+    if (s == null || _transitioning) return;
+    _transitioning = true;
+    try {
+      session = await _chooseQuiz(s);
+      error = null;
+    } catch (e) {
+      error = '$e';
+    } finally {
+      _transitioning = false;
+      _changed();
+    }
+  }
+
+  Future<void> startTimerTask(StudyTask task) async {
+    final s = session;
+    if (s == null) return;
+    session = await _startTimerTask(s, task);
+    _changed();
+  }
+
+  Future<void> cancelTimerTask() async {
+    final s = session;
+    if (s == null) return;
+    session = await _cancelTimerTask(s);
+    _changed();
+  }
+
+  /// Bố mẹ duyệt việc bé đã làm: nhập đúng mật khẩu máy → bé được cộng phút.
+  Future<ParentAuthResult> approveTask(
+    StudyTask task, {
+    required String reason,
+  }) async {
+    final s = session;
+    if (s == null || s.status != GuardStatus.tasks) {
+      return ParentAuthResult.failed;
+    }
+    final result = await _authenticateParent(reason);
+    if (result == ParentAuthResult.success) {
+      session = await _completeTask(s, task);
+      _changed();
+    } else {
+      await _device.setGuard(true);
+    }
+    return result;
   }
 
   Future<void> useOtherApps() => _device.moveToBackground();

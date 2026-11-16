@@ -11,6 +11,7 @@ import 'package:main_app/domain/usecases/pick_question.dart';
 import 'package:main_app/domain/usecases/register_child.dart';
 import 'package:main_app/domain/usecases/session_usecases.dart';
 import 'package:main_app/domain/usecases/settings_usecases.dart';
+import 'package:main_app/domain/usecases/study_task_usecases.dart';
 
 import '../fakes.dart';
 
@@ -57,7 +58,14 @@ void main() {
       newId,
       clock: clock.call,
     );
-    timeUp = HandleTimeUpUseCase(active, logs, device, pick, clock: clock.call);
+    timeUp = HandleTimeUpUseCase(
+      active,
+      logs,
+      device,
+      pick,
+      GetTodayTasksUseCase(SqliteStudyTaskRepository(db), clock: clock.call),
+      clock: clock.call,
+    );
     submit = SubmitAnswerUseCase(active, logs, device, clock: clock.call);
     ack = AcknowledgeWrongAnswerUseCase(
       active,
@@ -154,10 +162,7 @@ void main() {
       deleteChild(a.id),
       throwsA(isA<ActiveSessionExistsException>()),
     );
-    await expectLater(
-      clearAll(),
-      throwsA(isA<ActiveSessionExistsException>()),
-    );
+    await expectLater(clearAll(), throwsA(isA<ActiveSessionExistsException>()));
 
     clock.advance(const Duration(minutes: 2));
     await revoke(await active.get() as ActiveSession);

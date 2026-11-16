@@ -14,12 +14,13 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 /// - Index theo (child_id, thời gian) cho các truy vấn thống kê / phân trang.
 /// - Xoá phiên → các lượt trả lời bị xoá theo (ON DELETE CASCADE).
 /// - `question_bank`: câu hỏi tải từ internet để dùng khi mất mạng (v2).
+/// - `study_tasks` + `task_completions`: việc học hằng ngày và các lần làm xong (v3).
 class AppDatabase {
   AppDatabase._(this.db);
 
   final Database db;
 
-  static const _version = 2;
+  static const _version = 3;
 
   static Future<AppDatabase> open({
     DatabaseFactory? factory,
@@ -37,9 +38,11 @@ class AppDatabase {
         onCreate: (db, version) async {
           await _createV1(db);
           await _createV2(db);
+          await _createV3(db);
         },
         onUpgrade: (db, oldVersion, newVersion) async {
           if (oldVersion < 2) await _createV2(db);
+          if (oldVersion < 3) await _createV3(db);
         },
       ),
     );
@@ -115,6 +118,45 @@ class AppDatabase {
       sha256  TEXT NOT NULL,
       json    TEXT NOT NULL
     )''');
+
+  /// v3: việc học của từng bé (xoá bé → xoá việc) và các lần làm xong
+  /// (gắn với phiên → dọn cùng nhật ký cũ; lưu tên việc để lịch sử vẫn đúng
+  /// khi bố mẹ sửa / xoá việc).
+  static Future<void> _createV3(Database db) async {
+    final batch = db.batch()
+      ..execute('''
+        CREATE TABLE study_tasks (
+          id                TEXT PRIMARY KEY,
+          child_id          TEXT NOT NULL REFERENCES children(id) ON DELETE CASCADE,
+          title             TEXT NOT NULL,
+          kind              TEXT NOT NULL,
+          duration_minutes  INTEGER,
+          reward_minutes    INTEGER NOT NULL,
+          position          INTEGER NOT NULL,
+          created_at        INTEGER NOT NULL
+        )''')
+      ..execute(
+        'CREATE INDEX idx_study_tasks_child ON study_tasks(child_id, position)',
+      )
+      ..execute('''
+        CREATE TABLE task_completions (
+          id              INTEGER PRIMARY KEY AUTOINCREMENT,
+          session_id      TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
+          child_id        TEXT NOT NULL,
+          task_id         TEXT NOT NULL,
+          title           TEXT NOT NULL,
+          kind            TEXT NOT NULL,
+          reward_minutes  INTEGER NOT NULL,
+          completed_at    INTEGER NOT NULL
+        )''')
+      ..execute(
+        'CREATE INDEX idx_completions_child_time ON task_completions(child_id, completed_at)',
+      )
+      ..execute(
+        'CREATE INDEX idx_completions_session ON task_completions(session_id)',
+      );
+    await batch.commit(noResult: true);
+  }
 
   Future<void> close() => db.close();
 }

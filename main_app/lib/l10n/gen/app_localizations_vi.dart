@@ -484,7 +484,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String homeHeroBody(String duration) {
-    return 'Bé được dùng $duration. Hết giờ, bé trả lời 1 câu hỏi theo lớp đang học: đúng được thêm 5 phút, sai thì máy khoá cho tới khi bố mẹ mở.';
+    return 'Bé được dùng $duration. Hết giờ, bé làm một việc học bố mẹ đặt, hoặc trả lời 1 câu hỏi theo lớp (đúng được thêm 5 phút, sai thì máy khoá tới khi bố mẹ mở).';
   }
 
   @override
@@ -598,7 +598,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get runningRules =>
-      'Hết giờ, con sẽ trả lời 1 câu hỏi.\nĐúng được thêm 5 phút, sai thì máy sẽ bị khoá.';
+      'Hết giờ, con làm một việc học để được thêm thời gian,\nhoặc trả lời 1 câu hỏi: đúng thêm 5 phút, sai thì máy khoá.';
 
   @override
   String get runningUseOtherApps => 'Dùng ứng dụng khác';
@@ -740,9 +740,6 @@ class AppLocalizationsVi extends AppLocalizations {
   String reportEndedAt(String time) {
     return 'Kết thúc: $time';
   }
-
-  @override
-  String get reportNoAttempts => 'Chưa trả lời câu hỏi nào.';
 
   @override
   String reportAttemptTitle(int number, String subject, String topic) {
@@ -1195,4 +1192,189 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get advancedLockContinueAnyway => 'Vẫn tiếp tục';
+
+  @override
+  String get tasksTitle => 'Hết giờ rồi!';
+
+  @override
+  String tasksIntro(String name) {
+    return '$name làm một việc dưới đây để được dùng tiếp nhé.';
+  }
+
+  @override
+  String tasksReward(String reward) {
+    return '+$reward';
+  }
+
+  @override
+  String get tasksKindCheck => 'Bố mẹ xác nhận';
+
+  @override
+  String tasksKindTimer(String duration) {
+    return 'Hẹn giờ $duration';
+  }
+
+  @override
+  String get tasksDoneToday => 'Đã xong hôm nay';
+
+  @override
+  String get tasksAskParent => 'Con làm xong rồi';
+
+  @override
+  String get tasksStartTimer => 'Bắt đầu';
+
+  @override
+  String get tasksAllDone =>
+      'Con đã làm hết việc hôm nay. Con có thể trả lời câu hỏi để được thêm thời gian.';
+
+  @override
+  String get tasksQuizTitle => 'Trả lời 1 câu hỏi';
+
+  @override
+  String tasksQuizBody(String reward) {
+    return 'Đúng được +$reward. Sai thì máy bị khoá.';
+  }
+
+  @override
+  String get tasksQuizButton => 'Trả lời';
+
+  @override
+  String tasksApproved(String reward) {
+    return 'Giỏi lắm! Được thêm $reward.';
+  }
+
+  @override
+  String authReasonApproveTask(String task) {
+    return 'Xác nhận bé đã làm xong: $task';
+  }
+
+  @override
+  String get taskTimerLeft => 'Còn lại';
+
+  @override
+  String taskTimerHint(String reward) {
+    return 'Máy vẫn khoá trong lúc con làm. Hết giờ con tự được thêm $reward.';
+  }
+
+  @override
+  String get taskTimerCancel => 'Đổi việc khác';
+
+  @override
+  String get taskTimerCancelTitle => 'Dừng việc này?';
+
+  @override
+  String get taskTimerCancelBody => 'Thời gian đã làm sẽ không được tính.';
+
+  @override
+  String get taskTimerCancelConfirm => 'Dừng';
+
+  @override
+  String get studyTasksTitle => 'Việc học hằng ngày';
+
+  @override
+  String studyTasksIntro(String name) {
+    return 'Hết giờ, $name chọn một việc để làm. Xong việc được thêm thời gian. Mỗi việc tính 1 lần mỗi ngày. Bé luôn có thể chọn trả lời câu hỏi.';
+  }
+
+  @override
+  String get studyTasksEmpty =>
+      'Chưa có việc nào. Hết giờ, bé sẽ trả lời câu hỏi như trước.';
+
+  @override
+  String get studyTasksAdd => 'Thêm việc';
+
+  @override
+  String get studyTasksEdit => 'Sửa việc';
+
+  @override
+  String get studyTaskTitleLabel => 'Tên việc';
+
+  @override
+  String get studyTaskTitleHint => 'VD: Làm bài tập Toán trang 32';
+
+  @override
+  String get studyTaskKindLabel => 'Cách xác nhận';
+
+  @override
+  String get studyTaskKindCheck => 'Bố mẹ duyệt';
+
+  @override
+  String get studyTaskKindCheckHint =>
+      'Bé bấm “Con làm xong rồi”, bố mẹ nhập mật khẩu máy để duyệt.';
+
+  @override
+  String get studyTaskKindTimer => 'Hẹn giờ';
+
+  @override
+  String get studyTaskKindTimerHint =>
+      'Đếm ngược trên màn khoá, hết giờ là xong việc.';
+
+  @override
+  String get studyTaskDurationLabel => 'Thời gian làm';
+
+  @override
+  String get studyTaskRewardLabel => 'Được thêm';
+
+  @override
+  String get studyTaskSuggestions => 'Gợi ý';
+
+  @override
+  String get studyTaskSuggestHomework => 'Làm bài tập về nhà';
+
+  @override
+  String get studyTaskSuggestReading => 'Đọc sách';
+
+  @override
+  String get studyTaskSuggestVocabulary => 'Học từ vựng tiếng Anh';
+
+  @override
+  String get studyTaskSuggestWriting => 'Luyện viết chữ';
+
+  @override
+  String studyTaskSummaryCheck(String reward) {
+    return 'Bố mẹ duyệt · +$reward';
+  }
+
+  @override
+  String studyTaskSummaryTimer(String duration, String reward) {
+    return 'Hẹn giờ $duration · +$reward';
+  }
+
+  @override
+  String studyTaskDeleteTitle(String task) {
+    return 'Xoá việc “$task”?';
+  }
+
+  @override
+  String get studyTaskDeleteBody => 'Lịch sử đã làm vẫn được giữ.';
+
+  @override
+  String get studyTaskDeleteConfirm => 'Xoá';
+
+  @override
+  String get validationTaskTitleRequired => 'Hãy nhập tên việc.';
+
+  @override
+  String reportStudyTasksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count việc',
+      zero: 'Chưa có việc nào',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String reportTaskDone(String task, String reward) {
+    return 'Xong việc: $task · +$reward';
+  }
+
+  @override
+  String reportSessionTasks(int count) {
+    return 'Làm xong $count việc';
+  }
+
+  @override
+  String get reportNoActivity => 'Chưa làm việc hay trả lời câu hỏi nào.';
 }

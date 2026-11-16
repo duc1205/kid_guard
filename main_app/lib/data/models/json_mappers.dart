@@ -1,6 +1,7 @@
 import '../../domain/entities/active_session.dart';
 import '../../domain/entities/child_profile.dart';
 import '../../domain/entities/question.dart';
+import '../../domain/entities/study_task.dart';
 import '../../domain/entities/usage_log.dart';
 
 /// Chuyển đổi entity <-> JSON. Tách khỏi domain để domain không phụ thuộc định dạng lưu trữ.
@@ -117,6 +118,32 @@ class UsageLogMapper {
   );
 }
 
+class StudyTaskMapper {
+  static Json toJson(StudyTask t) => {
+    'id': t.id,
+    'childId': t.childId,
+    'title': t.title,
+    'kind': t.kind.name,
+    'rewardMinutes': t.reward.inMinutes,
+    'durationMinutes': t.duration?.inMinutes,
+    'position': t.position,
+    'createdAt': t.createdAt.toIso8601String(),
+  };
+
+  static StudyTask fromJson(Json j) => StudyTask(
+    id: j['id'] as String,
+    childId: j['childId'] as String,
+    title: j['title'] as String,
+    kind: StudyTaskKind.values.byName(j['kind'] as String),
+    reward: Duration(minutes: j['rewardMinutes'] as int),
+    duration: j['durationMinutes'] == null
+        ? null
+        : Duration(minutes: j['durationMinutes'] as int),
+    position: j['position'] as int? ?? 0,
+    createdAt: _dt(j['createdAt']),
+  );
+}
+
 class ActiveSessionMapper {
   static Json toJson(ActiveSession s) => {
     'logId': s.logId,
@@ -128,6 +155,9 @@ class ActiveSessionMapper {
         ? null
         : QuestionMapper.toJson(s.currentQuestion!),
     'chosenIndex': s.chosenIndex,
+    if (s.currentTask != null)
+      'currentTask': StudyTaskMapper.toJson(s.currentTask!),
+    if (s.taskEndsAt != null) 'taskEndsAt': s.taskEndsAt!.toIso8601String(),
   };
 
   static ActiveSession fromJson(Json j) => ActiveSession(
@@ -144,5 +174,11 @@ class ActiveSessionMapper {
             Map<String, dynamic>.from(j['currentQuestion'] as Map),
           ),
     chosenIndex: j['chosenIndex'] as int?,
+    currentTask: j['currentTask'] == null
+        ? null
+        : StudyTaskMapper.fromJson(
+            Map<String, dynamic>.from(j['currentTask'] as Map),
+          ),
+    taskEndsAt: _dtOrNull(j['taskEndsAt']),
   );
 }

@@ -2,6 +2,7 @@ import '../entities/active_session.dart';
 import '../entities/child_profile.dart';
 import '../entities/question.dart';
 import '../entities/question_bank.dart';
+import '../entities/study_task.dart';
 import '../entities/usage_log.dart';
 import '../entities/usage_stats.dart';
 
@@ -40,6 +41,29 @@ abstract interface class QuestionBankRepository {
   /// Đổi địa chỉ manifest; `null` = quay về nguồn mặc định. Xoá câu hỏi đã tải
   /// của nguồn cũ.
   Future<void> setSource(String? manifestUrl);
+}
+
+/// Việc học hằng ngày bố mẹ đặt cho từng bé + các lần bé làm xong.
+abstract interface class StudyTaskRepository {
+  /// Theo thứ tự hiển thị.
+  Future<List<StudyTask>> getTasks(String childId);
+
+  /// Thêm mới hoặc cập nhật (theo id).
+  Future<void> saveTask(StudyTask task);
+  Future<void> deleteTask(String id);
+
+  /// Id các việc bé đã làm xong trong khoảng [from, to).
+  Future<Set<String>> completedTaskIds(
+    String childId, {
+    required DateTime from,
+    required DateTime to,
+  });
+
+  Future<void> addCompletion(
+    String logId,
+    String childId,
+    TaskCompletion completion,
+  );
 }
 
 /// Trạng thái phiên đang diễn ra (1 bản ghi nhỏ, đọc/ghi thường xuyên).

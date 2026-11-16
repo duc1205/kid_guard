@@ -189,3 +189,12 @@ QuestionRemoteDataSource fakeRemote(
   dio: Dio(BaseOptions(responseType: ResponseType.bytes))
     ..httpClientAdapter = FakeDioAdapter(handler),
 );
+
+class FakeSettings implements SettingsRepository {
+  Duration allowance = const Duration(minutes: 15);
+  @override
+  Future<Duration> getInitialAllowance() async => allowance;
+  @override
+  Future<void> setInitialAllowance(Duration? value) async =>
+      allowance = value ?? const Duration(minutes: 15);
+}

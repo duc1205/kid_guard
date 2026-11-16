@@ -52,5 +52,6 @@ extension L10nFormat on AppLocalizations {
     ValidationError.dobRequired => validationDobRequired,
     ValidationError.dobInvalid => validationDobInvalid,
     ValidationError.gradeRequired => validationGradeRequired,
+    ValidationError.taskTitleRequired => validationTaskTitleRequired,
   };
 }

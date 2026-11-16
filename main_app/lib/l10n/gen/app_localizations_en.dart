@@ -509,7 +509,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String homeHeroBody(String duration) {
-    return 'Your child gets $duration. When time is up, they answer 1 question for their grade: a right answer earns 5 more minutes, a wrong one locks the phone until a parent unlocks it.';
+    return 'Your child gets $duration. When time is up, they finish a study task you set, or answer 1 question for their grade (right: 5 more minutes, wrong: the device locks until a parent unlocks it).';
   }
 
   @override
@@ -624,7 +624,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get runningRules =>
-      'When time is up, you\'ll answer 1 question.\nGet it right for 5 more minutes. Get it wrong and the phone will lock.';
+      'When time is up, finish a study task for more time,\nor answer 1 question: right = 5 more minutes, wrong = locked.';
 
   @override
   String get runningUseOtherApps => 'Use other apps';
@@ -796,9 +796,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String reportEndedAt(String time) {
     return 'Ended: $time';
   }
-
-  @override
-  String get reportNoAttempts => 'No questions answered yet.';
 
   @override
   String reportAttemptTitle(int number, String subject, String topic) {
@@ -1254,4 +1251,196 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get advancedLockContinueAnyway => 'Continue anyway';
+
+  @override
+  String get tasksTitle => 'Time\'s up!';
+
+  @override
+  String tasksIntro(String name) {
+    return '$name, finish one task to get more time.';
+  }
+
+  @override
+  String tasksReward(String reward) {
+    return '+$reward';
+  }
+
+  @override
+  String get tasksKindCheck => 'A parent checks it';
+
+  @override
+  String tasksKindTimer(String duration) {
+    return '$duration timer';
+  }
+
+  @override
+  String get tasksDoneToday => 'Done today';
+
+  @override
+  String get tasksAskParent => 'I\'m done';
+
+  @override
+  String get tasksStartTimer => 'Start';
+
+  @override
+  String get tasksAllDone =>
+      'You\'ve finished all of today\'s tasks. You can answer a question for more time.';
+
+  @override
+  String get tasksQuizTitle => 'Answer a question';
+
+  @override
+  String tasksQuizBody(String reward) {
+    return 'Right: +$reward. Wrong: the device locks.';
+  }
+
+  @override
+  String get tasksQuizButton => 'Answer';
+
+  @override
+  String tasksApproved(String reward) {
+    return 'Well done! $reward more.';
+  }
+
+  @override
+  String authReasonApproveTask(String task) {
+    return 'Confirm the task is done: $task';
+  }
+
+  @override
+  String get taskTimerLeft => 'Time left';
+
+  @override
+  String taskTimerHint(String reward) {
+    return 'The device stays locked while you work. When the timer ends you get $reward automatically.';
+  }
+
+  @override
+  String get taskTimerCancel => 'Choose another task';
+
+  @override
+  String get taskTimerCancelTitle => 'Stop this task?';
+
+  @override
+  String get taskTimerCancelBody => 'The time so far won\'t count.';
+
+  @override
+  String get taskTimerCancelConfirm => 'Stop';
+
+  @override
+  String get studyTasksTitle => 'Daily study tasks';
+
+  @override
+  String studyTasksIntro(String name) {
+    return 'When time is up, $name picks a task. Finishing it earns more time. Each task counts once a day. Answering a question is always an option.';
+  }
+
+  @override
+  String get studyTasksEmpty =>
+      'No tasks yet. When time is up, your child answers a question as before.';
+
+  @override
+  String get studyTasksAdd => 'Add task';
+
+  @override
+  String get studyTasksEdit => 'Edit task';
+
+  @override
+  String get studyTaskTitleLabel => 'Task';
+
+  @override
+  String get studyTaskTitleHint => 'e.g. Math homework, page 32';
+
+  @override
+  String get studyTaskKindLabel => 'How it\'s checked';
+
+  @override
+  String get studyTaskKindCheck => 'Parent approves';
+
+  @override
+  String get studyTaskKindCheckHint =>
+      'Your child taps “I\'m done”, then you enter the device passcode to approve.';
+
+  @override
+  String get studyTaskKindTimer => 'Timer';
+
+  @override
+  String get studyTaskKindTimerHint =>
+      'A countdown runs on the locked screen. When it ends, the task is done.';
+
+  @override
+  String get studyTaskDurationLabel => 'Duration';
+
+  @override
+  String get studyTaskRewardLabel => 'Extra time earned';
+
+  @override
+  String get studyTaskSuggestions => 'Suggestions';
+
+  @override
+  String get studyTaskSuggestHomework => 'Do homework';
+
+  @override
+  String get studyTaskSuggestReading => 'Read a book';
+
+  @override
+  String get studyTaskSuggestVocabulary => 'Learn English words';
+
+  @override
+  String get studyTaskSuggestWriting => 'Handwriting practice';
+
+  @override
+  String studyTaskSummaryCheck(String reward) {
+    return 'Parent approves · +$reward';
+  }
+
+  @override
+  String studyTaskSummaryTimer(String duration, String reward) {
+    return '$duration timer · +$reward';
+  }
+
+  @override
+  String studyTaskDeleteTitle(String task) {
+    return 'Delete “$task”?';
+  }
+
+  @override
+  String get studyTaskDeleteBody => 'Past history is kept.';
+
+  @override
+  String get studyTaskDeleteConfirm => 'Delete';
+
+  @override
+  String get validationTaskTitleRequired => 'Enter a task name.';
+
+  @override
+  String reportStudyTasksCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count tasks',
+      one: '1 task',
+      zero: 'No tasks yet',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String reportTaskDone(String task, String reward) {
+    return 'Done: $task · +$reward';
+  }
+
+  @override
+  String reportSessionTasks(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count tasks done',
+      one: '1 task done',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reportNoActivity => 'No tasks or questions yet.';
 }
