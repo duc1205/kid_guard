@@ -10,17 +10,20 @@ class ParentController extends ChangeNotifier {
     required GetChildReportsUseCase getReports,
     required AuthenticateParentUseCase authenticateParent,
     required UpdateChildUseCase updateChild,
+    required RegisterChildUseCase registerChild,
     required DeleteChildUseCase deleteChild,
     required ClearAllChildrenDataUseCase clearAllChildrenData,
   }) : _getReports = getReports,
        _authenticateParent = authenticateParent,
        _updateChild = updateChild,
+       _registerChild = registerChild,
        _deleteChild = deleteChild,
        _clearAllChildrenData = clearAllChildrenData;
 
   final GetChildReportsUseCase _getReports;
   final AuthenticateParentUseCase _authenticateParent;
   final UpdateChildUseCase _updateChild;
+  final RegisterChildUseCase _registerChild;
   final DeleteChildUseCase _deleteChild;
   final ClearAllChildrenDataUseCase _clearAllChildrenData;
 
@@ -46,6 +49,23 @@ class ParentController extends ChangeNotifier {
     );
     await load();
     return updated;
+  }
+
+  /// Bố mẹ thêm hồ sơ bé trước (để đặt việc học) — bé chưa cần dùng máy.
+  /// Trùng tên + ngày sinh với bé đã có → dùng lại hồ sơ đó.
+  /// Ném [ValidationException] nếu sai.
+  Future<ChildProfile> addChild({
+    required String name,
+    required DateTime? dateOfBirth,
+    required int? grade,
+  }) async {
+    final child = await _registerChild(
+      name: name,
+      dateOfBirth: dateOfBirth,
+      grade: grade,
+    );
+    await load();
+    return child;
   }
 
   /// Ném [ActiveSessionExistsException] nếu còn phiên đang chạy.

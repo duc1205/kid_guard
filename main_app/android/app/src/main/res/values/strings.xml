@@ -7,6 +7,6 @@
     <string name="notif_running_title">KidGuard is tracking screen time</string>
     <string name="notif_running_text">Time remaining</string>
     <string name="overlay_open_quiz">Study tasks</string>
-    <string name="a11y_summary">Advanced lock: keeps the quiz on screen when time is up.</string>
-    <string name="a11y_description">KidGuard uses this only to see which app package is on screen while a session is running (not the screen contents). When time is up or the phone is locked, it closes the notification shade and brings the quiz back instead of other apps, recents or the home screen. During a session it also blocks Settings and uninstallers so the child cannot turn KidGuard off. KidGuard does not read, store or send what is on your screen.</string>
+    <string name="a11y_summary">Advanced lock: keeps KidGuard on screen when time is up.</string>
+    <string name="a11y_description">KidGuard uses this only to see which app package is on screen while a session is running (not the screen contents). When time is up or the phone is locked, it closes the notification shade and brings KidGuard back instead of other apps, recents or the home screen. During a session it also blocks Settings and uninstallers so the child cannot turn KidGuard off. KidGuard does not read, store or send what is on your screen.</string>
 </resources>

@@ -113,6 +113,7 @@ class AppDependencies {
     questionBankController.syncInBackground();
 
     final pickQuestion = PickQuestionUseCase(questions, logs);
+    final registerChild = RegisterChildUseCase(children, newId);
     final authenticate = AuthenticateParentUseCase(parentAuth, device);
 
     return AppDependencies._(
@@ -135,7 +136,7 @@ class AppDependencies {
         children: children,
         device: device,
         parentAuth: parentAuth,
-        registerChild: RegisterChildUseCase(children, newId),
+        registerChild: registerChild,
         startSession: StartSessionUseCase(
           active,
           logs,
@@ -169,6 +170,7 @@ class AppDependencies {
         getReports: GetChildReportsUseCase(children, logs),
         authenticateParent: authenticate,
         updateChild: UpdateChildUseCase(children),
+        registerChild: registerChild,
         deleteChild: DeleteChildUseCase(children, active),
         clearAllChildrenData: ClearAllChildrenDataUseCase(children, active),
       ),

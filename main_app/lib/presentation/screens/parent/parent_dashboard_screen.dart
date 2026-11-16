@@ -10,7 +10,9 @@ import '../../widgets/parent_auth_flow.dart';
 import '../../widgets/stat_tile.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../domain/usecases/settings_usecases.dart';
+import '../../../domain/entities/child_profile.dart';
 import 'child_report_screen.dart';
+import 'edit_child_screen.dart';
 import 'question_source_screen.dart';
 
 /// Khu vực phụ huynh: danh sách các bé đã dùng máy và thống kê tổng quan.
@@ -27,6 +29,28 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
     super.initState();
     DependenciesScope.of(context).parentController.load();
   }
+
+  /// Thêm bé trước để đặt việc học, rồi mở luôn trang của bé.
+  Future<void> _addChild() async {
+    final parent = DependenciesScope.of(context).parentController;
+    final child = await Navigator.of(context).push<ChildProfile>(
+      MaterialPageRoute(builder: (_) => const EditChildScreen()),
+    );
+    if (child == null || !mounted) return;
+    final report = parent.reports.where((r) => r.child.id == child.id);
+    if (report.isEmpty) return;
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ChildReportScreen(report: report.first),
+      ),
+    );
+  }
+
+  Widget _addChildButton(AppLocalizations l10n) => OutlinedButton.icon(
+    onPressed: _addChild,
+    icon: const Icon(Icons.person_add_alt_1_rounded),
+    label: Text(l10n.childAddButton),
+  );
 
   Future<void> _clearAllData() async {
     final l10n = context.l10n;
@@ -60,9 +84,9 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
       await parent.clearAllChildrenData();
     } on ActiveSessionExistsException {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(l10n.deleteBlockedActiveSession)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(l10n.deleteBlockedActiveSession)));
       return;
     }
     if (!mounted) return;
@@ -106,9 +130,13 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
                   child: Text(
                     l10n.dashboardEmpty,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 16, color: AppColors.textSecondary),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ),
+                _addChildButton(l10n),
               ],
             );
           }
@@ -165,9 +193,12 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
                   _ChildCard(report: r),
                   const SizedBox(height: 10),
                 ],
+                _addChildButton(l10n),
                 const SizedBox(height: 16),
                 OutlinedButton.icon(
-                  style: OutlinedButton.styleFrom(foregroundColor: AppColors.danger),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: AppColors.danger,
+                  ),
                   onPressed: _clearAllData,
                   icon: const Icon(Icons.delete_forever_rounded),
                   label: Text(l10n.clearAllDataButton),

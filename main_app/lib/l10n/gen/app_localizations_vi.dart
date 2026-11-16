@@ -428,7 +428,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeOverlaySubtitle =>
-      'Để màn câu hỏi tự hiện lên khi hết giờ, kể cả khi bé đang ở app khác.';
+      'Để KidGuard tự hiện lên khi hết giờ, kể cả khi bé đang ở app khác.';
 
   @override
   String get homePopupTitle => 'Hiển thị cửa sổ bật lên khi chạy nền';
@@ -438,7 +438,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String homePopupSubtitle(String brand) {
-    return 'Quyền riêng của $brand. Thiếu quyền này, hết giờ màn câu hỏi sẽ không tự hiện lên.';
+    return 'Quyền riêng của $brand. Thiếu quyền này, hết giờ KidGuard sẽ không tự hiện lên.';
   }
 
   @override
@@ -660,7 +660,8 @@ class AppLocalizationsVi extends AppLocalizations {
   String get dashboardTitle => 'Khu vực phụ huynh';
 
   @override
-  String get dashboardEmpty => 'Chưa có bé nào dùng máy.';
+  String get dashboardEmpty =>
+      'Chưa có bé nào. Thêm bé để đặt việc học trước khi đưa máy cho bé.';
 
   @override
   String get dashboardTotalTime => 'Tổng thời gian';
@@ -831,7 +832,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeMacNotice =>
-      'Hết giờ, KidGuard hiện lên toàn màn hình ở chế độ kiosk: Dock, thanh menu, Cmd+Tab và Buộc thoát đều bị vô hiệu cho tới khi bé trả lời câu hỏi hoặc người lớn mở khoá bằng mật khẩu Mac / Touch ID. Trong phiên, KidGuard không thể bị tắt, và tự mở lại sau khi đăng nhập nếu bạn cho phép ở mục bên dưới.';
+      'Hết giờ, KidGuard hiện lên toàn màn hình ở chế độ kiosk: Dock, thanh menu, Cmd+Tab và Buộc thoát đều bị vô hiệu cho tới khi bé làm xong việc học hoặc trả lời câu hỏi hoặc người lớn mở khoá bằng mật khẩu Mac / Touch ID. Trong phiên, KidGuard không thể bị tắt, và tự mở lại sau khi đăng nhập nếu bạn cho phép ở mục bên dưới.';
 
   @override
   String get macRelaunchTitle => 'Tự mở lại KidGuard sau khi đăng nhập?';
@@ -866,7 +867,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeWindowsNotice =>
-      'Hết giờ, KidGuard phủ kín màn hình và luôn nằm trên cùng: phím Windows, Alt+Tab và Alt+F4 bị chặn cho tới khi bé trả lời câu hỏi hoặc người lớn mở khoá bằng Windows Hello (PIN, vân tay hoặc khuôn mặt). Trong phiên, KidGuard không thể bị đóng và tự mở lại sau khi đăng nhập. Windows không cho ứng dụng chặn Ctrl+Alt+Del.';
+      'Hết giờ, KidGuard phủ kín màn hình và luôn nằm trên cùng: phím Windows, Alt+Tab và Alt+F4 bị chặn cho tới khi bé làm xong việc học hoặc trả lời câu hỏi hoặc người lớn mở khoá bằng Windows Hello (PIN, vân tay hoặc khuôn mặt). Trong phiên, KidGuard không thể bị đóng và tự mở lại sau khi đăng nhập. Windows không cho ứng dụng chặn Ctrl+Alt+Del.';
 
   @override
   String get homeWindowsHelloHint =>
@@ -940,7 +941,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeAndroidNotice =>
-      'Hết giờ, KidGuard hiện lên (lớp phủ) và đưa ra câu hỏi. Muốn khoá chặt hơn—chặn thanh thông báo, đa nhiệm và việc tắt KidGuard—hãy bật Khoá nâng cao (Trợ năng) bên dưới. Cuộc gọi đến và gọi khẩn cấp vẫn dùng được.';
+      'Hết giờ, KidGuard hiện lên (lớp phủ) với việc học của bé hoặc câu hỏi. Muốn khoá chặt hơn—chặn thanh thông báo, đa nhiệm và việc tắt KidGuard—hãy bật Khoá nâng cao (Trợ năng) bên dưới. Cuộc gọi đến và gọi khẩn cấp vẫn dùng được.';
 
   @override
   String qsResultUpdated(int version) {
@@ -1003,7 +1004,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get settingsInitialAllowanceHint =>
-      'Mỗi lần bắt đầu, bé được dùng máy bấy nhiêu thời gian trước câu hỏi đầu tiên. Áp dụng từ phiên tiếp theo.';
+      'Mỗi lần bắt đầu, bé được dùng máy bấy nhiêu thời gian trước khi hết giờ. Áp dụng từ phiên tiếp theo.';
 
   @override
   String get settingsMinutesLabel => 'Số phút';
@@ -1107,7 +1108,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get advancedLockStatusOnBody =>
-      'Khi hết giờ hoặc máy bị khoá, KidGuard giữ màn câu hỏi trên màn hình và bé không thể tắt KidGuard trong phiên.';
+      'Khi hết giờ hoặc máy bị khoá, KidGuard luôn ở trên màn hình và bé không thể tắt KidGuard trong phiên.';
 
   @override
   String get advancedLockStatusOffBody =>
@@ -1118,7 +1119,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get advancedLockWhat1 =>
-      'Khi hết giờ hoặc máy bị khoá: đóng ngay thanh thông báo, chặn màn đa nhiệm, màn hình chính và chia đôi màn hình, đưa màn câu hỏi lên lại tức thì.';
+      'Khi hết giờ hoặc máy bị khoá: đóng ngay thanh thông báo, chặn màn đa nhiệm, màn hình chính và chia đôi màn hình, đưa KidGuard lên lại tức thì.';
 
   @override
   String get advancedLockWhat2 =>
@@ -1161,7 +1162,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get advancedLockDisclosureBody =>
-      'Dịch vụ Trợ năng của KidGuard chỉ biết package ứng dụng nào đang ở phía trước trong phiên do phụ huynh bắt đầu. Không đọc, không lưu, không gửi nội dung màn hình.\n\nHết giờ: đóng thanh thông báo và đưa màn câu hỏi lên lại. Trong phiên: chặn Cài đặt và trình gỡ cài đặt để bé không tắt KidGuard. Cuộc gọi vẫn dùng được. Ngoài phiên, dịch vụ không làm gì.\n\nBạn sẽ tự bật trong Cài đặt hệ thống. Có thể tắt bất cứ lúc nào sau khi kết thúc phiên của bé.';
+      'Dịch vụ Trợ năng của KidGuard chỉ biết package ứng dụng nào đang ở phía trước trong phiên do phụ huynh bắt đầu. Không đọc, không lưu, không gửi nội dung màn hình.\n\nHết giờ: đóng thanh thông báo và đưa KidGuard lên lại. Trong phiên: chặn Cài đặt và trình gỡ cài đặt để bé không tắt KidGuard. Cuộc gọi vẫn dùng được. Ngoài phiên, dịch vụ không làm gì.\n\nBạn sẽ tự bật trong Cài đặt hệ thống. Có thể tắt bất cứ lúc nào sau khi kết thúc phiên của bé.';
 
   @override
   String get advancedLockAgreeContinue => 'Tôi đã hiểu — tiếp tục';
@@ -1377,4 +1378,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get reportNoActivity => 'Chưa làm việc hay trả lời câu hỏi nào.';
+
+  @override
+  String get childAddButton => 'Thêm bé';
+
+  @override
+  String get childAddTitle => 'Thêm bé';
 }

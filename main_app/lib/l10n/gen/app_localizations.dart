@@ -797,7 +797,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeOverlaySubtitle.
   ///
   /// In en, this message translates to:
-  /// **'So the question screen pops up when time is up, even if your child is in another app.'**
+  /// **'So KidGuard pops up when time is up, even if your child is in another app.'**
   String get homeOverlaySubtitle;
 
   /// No description provided for @homePopupTitle.
@@ -815,7 +815,7 @@ abstract class AppLocalizations {
   /// No description provided for @homePopupSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'A {brand}-specific permission. Without it, the question screen won\'t pop up when time is up.'**
+  /// **'A {brand}-specific permission. Without it, KidGuard won\'t pop up when time is up.'**
   String homePopupSubtitle(String brand);
 
   /// No description provided for @homeReview.
@@ -1205,7 +1205,7 @@ abstract class AppLocalizations {
   /// No description provided for @dashboardEmpty.
   ///
   /// In en, this message translates to:
-  /// **'No child has used this phone yet.'**
+  /// **'No children yet. Add a child to set study tasks before handing over the phone.'**
   String get dashboardEmpty;
 
   /// No description provided for @dashboardTotalTime.
@@ -1480,7 +1480,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeMacNotice.
   ///
   /// In en, this message translates to:
-  /// **'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.'**
+  /// **'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until your child finishes a task or answers a question or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.'**
   String get homeMacNotice;
 
   /// No description provided for @macRelaunchTitle.
@@ -1540,7 +1540,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeWindowsNotice.
   ///
   /// In en, this message translates to:
-  /// **'When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until the question is answered or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can\'t be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.'**
+  /// **'When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until your child finishes a task or answers a question or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can\'t be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.'**
   String get homeWindowsNotice;
 
   /// No description provided for @homeWindowsHelloHint.
@@ -1678,7 +1678,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeAndroidNotice.
   ///
   /// In en, this message translates to:
-  /// **'When time is up, KidGuard comes to the front (overlay) and shows a question. For a stronger lock—blocking the notification shade, Recents and turning KidGuard off—turn on Advanced lock (Accessibility) below. Emergency and incoming calls still work.'**
+  /// **'When time is up, KidGuard comes to the front (overlay) with your child\'s study tasks or a question. For a stronger lock—blocking the notification shade, Recents and turning KidGuard off—turn on Advanced lock (Accessibility) below. Emergency and incoming calls still work.'**
   String get homeAndroidNotice;
 
   /// No description provided for @qsResultUpdated.
@@ -1780,7 +1780,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsInitialAllowanceHint.
   ///
   /// In en, this message translates to:
-  /// **'How long your child can use the phone each time before the first question. Applies from the next session.'**
+  /// **'How long your child can use the phone each time before time is up. Applies from the next session.'**
   String get settingsInitialAllowanceHint;
 
   /// No description provided for @settingsMinutesLabel.
@@ -1954,7 +1954,7 @@ abstract class AppLocalizations {
   /// No description provided for @advancedLockStatusOnBody.
   ///
   /// In en, this message translates to:
-  /// **'When time is up or the phone is locked, KidGuard keeps the quiz on screen and your child can\'t turn KidGuard off during a session.'**
+  /// **'When time is up or the phone is locked, KidGuard stays on screen and your child can\'t turn KidGuard off during a session.'**
   String get advancedLockStatusOnBody;
 
   /// No description provided for @advancedLockStatusOffBody.
@@ -1972,7 +1972,7 @@ abstract class AppLocalizations {
   /// No description provided for @advancedLockWhat1.
   ///
   /// In en, this message translates to:
-  /// **'When time is up or the phone is locked: closes the notification shade and blocks recents, the home screen and split screen, bringing the quiz back instantly.'**
+  /// **'When time is up or the phone is locked: closes the notification shade and blocks recents, the home screen and split screen, bringing KidGuard back instantly.'**
   String get advancedLockWhat1;
 
   /// No description provided for @advancedLockWhat2.
@@ -2044,7 +2044,7 @@ abstract class AppLocalizations {
   /// No description provided for @advancedLockDisclosureBody.
   ///
   /// In en, this message translates to:
-  /// **'KidGuard\'s Accessibility service will see only which app package is in the foreground during a parent-started session. It does not read, store or send anything on the screen.\n\nWhen time is up it closes the notification shade and brings the quiz back. During a session it blocks Settings and uninstallers so your child cannot turn KidGuard off. Calls still work. Outside a session the service does nothing.\n\nYou will turn it on yourself in system Settings. You can turn it off anytime after ending the child\'s session.'**
+  /// **'KidGuard\'s Accessibility service will see only which app package is in the foreground during a parent-started session. It does not read, store or send anything on the screen.\n\nWhen time is up it closes the notification shade and brings KidGuard back. During a session it blocks Settings and uninstallers so your child cannot turn KidGuard off. Calls still work. Outside a session the service does nothing.\n\nYou will turn it on yourself in system Settings. You can turn it off anytime after ending the child\'s session.'**
   String get advancedLockDisclosureBody;
 
   /// No description provided for @advancedLockAgreeContinue.
@@ -2394,6 +2394,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No tasks or questions yet.'**
   String get reportNoActivity;
+
+  /// No description provided for @childAddButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a child'**
+  String get childAddButton;
+
+  /// No description provided for @childAddTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a child'**
+  String get childAddTitle;
 }
 
 class _AppLocalizationsDelegate

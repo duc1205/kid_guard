@@ -2,7 +2,7 @@ import ManagedSettings
 import ManagedSettingsUI
 import UIKit
 
-/// Giao diện lá chắn khi bé mở app bị chặn: nhắc mở KidGuard để trả lời câu hỏi.
+/// Giao diện lá chắn khi bé mở app bị chặn: nhắc mở KidGuard để làm việc học hoặc trả lời câu hỏi.
 class KidGuardShield: ShieldConfigurationDataSource {
   private var vi: Bool { Locale.preferredLanguages.first?.hasPrefix("vi") ?? false }
 
@@ -15,8 +15,8 @@ class KidGuardShield: ShieldConfigurationDataSource {
         text: vi ? "Hết giờ rồi!" : "Time's up!", color: .white),
       subtitle: ShieldConfiguration.Label(
         text: vi
-          ? "Mở KidGuard và trả lời 1 câu hỏi để được dùng thêm 5 phút."
-          : "Open KidGuard and answer a question to get 5 more minutes.",
+          ? "Mở KidGuard, làm việc học hoặc trả lời câu hỏi để được dùng thêm."
+          : "Open KidGuard and finish a study task or answer a question to get more time.",
         color: .white),
       primaryButtonLabel: ShieldConfiguration.Label(text: "OK", color: .white),
       primaryButtonBackgroundColor: UIColor(red: 1.0, green: 0.62, blue: 0.26, alpha: 1))

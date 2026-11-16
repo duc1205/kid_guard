@@ -44,7 +44,7 @@
             android:foregroundServiceType="specialUse">
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="Parental control: counts down the child's allowed screen time and brings the quiz/lock screen to front when time is up." />
+                android:value="Parental control: counts down the child's allowed screen time and brings the study-task/lock screen to front when time is up." />
         </service>
 
         <receiver

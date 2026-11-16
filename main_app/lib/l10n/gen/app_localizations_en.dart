@@ -452,7 +452,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeOverlaySubtitle =>
-      'So the question screen pops up when time is up, even if your child is in another app.';
+      'So KidGuard pops up when time is up, even if your child is in another app.';
 
   @override
   String get homePopupTitle =>
@@ -463,7 +463,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String homePopupSubtitle(String brand) {
-    return 'A $brand-specific permission. Without it, the question screen won\'t pop up when time is up.';
+    return 'A $brand-specific permission. Without it, KidGuard won\'t pop up when time is up.';
   }
 
   @override
@@ -686,7 +686,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dashboardTitle => 'Parent area';
 
   @override
-  String get dashboardEmpty => 'No child has used this phone yet.';
+  String get dashboardEmpty =>
+      'No children yet. Add a child to set study tasks before handing over the phone.';
 
   @override
   String get dashboardTotalTime => 'Total time';
@@ -889,7 +890,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeMacNotice =>
-      'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.';
+      'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until your child finishes a task or answers a question or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.';
 
   @override
   String get macRelaunchTitle => 'Reopen KidGuard after login?';
@@ -923,7 +924,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeWindowsNotice =>
-      'When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until the question is answered or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can\'t be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.';
+      'When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until your child finishes a task or answers a question or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can\'t be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.';
 
   @override
   String get homeWindowsHelloHint =>
@@ -997,7 +998,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeAndroidNotice =>
-      'When time is up, KidGuard comes to the front (overlay) and shows a question. For a stronger lock—blocking the notification shade, Recents and turning KidGuard off—turn on Advanced lock (Accessibility) below. Emergency and incoming calls still work.';
+      'When time is up, KidGuard comes to the front (overlay) with your child\'s study tasks or a question. For a stronger lock—blocking the notification shade, Recents and turning KidGuard off—turn on Advanced lock (Accessibility) below. Emergency and incoming calls still work.';
 
   @override
   String qsResultUpdated(int version) {
@@ -1061,7 +1062,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsInitialAllowanceHint =>
-      'How long your child can use the phone each time before the first question. Applies from the next session.';
+      'How long your child can use the phone each time before time is up. Applies from the next session.';
 
   @override
   String get settingsMinutesLabel => 'Minutes';
@@ -1166,7 +1167,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get advancedLockStatusOnBody =>
-      'When time is up or the phone is locked, KidGuard keeps the quiz on screen and your child can\'t turn KidGuard off during a session.';
+      'When time is up or the phone is locked, KidGuard stays on screen and your child can\'t turn KidGuard off during a session.';
 
   @override
   String get advancedLockStatusOffBody =>
@@ -1177,7 +1178,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get advancedLockWhat1 =>
-      'When time is up or the phone is locked: closes the notification shade and blocks recents, the home screen and split screen, bringing the quiz back instantly.';
+      'When time is up or the phone is locked: closes the notification shade and blocks recents, the home screen and split screen, bringing KidGuard back instantly.';
 
   @override
   String get advancedLockWhat2 =>
@@ -1220,7 +1221,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get advancedLockDisclosureBody =>
-      'KidGuard\'s Accessibility service will see only which app package is in the foreground during a parent-started session. It does not read, store or send anything on the screen.\n\nWhen time is up it closes the notification shade and brings the quiz back. During a session it blocks Settings and uninstallers so your child cannot turn KidGuard off. Calls still work. Outside a session the service does nothing.\n\nYou will turn it on yourself in system Settings. You can turn it off anytime after ending the child\'s session.';
+      'KidGuard\'s Accessibility service will see only which app package is in the foreground during a parent-started session. It does not read, store or send anything on the screen.\n\nWhen time is up it closes the notification shade and brings KidGuard back. During a session it blocks Settings and uninstallers so your child cannot turn KidGuard off. Calls still work. Outside a session the service does nothing.\n\nYou will turn it on yourself in system Settings. You can turn it off anytime after ending the child\'s session.';
 
   @override
   String get advancedLockAgreeContinue => 'I understand — continue';
@@ -1443,4 +1444,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reportNoActivity => 'No tasks or questions yet.';
+
+  @override
+  String get childAddButton => 'Add a child';
+
+  @override
+  String get childAddTitle => 'Add a child';
 }

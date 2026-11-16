@@ -32,13 +32,13 @@ import androidx.core.app.ServiceCompat
  * Foreground service giữ "đồng hồ" của phiên dùng máy, kể cả khi app Flutter bị đẩy xuống nền
  * hoặc bị vuốt khỏi danh sách đa nhiệm.
  *
- * - Khi hết giờ: bật guard và đưa MainActivity lên trên cùng (màn câu hỏi).
+ * - Khi hết giờ: bật guard và đưa MainActivity lên trên cùng (màn việc học / câu hỏi).
  * - Khi guard bật (đang hỏi / đang khoá): nếu MainActivity không ở foreground thì mở lại ngay,
  *   nên trẻ không thể thoát ra ứng dụng khác.
  * - Một số ROM (ColorOS/MIUI…) vẫn chặn mở Activity từ nền dù đã có quyền "Hiển thị trên ứng
  *   dụng khác" (log: `checkBackgroundActivityPermission deny!`). Vì vậy khi guard bật mà app không
  *   ở trên cùng, service phủ một cửa sổ overlay toàn màn hình: chặn mọi thao tác với app bên dưới
- *   và có nút mở màn câu hỏi (bấm nút = thao tác của người dùng trên cửa sổ của app → được phép mở).
+ *   và có nút mở màn việc học (bấm nút = thao tác của người dùng trên cửa sổ của app → được phép mở).
  */
 class SessionGuardService : Service() {
 

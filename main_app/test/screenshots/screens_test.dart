@@ -257,6 +257,16 @@ void main() {
     await shot(t, '20_task_editor');
   });
 
+  shotTest('21 parent adds child', (t) async {
+    await boot(t);
+    await push(t, const ParentDashboardScreen());
+    await t.runAsync(() => deps.parentController.load());
+    await shot(t, '21_dashboard_empty');
+    await t.tap(find.text('Thêm bé'));
+    await settle(t);
+    await shot(t, '22_add_child');
+  });
+
   shotTest('14 advanced lock dropped', (t) async {
     await boot(t, lockDropped: true);
     await shot(t, '14_home_lock_dropped');

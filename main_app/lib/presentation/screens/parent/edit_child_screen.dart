@@ -8,20 +8,21 @@ import '../../../domain/usecases/register_child.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
 
-/// Người lớn sửa thông tin bé (tên, ngày sinh, lớp). Trả về hồ sơ đã sửa khi lưu.
+/// Người lớn thêm bé mới ([child] = null) hoặc sửa thông tin bé (tên, ngày
+/// sinh, lớp). Trả về hồ sơ đã lưu.
 class EditChildScreen extends StatefulWidget {
-  const EditChildScreen({super.key, required this.child});
+  const EditChildScreen({super.key, this.child});
 
-  final ChildProfile child;
+  final ChildProfile? child;
 
   @override
   State<EditChildScreen> createState() => _EditChildScreenState();
 }
 
 class _EditChildScreenState extends State<EditChildScreen> {
-  late final _name = TextEditingController(text: widget.child.name);
-  late DateTime _dob = widget.child.dateOfBirth;
-  late int _grade = widget.child.grade;
+  late final _name = TextEditingController(text: widget.child?.name ?? '');
+  late DateTime? _dob = widget.child?.dateOfBirth;
+  late int? _grade = widget.child?.grade;
   bool _saving = false;
   String? _error;
 
@@ -35,7 +36,7 @@ class _EditChildScreenState extends State<EditChildScreen> {
     final now = DateTime.now();
     final picked = await showDatePicker(
       context: context,
-      initialDate: _dob,
+      initialDate: _dob ?? DateTime(now.year - 8, now.month, now.day),
       firstDate: DateTime(now.year - 80),
       lastDate: now,
       initialDatePickerMode: DatePickerMode.year,
@@ -49,12 +50,19 @@ class _EditChildScreenState extends State<EditChildScreen> {
     final l10n = context.l10n;
     setState(() => (_saving = true, _error = null));
     try {
-      final updated = await parent.updateChild(
-        widget.child,
-        name: _name.text,
-        dateOfBirth: _dob,
-        grade: _grade,
-      );
+      final current = widget.child;
+      final updated = current == null
+          ? await parent.addChild(
+              name: _name.text,
+              dateOfBirth: _dob,
+              grade: _grade,
+            )
+          : await parent.updateChild(
+              current,
+              name: _name.text,
+              dateOfBirth: _dob,
+              grade: _grade,
+            );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(l10n.childEditSaved(updated.name))),
@@ -74,7 +82,11 @@ class _EditChildScreenState extends State<EditChildScreen> {
     final l10n = context.l10n;
     final theme = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.childEditTitle)),
+      appBar: AppBar(
+        title: Text(
+          widget.child == null ? l10n.childAddTitle : l10n.childEditTitle,
+        ),
+      ),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
@@ -106,7 +118,14 @@ class _EditChildScreenState extends State<EditChildScreen> {
                     children: [
                       const Icon(Icons.cake_rounded),
                       const SizedBox(width: 12),
-                      Text(formatDate(_dob), style: theme.textTheme.bodyLarge),
+                      Text(
+                        _dob == null ? l10n.registerDobPick : formatDate(_dob!),
+                        style: _dob == null
+                            ? theme.textTheme.bodyLarge?.copyWith(
+                                color: AppColors.textTertiary,
+                              )
+                            : theme.textTheme.bodyLarge,
+                      ),
                     ],
                   ),
                 ),
@@ -117,6 +136,7 @@ class _EditChildScreenState extends State<EditChildScreen> {
             const SizedBox(height: 8),
             DropdownButtonFormField<int>(
               initialValue: _grade,
+              hint: Text(l10n.childEditGradeLabel),
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.school_rounded),
               ),

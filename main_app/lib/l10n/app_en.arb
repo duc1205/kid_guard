@@ -147,10 +147,10 @@
   "homeSetupHeader": "Setup on this phone",
   "homeScreenLockTitle": "Screen lock password",
   "homeScreenLockSubtitle": "Required — lets adults take the phone back and unlock it.",
-  "homeOverlaySubtitle": "So the question screen pops up when time is up, even if your child is in another app.",
+  "homeOverlaySubtitle": "So KidGuard pops up when time is up, even if your child is in another app.",
   "homePopupTitle": "Display pop-up windows while running in background",
   "homeConfirmedOn": "You confirmed this is on.",
-  "homePopupSubtitle": "A {brand}-specific permission. Without it, the question screen won't pop up when time is up.",
+  "homePopupSubtitle": "A {brand}-specific permission. Without it, KidGuard won't pop up when time is up.",
   "@homePopupSubtitle": {
     "placeholders": {
       "brand": {
@@ -264,7 +264,7 @@
   "lockedUnlockButton": "Adult: unlock & take back phone",
   "revokeButton": "Adult: take back phone",
   "dashboardTitle": "Parent area",
-  "dashboardEmpty": "No child has used this phone yet.",
+  "dashboardEmpty": "No children yet. Add a child to set study tasks before handing over the phone.",
   "dashboardTotalTime": "Total time",
   "dashboardCorrect": "Correct",
   "dashboardWrong": "Wrong",
@@ -413,7 +413,7 @@
   "screenTimeErrorDenied": "Screen Time permission was not granted.",
   "screenTimeErrorFailed": "Could not enable Screen Time. Try again.",
   "homeDesktopTitle": "How locking works on this computer",
-  "homeMacNotice": "When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until the question is answered or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can't be quit, and it reopens after login if you allow it below.",
+  "homeMacNotice": "When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until your child finishes a task or answers a question or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can't be quit, and it reopens after login if you allow it below.",
   "macRelaunchTitle": "Reopen KidGuard after login?",
   "macRelaunchBody": "During your child's session, KidGuard can add itself as a login item so it reopens if your child logs out or restarts the Mac. macOS will show a \"Login item added\" notice. It is removed when the session ends. You can change this on the home screen anytime.",
   "macRelaunchAllow": "Allow",
@@ -423,7 +423,7 @@
   "homeMacRelaunchOff": "Off: your child could escape the lock by logging out or restarting the Mac.",
   "homeMacRelaunchEnable": "Turn on",
   "homeMacRelaunchDisable": "Turn off",
-  "homeWindowsNotice": "When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until the question is answered or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can't be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.",
+  "homeWindowsNotice": "When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until your child finishes a task or answers a question or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can't be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.",
   "homeWindowsHelloHint": "Windows Hello must be set up (Settings › Accounts › Sign-in options › PIN).",
   "runningIosHint": "Swipe up (or press the Home button) to use other apps.",
   "commonCancel": "Cancel",
@@ -446,7 +446,7 @@
   "qsCustomSourceWarningTitle": "Use only a trusted source",
   "qsCustomSourceWarningBody": "KidGuard will download and show questions from this HTTPS address. Use only a source you trust (for example your school). A malicious source could show inappropriate or wrong content to your child.",
   "qsCustomSourceConfirm": "I trust this source",
-  "homeAndroidNotice": "When time is up, KidGuard comes to the front (overlay) and shows a question. For a stronger lock—blocking the notification shade, Recents and turning KidGuard off—turn on Advanced lock (Accessibility) below. Emergency and incoming calls still work.",
+  "homeAndroidNotice": "When time is up, KidGuard comes to the front (overlay) with your child's study tasks or a question. For a stronger lock—blocking the notification shade, Recents and turning KidGuard off—turn on Advanced lock (Accessibility) below. Emergency and incoming calls still work.",
   "qsResultUpdated": "Question bank updated to version {version}.",
   "@qsResultUpdated": {
     "placeholders": {
@@ -498,7 +498,7 @@
       }
     }
   },
-  "settingsInitialAllowanceHint": "How long your child can use the phone each time before the first question. Applies from the next session.",
+  "settingsInitialAllowanceHint": "How long your child can use the phone each time before time is up. Applies from the next session.",
   "settingsMinutesLabel": "Minutes",
   "settingsMinutesMin": "At least {min} minutes.",
   "@settingsMinutesMin": {
@@ -562,10 +562,10 @@
   "advancedLockTitle": "Advanced lock",
   "advancedLockStatusOn": "Advanced lock is ON",
   "advancedLockStatusOff": "Advanced lock is off",
-  "advancedLockStatusOnBody": "When time is up or the phone is locked, KidGuard keeps the quiz on screen and your child can't turn KidGuard off during a session.",
+  "advancedLockStatusOnBody": "When time is up or the phone is locked, KidGuard stays on screen and your child can't turn KidGuard off during a session.",
   "advancedLockStatusOffBody": "KidGuard still covers the screen when time is up, but your child can pull down the notification shade and could turn KidGuard off from Settings during their free time.",
   "advancedLockWhatTitle": "What it does",
-  "advancedLockWhat1": "When time is up or the phone is locked: closes the notification shade and blocks recents, the home screen and split screen, bringing the quiz back instantly.",
+  "advancedLockWhat1": "When time is up or the phone is locked: closes the notification shade and blocks recents, the home screen and split screen, bringing KidGuard back instantly.",
   "advancedLockWhat2": "During your child's whole session: blocks Settings and uninstallers so your child cannot turn KidGuard off (including Accessibility).",
   "advancedLockWhat3": "Incoming and emergency calls still work.",
   "advancedLockPrivacy": "KidGuard only uses Accessibility to know which app package is on top. It does not read, store or send what's on your screen.",
@@ -577,7 +577,7 @@
   "advancedLockStepBack": "Come back to KidGuard: the status above turns ON.",
   "advancedLockOffNote": "To turn it off: end your child's session first (parent unlock), then go to Settings › Accessibility › KidGuard › off.",
   "advancedLockDisclosureTitle": "Before you turn on Advanced lock",
-  "advancedLockDisclosureBody": "KidGuard's Accessibility service will see only which app package is in the foreground during a parent-started session. It does not read, store or send anything on the screen.\n\nWhen time is up it closes the notification shade and brings the quiz back. During a session it blocks Settings and uninstallers so your child cannot turn KidGuard off. Calls still work. Outside a session the service does nothing.\n\nYou will turn it on yourself in system Settings. You can turn it off anytime after ending the child's session.",
+  "advancedLockDisclosureBody": "KidGuard's Accessibility service will see only which app package is in the foreground during a parent-started session. It does not read, store or send anything on the screen.\n\nWhen time is up it closes the notification shade and brings KidGuard back. During a session it blocks Settings and uninstallers so your child cannot turn KidGuard off. Calls still work. Outside a session the service does nothing.\n\nYou will turn it on yourself in system Settings. You can turn it off anytime after ending the child's session.",
   "advancedLockAgreeContinue": "I understand — continue",
   "legacyHardLockTitle": "Old hard lock (Device Owner) is on",
   "legacyHardLockBody": "This phone had hard lock turned on with a computer in an earlier version. Turn it off before uninstalling KidGuard.",
@@ -739,5 +739,7 @@
       }
     }
   },
-  "reportNoActivity": "No tasks or questions yet."
+  "reportNoActivity": "No tasks or questions yet.",
+  "childAddButton": "Add a child",
+  "childAddTitle": "Add a child"
 }

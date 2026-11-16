@@ -151,7 +151,7 @@ class DevicePermissions {
   /// iOS: đã chọn các ứng dụng sẽ bị chặn khi hết giờ.
   final bool limitedAppsSelected;
 
-  /// "Hiển thị trên ứng dụng khác" — để đưa màn câu hỏi lên khi hết giờ.
+  /// "Hiển thị trên ứng dụng khác" — để đưa KidGuard lên khi hết giờ.
   final bool overlay;
   final bool notifications;
 
