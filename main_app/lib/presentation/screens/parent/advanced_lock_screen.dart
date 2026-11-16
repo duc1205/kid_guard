@@ -6,6 +6,7 @@ import '../../../domain/usecases/advanced_lock_usecases.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
 import '../../widgets/parent_auth_flow.dart';
+import '../../widgets/parent_gate.dart';
 
 /// "Khoá nâng cao": hướng dẫn bật Trợ năng của KidGuard ngay trên máy (không cần
 /// máy tính). Máy nào còn bật khoá cứng cũ (Device Owner) thì có nút tắt để gỡ app.
@@ -97,7 +98,8 @@ class _AdvancedLockScreenState extends State<AdvancedLockScreen>
     );
     if (confirmed != true || !mounted) return;
     setState(() => _busy = true);
-    final auth = await deps.parentController.authenticate(
+    final auth = await askParent(
+      context,
       reason: l10n.authReasonDisableHardLock,
     );
     if (!mounted) return;

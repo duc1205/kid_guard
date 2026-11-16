@@ -7,10 +7,13 @@ import '../../domain/entities/active_session.dart';
 import '../../domain/entities/child_profile.dart';
 import '../../domain/entities/study_task.dart';
 import '../../domain/repositories/repositories.dart';
-import '../../domain/usecases/parent_usecases.dart';
 import '../../domain/usecases/register_child.dart';
 import '../../domain/usecases/session_usecases.dart';
 import '../../domain/usecases/study_task_usecases.dart';
+
+/// Hỏi người lớn (mã PIN phụ huynh, hoặc mật khẩu máy nếu được phép) — do
+/// giao diện cung cấp vì cần hiện hộp thoại.
+typedef ParentAuthorizer = Future<ParentAuthResult> Function();
 
 /// Máy trạng thái của phiên dùng máy:
 /// running → tasks → (việc bố mẹ duyệt | taskTimer → running)
@@ -21,14 +24,12 @@ class GuardController extends ChangeNotifier {
     required ActiveSessionRepository activeSessions,
     required ChildRepository children,
     required DeviceControlRepository device,
-    required ParentAuthRepository parentAuth,
     required RegisterChildUseCase registerChild,
     required StartSessionUseCase startSession,
     required HandleTimeUpUseCase handleTimeUp,
     required SubmitAnswerUseCase submitAnswer,
     required AcknowledgeWrongAnswerUseCase acknowledgeWrong,
     required RevokeSessionUseCase revokeSession,
-    required AuthenticateParentUseCase authenticateParent,
     required GetTodayTasksUseCase todayTasks,
     required ChooseQuizUseCase chooseQuiz,
     required StartTimerTaskUseCase startTimerTask,
@@ -38,14 +39,12 @@ class GuardController extends ChangeNotifier {
   }) : _activeSessions = activeSessions,
        _children = children,
        _device = device,
-       _parentAuth = parentAuth,
        _registerChild = registerChild,
        _startSession = startSession,
        _handleTimeUp = handleTimeUp,
        _submitAnswer = submitAnswer,
        _acknowledgeWrong = acknowledgeWrong,
        _revokeSession = revokeSession,
-       _authenticateParent = authenticateParent,
        _todayTasks = todayTasks,
        _chooseQuiz = chooseQuiz,
        _startTimerTask = startTimerTask,
@@ -56,14 +55,12 @@ class GuardController extends ChangeNotifier {
   final ActiveSessionRepository _activeSessions;
   final ChildRepository _children;
   final DeviceControlRepository _device;
-  final ParentAuthRepository _parentAuth;
   final RegisterChildUseCase _registerChild;
   final StartSessionUseCase _startSession;
   final HandleTimeUpUseCase _handleTimeUp;
   final SubmitAnswerUseCase _submitAnswer;
   final AcknowledgeWrongAnswerUseCase _acknowledgeWrong;
   final RevokeSessionUseCase _revokeSession;
-  final AuthenticateParentUseCase _authenticateParent;
   final GetTodayTasksUseCase _todayTasks;
   final ChooseQuizUseCase _chooseQuiz;
   final StartTimerTaskUseCase _startTimerTask;
@@ -157,9 +154,6 @@ class GuardController extends ChangeNotifier {
     }
   }
 
-  /// Kiểm tra máy đã cài khoá màn hình chưa (bắt buộc để người lớn thoát được).
-  Future<bool> isParentLockAvailable() => _parentAuth.isAvailable();
-
   /// Ném [ValidationException] nếu thông tin chưa hợp lệ.
   Future<void> startForChild({
     required String name,
@@ -238,16 +232,17 @@ class GuardController extends ChangeNotifier {
     _changed();
   }
 
-  /// Bố mẹ duyệt việc bé đã làm: nhập đúng mật khẩu máy → bé được cộng phút.
+  /// Bố mẹ duyệt việc bé đã làm: [authorize] (mã PIN phụ huynh) đúng → bé
+  /// được cộng phút.
   Future<ParentAuthResult> approveTask(
     StudyTask task, {
-    required String reason,
+    required ParentAuthorizer authorize,
   }) async {
     final s = session;
     if (s == null || s.status != GuardStatus.tasks) {
       return ParentAuthResult.failed;
     }
-    final result = await _authenticateParent(reason);
+    final result = await authorize();
     if (result == ParentAuthResult.success) {
       session = await _completeTask(s, task);
       _changed();
@@ -259,12 +254,13 @@ class GuardController extends ChangeNotifier {
 
   Future<void> useOtherApps() => _device.moveToBackground();
 
-  /// Người lớn thu hồi: phải nhập đúng mật khẩu máy.
-  /// [reason] là câu hiển thị trên hộp thoại xác thực của hệ thống (đã dịch).
-  Future<ParentAuthResult> parentRevoke({required String reason}) async {
+  /// Người lớn thu hồi: [authorize] (mã PIN phụ huynh) phải đúng.
+  Future<ParentAuthResult> parentRevoke({
+    required ParentAuthorizer authorize,
+  }) async {
     final s = session;
     if (s == null) return ParentAuthResult.success;
-    final result = await _authenticateParent(reason);
+    final result = await authorize();
     if (result == ParentAuthResult.success) {
       await _revokeSession(s);
       session = null;

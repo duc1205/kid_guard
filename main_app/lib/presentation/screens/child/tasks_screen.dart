@@ -8,6 +8,7 @@ import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
 import '../../widgets/parent_auth_flow.dart';
 import '../../widgets/parent_revoke_button.dart';
+import '../../widgets/parent_gate.dart';
 
 /// Hết giờ: bé chọn một việc học để được dùng tiếp, hoặc trả lời câu hỏi.
 class TasksScreen extends StatefulWidget {
@@ -39,7 +40,8 @@ class _TasksScreenState extends State<TasksScreen> {
     final l10n = context.l10n;
     final result = await controller.approveTask(
       task,
-      reason: l10n.authReasonApproveTask(task.title),
+      authorize: () =>
+          askParent(context, reason: l10n.authReasonApproveTask(task.title)),
     );
     if (result == ParentAuthResult.success) {
       messenger.showSnackBar(

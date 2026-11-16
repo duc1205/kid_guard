@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../l10n_ext.dart';
 import 'dependencies_scope.dart';
 import 'parent_auth_flow.dart';
+import 'parent_gate.dart';
 
 /// Nút dành cho người lớn: nhập mật khẩu máy để thu hồi và thoát chế độ trẻ em.
 class ParentRevokeButton extends StatefulWidget {
@@ -27,9 +28,9 @@ class _ParentRevokeButtonState extends State<ParentRevokeButton> {
 
   Future<void> _revoke() async {
     setState(() => _busy = true);
-    final result = await DependenciesScope.of(
-      context,
-    ).guardController.parentRevoke(reason: context.l10n.authReasonRevoke);
+    final reason = context.l10n.authReasonRevoke;
+    final result = await DependenciesScope.of(context).guardController
+        .parentRevoke(authorize: () => askParent(context, reason: reason));
     if (!mounted) return;
     setState(() => _busy = false);
     showParentAuthMessage(context, result);

@@ -14,6 +14,7 @@ import '../../../domain/entities/child_profile.dart';
 import 'child_report_screen.dart';
 import 'edit_child_screen.dart';
 import 'question_source_screen.dart';
+import '../../widgets/parent_gate.dart';
 
 /// Khu vực phụ huynh: danh sách các bé đã dùng máy và thống kê tổng quan.
 class ParentDashboardScreen extends StatefulWidget {
@@ -74,7 +75,7 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
     );
     if (confirmed != true || !mounted) return;
     final parent = DependenciesScope.of(context).parentController;
-    final auth = await parent.authenticate(reason: l10n.authReasonClearAllData);
+    final auth = await askParent(context, reason: l10n.authReasonClearAllData);
     if (!mounted) return;
     if (auth != ParentAuthResult.success) {
       showParentAuthMessage(context, auth);
@@ -125,6 +126,8 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
               children: [
                 const _InitialAllowanceCard(),
+                const SizedBox(height: 12),
+                const _SecurityCard(),
                 Padding(
                   padding: const EdgeInsets.all(32),
                   child: Text(
@@ -152,6 +155,8 @@ class _ParentDashboardScreenState extends State<ParentDashboardScreen> {
               padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
               children: [
                 const _InitialAllowanceCard(),
+                const SizedBox(height: 12),
+                const _SecurityCard(),
                 const SizedBox(height: 16),
                 Row(
                   children: [
@@ -418,6 +423,77 @@ class _InitialAllowanceDialogState extends State<_InitialAllowanceDialog> {
         ),
         FilledButton(onPressed: _save, child: Text(l10n.settingsSave)),
       ],
+    );
+  }
+}
+
+/// Mã PIN phụ huynh và tuỳ chọn dùng mật khẩu / vân tay của máy.
+class _SecurityCard extends StatefulWidget {
+  const _SecurityCard();
+
+  @override
+  State<_SecurityCard> createState() => _SecurityCardState();
+}
+
+class _SecurityCardState extends State<_SecurityCard> {
+  bool? _deviceAuth;
+
+  @override
+  void initState() {
+    super.initState();
+    DependenciesScope.of(context).parentPin.deviceAuthAllowed().then((v) {
+      if (mounted) setState(() => _deviceAuth = v);
+    });
+  }
+
+  Future<void> _changePin() async {
+    final l10n = context.l10n;
+    final auth = await askParent(context, reason: l10n.authReasonChangePin);
+    if (!mounted) return;
+    if (auth != ParentAuthResult.success) {
+      showParentAuthMessage(context, auth);
+      return;
+    }
+    await Navigator.of(context).push<bool>(
+      MaterialPageRoute(builder: (_) => const CreatePinScreen(changing: true)),
+    );
+  }
+
+  Future<void> _setDeviceAuth(bool allowed) async {
+    final deps = DependenciesScope.of(context);
+    final l10n = context.l10n;
+    final messenger = ScaffoldMessenger.of(context);
+    if (allowed && !await deps.parentAuth.isAvailable()) {
+      messenger.showSnackBar(SnackBar(content: Text(l10n.authNotAvailable)));
+      return;
+    }
+    await deps.parentPin.setDeviceAuthAllowed(allowed);
+    if (mounted) setState(() => _deviceAuth = allowed);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return Card(
+      child: Column(
+        children: [
+          ListTile(
+            leading: const Icon(Icons.pin_rounded, color: AppColors.primary),
+            title: Text(l10n.securityPinTitle),
+            subtitle: Text(l10n.securityPinChange),
+            trailing: const Icon(Icons.chevron_right_rounded),
+            onTap: _changePin,
+          ),
+          const Divider(height: 1, indent: 16, endIndent: 16),
+          SwitchListTile(
+            secondary: const Icon(Icons.fingerprint_rounded),
+            title: Text(l10n.securityDeviceAuthTitle),
+            subtitle: Text(l10n.securityDeviceAuthBody),
+            value: _deviceAuth ?? false,
+            onChanged: _deviceAuth == null ? null : _setDeviceAuth,
+          ),
+        ],
+      ),
     );
   }
 }

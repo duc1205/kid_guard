@@ -10,11 +10,13 @@ import '../../data/datasources/local_store.dart';
 import '../../data/datasources/question_asset_datasource.dart';
 import '../../data/datasources/question_cache_datasource.dart';
 import '../../data/datasources/question_remote_datasource.dart';
+import '../../data/repositories/parent_pin_repository.dart';
 import '../../data/repositories/question_bank_repository.dart';
 import '../../data/repositories/repository_impls.dart';
 import '../../data/repositories/sqlite_repositories.dart';
 import '../../domain/repositories/repositories.dart';
 import '../../domain/usecases/advanced_lock_usecases.dart';
+import '../../domain/usecases/parent_pin_usecases.dart';
 import '../../domain/usecases/parent_usecases.dart';
 import '../../domain/usecases/pick_question.dart';
 import '../../domain/usecases/question_bank_usecases.dart';
@@ -44,6 +46,10 @@ class AppDependencies {
     required this.getStudyTasks,
     required this.saveStudyTask,
     required this.deleteStudyTask,
+    required this.parentPin,
+    required this.setParentPin,
+    required this.verifyParentPin,
+    required this.authenticateDevice,
   });
 
   final GuardController guardController;
@@ -61,6 +67,14 @@ class AppDependencies {
   final SaveStudyTaskUseCase saveStudyTask;
   final DeleteStudyTaskUseCase deleteStudyTask;
 
+  /// Mã PIN phụ huynh (thay mật khẩu máy cho mọi thao tác của người lớn).
+  final ParentPinRepository parentPin;
+  final SetParentPinUseCase setParentPin;
+  final VerifyParentPinUseCase verifyParentPin;
+
+  /// Mật khẩu / sinh trắc của máy (tuỳ chọn, khi tạo PIN, bản cũ chưa có PIN).
+  final AuthenticateParentUseCase authenticateDevice;
+
   /// Các tham số tuỳ chọn chỉ để test thay phần phụ thuộc nền tảng
   /// (bộ nhớ, CSDL, kênh native, xác thực); app thật gọi không tham số.
   static Future<AppDependencies> create({
@@ -69,6 +83,7 @@ class AppDependencies {
     @visibleForTesting DeviceControlRepository? device,
     @visibleForTesting ParentAuthRepository? parentAuth,
     @visibleForTesting QuestionRemoteDataSource? remote,
+    @visibleForTesting ParentPinRepository? parentPin,
   }) async {
     const uuid = Uuid();
     String newId() => uuid.v4();
@@ -78,6 +93,7 @@ class AppDependencies {
     final ChildRepository children = SqliteChildRepository(database);
     final UsageLogRepository logs = SqliteUsageLogRepository(database);
     final ActiveSessionRepository active = PrefsActiveSessionRepository(store);
+    parentPin ??= PrefsParentPinRepository(store);
     final StudyTaskRepository studyTasks = SqliteStudyTaskRepository(database);
     final todayTasks = GetTodayTasksUseCase(studyTasks);
     final questionBank = QuestionBankRepositoryImpl(
@@ -130,12 +146,15 @@ class AppDependencies {
       getStudyTasks: GetStudyTasksUseCase(studyTasks),
       saveStudyTask: SaveStudyTaskUseCase(studyTasks, newId),
       deleteStudyTask: DeleteStudyTaskUseCase(studyTasks),
+      parentPin: parentPin,
+      setParentPin: SetParentPinUseCase(parentPin),
+      verifyParentPin: VerifyParentPinUseCase(parentPin),
+      authenticateDevice: authenticate,
       questionBankController: questionBankController,
       guardController: GuardController(
         activeSessions: active,
         children: children,
         device: device,
-        parentAuth: parentAuth,
         registerChild: registerChild,
         startSession: StartSessionUseCase(
           active,
@@ -154,7 +173,6 @@ class AppDependencies {
         submitAnswer: SubmitAnswerUseCase(active, logs, device),
         acknowledgeWrong: AcknowledgeWrongAnswerUseCase(active, logs, device),
         revokeSession: RevokeSessionUseCase(active, logs, device),
-        authenticateParent: authenticate,
         todayTasks: todayTasks,
         chooseQuiz: ChooseQuizUseCase(active, pickQuestion),
         startTimerTask: StartTimerTaskUseCase(active),
@@ -168,7 +186,6 @@ class AppDependencies {
       ),
       parentController: ParentController(
         getReports: GetChildReportsUseCase(children, logs),
-        authenticateParent: authenticate,
         updateChild: UpdateChildUseCase(children),
         registerChild: registerChild,
         deleteChild: DeleteChildUseCase(children, active),

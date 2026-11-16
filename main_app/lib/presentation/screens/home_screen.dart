@@ -4,6 +4,7 @@ import '../../core/theme/app_theme.dart';
 import '../../domain/repositories/repositories.dart';
 import '../l10n_ext.dart';
 import '../widgets/dependencies_scope.dart';
+import '../widgets/parent_gate.dart';
 import '../../domain/usecases/advanced_lock_usecases.dart';
 import '../widgets/parent_auth_flow.dart';
 import 'child/child_register_screen.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   DevicePermissions? _perms;
-  bool? _lockAvailable;
+  bool? _hasPin;
   AdvancedLockStatus _advancedLock = AdvancedLockStatus.off;
 
   /// Các mục người lớn đã xác nhận bật (hệ thống không cho app tự kiểm tra).
@@ -48,16 +49,17 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   Future<void> _refresh() async {
+    if (!mounted) return;
     final deps = DependenciesScope.of(context);
     final perms = await deps.device.getPermissions();
-    final lock = await deps.parentAuth.isAvailable();
+    final hasPin = await deps.parentPin.hasPin();
     final advancedLock = await deps.checkAdvancedLock(perms);
     final confirmed = await deps.setupChecklist.getConfirmed();
     if (mounted) {
       setState(() {
         _perms = perms;
         _advancedLock = advancedLock;
-        _lockAvailable = lock;
+        _hasPin = hasPin;
         _confirmed = confirmed;
       });
     }
@@ -122,6 +124,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   /// Khoá nâng cao vừa bị hệ thống tắt → hỏi phụ huynh bật lại trước khi đưa máy.
   Future<void> _startChildMode() async {
+    // Phải có mã PIN phụ huynh trước khi đưa máy cho bé.
+    if (!await ensureParentPin(context) || !mounted) return;
     await _refresh();
     if (!mounted) return;
     if (!await _askMacRelaunchOnce() || !mounted) return;
@@ -254,15 +258,30 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         _ => l10n.screenTimeErrorFailed,
       };
 
+  Future<void> _createPin() async {
+    await ensureParentPin(context);
+    await _refresh();
+  }
+
+  /// Chưa có mã PIN → tạo mã (coi như đã xác thực); có rồi → nhập mã.
   Future<void> _openParentArea() async {
-    final parent = DependenciesScope.of(context).parentController;
-    final result = await parent.authenticate(
-      reason: context.l10n.authReasonParentArea,
-    );
-    if (!mounted) return;
-    if (result != ParentAuthResult.success) {
-      showParentAuthMessage(context, result);
-      return;
+    final deps = DependenciesScope.of(context);
+    if (!await deps.parentPin.hasPin()) {
+      if (!mounted) return;
+      final created = await ensureParentPin(context);
+      await _refresh();
+      if (!created || !mounted) return;
+    } else {
+      if (!mounted) return;
+      final result = await askParent(
+        context,
+        reason: context.l10n.authReasonParentArea,
+      );
+      if (!mounted) return;
+      if (result != ParentAuthResult.success) {
+        showParentAuthMessage(context, result);
+        return;
+      }
     }
     await Navigator.of(
       context,
@@ -341,10 +360,11 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             ),
             const SizedBox(height: 8),
             _SetupTile(
-              ok: _lockAvailable ?? false,
-              loading: _lockAvailable == null,
-              title: l10n.homeScreenLockTitle,
-              subtitle: l10n.homeScreenLockSubtitle,
+              ok: _hasPin ?? false,
+              loading: _hasPin == null,
+              title: l10n.homePinTitle,
+              subtitle: l10n.homePinSubtitle,
+              onFix: _createPin,
             ),
             if (perms != null && perms.platform == DevicePlatform.android) ...[
               _InfoCard(text: l10n.homeAndroidNotice),
@@ -513,7 +533,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                 title: l10n.homeDesktopTitle,
                 text: perms.platform == DevicePlatform.macos
                     ? l10n.homeMacNotice
-                    : '${l10n.homeWindowsNotice}\n\n${l10n.homeWindowsHelloHint}',
+                    : l10n.homeWindowsNotice,
               ),
             const SizedBox(height: 8),
             TextButton(

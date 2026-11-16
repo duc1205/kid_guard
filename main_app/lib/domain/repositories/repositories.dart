@@ -290,9 +290,39 @@ abstract interface class ParentConsentRepository {
   Future<void> accept();
 }
 
-enum ParentAuthResult { success, failed, notAvailable }
+enum ParentAuthResult {
+  success,
+  failed,
+  notAvailable,
 
-/// Xác thực người lớn bằng mật khẩu / khoá màn hình của máy.
+  /// Người lớn đóng hộp thoại — không cần báo lỗi.
+  cancelled,
+}
+
+/// Số lần nhập sai mã PIN liên tiếp và thời điểm được thử lại.
+class PinAttempts {
+  const PinAttempts({this.failed = 0, this.lockedUntil});
+  final int failed;
+  final DateTime? lockedUntil;
+}
+
+/// Mã PIN phụ huynh riêng của KidGuard (chỉ lưu dạng băm có salt) + tuỳ chọn
+/// cho phép dùng mật khẩu / sinh trắc của máy thay PIN.
+abstract interface class ParentPinRepository {
+  Future<bool> hasPin();
+  Future<void> setPin(String pin);
+  Future<bool> checkPin(String pin);
+
+  Future<PinAttempts> getAttempts();
+  Future<void> setAttempts(PinAttempts attempts);
+
+  /// Mặc định tắt: trên máy riêng của bé, bé biết mật khẩu máy.
+  Future<bool> deviceAuthAllowed();
+  Future<void> setDeviceAuthAllowed(bool allowed);
+}
+
+/// Xác thực bằng mật khẩu / khoá màn hình / sinh trắc của máy. Chỉ dùng khi
+/// phụ huynh cho phép, khi tạo PIN lần đầu, và cho bản cũ chưa có PIN.
 abstract interface class ParentAuthRepository {
   Future<bool> isAvailable();
   Future<ParentAuthResult> authenticate(String reason);

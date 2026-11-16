@@ -53,33 +53,29 @@ class AppLocalizationsVi extends AppLocalizations {
   String get validationGradeRequired => 'Hãy chọn lớp hoặc bậc đang học.';
 
   @override
-  String get authFailed => 'Mật khẩu không đúng hoặc đã huỷ xác thực.';
+  String get authFailed => 'Sai mã PIN / mật khẩu hoặc đã huỷ.';
 
   @override
   String get authNotAvailable =>
       'Máy chưa cài mật khẩu màn hình khoá. Hãy vào Cài đặt để cài mã PIN/mật khẩu.';
 
   @override
-  String get authReasonRevoke =>
-      'Nhập mật khẩu máy để thu hồi điện thoại và tắt chế độ trẻ em';
+  String get authReasonRevoke => 'Thu hồi máy và tắt chế độ trẻ em';
 
   @override
-  String get authReasonParentArea =>
-      'Nhập mật khẩu máy để vào khu vực phụ huynh';
+  String get authReasonParentArea => 'Vào Khu vực phụ huynh';
 
   @override
-  String get authReasonRegisterChild =>
-      'Nhập mật khẩu máy để thêm hồ sơ của bé';
+  String get authReasonRegisterChild => 'Thêm hồ sơ của bé';
 
   @override
-  String get authReasonDisableHardLock => 'Nhập mật khẩu máy để tắt khoá cứng';
+  String get authReasonDisableHardLock => 'Tắt khoá cứng';
 
   @override
-  String get authReasonDeleteChild => 'Nhập mật khẩu máy để xoá dữ liệu của bé';
+  String get authReasonDeleteChild => 'Xoá dữ liệu của bé';
 
   @override
-  String get authReasonClearAllData =>
-      'Nhập mật khẩu máy để xoá toàn bộ dữ liệu trẻ trên máy này';
+  String get authReasonClearAllData => 'Xoá toàn bộ dữ liệu trẻ trên máy này';
 
   @override
   String get consentTitle => 'Dành cho phụ huynh';
@@ -107,7 +103,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get consentChildBody =>
-      'Tên, ngày sinh và lớp — để chọn câu hỏi và làm báo cáo.';
+      'Tên, ngày sinh và lớp — để đặt việc học, chọn câu hỏi và làm báo cáo.';
 
   @override
   String get consentNetworkTitle => 'Mạng chỉ để tải câu hỏi';
@@ -135,7 +131,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get privacyStoreBody =>
-      'Hồ sơ bé (tên, ngày sinh, lớp), lịch sử dùng máy và câu trả lời. Không có tài khoản trực tuyến.';
+      'Hồ sơ bé (tên, ngày sinh, lớp), việc học bố mẹ đặt, lịch sử dùng máy, việc đã làm và câu trả lời. Không có tài khoản trực tuyến.';
 
   @override
   String get privacyDeleteTitle => 'Bạn có thể xoá';
@@ -145,11 +141,11 @@ class AppLocalizationsVi extends AppLocalizations {
       'Xoá từng bé hoặc toàn bộ dữ liệu trong Khu vực phụ huynh. Lịch sử quá 180 ngày tự xoá.';
 
   @override
-  String get privacyUnlockTitle => 'Mở khoá bằng mật khẩu máy';
+  String get privacyUnlockTitle => 'Mở khoá bằng mã PIN phụ huynh';
 
   @override
   String get privacyUnlockBody =>
-      'Dùng mật khẩu, Face ID hoặc vân tay của máy. KidGuard không lưu mật khẩu.';
+      'Máy chỉ lưu mã PIN dưới dạng băm một chiều có salt. Bạn có thể cho phép cả mật khẩu, Face ID hoặc vân tay của máy; KidGuard không đọc được chúng.';
 
   @override
   String get privacyPermissionsTitle => 'Quyền hệ thống chỉ để khoá';
@@ -414,17 +410,10 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeParentAreaSubtitle =>
-      'Xem thời gian dùng máy, câu đúng/sai của từng bé';
+      'Việc học, thời gian dùng máy và câu trả lời của từng bé';
 
   @override
   String get homeSetupHeader => 'Thiết lập trên máy này';
-
-  @override
-  String get homeScreenLockTitle => 'Mật khẩu màn hình khoá';
-
-  @override
-  String get homeScreenLockSubtitle =>
-      'Bắt buộc — dùng để người lớn thu hồi máy và mở khoá.';
 
   @override
   String get homeOverlaySubtitle =>
@@ -514,7 +503,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get hardLockDisableFailed => 'Không tắt được khoá cứng.';
 
   @override
-  String get hardLockDisableButton => 'Tắt khoá cứng (cần mật khẩu máy)';
+  String get hardLockDisableButton => 'Tắt khoá cứng (cần mã PIN phụ huynh)';
 
   @override
   String get registerTitle => 'Thông tin của bé';
@@ -570,10 +559,6 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get gradePostgraduateHint => 'Thạc sĩ, tiến sĩ';
-
-  @override
-  String get registerNeedsScreenLock =>
-      'Máy chưa cài mật khẩu màn hình khoá. Bố mẹ cần cài mật khẩu trước để có thể thu hồi máy.';
 
   @override
   String registerErrorGeneric(String error) {
@@ -832,7 +817,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeMacNotice =>
-      'Hết giờ, KidGuard hiện lên toàn màn hình ở chế độ kiosk: Dock, thanh menu, Cmd+Tab và Buộc thoát đều bị vô hiệu cho tới khi bé làm xong việc học hoặc trả lời câu hỏi hoặc người lớn mở khoá bằng mật khẩu Mac / Touch ID. Trong phiên, KidGuard không thể bị tắt, và tự mở lại sau khi đăng nhập nếu bạn cho phép ở mục bên dưới.';
+      'Hết giờ, KidGuard hiện lên toàn màn hình ở chế độ kiosk: Dock, thanh menu, Cmd+Tab và Buộc thoát đều bị vô hiệu cho tới khi bé làm xong việc học hoặc trả lời câu hỏi hoặc người lớn mở khoá bằng mã PIN phụ huynh. Trong phiên, KidGuard không thể bị tắt, và tự mở lại sau khi đăng nhập nếu bạn cho phép ở mục bên dưới.';
 
   @override
   String get macRelaunchTitle => 'Tự mở lại KidGuard sau khi đăng nhập?';
@@ -867,11 +852,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get homeWindowsNotice =>
-      'Hết giờ, KidGuard phủ kín màn hình và luôn nằm trên cùng: phím Windows, Alt+Tab và Alt+F4 bị chặn cho tới khi bé làm xong việc học hoặc trả lời câu hỏi hoặc người lớn mở khoá bằng Windows Hello (PIN, vân tay hoặc khuôn mặt). Trong phiên, KidGuard không thể bị đóng và tự mở lại sau khi đăng nhập. Windows không cho ứng dụng chặn Ctrl+Alt+Del.';
-
-  @override
-  String get homeWindowsHelloHint =>
-      'Cần cài Windows Hello (Cài đặt › Tài khoản › Tuỳ chọn đăng nhập › Mã PIN).';
+      'Hết giờ, KidGuard phủ kín màn hình và luôn nằm trên cùng: phím Windows, Alt+Tab và Alt+F4 bị chặn cho tới khi bé làm xong việc học hoặc trả lời câu hỏi hoặc người lớn mở khoá bằng mã PIN phụ huynh. Trong phiên, KidGuard không thể bị đóng và tự mở lại sau khi đăng nhập. Windows không cho ứng dụng chặn Ctrl+Alt+Del.';
 
   @override
   String get runningIosHint =>
@@ -1301,7 +1282,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get studyTaskKindCheckHint =>
-      'Bé bấm “Con làm xong rồi”, bố mẹ nhập mật khẩu máy để duyệt.';
+      'Bé bấm “Con làm xong rồi”, bố mẹ nhập mã PIN phụ huynh để duyệt.';
 
   @override
   String get studyTaskKindTimer => 'Hẹn giờ';
@@ -1384,4 +1365,99 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get childAddTitle => 'Thêm bé';
+
+  @override
+  String get pinEnterTitle => 'Nhập mã PIN phụ huynh';
+
+  @override
+  String pinWrong(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Sai mã PIN. Còn $count lần thử.',
+      zero: 'Sai mã PIN.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pinLocked(String time) {
+    return 'Sai quá nhiều lần. Thử lại sau $time.';
+  }
+
+  @override
+  String get pinUseDevice => 'Dùng mật khẩu máy';
+
+  @override
+  String get pinForgot => 'Quên mã PIN?';
+
+  @override
+  String get pinForgotTitle => 'Quên mã PIN';
+
+  @override
+  String get pinForgotBody =>
+      'Nếu bạn đã cho phép dùng mật khẩu máy trong Khu vực phụ huynh, hãy bấm “Dùng mật khẩu máy”.\n\nNếu không, cách duy nhất để đặt lại là gỡ và cài lại KidGuard — toàn bộ dữ liệu KidGuard trên máy sẽ bị xoá. Nhờ vậy bé cũng không tự đặt lại được.';
+
+  @override
+  String get pinCreateTitle => 'Mã PIN phụ huynh';
+
+  @override
+  String get pinChangeTitle => 'Đổi mã PIN';
+
+  @override
+  String get pinCreatePrompt => 'Tạo mã PIN phụ huynh';
+
+  @override
+  String get pinCreateBody =>
+      '4–8 chữ số. Dùng để duyệt việc học, thu hồi máy và vào Khu vực phụ huynh. Đừng cho bé biết.';
+
+  @override
+  String get pinConfirmTitle => 'Nhập lại mã PIN';
+
+  @override
+  String get pinMismatch => 'Hai lần nhập không khớp. Nhập lại từ đầu.';
+
+  @override
+  String get pinErrorLength => 'Mã PIN gồm 4–8 chữ số.';
+
+  @override
+  String get pinErrorTooSimple =>
+      'Mã quá dễ đoán (như 1111, 1234). Hãy chọn mã khác.';
+
+  @override
+  String get pinCreated => 'Đã lưu mã PIN phụ huynh.';
+
+  @override
+  String get authReasonCreatePin =>
+      'Xác nhận bạn là người lớn để tạo mã PIN phụ huynh';
+
+  @override
+  String get authReasonChangePin => 'Đổi mã PIN phụ huynh';
+
+  @override
+  String get securityTitle => 'Bảo mật';
+
+  @override
+  String get securityPinTitle => 'Mã PIN phụ huynh';
+
+  @override
+  String get securityPinChange => 'Đổi mã PIN';
+
+  @override
+  String get securityDeviceAuthTitle =>
+      'Cho phép cả mật khẩu / vân tay của máy';
+
+  @override
+  String get securityDeviceAuthBody =>
+      'Chỉ bật nếu máy này là của bố mẹ. Trên máy riêng của bé, bé biết mật khẩu máy và có thể tự mở khoá.';
+
+  @override
+  String get homePinTitle => 'Mã PIN phụ huynh';
+
+  @override
+  String get homePinSubtitle =>
+      'Bắt buộc — để duyệt việc học, thu hồi máy và vào Khu vực phụ huynh.';
+
+  @override
+  String get registerNeedsPin => 'Bố mẹ cần tạo mã PIN phụ huynh trước.';
 }

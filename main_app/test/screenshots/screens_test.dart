@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:main_app/core/di/injection.dart';
+import 'package:main_app/data/repositories/parent_pin_repository.dart';
 import 'package:main_app/domain/entities/active_session.dart';
 import 'package:main_app/domain/entities/study_task.dart';
 import 'package:main_app/domain/repositories/repositories.dart';
@@ -81,10 +82,12 @@ Future<void> _loadFonts() async {
 Future<AppDependencies> _deps({
   bool consent = true,
   bool lockDropped = false,
+  bool pin = false,
 }) async {
   final store = MemoryLocalStore();
   if (consent) await store.writeBool('kg.parent_consent_v1', true);
   if (lockDropped) await store.writeBool('kg.advanced_lock_seen_on', true);
+  if (pin) await PrefsParentPinRepository(store, iterations: 10).setPin('2580');
   return AppDependencies.create(
     store: store,
     database: await openTestDatabase(),
@@ -106,6 +109,7 @@ void main() {
     WidgetTester t, {
     bool consent = true,
     bool lockDropped = false,
+    bool pin = false,
   }) async {
     t.view.physicalSize = const Size(1080, 2340);
     t.view.devicePixelRatio = 2.625;
@@ -113,7 +117,7 @@ void main() {
     addTearDown(t.view.reset);
     addTearDown(t.platformDispatcher.clearLocalesTestValue);
     await t.runAsync(() async {
-      deps = await _deps(consent: consent, lockDropped: lockDropped);
+      deps = await _deps(consent: consent, lockDropped: lockDropped, pin: pin);
     });
     await t.pumpWidget(KidGuardApp(deps: deps));
     await t.runAsync(() => deps.guardController.init());
@@ -207,7 +211,9 @@ void main() {
       await deps.guardController.answer(
         [0, 1, 2, 3].firstWhere((i) => q.isCorrect(i)),
       );
-      await deps.guardController.parentRevoke(reason: 'x');
+      await deps.guardController.parentRevoke(
+        authorize: () async => ParentAuthResult.success,
+      );
       await deps.parentController.load();
     });
     await settle(t);
@@ -267,8 +273,50 @@ void main() {
     await shot(t, '22_add_child');
   });
 
+  shotTest('23 parent pin', (t) async {
+    await boot(t);
+    await t.tap(find.text('Khu vực phụ huynh'));
+    await settle(t);
+    await shot(t, '23_create_pin');
+    for (final d in '2580'.split('')) {
+      await t.tap(find.text(d).last);
+      await t.pump();
+    }
+    await shot(t, '24_create_pin_typed');
+    await t.tap(find.byIcon(Icons.arrow_forward_rounded));
+    await t.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 800)),
+    );
+    await settle(t);
+    for (final d in '2580'.split('')) {
+      await t.tap(find.text(d).last);
+      await t.pump();
+    }
+    await t.tap(find.byIcon(Icons.arrow_forward_rounded));
+    await t.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 800)),
+    );
+    await settle(t);
+    await t.runAsync(() => deps.parentController.load());
+    await shot(t, '25_dashboard_security');
+    await t.runAsync(startChild);
+    await settle(t);
+    await t.tap(find.text('Người lớn thu hồi máy'));
+    await settle(t);
+    for (final d in '1357'.split('')) {
+      await t.tap(find.text(d).last);
+      await t.pump();
+    }
+    await t.tap(find.byIcon(Icons.arrow_forward_rounded));
+    await t.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 800)),
+    );
+    await settle(t);
+    await shot(t, '26_pin_wrong');
+  });
+
   shotTest('14 advanced lock dropped', (t) async {
-    await boot(t, lockDropped: true);
+    await boot(t, lockDropped: true, pin: true);
     await shot(t, '14_home_lock_dropped');
     await t.tap(find.byType(FilledButton).at(1));
     await settle(t);

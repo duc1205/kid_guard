@@ -14,6 +14,7 @@ import '../../widgets/parent_auth_flow.dart';
 import '../../widgets/stat_tile.dart';
 import 'edit_child_screen.dart';
 import 'study_tasks_screen.dart';
+import '../../widgets/parent_gate.dart';
 
 /// Log chi tiết của một bé: từng phiên, thời gian dùng, từng câu hỏi đúng/sai.
 /// Lịch sử được tải theo trang (cuộn tới cuối thì tải thêm) để mở nhanh dù dữ liệu nhiều.
@@ -77,7 +78,7 @@ class _ChildReportScreenState extends State<ChildReportScreen> {
     );
     if (confirmed != true || !mounted) return;
     final parent = DependenciesScope.of(context).parentController;
-    final auth = await parent.authenticate(reason: l10n.authReasonDeleteChild);
+    final auth = await askParent(context, reason: l10n.authReasonDeleteChild);
     if (!mounted) return;
     if (auth != ParentAuthResult.success) {
       showParentAuthMessage(context, auth);

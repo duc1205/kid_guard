@@ -173,7 +173,7 @@ abstract class AppLocalizations {
   /// No description provided for @authFailed.
   ///
   /// In en, this message translates to:
-  /// **'Wrong password or authentication was cancelled.'**
+  /// **'Wrong PIN or password, or it was cancelled.'**
   String get authFailed;
 
   /// No description provided for @authNotAvailable.
@@ -185,37 +185,37 @@ abstract class AppLocalizations {
   /// No description provided for @authReasonRevoke.
   ///
   /// In en, this message translates to:
-  /// **'Enter the phone password to take the phone back and turn off kid mode'**
+  /// **'Take the device back and turn off kid mode'**
   String get authReasonRevoke;
 
   /// No description provided for @authReasonParentArea.
   ///
   /// In en, this message translates to:
-  /// **'Enter the phone password to open the parent area'**
+  /// **'Open the Parent area'**
   String get authReasonParentArea;
 
   /// No description provided for @authReasonRegisterChild.
   ///
   /// In en, this message translates to:
-  /// **'Enter the phone password to add a child\'s profile'**
+  /// **'Add a child\'s profile'**
   String get authReasonRegisterChild;
 
   /// No description provided for @authReasonDisableHardLock.
   ///
   /// In en, this message translates to:
-  /// **'Enter the phone password to turn off hard lock'**
+  /// **'Turn off hard lock'**
   String get authReasonDisableHardLock;
 
   /// No description provided for @authReasonDeleteChild.
   ///
   /// In en, this message translates to:
-  /// **'Enter the phone password to delete this child\'s data'**
+  /// **'Delete this child\'s data'**
   String get authReasonDeleteChild;
 
   /// No description provided for @authReasonClearAllData.
   ///
   /// In en, this message translates to:
-  /// **'Enter the phone password to delete all child data on this device'**
+  /// **'Delete all child data on this device'**
   String get authReasonClearAllData;
 
   /// No description provided for @consentTitle.
@@ -263,7 +263,7 @@ abstract class AppLocalizations {
   /// No description provided for @consentChildBody.
   ///
   /// In en, this message translates to:
-  /// **'Name, date of birth and grade — to pick questions and show reports.'**
+  /// **'Name, date of birth and grade — for study tasks, questions and reports.'**
   String get consentChildBody;
 
   /// No description provided for @consentNetworkTitle.
@@ -311,7 +311,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyStoreBody.
   ///
   /// In en, this message translates to:
-  /// **'Your child\'s profile (name, date of birth, grade), screen-time history and answers. No online account.'**
+  /// **'Your child\'s profile (name, date of birth, grade), study tasks you set, screen-time history, completed tasks and answers. No online account.'**
   String get privacyStoreBody;
 
   /// No description provided for @privacyDeleteTitle.
@@ -329,13 +329,13 @@ abstract class AppLocalizations {
   /// No description provided for @privacyUnlockTitle.
   ///
   /// In en, this message translates to:
-  /// **'Unlocked with the device passcode'**
+  /// **'Unlocked with a parent PIN'**
   String get privacyUnlockTitle;
 
   /// No description provided for @privacyUnlockBody.
   ///
   /// In en, this message translates to:
-  /// **'Uses the device passcode, Face ID or fingerprint. KidGuard never stores your passcode.'**
+  /// **'Only a one-way salted hash of the PIN is kept on this device. You can also allow the device passcode, Face ID or fingerprint; KidGuard never sees them.'**
   String get privacyUnlockBody;
 
   /// No description provided for @privacyPermissionsTitle.
@@ -773,7 +773,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeParentAreaSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'See screen time and right/wrong answers for each child'**
+  /// **'Study tasks, screen time and answers for each child'**
   String get homeParentAreaSubtitle;
 
   /// No description provided for @homeSetupHeader.
@@ -781,18 +781,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Setup on this phone'**
   String get homeSetupHeader;
-
-  /// No description provided for @homeScreenLockTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Screen lock password'**
-  String get homeScreenLockTitle;
-
-  /// No description provided for @homeScreenLockSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Required — lets adults take the phone back and unlock it.'**
-  String get homeScreenLockSubtitle;
 
   /// No description provided for @homeOverlaySubtitle.
   ///
@@ -947,7 +935,7 @@ abstract class AppLocalizations {
   /// No description provided for @hardLockDisableButton.
   ///
   /// In en, this message translates to:
-  /// **'Turn off hard lock (requires phone password)'**
+  /// **'Turn off hard lock (requires parent PIN)'**
   String get hardLockDisableButton;
 
   /// No description provided for @registerTitle.
@@ -1051,12 +1039,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Master\'s, PhD'**
   String get gradePostgraduateHint;
-
-  /// No description provided for @registerNeedsScreenLock.
-  ///
-  /// In en, this message translates to:
-  /// **'This phone has no screen lock. A parent needs to set a password first so they can take the phone back.'**
-  String get registerNeedsScreenLock;
 
   /// No description provided for @registerErrorGeneric.
   ///
@@ -1480,7 +1462,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeMacNotice.
   ///
   /// In en, this message translates to:
-  /// **'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until your child finishes a task or answers a question or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.'**
+  /// **'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until your child finishes a task or answers a question or a parent unlocks with the parent PIN. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.'**
   String get homeMacNotice;
 
   /// No description provided for @macRelaunchTitle.
@@ -1540,14 +1522,8 @@ abstract class AppLocalizations {
   /// No description provided for @homeWindowsNotice.
   ///
   /// In en, this message translates to:
-  /// **'When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until your child finishes a task or answers a question or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can\'t be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.'**
+  /// **'When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until your child finishes a task or answers a question or a parent unlocks with the parent PIN. During a session KidGuard can\'t be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.'**
   String get homeWindowsNotice;
-
-  /// No description provided for @homeWindowsHelloHint.
-  ///
-  /// In en, this message translates to:
-  /// **'Windows Hello must be set up (Settings › Accounts › Sign-in options › PIN).'**
-  String get homeWindowsHelloHint;
 
   /// No description provided for @runningIosHint.
   ///
@@ -2278,7 +2254,7 @@ abstract class AppLocalizations {
   /// No description provided for @studyTaskKindCheckHint.
   ///
   /// In en, this message translates to:
-  /// **'Your child taps “I\'m done”, then you enter the device passcode to approve.'**
+  /// **'Your child taps “I\'m done”, then you enter the parent PIN to approve.'**
   String get studyTaskKindCheckHint;
 
   /// No description provided for @studyTaskKindTimer.
@@ -2406,6 +2382,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add a child'**
   String get childAddTitle;
+
+  /// No description provided for @pinEnterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter parent PIN'**
+  String get pinEnterTitle;
+
+  /// No description provided for @pinWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Wrong PIN.} =1{Wrong PIN. 1 try left.} other{Wrong PIN. {count} tries left.}}'**
+  String pinWrong(int count);
+
+  /// No description provided for @pinLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many wrong tries. Try again in {time}.'**
+  String pinLocked(String time);
+
+  /// No description provided for @pinUseDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'Use device passcode'**
+  String get pinUseDevice;
+
+  /// No description provided for @pinForgot.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot PIN?'**
+  String get pinForgot;
+
+  /// No description provided for @pinForgotTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot the PIN'**
+  String get pinForgotTitle;
+
+  /// No description provided for @pinForgotBody.
+  ///
+  /// In en, this message translates to:
+  /// **'If you allowed the device passcode in the Parent area, tap “Use device passcode”.\n\nOtherwise the PIN can only be reset by uninstalling and reinstalling KidGuard, which deletes all KidGuard data on this device. This way your child can\'t reset it either.'**
+  String get pinForgotBody;
+
+  /// No description provided for @pinCreateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Parent PIN'**
+  String get pinCreateTitle;
+
+  /// No description provided for @pinChangeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Change PIN'**
+  String get pinChangeTitle;
+
+  /// No description provided for @pinCreatePrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a parent PIN'**
+  String get pinCreatePrompt;
+
+  /// No description provided for @pinCreateBody.
+  ///
+  /// In en, this message translates to:
+  /// **'4–8 digits. Used to approve study tasks, take the device back and open the Parent area. Don\'t tell your child.'**
+  String get pinCreateBody;
+
+  /// No description provided for @pinConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the PIN again'**
+  String get pinConfirmTitle;
+
+  /// No description provided for @pinMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'The PINs didn\'t match. Start again.'**
+  String get pinMismatch;
+
+  /// No description provided for @pinErrorLength.
+  ///
+  /// In en, this message translates to:
+  /// **'The PIN must be 4–8 digits.'**
+  String get pinErrorLength;
+
+  /// No description provided for @pinErrorTooSimple.
+  ///
+  /// In en, this message translates to:
+  /// **'Too easy to guess (like 1111 or 1234). Choose another.'**
+  String get pinErrorTooSimple;
+
+  /// No description provided for @pinCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Parent PIN saved.'**
+  String get pinCreated;
+
+  /// No description provided for @authReasonCreatePin.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm you\'re a parent to create the parent PIN'**
+  String get authReasonCreatePin;
+
+  /// No description provided for @authReasonChangePin.
+  ///
+  /// In en, this message translates to:
+  /// **'Change the parent PIN'**
+  String get authReasonChangePin;
+
+  /// No description provided for @securityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get securityTitle;
+
+  /// No description provided for @securityPinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Parent PIN'**
+  String get securityPinTitle;
+
+  /// No description provided for @securityPinChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Change PIN'**
+  String get securityPinChange;
+
+  /// No description provided for @securityDeviceAuthTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Also allow device passcode / biometrics'**
+  String get securityDeviceAuthTitle;
+
+  /// No description provided for @securityDeviceAuthBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Only turn on if this is your device. On your child\'s own device, they know its passcode and could unlock KidGuard.'**
+  String get securityDeviceAuthBody;
+
+  /// No description provided for @homePinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Parent PIN'**
+  String get homePinTitle;
+
+  /// No description provided for @homePinSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Required — to approve tasks, take the device back and open the Parent area.'**
+  String get homePinSubtitle;
+
+  /// No description provided for @registerNeedsPin.
+  ///
+  /// In en, this message translates to:
+  /// **'A parent needs to create a parent PIN first.'**
+  String get registerNeedsPin;
 }
 
 class _AppLocalizationsDelegate

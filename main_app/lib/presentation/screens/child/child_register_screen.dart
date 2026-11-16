@@ -10,6 +10,7 @@ import '../../controllers/guard_controller.dart';
 import '../../l10n_ext.dart';
 import '../../widgets/dependencies_scope.dart';
 import '../../widgets/parent_auth_flow.dart';
+import '../../widgets/parent_gate.dart';
 
 /// Trẻ chọn tên đã lưu, hoặc nhập tên, ngày sinh và lớp đang học trước khi được dùng máy.
 /// Thông tin đã lưu chỉ người lớn sửa được (khu vực phụ huynh).
@@ -56,8 +57,8 @@ class _ChildRegisterScreenState extends State<ChildRegisterScreen> {
   /// Thêm hồ sơ trẻ mới chỉ sau khi phụ huynh xác thực mật khẩu máy.
   /// Trả về `true` nếu xác thực thành công (form đã mở).
   Future<bool> _openNewChildForm({bool popOnFail = false}) async {
-    final parent = DependenciesScope.of(context).parentController;
-    final result = await parent.authenticate(
+    final result = await askParent(
+      context,
       reason: context.l10n.authReasonRegisterChild,
     );
     if (!mounted) return false;
@@ -111,8 +112,8 @@ class _ChildRegisterScreenState extends State<ChildRegisterScreen> {
     final l10n = context.l10n;
     setState(() => (_submitting = true, _error = null));
     try {
-      if (!await controller.isParentLockAvailable()) {
-        if (mounted) setState(() => _error = l10n.registerNeedsScreenLock);
+      if (!await DependenciesScope.of(context).parentPin.hasPin()) {
+        if (mounted) setState(() => _error = l10n.registerNeedsPin);
         return;
       }
       await begin(controller);

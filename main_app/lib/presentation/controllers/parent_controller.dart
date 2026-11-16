@@ -1,27 +1,23 @@
 import 'package:flutter/foundation.dart';
 
 import '../../domain/entities/child_profile.dart';
-import '../../domain/repositories/repositories.dart';
 import '../../domain/usecases/parent_usecases.dart';
 import '../../domain/usecases/register_child.dart';
 
 class ParentController extends ChangeNotifier {
   ParentController({
     required GetChildReportsUseCase getReports,
-    required AuthenticateParentUseCase authenticateParent,
     required UpdateChildUseCase updateChild,
     required RegisterChildUseCase registerChild,
     required DeleteChildUseCase deleteChild,
     required ClearAllChildrenDataUseCase clearAllChildrenData,
   }) : _getReports = getReports,
-       _authenticateParent = authenticateParent,
        _updateChild = updateChild,
        _registerChild = registerChild,
        _deleteChild = deleteChild,
        _clearAllChildrenData = clearAllChildrenData;
 
   final GetChildReportsUseCase _getReports;
-  final AuthenticateParentUseCase _authenticateParent;
   final UpdateChildUseCase _updateChild;
   final RegisterChildUseCase _registerChild;
   final DeleteChildUseCase _deleteChild;
@@ -29,10 +25,6 @@ class ParentController extends ChangeNotifier {
 
   bool loading = false;
   List<ChildReport> reports = const [];
-
-  /// [reason] là câu hiển thị trên hộp thoại xác thực của hệ thống (đã dịch).
-  Future<ParentAuthResult> authenticate({required String reason}) =>
-      _authenticateParent(reason);
 
   /// Sửa thông tin bé rồi tải lại danh sách. Ném [ValidationException] nếu sai.
   Future<ChildProfile> updateChild(

@@ -72,35 +72,29 @@ class AppLocalizationsEn extends AppLocalizations {
       'Please choose your grade or level of study.';
 
   @override
-  String get authFailed => 'Wrong password or authentication was cancelled.';
+  String get authFailed => 'Wrong PIN or password, or it was cancelled.';
 
   @override
   String get authNotAvailable =>
       'This phone has no screen lock. Go to Settings and set a PIN/password first.';
 
   @override
-  String get authReasonRevoke =>
-      'Enter the phone password to take the phone back and turn off kid mode';
+  String get authReasonRevoke => 'Take the device back and turn off kid mode';
 
   @override
-  String get authReasonParentArea =>
-      'Enter the phone password to open the parent area';
+  String get authReasonParentArea => 'Open the Parent area';
 
   @override
-  String get authReasonRegisterChild =>
-      'Enter the phone password to add a child\'s profile';
+  String get authReasonRegisterChild => 'Add a child\'s profile';
 
   @override
-  String get authReasonDisableHardLock =>
-      'Enter the phone password to turn off hard lock';
+  String get authReasonDisableHardLock => 'Turn off hard lock';
 
   @override
-  String get authReasonDeleteChild =>
-      'Enter the phone password to delete this child\'s data';
+  String get authReasonDeleteChild => 'Delete this child\'s data';
 
   @override
-  String get authReasonClearAllData =>
-      'Enter the phone password to delete all child data on this device';
+  String get authReasonClearAllData => 'Delete all child data on this device';
 
   @override
   String get consentTitle => 'For parents';
@@ -128,7 +122,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get consentChildBody =>
-      'Name, date of birth and grade — to pick questions and show reports.';
+      'Name, date of birth and grade — for study tasks, questions and reports.';
 
   @override
   String get consentNetworkTitle => 'Internet only for questions';
@@ -156,7 +150,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get privacyStoreBody =>
-      'Your child\'s profile (name, date of birth, grade), screen-time history and answers. No online account.';
+      'Your child\'s profile (name, date of birth, grade), study tasks you set, screen-time history, completed tasks and answers. No online account.';
 
   @override
   String get privacyDeleteTitle => 'You can delete it';
@@ -166,11 +160,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'Delete one child or all data in the Parent area. History older than 180 days is removed automatically.';
 
   @override
-  String get privacyUnlockTitle => 'Unlocked with the device passcode';
+  String get privacyUnlockTitle => 'Unlocked with a parent PIN';
 
   @override
   String get privacyUnlockBody =>
-      'Uses the device passcode, Face ID or fingerprint. KidGuard never stores your passcode.';
+      'Only a one-way salted hash of the PIN is kept on this device. You can also allow the device passcode, Face ID or fingerprint; KidGuard never sees them.';
 
   @override
   String get privacyPermissionsTitle => 'System access only to lock';
@@ -438,17 +432,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeParentAreaSubtitle =>
-      'See screen time and right/wrong answers for each child';
+      'Study tasks, screen time and answers for each child';
 
   @override
   String get homeSetupHeader => 'Setup on this phone';
-
-  @override
-  String get homeScreenLockTitle => 'Screen lock password';
-
-  @override
-  String get homeScreenLockSubtitle =>
-      'Required — lets adults take the phone back and unlock it.';
 
   @override
   String get homeOverlaySubtitle =>
@@ -540,7 +527,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hardLockDisableButton =>
-      'Turn off hard lock (requires phone password)';
+      'Turn off hard lock (requires parent PIN)';
 
   @override
   String get registerTitle => 'About you';
@@ -596,10 +583,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get gradePostgraduateHint => 'Master\'s, PhD';
-
-  @override
-  String get registerNeedsScreenLock =>
-      'This phone has no screen lock. A parent needs to set a password first so they can take the phone back.';
 
   @override
   String registerErrorGeneric(String error) {
@@ -890,7 +873,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeMacNotice =>
-      'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until your child finishes a task or answers a question or a parent unlocks with the Mac password or Touch ID. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.';
+      'When time is up, KidGuard comes to the front in full-screen kiosk mode: the Dock, menu bar, Cmd+Tab and Force Quit are disabled until your child finishes a task or answers a question or a parent unlocks with the parent PIN. During a session KidGuard can\'t be quit, and it reopens after login if you allow it below.';
 
   @override
   String get macRelaunchTitle => 'Reopen KidGuard after login?';
@@ -924,11 +907,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeWindowsNotice =>
-      'When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until your child finishes a task or answers a question or a parent unlocks with Windows Hello (PIN, fingerprint or face). During a session KidGuard can\'t be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.';
-
-  @override
-  String get homeWindowsHelloHint =>
-      'Windows Hello must be set up (Settings › Accounts › Sign-in options › PIN).';
+      'When time is up, KidGuard covers the whole screen and stays on top: the Windows key, Alt+Tab and Alt+F4 are blocked until your child finishes a task or answers a question or a parent unlocks with the parent PIN. During a session KidGuard can\'t be closed and reopens automatically after sign-in. Windows does not allow apps to block Ctrl+Alt+Del.';
 
   @override
   String get runningIosHint =>
@@ -1360,7 +1339,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get studyTaskKindCheckHint =>
-      'Your child taps “I\'m done”, then you enter the device passcode to approve.';
+      'Your child taps “I\'m done”, then you enter the parent PIN to approve.';
 
   @override
   String get studyTaskKindTimer => 'Timer';
@@ -1450,4 +1429,100 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get childAddTitle => 'Add a child';
+
+  @override
+  String get pinEnterTitle => 'Enter parent PIN';
+
+  @override
+  String pinWrong(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Wrong PIN. $count tries left.',
+      one: 'Wrong PIN. 1 try left.',
+      zero: 'Wrong PIN.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String pinLocked(String time) {
+    return 'Too many wrong tries. Try again in $time.';
+  }
+
+  @override
+  String get pinUseDevice => 'Use device passcode';
+
+  @override
+  String get pinForgot => 'Forgot PIN?';
+
+  @override
+  String get pinForgotTitle => 'Forgot the PIN';
+
+  @override
+  String get pinForgotBody =>
+      'If you allowed the device passcode in the Parent area, tap “Use device passcode”.\n\nOtherwise the PIN can only be reset by uninstalling and reinstalling KidGuard, which deletes all KidGuard data on this device. This way your child can\'t reset it either.';
+
+  @override
+  String get pinCreateTitle => 'Parent PIN';
+
+  @override
+  String get pinChangeTitle => 'Change PIN';
+
+  @override
+  String get pinCreatePrompt => 'Create a parent PIN';
+
+  @override
+  String get pinCreateBody =>
+      '4–8 digits. Used to approve study tasks, take the device back and open the Parent area. Don\'t tell your child.';
+
+  @override
+  String get pinConfirmTitle => 'Enter the PIN again';
+
+  @override
+  String get pinMismatch => 'The PINs didn\'t match. Start again.';
+
+  @override
+  String get pinErrorLength => 'The PIN must be 4–8 digits.';
+
+  @override
+  String get pinErrorTooSimple =>
+      'Too easy to guess (like 1111 or 1234). Choose another.';
+
+  @override
+  String get pinCreated => 'Parent PIN saved.';
+
+  @override
+  String get authReasonCreatePin =>
+      'Confirm you\'re a parent to create the parent PIN';
+
+  @override
+  String get authReasonChangePin => 'Change the parent PIN';
+
+  @override
+  String get securityTitle => 'Security';
+
+  @override
+  String get securityPinTitle => 'Parent PIN';
+
+  @override
+  String get securityPinChange => 'Change PIN';
+
+  @override
+  String get securityDeviceAuthTitle =>
+      'Also allow device passcode / biometrics';
+
+  @override
+  String get securityDeviceAuthBody =>
+      'Only turn on if this is your device. On your child\'s own device, they know its passcode and could unlock KidGuard.';
+
+  @override
+  String get homePinTitle => 'Parent PIN';
+
+  @override
+  String get homePinSubtitle =>
+      'Required — to approve tasks, take the device back and open the Parent area.';
+
+  @override
+  String get registerNeedsPin => 'A parent needs to create a parent PIN first.';
 }
