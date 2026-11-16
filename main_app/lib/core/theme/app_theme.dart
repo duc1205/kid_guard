@@ -21,10 +21,12 @@ class AppTheme {
   static const fontFamily = 'BeVietnamPro';
 
   static ThemeData light() {
+    // fromSeed cho ra màu chính nhạt (tím xám); giữ đúng màu xanh thương hiệu
+    // cho nút và chữ nhấn.
     final scheme = ColorScheme.fromSeed(
       seedColor: AppColors.primary,
       brightness: Brightness.light,
-    );
+    ).copyWith(primary: AppColors.primary, onPrimary: Colors.white);
     final base = ThemeData(
       useMaterial3: true,
       colorScheme: scheme,

@@ -107,42 +107,93 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get consentIntro =>
-      'KidGuard is a parental screen-time tool. Please confirm before using it on this device.';
+      'KidGuard helps you set screen time for your child. A few things to know before you start:';
 
   @override
-  String get consentBulletParent =>
-      'Only a parent or guardian should set up KidGuard.';
+  String get consentParentTitle => 'Set up by a parent';
 
   @override
-  String get consentBulletLocal =>
-      'Profiles and usage history stay on this device. KidGuard does not create online accounts.';
+  String get consentParentBody =>
+      'Only a parent or guardian sets up and unlocks KidGuard.';
 
   @override
-  String get consentBulletChildData =>
-      'A child\'s name, date of birth and grade are stored locally to pick questions and show parent reports.';
+  String get consentLocalTitle => 'Data stays on this device';
 
   @override
-  String get consentBulletNetwork =>
-      'The app may download question files over HTTPS. Those requests do not include your child\'s personal details.';
+  String get consentLocalBody =>
+      'No accounts. Your child\'s profile is never uploaded.';
 
   @override
-  String get consentReadPolicy => 'Read privacy policy';
+  String get consentChildTitle => 'Your child\'s details';
 
   @override
-  String get consentAgree => 'I am a parent/guardian and I agree';
+  String get consentChildBody =>
+      'Name, date of birth and grade — to pick questions and show reports.';
+
+  @override
+  String get consentNetworkTitle => 'Internet only for questions';
+
+  @override
+  String get consentNetworkBody =>
+      'Question updates over HTTPS, without your child\'s details.';
+
+  @override
+  String get consentAgree => 'Agree and continue';
+
+  @override
+  String get consentReadPolicy => 'View privacy policy';
+
+  @override
+  String get consentFootnote =>
+      'By continuing, you confirm you are the child\'s parent or guardian.';
+
+  @override
+  String get privacyIntro =>
+      'A summary of how KidGuard uses data. The full policy is linked below.';
+
+  @override
+  String get privacyStoreTitle => 'Stored on this device';
+
+  @override
+  String get privacyStoreBody =>
+      'Your child\'s profile (name, date of birth, grade), screen-time history and answers. No online account.';
+
+  @override
+  String get privacyDeleteTitle => 'You can delete it';
+
+  @override
+  String get privacyDeleteBody =>
+      'Delete one child or all data in the Parent area. History older than 180 days is removed automatically.';
+
+  @override
+  String get privacyUnlockTitle => 'Unlocked with the device passcode';
+
+  @override
+  String get privacyUnlockBody =>
+      'Uses the device passcode, Face ID or fingerprint. KidGuard never stores your passcode.';
+
+  @override
+  String get privacyPermissionsTitle => 'System access only to lock';
+
+  @override
+  String get privacyPermissionsBody =>
+      'Accessibility (Android), Screen Time (iOS), kiosk mode (computers). No reading messages or screen content.';
+
+  @override
+  String get privacyNetworkTitle => 'Your child\'s data isn\'t sent';
+
+  @override
+  String get privacyNetworkBody =>
+      'Only question files are downloaded over HTTPS. No ads, no tracking.';
+
+  @override
+  String get privacyFullTitle => 'Full policy';
+
+  @override
+  String get privacyCopyUrl => 'Copy link';
 
   @override
   String get privacyTitle => 'Privacy policy';
-
-  @override
-  String get privacyBody =>
-      'KidGuard stores child profiles and screen-time/quiz history only on this device. Parents can delete one child or all child data in the Parent area after device passcode or biometrics; question files and parental-control settings stay. Parent unlock uses the device passcode or biometrics. Optional lock features (Accessibility on Android, Screen Time on iOS, kiosk on desktop) are used for parental control on this device, not to sell data or read messages. Question updates are downloaded over HTTPS without uploading child data. Full policy (also for store listings):';
-
-  @override
-  String get privacyOnlineLabel => 'Public URL';
-
-  @override
-  String get privacyCopyUrl => 'Copy policy URL';
 
   @override
   String get privacyUrlCopied => 'Privacy policy URL copied.';

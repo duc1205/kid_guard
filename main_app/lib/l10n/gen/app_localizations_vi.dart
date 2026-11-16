@@ -86,42 +86,93 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get consentIntro =>
-      'KidGuard là công cụ kiểm soát thời gian dùng máy của trẻ. Hãy xác nhận trước khi dùng trên máy này.';
+      'KidGuard giúp bạn đặt giờ dùng máy cho bé. Vài điều cần biết trước khi bắt đầu:';
 
   @override
-  String get consentBulletParent =>
-      'Chỉ bố mẹ hoặc người giám hộ nên thiết lập KidGuard.';
+  String get consentParentTitle => 'Phụ huynh thiết lập';
 
   @override
-  String get consentBulletLocal =>
-      'Hồ sơ và nhật ký dùng máy lưu trên máy này. KidGuard không tạo tài khoản trực tuyến.';
+  String get consentParentBody =>
+      'Chỉ bố mẹ hoặc người giám hộ cài đặt và mở khoá.';
 
   @override
-  String get consentBulletChildData =>
-      'Họ tên, ngày sinh và lớp của bé được lưu cục bộ để chọn câu hỏi và báo cáo cho phụ huynh.';
+  String get consentLocalTitle => 'Dữ liệu nằm trên máy này';
 
   @override
-  String get consentBulletNetwork =>
-      'App có thể tải file câu hỏi qua HTTPS. Yêu cầu đó không kèm thông tin cá nhân của bé.';
+  String get consentLocalBody =>
+      'Không tạo tài khoản, không gửi hồ sơ của bé lên mạng.';
 
   @override
-  String get consentReadPolicy => 'Đọc chính sách quyền riêng tư';
+  String get consentChildTitle => 'Thông tin của bé';
 
   @override
-  String get consentAgree => 'Tôi là phụ huynh/người giám hộ và đồng ý';
+  String get consentChildBody =>
+      'Tên, ngày sinh và lớp — để chọn câu hỏi và làm báo cáo.';
+
+  @override
+  String get consentNetworkTitle => 'Mạng chỉ để tải câu hỏi';
+
+  @override
+  String get consentNetworkBody =>
+      'Cập nhật câu hỏi qua HTTPS, không kèm thông tin của bé.';
+
+  @override
+  String get consentAgree => 'Đồng ý và tiếp tục';
+
+  @override
+  String get consentReadPolicy => 'Xem chính sách quyền riêng tư';
+
+  @override
+  String get consentFootnote =>
+      'Khi tiếp tục, bạn xác nhận mình là phụ huynh hoặc người giám hộ của bé.';
+
+  @override
+  String get privacyIntro =>
+      'Tóm tắt cách KidGuard dùng dữ liệu. Bản đầy đủ ở cuối trang.';
+
+  @override
+  String get privacyStoreTitle => 'Lưu trên máy này';
+
+  @override
+  String get privacyStoreBody =>
+      'Hồ sơ bé (tên, ngày sinh, lớp), lịch sử dùng máy và câu trả lời. Không có tài khoản trực tuyến.';
+
+  @override
+  String get privacyDeleteTitle => 'Bạn có thể xoá';
+
+  @override
+  String get privacyDeleteBody =>
+      'Xoá từng bé hoặc toàn bộ dữ liệu trong Khu vực phụ huynh. Lịch sử quá 180 ngày tự xoá.';
+
+  @override
+  String get privacyUnlockTitle => 'Mở khoá bằng mật khẩu máy';
+
+  @override
+  String get privacyUnlockBody =>
+      'Dùng mật khẩu, Face ID hoặc vân tay của máy. KidGuard không lưu mật khẩu.';
+
+  @override
+  String get privacyPermissionsTitle => 'Quyền hệ thống chỉ để khoá';
+
+  @override
+  String get privacyPermissionsBody =>
+      'Trợ năng (Android), Screen Time (iOS), chế độ kiosk (máy tính). Không đọc tin nhắn hay nội dung màn hình.';
+
+  @override
+  String get privacyNetworkTitle => 'Không gửi dữ liệu của bé';
+
+  @override
+  String get privacyNetworkBody =>
+      'Chỉ tải file câu hỏi qua HTTPS. Không quảng cáo, không theo dõi hành vi.';
+
+  @override
+  String get privacyFullTitle => 'Chính sách đầy đủ';
+
+  @override
+  String get privacyCopyUrl => 'Sao chép liên kết';
 
   @override
   String get privacyTitle => 'Chính sách quyền riêng tư';
-
-  @override
-  String get privacyBody =>
-      'KidGuard lưu hồ sơ trẻ và nhật ký thời gian/câu hỏi chỉ trên máy này. Phụ huynh có thể xoá một bé hoặc toàn bộ dữ liệu trẻ trong Khu vực phụ huynh sau khi xác thực mật khẩu máy hoặc sinh trắc học; bộ câu hỏi và cài đặt khoá vẫn giữ. Người lớn mở khoá bằng mật khẩu máy hoặc sinh trắc học. Các tính năng khoá tuỳ chọn (Trợ năng trên Android, Screen Time trên iOS, kiosk trên máy tính) dùng để kiểm soát của phụ huynh trên máy này, không bán dữ liệu hay đọc tin nhắn. Cập nhật câu hỏi tải qua HTTPS, không gửi dữ liệu trẻ lên máy chủ. Chính sách đầy đủ (dùng cho store):';
-
-  @override
-  String get privacyOnlineLabel => 'Địa chỉ công khai';
-
-  @override
-  String get privacyCopyUrl => 'Sao chép đường dẫn chính sách';
 
   @override
   String get privacyUrlCopied => 'Đã sao chép đường dẫn chính sách.';

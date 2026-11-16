@@ -227,68 +227,158 @@ abstract class AppLocalizations {
   /// No description provided for @consentIntro.
   ///
   /// In en, this message translates to:
-  /// **'KidGuard is a parental screen-time tool. Please confirm before using it on this device.'**
+  /// **'KidGuard helps you set screen time for your child. A few things to know before you start:'**
   String get consentIntro;
 
-  /// No description provided for @consentBulletParent.
+  /// No description provided for @consentParentTitle.
   ///
   /// In en, this message translates to:
-  /// **'Only a parent or guardian should set up KidGuard.'**
-  String get consentBulletParent;
+  /// **'Set up by a parent'**
+  String get consentParentTitle;
 
-  /// No description provided for @consentBulletLocal.
+  /// No description provided for @consentParentBody.
   ///
   /// In en, this message translates to:
-  /// **'Profiles and usage history stay on this device. KidGuard does not create online accounts.'**
-  String get consentBulletLocal;
+  /// **'Only a parent or guardian sets up and unlocks KidGuard.'**
+  String get consentParentBody;
 
-  /// No description provided for @consentBulletChildData.
+  /// No description provided for @consentLocalTitle.
   ///
   /// In en, this message translates to:
-  /// **'A child\'s name, date of birth and grade are stored locally to pick questions and show parent reports.'**
-  String get consentBulletChildData;
+  /// **'Data stays on this device'**
+  String get consentLocalTitle;
 
-  /// No description provided for @consentBulletNetwork.
+  /// No description provided for @consentLocalBody.
   ///
   /// In en, this message translates to:
-  /// **'The app may download question files over HTTPS. Those requests do not include your child\'s personal details.'**
-  String get consentBulletNetwork;
+  /// **'No accounts. Your child\'s profile is never uploaded.'**
+  String get consentLocalBody;
 
-  /// No description provided for @consentReadPolicy.
+  /// No description provided for @consentChildTitle.
   ///
   /// In en, this message translates to:
-  /// **'Read privacy policy'**
-  String get consentReadPolicy;
+  /// **'Your child\'s details'**
+  String get consentChildTitle;
+
+  /// No description provided for @consentChildBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Name, date of birth and grade — to pick questions and show reports.'**
+  String get consentChildBody;
+
+  /// No description provided for @consentNetworkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Internet only for questions'**
+  String get consentNetworkTitle;
+
+  /// No description provided for @consentNetworkBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Question updates over HTTPS, without your child\'s details.'**
+  String get consentNetworkBody;
 
   /// No description provided for @consentAgree.
   ///
   /// In en, this message translates to:
-  /// **'I am a parent/guardian and I agree'**
+  /// **'Agree and continue'**
   String get consentAgree;
+
+  /// No description provided for @consentReadPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'View privacy policy'**
+  String get consentReadPolicy;
+
+  /// No description provided for @consentFootnote.
+  ///
+  /// In en, this message translates to:
+  /// **'By continuing, you confirm you are the child\'s parent or guardian.'**
+  String get consentFootnote;
+
+  /// No description provided for @privacyIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'A summary of how KidGuard uses data. The full policy is linked below.'**
+  String get privacyIntro;
+
+  /// No description provided for @privacyStoreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored on this device'**
+  String get privacyStoreTitle;
+
+  /// No description provided for @privacyStoreBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your child\'s profile (name, date of birth, grade), screen-time history and answers. No online account.'**
+  String get privacyStoreBody;
+
+  /// No description provided for @privacyDeleteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You can delete it'**
+  String get privacyDeleteTitle;
+
+  /// No description provided for @privacyDeleteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete one child or all data in the Parent area. History older than 180 days is removed automatically.'**
+  String get privacyDeleteBody;
+
+  /// No description provided for @privacyUnlockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlocked with the device passcode'**
+  String get privacyUnlockTitle;
+
+  /// No description provided for @privacyUnlockBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Uses the device passcode, Face ID or fingerprint. KidGuard never stores your passcode.'**
+  String get privacyUnlockBody;
+
+  /// No description provided for @privacyPermissionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'System access only to lock'**
+  String get privacyPermissionsTitle;
+
+  /// No description provided for @privacyPermissionsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Accessibility (Android), Screen Time (iOS), kiosk mode (computers). No reading messages or screen content.'**
+  String get privacyPermissionsBody;
+
+  /// No description provided for @privacyNetworkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your child\'s data isn\'t sent'**
+  String get privacyNetworkTitle;
+
+  /// No description provided for @privacyNetworkBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Only question files are downloaded over HTTPS. No ads, no tracking.'**
+  String get privacyNetworkBody;
+
+  /// No description provided for @privacyFullTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Full policy'**
+  String get privacyFullTitle;
+
+  /// No description provided for @privacyCopyUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy link'**
+  String get privacyCopyUrl;
 
   /// No description provided for @privacyTitle.
   ///
   /// In en, this message translates to:
   /// **'Privacy policy'**
   String get privacyTitle;
-
-  /// No description provided for @privacyBody.
-  ///
-  /// In en, this message translates to:
-  /// **'KidGuard stores child profiles and screen-time/quiz history only on this device. Parents can delete one child or all child data in the Parent area after device passcode or biometrics; question files and parental-control settings stay. Parent unlock uses the device passcode or biometrics. Optional lock features (Accessibility on Android, Screen Time on iOS, kiosk on desktop) are used for parental control on this device, not to sell data or read messages. Question updates are downloaded over HTTPS without uploading child data. Full policy (also for store listings):'**
-  String get privacyBody;
-
-  /// No description provided for @privacyOnlineLabel.
-  ///
-  /// In en, this message translates to:
-  /// **'Public URL'**
-  String get privacyOnlineLabel;
-
-  /// No description provided for @privacyCopyUrl.
-  ///
-  /// In en, this message translates to:
-  /// **'Copy policy URL'**
-  String get privacyCopyUrl;
 
   /// No description provided for @privacyUrlCopied.
   ///
