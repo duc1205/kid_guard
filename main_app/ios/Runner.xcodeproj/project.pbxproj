@@ -22,10 +22,10 @@
 		7884E8682EC3CC0700C636F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */; };
 		902E3B10C8EB78BCF59555C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC8D8A76E99332F46FD8DC /* Foundation.framework */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
-		A7B8C9D0E1F2031425364758 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7B8C9D0E1F2031425364759 /* InfoPlist.strings */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		A11EA287B04F6033404F9F39 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82AC553647C64047018ED6A5 /* Pods_Runner.framework */; };
+		A7B8C9D0E1F2031425364758 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7B8C9D0E1F2031425364759 /* InfoPlist.strings */; };
 		A9F2F19D98817E71C63B767F /* KidGuardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75049E67BBDC8BE32CCBF400 /* KidGuardMonitor.swift */; };
 		ABDBD7789CA722AFD71DFE8F /* KidGuardShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD33669A870E527B37D4721 /* KidGuardShared.swift */; };
 		C11F4948B812771AC53BC022 /* KidGuardShield.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4E1DBF98F69168346ED71545 /* KidGuardShield.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -110,11 +110,11 @@
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97C146FB1CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A7B8C9D0E1F2031425364760 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A7B8C9D0E1F2031425364761 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7B8C9D0E1F2031425364760 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A7B8C9D0E1F2031425364761 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C05A79F759AACC11EE317245 /* KidGuardShield.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KidGuardShield.swift; sourceTree = "<group>"; };
 		DD7F0E68320338201125CF78 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC2322264F4CB7A04B1582D8 /* Extension.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Flutter/Extension.xcconfig; sourceTree = "<group>"; };
@@ -167,7 +167,6 @@
 				DD7F0E68320338201125CF78 /* Info.plist */,
 				2ABEFCAD87ADABC6C692DE56 /* KidGuardShield.entitlements */,
 			);
-			name = KidGuardShield;
 			path = KidGuardShield;
 			sourceTree = "<group>";
 		};
@@ -188,7 +187,6 @@
 				4FAACA20A58B249775CFBB75 /* Info.plist */,
 				2BA0495BD169B6D65AC0F250 /* KidGuardMonitor.entitlements */,
 			);
-			name = KidGuardMonitor;
 			path = KidGuardMonitor;
 			sourceTree = "<group>";
 		};
@@ -198,7 +196,6 @@
 				5FD33669A870E527B37D4721 /* KidGuardShared.swift */,
 				0F1E2D3C4B5A69788796A5B4 /* PrivacyInfo.xcprivacy */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -642,7 +639,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = KidGuardShield/KidGuardShield.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KidGuardShield/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -720,7 +717,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -799,7 +796,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = KidGuardMonitor/KidGuardMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KidGuardMonitor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -826,7 +823,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = KidGuardShield/KidGuardShield.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KidGuardShield/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -853,7 +850,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = KidGuardMonitor/KidGuardMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KidGuardMonitor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -880,7 +877,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = KidGuardMonitor/KidGuardMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KidGuardMonitor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1017,7 +1014,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1047,7 +1044,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Runner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1076,7 +1073,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = KidGuardShield/KidGuardShield.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JJA8U36GW9;
+				DEVELOPMENT_TEAM = WZM95B7KFL;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = KidGuardShield/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
